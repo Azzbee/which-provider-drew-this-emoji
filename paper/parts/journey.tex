@@ -4,7 +4,7 @@ The final model was not designed in one step. \Cref{tab:journey} tells the proje
 
 \begin{table}[t]
 \centering\small
-\caption{\textbf{From first try to final model.} Accuracies are validation accuracies unless marked $^\dagger$ (private leaderboard). \ver\ verified by the codebase, \rep\ from the team's log or Kaggle.}
+\caption{\textbf{From first try to final model.} Accuracies are validation accuracies unless marked $^\dagger$ (private leaderboard). \ver\ verified by the codebase, \rep\ from the team's log, the ChatGPT experiment records or Kaggle; $^\S$ on the DINOv2 branch's development split.}
 \label{tab:journey}
 \renewcommand{\arraystretch}{1.18}
 \newcommand{\stp}[1]{\tikz[baseline=(n.base)]\node[circle, fill=accent, text=white, inner sep=1.2pt, minimum size=4.2mm, font=\sffamily\scriptsize\bfseries](n){#1};}
@@ -21,14 +21,15 @@ The final model was not designed in one step. \Cref{tab:journey} tells the proje
 \stp{7} & Stronger augmentation: rotation, scaling, label smoothing & 94.38\%\rep & $-1.5$ points: resampling blurs the outlines that identify a vendor. \textbf{Next:} flips and integer shifts only.\\
 \stp{8} & Input resolution 128 $\to$ 224\,px & 97.57\%\rep & +1.7 points, the largest single gain: resolution matters more than architecture.\\
 \stp{9} & Ensembles (128 + 224\,px), retraining on all data, nearest-neighbour upscaling (E15, Erdem) & 97.93\%\rep; 0.98238$^\dagger$ & Retraining on all data changed the private score by +0.14 and $-0.08$ points: no reliable gain. Exact integer upscaling gave the team's best entry.\\
-\stp{10} & Self-supervised ViT: DINOv2 fine-tuned (Lina); DINOv2 + ConvNeXt ensemble & 0.95607$^\dagger$, 0.96477$^\dagger$ & The transformer is weaker here, and adding it pulls ConvNeXt down. \textbf{Next:} combine only comparably strong members.\\
-\stp{11} & ConvNeXt-Tiny, 5 grouped folds, flip TTA, lowest-validation-loss epoch (run A) & 97.29\%\ver & Validation loss and accuracy disagree. \textbf{Next:} keep the last epoch of the schedule.\\
-\rowcolor{panel}\stp{12} & Same, last epoch (run B): \textbf{final model} & 97.69\%\ver; 0.98218$^\dagger$ & +0.40 points over run A ($p=2.4\times10^{-5}$), 13 minutes of training.\\
+\stp{10} & Self-supervised ViT: DINOv2 ViT-S/14, last 2 of 12 blocks tuned (Adam, with ChatGPT); averaged with a partially tuned ConvNeXt & 95.90\%, 97.12\%$^\S$; 0.95607$^\dagger$, 0.96477$^\dagger$ & The transformer is weaker here, and the average fell 0.6 points from its development estimate to the leaderboard (reused development split). \textbf{Next:} try learning the combination.\\
+\stp{11} & Learned fusion of DINOv2, ConvNeXt and 1{,}460 style features (transformer and MLP heads); decision models Julia-1 and Jev & best 97.01\%$^\S$ vs 97.12\% & No combiner beat the plain average; Jev fixed 8 errors and made 37. \textbf{Next:} back to one strong architecture, fine-tuned end to end.\\
+\stp{12} & ConvNeXt-Tiny, 5 grouped folds, flip TTA, lowest-validation-loss epoch (run A) & 97.29\%\ver & Validation loss and accuracy disagree. \textbf{Next:} keep the last epoch of the schedule.\\
+\rowcolor{panel}\stp{13} & Same, last epoch (run B): \textbf{final model} & 97.69\%\ver; 0.98218$^\dagger$ & +0.40 points over run A ($p=2.4\times10^{-5}$), 13 minutes of training.\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Three turns shaped the project. The first was finding the file-format shortcut (step 3): it changed the question from ``how high can we score'' to ``how high can we score from the drawing'', and every later comparison was made under that rule. The second was the failure of frozen features (step 5), which showed that vendor style is not what ImageNet pretraining encodes, and that the backbone has to be adapted. The third was the gap between validation loss and accuracy at the end (step 11), which changed how we choose a checkpoint. Several ideas did not work, and they are as informative as the ones that did: resampling augmentation, retraining on all data, and adding a weaker transformer to a strong CNN all lost or failed to gain accuracy (\cref{sec:nowork}).
+Three turns shaped the project. The first was finding the file-format shortcut (step 3): it changed the question from ``how high can we score'' to ``how high can we score from the drawing'', and every later comparison was made under that rule. The second was the failure of frozen features (step 5), which showed that vendor style is not what ImageNet pretraining encodes, and that the backbone has to be adapted. The third was the gap between validation loss and accuracy at the end (step 12), which changed how we choose a checkpoint. Several ideas did not work, and they are as informative as the ones that did: resampling augmentation, retraining on all data, adding a weaker transformer to a strong CNN, and learned fusion or decision models on top of the experts all lost or failed to gain accuracy (\cref{sec:nowork,sec:fusion}).
 
 \subsection{Experiment ladder}
 \label{sec:ladder}

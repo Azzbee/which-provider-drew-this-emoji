@@ -1,44 +1,66 @@
-\subsection{Combining backbones: from voting to learned fusion}
+\subsection{Combining backbones: averaging, learned fusion and decision models}
 \label{sec:fusion}
-Our final model combines members of the same architecture by soft voting (\cref{fig:arch}). The team also explored combining \emph{different} backbones, on the logic of \cref{sec:background}: an ensemble helps only if its members make different mistakes, and a self-supervised transformer and a supervised CNN see an image very differently. \Cref{fig:fusion} shows the two ways to combine them. In late fusion (soft voting) each backbone produces its own class probabilities and these are averaged. In learned fusion, each frozen backbone produces a feature vector, a linear layer projects it to a common width so that it becomes one token, and a small trainable transformer attends across the tokens, in effect translating each backbone's representation into a shared space before a class token makes the decision. Only the projection layers and the fusion transformer are trained, which keeps the number of trainable parameters small, and as with stacking the fusion model must be trained on data the backbones were not fine-tuned on.
+Our final model combines members of the same architecture by soft voting (\cref{fig:arch}). The DINOv2 branch also tried combining \emph{different} experts, on the logic of \cref{sec:background}: an ensemble helps only if its members make different mistakes, and a self-supervised transformer, a supervised CNN and hand-crafted style descriptors see an image very differently. Everything in this section was run by Adam with ChatGPT and is evaluated on the branch's 1{,}976-image development split\rep; the code and results are in \nolinkurl{members/adam-zeraiki/chatgpt_experiments/}.
+
+\paragraph{Three experts} The experts were the two partially fine-tuned networks of \cref{sec:dino} and a deterministic style descriptor. DINOv2 gives 768 features (class token and mean patch token) and \pct{95.90} on its own. ConvNeXt-Tiny gives 768 pooled features and \pct{95.55}. The style descriptor computes 1{,}460 features from a $64\times64$ RGBA rendering: colour grids and histograms, foreground colour, alpha and transparency statistics, gradients, Laplacian summaries and local binary patterns. It uses no file names or metadata. A histogram gradient-boosting classifier reaches \pct{90.03} on these features and extra-trees \pct{84.72}. The reference combination is the equal average of the two networks' probabilities: \pct{97.12} (1{,}919 of 1{,}976).
+
+\paragraph{Learned fusion} Inspired by TRIBE~v2 \cite{dascoli2026tribe}, which fuses embeddings from pretrained text, audio and video models with a transformer to predict brain activity, the team built a fusion head over the three experts (\cref{fig:fusion}b). Each expert's feature vector is standardised and projected to 64 dimensions (linear layer, LayerNorm, GELU) and becomes one token with an expert-identity embedding. A class token joins them, and one pre-norm transformer layer (four heads, feed-forward width 128, dropout 0.15; \num{226631} trainable parameters) attends across the four tokens. A matched MLP on the concatenated projections (\num{224839} parameters) served as a control. The encoders stayed frozen, either with their public pretrained weights or with the task-tuned weights of \cref{sec:dino}. Each head was trained with three seeds (17, 43, 101), its number of epochs chosen on an inner grouped split of 6{,}322 / 1{,}581 images, then refitted on all 7{,}903 training images, and the three seeds' probabilities were averaged. A replacement had to clear a threshold fixed in advance: eight more correct images than the reference (1{,}927).
 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[font=\sffamily\scriptsize, node distance=3mm,
-  bb/.style={draw=accent, rounded corners=2pt, fill=accent!10, minimum width=24mm, minimum height=6mm, align=center},
+  bb/.style={draw=accent, rounded corners=2pt, fill=accent!10, minimum width=27mm, minimum height=6mm, align=center},
   fz/.style={draw=rule, rounded corners=2pt, fill=white, minimum height=6mm, align=center, inner sep=2pt},
   tk/.style={draw=alert, fill=alert!18, minimum width=4mm, minimum height=6mm, inner sep=0},
   arr/.style={-{Stealth[length=1.6mm]}, color=ink2, line width=0.55pt}]
-  \node[font=\sffamily\scriptsize\bfseries, anchor=west] at (0,1.15) {(a) late fusion: soft voting};
+  \node[font=\sffamily\scriptsize\bfseries, anchor=west] at (0,1.15) {(a) late fusion: soft voting (the reference, 97.12\%)};
   \node[fz] (x1) at (0.7,0) {image};
-  \node[bb] (b1) at (3.6,0.55) {ConvNeXt-Tiny};
-  \node[bb] (b2) at (3.6,-0.55) {DINOv2 (ViT)};
-  \node[fz] (p1) at (6.6,0.55) {$p_1$ (7 probs)};
-  \node[fz] (p2) at (6.6,-0.55) {$p_2$ (7 probs)};
-  \node[fz] (avg) at (9.2,0) {$\tfrac12(p_1+p_2)$};
+  \node[bb] (b1) at (3.8,0.55) {ConvNeXt-Tiny};
+  \node[bb] (b2) at (3.8,-0.55) {DINOv2 ViT-S/14};
+  \node[fz] (p1) at (7.0,0.55) {$p_1$ (7 probs)};
+  \node[fz] (p2) at (7.0,-0.55) {$p_2$ (7 probs)};
+  \node[fz] (avg) at (9.6,0) {$\tfrac12(p_1+p_2)$};
   \foreach \u/\v in {x1/b1,x1/b2,b1/p1,b2/p2,p1/avg,p2/avg} \draw[arr] (\u) -- (\v);
   \begin{scope}[yshift=-3.3cm]
-  \node[font=\sffamily\scriptsize\bfseries, anchor=west] at (0,2.15) {(b) learned fusion: a small transformer over frozen backbone features};
+  \node[font=\sffamily\scriptsize\bfseries, anchor=west] at (0,2.15) {(b) learned fusion: a small transformer over three frozen experts (best: 97.01\%)};
   \node[fz] (y) at (0.7,0) {image};
-  \node[bb] (c1) at (3.6,1.0) {ConvNeXt-Tiny (frozen)};
-  \node[bb] (c2) at (3.6,0) {DINOv2 (frozen)};
-  \node[bb, dashed] (c3) at (3.6,-1.0) {third backbone};
-  \foreach \k/\n in {1/1.0,2/0,3/-1.0} { \node[fz] (pr\k) at (6.5,\n) {linear $\to d$}; \draw[arr] (y) -- (c\k); \draw[arr] (c\k) -- (pr\k); }
-  \node[tk, draw=accent, fill=accent!30] (cls) at (8.35,1.45) {};
+  \node[bb] (c1) at (3.8,1.0) {ConvNeXt-Tiny, 768-d};
+  \node[bb] (c2) at (3.8,0) {DINOv2 ViT-S/14, 768-d};
+  \node[bb] (c3) at (3.8,-1.0) {style features, 1{,}460-d};
+  \foreach \k/\n in {1/1.0,2/0,3/-1.0} { \node[fz] (pr\k) at (7.15,\n) {linear $\to 64$, LN, GELU}; \draw[arr] (y) -- (c\k); \draw[arr] (c\k) -- (pr\k); }
+  \node[tk, draw=accent, fill=accent!30] (cls) at (9.25,1.45) {};
   \node[left=0.5mm of cls, color=accent] {\textsc{cls}};
-  \foreach \k/\n in {1/0.75,2/0,3/-0.75} { \node[tk] (t\k) at (8.35,\n) {}; \draw[arr] (pr\k.east) -- (t\k.west); }
-  \node[draw=accent, rounded corners=2pt, fill=accent!6, minimum height=30mm, text width=21mm, align=center] (tf) at (10.6,0.25) {\textbf{fusion transformer}\\[2pt]self-attention across the backbone tokens\\[2pt]{\color{ink2}(trainable)}};
-  \draw[arr] (8.65,0.25) -- (tf.west);
-  \node[fz] (out) at (13.2,0.25) {\textsc{cls} $\to$ 7};
+  \foreach \k/\n in {1/0.75,2/0,3/-0.75} { \node[tk] (t\k) at (9.25,\n) {}; \draw[arr] (pr\k.east) -- (t\k.west); }
+  \node[draw=accent, rounded corners=2pt, fill=accent!6, minimum height=30mm, text width=22mm, align=center] (tf) at (11.45,0.25) {\textbf{fusion transformer}\\[2pt]1 layer, 4 heads\\self-attention across the expert tokens\\[2pt]{\color{ink2}226{,}631 trainable parameters}};
+  \draw[arr] (9.55,0.25) -- (tf.west);
+  \node[fz] (out) at (14.05,0.25) {\textsc{cls} $\to$ 7};
   \draw[arr] (tf) -- (out);
   \end{scope}
 \end{tikzpicture}
-\caption{\textbf{Two ways to combine different backbones.} (a) Averaging the class probabilities, which is what our final ConvNeXt ensemble does across folds. (b) Learned fusion: each backbone's feature vector becomes one token, and a small trainable transformer learns how to weigh and combine them. The dashed box is the third member of the team's experiment (see the note below).}
+\caption{\textbf{Two ways to combine different experts.} (a) Averaging the class probabilities of the two networks. (b) Learned fusion: each frozen expert's feature vector becomes one token, and a small trainable transformer learns how to weigh them. Accuracies are on the DINOv2 branch's 1{,}976-image development split.}
 \label{fig:fusion}
 \end{figure}
 
-The only recorded result of this line of work is the DINOv2 + ConvNeXt entry in \cref{tab:kaggle}: 0.96477 on the private leaderboard, against 0.98218 for ConvNeXt-Tiny alone. Whatever the combiner, adding a member that is clearly weaker on this task pulled the stronger model down, which is the outcome the ensemble literature predicts when one member's errors dominate.
+\paragraph{Decision models} The last idea was to hand the final decision to a model built for decisions. Julia-1 \cite{julia2026} is an open 144-million-parameter model that picks one answer from a list given a state and a question. It received the 21 class probabilities of the three experts, without pixels or labels, and no fine-tuning. Jev (version 1.14.0) \cite{jev2026} is TypeSafe's hosted decision model, which returns typed answers to a question about a given state. It received the query image, one labelled reference image per vendor and, in its final stage, the three experts' probability distributions. Jev was queried only on the 112 development images where DINOv2 and ConvNeXt disagreed (324 requests, \$0.035 of metered usage). Elsewhere the reference prediction was kept.
 
-\begin{tcolorbox}[enhanced,colback=alert!6,colframe=alert!60,arc=2pt,boxrule=0.6pt,left=6pt,right=6pt,top=4pt,bottom=4pt,fonttitle=\sffamily\bfseries\small,title={To complete before submission (Adam)}]
-\small The configuration of the three-backbone fusion experiment was run outside the submitted codebase and is not recorded in our files: which third backbone was used, whether the transformer fused features or probabilities, its size and training data, and whether the 0.96477 entry came from the fusion model or from a vote. Fill these in from the Codex session (see \texttt{members/adam-zeraiki/README.md} in the repository), or delete this box and the dashed member of \cref{fig:fusion}(b).
-\end{tcolorbox}
+\begin{table}[t]
+\centering\small
+\caption{\textbf{Fusion and decision models} on the DINOv2 branch's 1{,}976 development images\rep. ``Fixed'' and ``new'' count images the candidate gets right that the reference gets wrong, and the reverse.}
+\label{tab:fusion}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Candidate & Correct & Accuracy & Fixed & New errors\\
+\midrule
+\rowcolor{panel}Reference: DINOv2 + ConvNeXt, equal average & \num{1919} & 97.12\% & & \\
+Learned fusion, tuned encoders, MLP head & \num{1917} & 97.01\% & 11 & 13\\
+Learned fusion, tuned encoders, transformer head & \num{1904} & 96.36\% & 10 & 25\\
+Learned fusion, public encoders, MLP head & \num{1895} & 95.90\% & 18 & 42\\
+Learned fusion, public encoders, transformer head & \num{1892} & 95.75\% & 14 & 41\\
+Jev decides on the 112 disagreements & \num{1890} & 95.65\% & 8 & 37\\
+Julia-1 decides on the 112 disagreements & \num{1857} & 93.98\% & 3 & 65\\
+Julia-1 decides every image & 131 & 6.63\% & 4 & \num{1792}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{What we learned} No candidate beat the plain average, let alone the threshold (\cref{tab:fusion}). The closest, the MLP on task-tuned features, was two images behind. The transformer head was 15 images behind. It fitted its own inner validation split better than the MLP, but those tuned encoders had already seen the inner images during fine-tuning, so that signal was optimistic. Decision models without task training did worse still. Julia-1 chose Google or Messenger for 94\% of the images. Jev corrected 8 of the reference's errors but introduced 37. Bounds computed from its cached answers showed that even perfect answers on the remaining images could not have lifted its configurations above the reference, so the rest of the development and test images were never queried. With three experts of very unequal strength and fewer than 8{,}000 training images, extra combining machinery added variance rather than information. This is the same lesson as the weak-member ensembles of \cref{sec:nowork}: averaging works between comparably strong models, and complexity has to earn its place on held-out data.
