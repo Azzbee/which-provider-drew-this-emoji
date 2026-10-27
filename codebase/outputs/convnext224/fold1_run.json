@@ -1,0 +1,33 @@
+{
+  "tag": "fold1",
+  "best_epoch": 4,
+  "epochs_run": 10,
+  "training_seconds": 144.02242583222687,
+  "device": "cuda",
+  "best_val_loss": 0.09792492815825017,
+  "best_val_accuracy": 0.9696356275303644,
+  "config": {
+    "epochs": 10,
+    "batch_size": 32,
+    "lr": 0.0002,
+    "weight_decay": 0.05,
+    "label_smoothing": 0.0,
+    "onecycle": true,
+    "patience": 0,
+    "select_on": "val_loss",
+    "amp": true,
+    "num_workers": 8,
+    "seed": 42,
+    "notes": "convnext_tiny.fb_in1k 224px pretrained=True augment=True drop_path=0.1 tta=True",
+    "extra": {}
+  },
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "n_train": 9879,
+  "n_test": 9879,
+  "class_counts": {
+    "apple": 1924,
+    "google": 1877,
+    "samsung": 1790,
+    "facebook": 1667,
+    "whatsapp": 1644,
+    "messenger": 580,
+    "mozilla": 397
+  },
+  "class_share": {
+    "apple": 0.1948,
+    "google": 0.19,
+    "samsung": 0.1812,
+    "facebook": 0.1687,
+    "whatsapp": 0.1664,
+    "messenger": 0.0587,
+    "mozilla": 0.0402
+  },
+  "majority_share": 0.1947565543071161,
+  "chance": 0.14285714285714285,
+  "size_mode_total_variation_train_test": 0.004960016195971233,
+  "raw_duplicate_images_beyond_first": 149,
+  "raw_conflicting_groups": 0,
+  "pix96_duplicate_images_beyond_first": 158,
+  "pix96_conflicting_groups": 0,
+  "test_images_identical_to_a_train_image_raw": 333,
+  "test_images_identical_to_a_train_image_pix96": 352,
+  "test_duplicate_images_beyond_first_pix96": 163
+}

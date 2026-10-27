@@ -1,0 +1,108 @@
+{
+  "accuracy": 0.972871748152647,
+  "accuracy_correct": 9611,
+  "n": 9879,
+  "accuracy_stderr": 0.0016344897728026498,
+  "balanced_accuracy": 0.9708638272182698,
+  "macro_f1": 0.9721617033319783,
+  "macro_precision": 0.9737308316840407,
+  "macro_recall": 0.9708638272182698,
+  "log_loss": 0.10439488291740417,
+  "per_class": {
+    "apple": {
+      "precision": 0.949510561566203,
+      "recall": 0.9579002079002079,
+      "f1-score": 0.9536869340232859,
+      "support": 1924.0
+    },
+    "facebook": {
+      "precision": 0.9884146341463415,
+      "recall": 0.9724055188962207,
+      "f1-score": 0.980344723314182,
+      "support": 1667.0
+    },
+    "google": {
+      "precision": 0.9725158562367865,
+      "recall": 0.9802876931273309,
+      "f1-score": 0.9763863093658796,
+      "support": 1877.0
+    },
+    "messenger": {
+      "precision": 0.9632107023411371,
+      "recall": 0.993103448275862,
+      "f1-score": 0.9779286926994907,
+      "support": 580.0
+    },
+    "mozilla": {
+      "precision": 0.9841269841269841,
+      "recall": 0.9370277078085643,
+      "f1-score": 0.96,
+      "support": 397.0
+    },
+    "samsung": {
+      "precision": 0.9817073170731707,
+      "recall": 0.9893854748603352,
+      "f1-score": 0.9855314412910406,
+      "support": 1790.0
+    },
+    "whatsapp": {
+      "precision": 0.976629766297663,
+      "recall": 0.9659367396593674,
+      "f1-score": 0.9712538226299694,
+      "support": 1644.0
+    }
+  },
+  "covered_images": 9879,
+  "stored_split_validation_oof": {
+    "accuracy": 0.965133906013138,
+    "macro_f1": 0.9638602020629771,
+    "n": 1979,
+    "correct": 1910
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "val_accuracy": 0.9767206477732794,
+      "macro_f1": 0.9766421663711927,
+      "log_loss": 0.10763107985258102,
+      "best_epoch": 7,
+      "minutes": 2.8727293896799284
+    },
+    {
+      "fold": 1,
+      "val_accuracy": 0.9676113360323887,
+      "macro_f1": 0.967235212305723,
+      "log_loss": 0.09506794065237045,
+      "best_epoch": 4,
+      "minutes": 2.400373763870448
+    },
+    {
+      "fold": 2,
+      "val_accuracy": 0.9742033383915023,
+      "macro_f1": 0.9756810808271899,
+      "log_loss": 0.0949518233537674,
+      "best_epoch": 6,
+      "minutes": 2.675590106425807
+    },
+    {
+      "fold": 3,
+      "val_accuracy": 0.9680851063829787,
+      "macro_f1": 0.9615000262368445,
+      "log_loss": 0.11678766459226608,
+      "best_epoch": 5,
+      "minutes": 2.632413431396708
+    },
+    {
+      "fold": 4,
+      "val_accuracy": 0.9777327935222672,
+      "macro_f1": 0.9797783341714245,
+      "log_loss": 0.10755319893360138,
+      "best_epoch": 8,
+      "minutes": 2.3910129623487593
+    }
+  ],
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 4090",
+  "model": "convnext_tiny.fb_in1k",
+  "image_size": 224
+}

@@ -1,0 +1,28 @@
+# competition data (download from Kaggle, never commit)
+codebase/data/extracted/
+codebase/data/cache_*.npy
+*.zip
+# large or regenerable artefacts
+*.pt
+!codebase/data/baseline_sept30/best_model.pt
+!codebase/outputs/cpu/*.pt
+outputs_smoke/
+paper/work/*.npy
+# LaTeX build files
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/main.pdf
+# python / os
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+.venv/
+# secrets
+kaggle.json
+.env
