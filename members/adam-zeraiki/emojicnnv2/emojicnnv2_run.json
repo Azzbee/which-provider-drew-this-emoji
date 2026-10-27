@@ -1,0 +1,33 @@
+{
+  "tag": "emojicnnv2",
+  "best_epoch": 23,
+  "epochs_run": 25,
+  "training_seconds": 3575.224149022,
+  "device": "cpu",
+  "best_val_loss": 0.3091644825147462,
+  "best_val_accuracy": 0.9095502779181405,
+  "config": {
+    "epochs": 25,
+    "batch_size": 64,
+    "lr": 0.002,
+    "weight_decay": 0.0001,
+    "label_smoothing": 0.0,
+    "onecycle": true,
+    "patience": 0,
+    "select_on": "val_loss",
+    "amp": true,
+    "num_workers": 0,
+    "seed": 42,
+    "notes": "",
+    "extra": {}
+  },
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ]
+}

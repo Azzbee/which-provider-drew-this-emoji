@@ -1,6 +1,6 @@
 # Which provider drew this emoji?
 
-Team **The Winners** (Adam Zeraiki, Lina Oumhand, Charles Montluc, Erdem Sanver), IDSI51006 Computer Vision, BSc AIDAMS, ESSEC x CentraleSupélec, Winter 2026.
+Team **The Winners** (Adam Zeraiki, Lina Oumhand, Charles Montluc-Giannopoulou, Erdem Sanver), IDSI51006 Computer Vision, BSc AIDAMS, ESSEC x CentraleSupélec, Winter 2026.
 
 We classify emoji images by the vendor that drew them (Apple, Facebook, Google, Messenger, Mozilla, Samsung, WhatsApp) for the course's Kaggle competition. This repository holds the research paper, the code that produced every verified number in it, and one folder per team member with the methods each of us tried.
 
@@ -28,7 +28,7 @@ codebase/               the submitted code: src/emoji_provider, scripts, noteboo
   outputs/                probabilities, histories, metrics and submissions of every verified run
   README.md               how to rerun everything (laptop, Colab, Databricks, RunPod)
 members/                one folder per person: what they tried, scores, code or notes
-  adam-zeraiki/chatgpt_experiments/   DINOv2, style features, learned fusion, Julia-1 and Jev runs
+  <name>/<method>/        one subfolder per method, named after what was tried
   kaggle_submissions_ledger_2026-10-18.csv   every team submission with its uploader and score
 TIMELINE.md             dated history of the project, reconstructed from Kaggle and run logs
 AGENTS.md               rules for teammates and AI coding agents working on this repo

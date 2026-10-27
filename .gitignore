@@ -6,6 +6,7 @@ codebase/data/cache_*.npy
 *.pt
 !codebase/data/baseline_sept30/best_model.pt
 !codebase/outputs/cpu/*.pt
+!members/adam-zeraiki/baseline-cnn/best_model.pt
 outputs_smoke/
 paper/work/*.npy
 # LaTeX build files
