@@ -32,4 +32,4 @@ Source: the team spreadsheet, copied into `codebase/report/reported_experiments.
 ## To complete
 
 - What E12b and E13 were (members of E13v), and the exact settings of the 144 and 216 px nearest-neighbour models in E15.
-- Add the notebooks or scripts here (`members/erdem-sanver/`), and the tool used for AI assistance in `codebase/AI_USAGE.md`.
+- Add the notebooks or scripts here (`members/erdem-sanver/`), and send Adam the AI tools and prompts you used (he keeps the AI-use record).

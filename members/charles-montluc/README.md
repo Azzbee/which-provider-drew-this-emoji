@@ -15,4 +15,4 @@ Your 160 px ResNet18 (0.96396 private) supports the paper's resolution finding: 
 
 - Training settings (optimiser, learning rate, epochs, augmentation, preprocessing) and a validation score.
 - Confirm the spelling of your surname on the paper's front page.
-- Add your notebook here, and your AI-assistance line in `codebase/AI_USAGE.md`.
+- Add your notebook here, and send Adam the AI tools and prompts you used (he keeps the AI-use record).

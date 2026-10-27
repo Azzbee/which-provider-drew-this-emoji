@@ -48,7 +48,7 @@ The research paper and code of team The Winners for the IDSI51006 Computer Visio
 - [ ] **Fusion experiment** (Adam): which three backbones, how the transformer fused them, and whether the `dinov2_convnext_ensemble` Kaggle entry came from it. Fill the red box in `paper/parts/fusion.tex` or remove it. No record of it exists in Codex's session logs.
 - [ ] **DINOv2 settings** (Lina): model size, input resolution, epochs, frozen or fine-tuned layers, validation score. Add to `members/lina-oumhand/README.md`, then to Section 4.4 of the paper. Also confirm whether it was DINOv2 or DINOv3.
 - [ ] **ResNet18 at 160 px** (Charles): settings and validation score in `members/charles-montluc/README.md`. Confirm the spelling of your surname on the front page.
-- [ ] **AI_USAGE.md** (everyone): complete the lines marked TO CONFIRM in `codebase/AI_USAGE.md`.
+- [ ] **AI-use record** (Adam): Adam adds `codebase/AI_USAGE.md` himself. Send him the AI tools you used and your prompts; do not create or edit that file.
 - [ ] **Erdem's E12b, E13**: what they were (they are members of the E13v ensemble).
 
 ## Git workflow
@@ -65,4 +65,4 @@ Small, frequent commits with clear messages. Commit dates must be the real ones;
 
 ## AI use
 
-The course allows AI for code with full transparency, and the teacher allowed it for writing the paper. Any AI-assisted change must be recorded in `codebase/AI_USAGE.md` (tool, who, what, prompt). Agents: add your line there when you change the paper or the code.
+The course allows AI for code with full transparency, and the teacher allowed it for writing the paper. Adam keeps the AI-use record (`codebase/AI_USAGE.md`, added by him): tell him which tool you used, for what, and your prompts. Agents: do not create or edit that file; list your changes in your commit messages instead.
