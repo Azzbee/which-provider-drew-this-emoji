@@ -1,0 +1,27 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\sffamily\scriptsize, x=1mm, y=1mm,
+  arr/.style={-{Stealth[length=1.6mm]}, color=ink2, line width=0.55pt}]
+  % helper: a feature map drawn as a slab of height h (spatial) and width w (channels)
+  \newcommand{\slab}[6]{% x, h, w, colour, label top, label bottom
+    \fill[#4!20, draw=#4] (#1, -#2/2) rectangle ++(#3, #2);
+    \fill[#4!35, draw=#4] (#1, #2/2) -- ++(1.6,1.6) -- ++(#3,0) -- ++(-1.6,-1.6) -- cycle;
+    \fill[#4!45, draw=#4] (#1+#3, -#2/2) -- ++(1.6,1.6) -- ++(0,#2) -- ++(-1.6,-1.6) -- cycle;
+    \node[anchor=south, align=center] at (#1+#3/2+0.8, #2/2+2) {#5};
+    \node[anchor=north, align=center, color=ink2] at (#1+#3/2, -#2/2-1) {#6};}
+  \node[inner sep=0, anchor=west] (im) at (0,0) {\includegraphics[width=16mm]{figs/vit_input.png}};
+  \node[anchor=north, color=ink2] at (8,-9.5) {$3{\times}96^2$};
+  \slab{22}{26}{2.2}{verified}{conv 32}{$32{\times}48^2$}
+  \slab{36}{17}{3.6}{verified}{conv 64}{$64{\times}24^2$}
+  \slab{51}{11}{5.4}{verified}{conv 128}{$128{\times}12^2$}
+  \slab{67}{11}{8.5}{accent}{conv 256}{$256{\times}12^2$}
+  \fill[alert!25, draw=alert] (86,-6) rectangle ++(2.4,12); \node[anchor=south] at (87.2,7.5) {GAP};
+  \node[anchor=north, color=ink2] at (87.2,-7) {256};
+  \fill[alert!45, draw=alert] (95,-3.5) rectangle ++(2.4,7); \node[anchor=south] at (96.2,5) {linear};
+  \node[anchor=north, color=ink2] at (96.2,-4.5) {7};
+  \foreach \a/\b in {17/21.5,26/35.5,41/50.5,58/66.5,78/85.5,90/94.5} \draw[arr] (\a,0) -- (\b,0);
+  \node[align=left, anchor=west, color=ink2, text width=40mm] at (101,0) {each conv: $3{\times}3$, BatchNorm, ReLU;\\stages 1--3 end with $2{\times}2$ max-pool;\\dropout 0.3 before the linear layer;\\0.39\,M parameters in total};
+\end{tikzpicture}
+\caption{\textbf{EmojiCNNv2.} Spatial size halves and channel count doubles at each stage; global average pooling (GAP) turns the last $256{\times}12{\times}12$ feature map into one vector, and a linear layer gives the seven logits.}
+\label{fig:v2arch}
+\end{figure}

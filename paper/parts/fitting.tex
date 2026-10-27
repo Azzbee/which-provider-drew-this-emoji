@@ -1,0 +1,28 @@
+\subsection{Did we overfit or underfit?}
+\label{sec:fit}
+A model underfits when it cannot even fit its training data (high bias: training and validation accuracy are both low and close), and overfits when it fits the training data much better than new data (high variance: a large and growing gap). \Cref{tab:fit} puts the training and validation numbers of every model whose curves we saved side by side. Training accuracy is measured on the fly during each epoch, with augmentation, dropout and stochastic depth active, so it slightly understates how well the network fits the clean training images.
+
+\begin{table}[t]
+\centering\small
+\caption{\textbf{Training versus validation} at the checkpoint each run kept\ver. ConvNeXt values are the mean of the five folds at epoch 10 for a single model without test-time augmentation; the ensemble's out-of-fold accuracy is 97.69\%.}
+\label{tab:fit}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}lrrrrrl@{}}
+\toprule
+Model (epoch kept) & Train acc. & Val.\ acc. & Gap & Train loss & Val.\ loss & Diagnosis\\
+\midrule
+Baseline CNN, 30 Sept.\ (20 of 20) & 74.96\% & 76.71\% & $-1.8$ & 0.722 & 0.714 & underfits\\
+EmojiCNNv2 (23 of 25) & 93.82\% & 90.96\% & 2.9 & 0.194 & 0.309 & slight underfit\\
+EmojiCNNv2 + metadata (25 of 25) & 96.24\% & 93.38\% & 2.9 & 0.133 & 0.240 & as above\\
+ConvNeXt-Tiny, 5 folds (10 of 10) & 99.92\% & 97.62\% & 2.3 & 0.004 & 0.114 & benign fit\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{The first CNN underfitted} Its training accuracy was 75\%, no higher than its validation accuracy, and both were still rising when training stopped after 20 epochs. That is the signature of high bias: the network, its optimiser and its training budget were too weak to fit the data at all, and more regularisation or more data would not have helped. We fixed it with capacity and optimisation (BatchNorm, a fourth stage, AdamW with OneCycle), not with more data, and gained 14 points.
+
+\paragraph{EmojiCNNv2 is still slightly bias-limited} It fits 94\% of its training images and generalises to 91\%, a gap of about three points. The gap is small and stable over the last epochs (\cref{fig:descent}b), so variance is not the main problem; the remaining errors come from what a 0.39\,M-parameter network sees at 96\,px. A larger pretrained model at higher resolution removed most of them (+6.1 points on the same 1{,}979 validation images), which is what one expects when the limit is bias rather than variance.
+
+\paragraph{The final ConvNeXt fits the training set, and that is benign} By the last epoch it classifies 99.9\% of its training images correctly with a training loss of 0.004, 27 times lower than its validation loss: in the classical sense it has memorised the training set. Yet its validation accuracy kept rising until the very last epoch, which is exactly why the last-epoch checkpoint beats the lowest-loss one (\cref{sec:epoch}). The overfitting shows in the probabilities, not in the decisions: the network becomes over-confident on the few images it gets wrong, which raises the validation loss while accuracy still improves. Four further checks point the same way. The private leaderboard score (0.98218) is above the out-of-fold estimate (97.69\%). The five folds agree within 0.4 points, the spread expected from sampling alone. Stronger regularisation (rotation and scaling augmentation with label smoothing, E7) lowered accuracy instead of raising it. And retraining on all the data, which would help a variance-limited model, changed the private score by only $+0.14$ and $-0.08$ points.
+
+\paragraph{We did not overfit the validation set or the leaderboard} Every split groups exact duplicates, so no image is validated against a copy of itself; the final checkpoint rule (last epoch) involves no selection on validation data; the test set was never used to choose anything; and every model scores higher on the private half of the test set than on our validation estimate (\cref{fig:kaggle}). If anything, our validation protocol is conservative.
