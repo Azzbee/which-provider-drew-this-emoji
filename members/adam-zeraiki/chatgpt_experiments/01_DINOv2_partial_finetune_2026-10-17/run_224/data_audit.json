@@ -1,0 +1,21 @@
+{
+  "train_count": 7903,
+  "validation_count": 1976,
+  "test_count": 9879,
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "split_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+  "labels_sha256": "37385b8fa192a03230d170654d255351a1cc3f42dfcd94b55f98f03abcfd55fb",
+  "image_hash_manifest_sha256": "6244df64073fb8241c5e750835cf06ffaf9e758a9dce555a1b0c4138c35a8529",
+  "group_rule": "Exact RGB96 white-composited preprocessed pixel SHA256 from supplied audit",
+  "source_split": "/workspace/scratch/9c7afe2f05a2/tmp/cv_review/agent_verification/reconstructed_split_sklearn1_8.csv",
+  "old_baseline_comparison": "This holdout is not the missing original baseline holdout.",
+  "test_label_usage": "None; test images are used only for frozen feature extraction and inference."
+}

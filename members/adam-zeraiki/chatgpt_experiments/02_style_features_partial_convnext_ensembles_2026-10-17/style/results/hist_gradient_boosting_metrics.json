@@ -1,0 +1,87 @@
+{
+  "accuracy": 0.9003036437246964,
+  "correct": 1779,
+  "total": 1976,
+  "macro_f1": 0.9036810625004753,
+  "log_loss": 0.30136683217383303,
+  "confusion_matrix": [
+    [
+      351,
+      10,
+      4,
+      1,
+      0,
+      11,
+      8
+    ],
+    [
+      19,
+      282,
+      10,
+      2,
+      0,
+      9,
+      12
+    ],
+    [
+      11,
+      2,
+      356,
+      2,
+      0,
+      1,
+      3
+    ],
+    [
+      1,
+      5,
+      4,
+      104,
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      7,
+      1,
+      69,
+      0,
+      0
+    ],
+    [
+      13,
+      6,
+      4,
+      1,
+      0,
+      323,
+      11
+    ],
+    [
+      5,
+      12,
+      6,
+      1,
+      0,
+      11,
+      294
+    ]
+  ],
+  "fit_and_inference_seconds": 16.760358127001382,
+  "feature_count": 692,
+  "settings": {
+    "max_iter": 140,
+    "learning_rate": 0.08,
+    "max_leaf_nodes": 15,
+    "max_bins": 64,
+    "l2_regularization": 1.0,
+    "min_samples_leaf": 20,
+    "early_stopping": false,
+    "random_state": 42
+  },
+  "all_label_refit": false,
+  "validation_probability_sha256": "87543d391bf67d5629ef018be054380839f3ffcee2ead4a56acfba41bebcad1d",
+  "test_probability_sha256": "09aa0e9674a17cc182fa9cfc5c4a9b6d2c0b5be865826378c4518d5be8ae19fe"
+}

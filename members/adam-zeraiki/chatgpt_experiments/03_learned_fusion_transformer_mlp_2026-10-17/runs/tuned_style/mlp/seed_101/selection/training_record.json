@@ -1,0 +1,80 @@
+{
+  "family": "mlp",
+  "seed": 101,
+  "stage": "internal_selection",
+  "training_rows": 6322,
+  "completed_epochs": 46,
+  "selected_epochs": 38,
+  "internal_validation_metrics": {
+    "rows": 1581,
+    "correct": 1578,
+    "accuracy": 0.9981024667931688,
+    "log_loss": 0.0027710104126323232,
+    "macro_f1": 0.9984928722680146
+  },
+  "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/mlp/seed_101/selection/best.pt",
+  "checkpoint_sha256": "6685dfbbe65ac01738fdcfcfd8b7e6b63a71497241d33728e61f38cd39455f1e",
+  "parameter_counts": {
+    "total_trainable": 224839,
+    "shared_projection_design": 192320,
+    "fusion_and_classifier": 32519
+  },
+  "standardization": [
+    {
+      "branch_index": 0,
+      "fit_rows": 6322,
+      "minimum_std": 0.0017448209524154664,
+      "floored_dimensions": 0,
+      "mean_min": -3.7659425735473633,
+      "mean_max": 3.2948830127716064,
+      "std_min": 0.6317100524902344,
+      "std_max": 3.78086256980896
+    },
+    {
+      "branch_index": 1,
+      "fit_rows": 6322,
+      "minimum_std": 0.0006926100850105285,
+      "floored_dimensions": 1,
+      "mean_min": -1.4589881896972656,
+      "mean_max": 1.1694622039794922,
+      "std_min": 0.0006926101050339639,
+      "std_max": 2.257708787918091
+    },
+    {
+      "branch_index": 2,
+      "fit_rows": 6322,
+      "minimum_std": 0.0002416907697916031,
+      "floored_dimensions": 0,
+      "mean_min": 0.0011006782297044992,
+      "mean_max": 1.3484389781951904,
+      "std_min": 0.003551601432263851,
+      "std_max": 0.4158346354961395
+    }
+  ],
+  "gradient_check": {
+    "projection_0": {
+      "finite": true,
+      "gradient_l2": 1.9722042084253508
+    },
+    "projection_1": {
+      "finite": true,
+      "gradient_l2": 2.0887174903075
+    },
+    "projection_2": {
+      "finite": true,
+      "gradient_l2": 1.107866308333027
+    },
+    "fusion": {
+      "finite": true,
+      "gradient_l2": 1.5141416759015147
+    },
+    "classifier": {
+      "finite": true,
+      "gradient_l2": 1.414229208628052
+    }
+  },
+  "checkpoint_reload_exact": true,
+  "first_epoch_training_loss": 0.39886310502382366,
+  "last_epoch_training_loss": 0.00019484038047603875,
+  "training_seconds": 11.144949904999521
+}

@@ -28,6 +28,8 @@ codebase/               the submitted code: src/emoji_provider, scripts, noteboo
   outputs/                probabilities, histories, metrics and submissions of every verified run
   README.md               how to rerun everything (laptop, Colab, Databricks, RunPod)
 members/                one folder per person: what they tried, scores, code or notes
+  adam-zeraiki/chatgpt_experiments/   DINOv2, style features, learned fusion, Julia-1 and Jev runs
+  kaggle_submissions_ledger_2026-10-18.csv   every team submission with its uploader and score
 TIMELINE.md             dated history of the project, reconstructed from Kaggle and run logs
 AGENTS.md               rules for teammates and AI coding agents working on this repo
 ```

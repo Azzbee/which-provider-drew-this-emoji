@@ -1,0 +1,446 @@
+{
+  "source": "tmp/cv_fusion/results/comparison.json",
+  "source_sha256": "d9b68cc0dc0c1866a275b6358aa51e62b66c2eded9efadf191758fdd0bc43446",
+  "evaluation": "Reused development holdout; exploratory modelcomparison, not untouchedtestorKaggle",
+  "validation_rows": 1976,
+  "classes": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "scoring": "Copied unchanged from parent central aligned evaluator; no decision prompt or weight changes after results",
+  "details": {
+    "baseline_dinov2_convnext_equal": {
+      "candidate": "baseline_dinov2_convnext_equal",
+      "total": 1976,
+      "correct": 1919,
+      "accuracy": 0.9711538461538461,
+      "macro_f1": 0.969598106900691,
+      "log_loss": 0.1376239145136072,
+      "multiclass_brier_sum": 0.05099292352425342,
+      "ece_15_equal_width_bins": 0.01640901770367314,
+      "fixes_vs_reference": 0,
+      "regressions_vs_reference": 0,
+      "net_correct_vs_reference": 0,
+      "prediction_disagreements_vs_reference": 0,
+      "passes_complexity_threshold": false,
+      "confusion_matrix": [
+        [
+          374,
+          0,
+          3,
+          1,
+          0,
+          6,
+          1
+        ],
+        [
+          8,
+          322,
+          1,
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          6,
+          0,
+          368,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          114,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          76,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          0,
+          353,
+          0
+        ],
+        [
+          7,
+          5,
+          1,
+          1,
+          2,
+          1,
+          312
+        ]
+      ],
+      "classification_report": {
+        "apple": {
+          "precision": 0.935,
+          "recall": 0.9714285714285714,
+          "f1-score": 0.9528662420382166,
+          "support": 385.0
+        },
+        "facebook": {
+          "precision": 0.9847094801223242,
+          "recall": 0.9640718562874252,
+          "f1-score": 0.9742813918305597,
+          "support": 334.0
+        },
+        "google": {
+          "precision": 0.9813333333333333,
+          "recall": 0.9813333333333333,
+          "f1-score": 0.9813333333333333,
+          "support": 375.0
+        },
+        "messenger": {
+          "precision": 0.957983193277311,
+          "recall": 0.9827586206896551,
+          "f1-score": 0.9702127659574468,
+          "support": 116.0
+        },
+        "mozilla": {
+          "precision": 0.95,
+          "recall": 0.9620253164556962,
+          "f1-score": 0.9559748427672956,
+          "support": 79.0
+        },
+        "samsung": {
+          "precision": 0.9751381215469613,
+          "recall": 0.9860335195530726,
+          "f1-score": 0.9805555555555555,
+          "support": 358.0
+        },
+        "whatsapp": {
+          "precision": 0.9968051118210862,
+          "recall": 0.9483282674772037,
+          "f1-score": 0.9719626168224299,
+          "support": 329.0
+        },
+        "accuracy": 0.9711538461538461,
+        "macro avg": {
+          "precision": 0.9687098914430022,
+          "recall": 0.970854212174994,
+          "f1-score": 0.969598106900691,
+          "support": 1976.0
+        },
+        "weighted avg": {
+          "precision": 0.971706652876505,
+          "recall": 0.9711538461538461,
+          "f1-score": 0.971227110986472,
+          "support": 1976.0
+        }
+      },
+      "per_seed": [],
+      "provenance": {}
+    },
+    "julia1_decision": {
+      "candidate": "julia1_decision",
+      "total": 1976,
+      "correct": 131,
+      "accuracy": 0.06629554655870445,
+      "macro_f1": 0.02782597330747973,
+      "log_loss": 4.272615879119479,
+      "multiclass_brier_sum": 1.4488182567672916,
+      "ece_15_equal_width_bins": 0.6562489993598779,
+      "fixes_vs_reference": 4,
+      "regressions_vs_reference": 1792,
+      "net_correct_vs_reference": -1788,
+      "prediction_disagreements_vs_reference": 1843,
+      "passes_complexity_threshold": false,
+      "confusion_matrix": [
+        [
+          0,
+          21,
+          212,
+          138,
+          14,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          94,
+          236,
+          3,
+          0,
+          0
+        ],
+        [
+          9,
+          7,
+          113,
+          244,
+          1,
+          0,
+          1
+        ],
+        [
+          5,
+          3,
+          81,
+          16,
+          0,
+          0,
+          11
+        ],
+        [
+          4,
+          4,
+          64,
+          7,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          341,
+          4,
+          5,
+          1,
+          1
+        ],
+        [
+          2,
+          4,
+          306,
+          11,
+          6,
+          0,
+          0
+        ]
+      ],
+      "classification_report": {
+        "apple": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 385.0
+        },
+        "facebook": {
+          "precision": 0.021739130434782608,
+          "recall": 0.0029940119760479044,
+          "f1-score": 0.005263157894736842,
+          "support": 334.0
+        },
+        "google": {
+          "precision": 0.09331131296449216,
+          "recall": 0.30133333333333334,
+          "f1-score": 0.1424968474148802,
+          "support": 375.0
+        },
+        "messenger": {
+          "precision": 0.024390243902439025,
+          "recall": 0.13793103448275862,
+          "f1-score": 0.04145077720207254,
+          "support": 116.0
+        },
+        "mozilla": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 79.0
+        },
+        "samsung": {
+          "precision": 1.0,
+          "recall": 0.002793296089385475,
+          "f1-score": 0.005571030640668524,
+          "support": 358.0
+        },
+        "whatsapp": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 329.0
+        },
+        "accuracy": 0.06629554655870445,
+        "macro avg": {
+          "precision": 0.16277724104310196,
+          "recall": 0.06357881084021791,
+          "f1-score": 0.02782597330747973,
+          "support": 1976.0
+        },
+        "weighted avg": {
+          "precision": 0.20398880577914216,
+          "recall": 0.06629554655870445,
+          "f1-score": 0.03137496540598276,
+          "support": 1976.0
+        }
+      },
+      "per_seed": [],
+      "provenance": {
+        "probability_sha256": "55c7caec43bbc4825d7cb378575ec27479ca4547ca5a7ab9469372de091223fb",
+        "model": "SupersonicLabs/Julia-1",
+        "task_training": "None; frozen general decision model with fixed prompt",
+        "input": "Typed7waychoice on compactDINO/Conv/style score state; noimages,IDs,groundtruthlabels",
+        "not_a_jev_api_run": true
+      }
+    },
+    "julia1_disagreement_hybrid": {
+      "candidate": "julia1_disagreement_hybrid",
+      "total": 1976,
+      "correct": 1857,
+      "accuracy": 0.9397773279352226,
+      "macro_f1": 0.935857045502581,
+      "log_loss": 0.2516723770787379,
+      "multiclass_brier_sum": 0.08768716573558351,
+      "ece_15_equal_width_bins": 0.028691916828334066,
+      "fixes_vs_reference": 3,
+      "regressions_vs_reference": 65,
+      "net_correct_vs_reference": -62,
+      "prediction_disagreements_vs_reference": 94,
+      "passes_complexity_threshold": false,
+      "confusion_matrix": [
+        [
+          358,
+          3,
+          15,
+          7,
+          1,
+          1,
+          0
+        ],
+        [
+          4,
+          310,
+          16,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          4,
+          365,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          113,
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          5,
+          1,
+          71,
+          0,
+          0
+        ],
+        [
+          3,
+          3,
+          10,
+          0,
+          0,
+          342,
+          0
+        ],
+        [
+          5,
+          1,
+          21,
+          1,
+          2,
+          1,
+          298
+        ]
+      ],
+      "classification_report": {
+        "apple": {
+          "precision": 0.9572192513368984,
+          "recall": 0.9298701298701298,
+          "f1-score": 0.9433465085638999,
+          "support": 385.0
+        },
+        "facebook": {
+          "precision": 0.9657320872274143,
+          "recall": 0.9281437125748503,
+          "f1-score": 0.9465648854961832,
+          "support": 334.0
+        },
+        "google": {
+          "precision": 0.8429561200923787,
+          "recall": 0.9733333333333334,
+          "f1-score": 0.9034653465346535,
+          "support": 375.0
+        },
+        "messenger": {
+          "precision": 0.875968992248062,
+          "recall": 0.9741379310344828,
+          "f1-score": 0.9224489795918367,
+          "support": 116.0
+        },
+        "mozilla": {
+          "precision": 0.922077922077922,
+          "recall": 0.8987341772151899,
+          "f1-score": 0.9102564102564102,
+          "support": 79.0
+        },
+        "samsung": {
+          "precision": 0.9941860465116279,
+          "recall": 0.9553072625698324,
+          "f1-score": 0.9743589743589743,
+          "support": 358.0
+        },
+        "whatsapp": {
+          "precision": 1.0,
+          "recall": 0.9057750759878419,
+          "f1-score": 0.9505582137161085,
+          "support": 329.0
+        },
+        "accuracy": 0.9397773279352226,
+        "macro avg": {
+          "precision": 0.9368772027849006,
+          "recall": 0.9379002317979516,
+          "f1-score": 0.935857045502581,
+          "support": 1976.0
+        },
+        "weighted avg": {
+          "precision": 0.9446192497618413,
+          "recall": 0.9397773279352226,
+          "f1-score": 0.940591642550275,
+          "support": 1976.0
+        }
+      },
+      "per_seed": [],
+      "provenance": {
+        "routing": "Use Julia only when DINO and Conv top1 disagree; otherwise current equal average",
+        "routed_validation_rows": 112,
+        "probability_sha256": "8014cc84726f9e72273e7e2c8a637fa9bf5be8fe9a9be3cc40acc45ad83056a7"
+      }
+    }
+  },
+  "recommendation": "Keep the existing equal DINOv2/ConvNeXt ensemble; retain Julia hybrid CSV as experimental and not recommended for Kaggle"
+}

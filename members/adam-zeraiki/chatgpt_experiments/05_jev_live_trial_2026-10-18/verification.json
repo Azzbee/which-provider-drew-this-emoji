@@ -1,0 +1,62 @@
+{
+  "checked_utc": "2026-10-18T19:31:41.578641+00:00",
+  "prior_preparation_verification": {
+    "checked_utc": "2026-10-18T19:03:59.756187+00:00",
+    "tests_passed": 21,
+    "test_kind": "offline synthetic software tests, not model performance",
+    "test_output": "test_ambiguous_attempt_stays_reserved_and_cannot_retry (test_jev_client.ClientTests.test_ambiguous_attempt_stays_reserved_and_cannot_retry) ... ok\ntest_cache_reuse_is_offline_and_does_not_charge (test_jev_client.ClientTests.test_cache_reuse_is_offline_and_does_not_charge) ... ok\ntest_concurrent_client_is_rejected_before_second_attempt (test_jev_client.ClientTests.test_concurrent_client_is_rejected_before_second_attempt) ... ok\ntest_credential_echo_is_redacted_including_json_escapes (test_jev_client.ClientTests.test_credential_echo_is_redacted_including_json_escapes) ... ok\ntest_hard_cap_reserves_before_call_and_refuses_next (test_jev_client.ClientTests.test_hard_cap_reserves_before_call_and_refuses_next) ... ok\ntest_http_error_with_unknown_usage_keeps_reservation (test_jev_client.ClientTests.test_http_error_with_unknown_usage_keeps_reservation) ... ok\ntest_interrupted_reserved_entry_blocks_replay (test_jev_client.ClientTests.test_interrupted_reserved_entry_blocks_replay) ... ok\ntest_invalid_json_stays_reserved (test_jev_client.ClientTests.test_invalid_json_stays_reserved) ... ok\ntest_key_rebinding_and_model_alias_are_rejected (test_jev_client.ClientTests.test_key_rebinding_and_model_alias_are_rejected) ... ok\ntest_malformed_answer_retains_valid_reported_charge (test_jev_client.ClientTests.test_malformed_answer_retains_valid_reported_charge) ... ok\ntest_missing_key_does_not_reserve (test_jev_client.ClientTests.test_missing_key_does_not_reserve) ... ok\ntest_probability_cache_mutation_is_rejected (test_jev_client.ClientTests.test_probability_cache_mutation_is_rejected) ... ok\ntest_provider_context_overrun_freezes_future_calls (test_jev_client.ClientTests.test_provider_context_overrun_freezes_future_calls) ... ok\ntest_raw_cache_mutation_is_rejected (test_jev_client.ClientTests.test_raw_cache_mutation_is_rejected) ... ok\ntest_success_uses_reported_input_and_free_outputs (test_jev_client.ClientTests.test_success_uses_reported_input_and_free_outputs) ... ok\ntest_complete_router_uses_unchanged_baseline_elsewhere (test_jev_pipeline.PipelineSemantics.test_complete_router_uses_unchanged_baseline_elsewhere) ... ok\ntest_full_candidates_only_with_all_results (test_jev_pipeline.PipelineSemantics.test_full_candidates_only_with_all_results) ... ok\ntest_partial_router_cannot_report_candidate (test_jev_pipeline.PipelineSemantics.test_partial_router_cannot_report_candidate) ... ok\ntest_pipeline_mutation_blocks_reuse (test_jev_pipeline.PipelineSemantics.test_pipeline_mutation_blocks_reuse) ... ok\ntest_response_tampering_is_rejected (test_jev_pipeline.PipelineSemantics.test_response_tampering_is_rejected) ... ok\ntest_two_stage_inputs_have_no_query_label_or_id (test_jev_pipeline.PipelineSemantics.test_two_stage_inputs_have_no_query_label_or_id) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.177s\n\nOK\n",
+    "real_runner_preflight": "MissingAPIKey; no network request sent",
+    "actual_api_attempts": 0,
+    "actual_api_spend_usd": "0",
+    "actual_jev_predictions": 0,
+    "csv_generated": false
+  },
+  "client_offline_tests_after_transport_and_rounding_adapter": 17,
+  "unchanged_pipeline_semantic_tests_pre_live": 6,
+  "live_successful_inference_requests": 324,
+  "actual_jev_images_with_both_stages": 162,
+  "live_api_cost_usd": "0.035226030",
+  "query_partition_counts": {
+    "pilot": 50,
+    "development_disagreements": 112,
+    "test": 0
+  },
+  "frozen_pipeline_sha256": "219cebf859385258901c00be91892ca133b1d407b183729afd44c1f43023c1a4",
+  "current_client_sha256": "775bf550b64174af32977ea6f7d8d2e9cf380d4d508f7eda6731c9d2b46a2fd2",
+  "frozen_protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "candidate_eligible": false,
+  "new_jev_csv_generated": false,
+  "recommended_existing_csv": {
+    "filename": "submission_dinov2_convnext_ensemble.csv",
+    "rows": 9879,
+    "unique_ids": 9879,
+    "columns": [
+      "Id",
+      "Label"
+    ],
+    "all_ids_and_labels_valid": true,
+    "sha256": "2b3266bbfea272f6d4e0e802d55e7f357e1d76c98dea12c43bc7433cadf43156"
+  },
+  "notebook": {
+    "cells": 17,
+    "code_cells": 8,
+    "all_code_cells_parse": true,
+    "all_outputs_empty": true,
+    "new_api_calls_disabled_by_default": true
+  },
+  "credential_process_closed": true,
+  "final_cache_integrity": {
+    "checked_utc": "2026-10-18T19:34:26.114536+00:00",
+    "validated_requests_and_raw_responses": 324,
+    "payload_hashes_match": true,
+    "raw_response_hashes_match": true,
+    "parsed_responses_equal_raw": true,
+    "usage_and_charges_match": true,
+    "validated_two_stage_outcomes": {
+      "pilot": 50,
+      "development": 112
+    },
+    "credential_pattern_scan_findings": 0,
+    "pipeline_protocol_unchanged": true
+  }
+}

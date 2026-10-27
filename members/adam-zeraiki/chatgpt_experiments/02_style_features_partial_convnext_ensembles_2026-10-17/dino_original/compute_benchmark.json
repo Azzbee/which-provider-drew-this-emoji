@@ -1,0 +1,80 @@
+[
+  {
+    "size": 126,
+    "batch": 16,
+    "bf16": true,
+    "seconds": 0.1063551240004017,
+    "images_per_second": 150.43939020690314,
+    "tokens": [
+      16,
+      82,
+      384
+    ],
+    "seconds_for_19758_images": 131.33528374999605
+  },
+  {
+    "size": 126,
+    "batch": 16,
+    "bf16": false,
+    "seconds": 0.18507069350016536,
+    "images_per_second": 86.453450286475,
+    "tokens": [
+      16,
+      82,
+      384
+    ],
+    "seconds_for_19758_images": 228.5391726360167
+  },
+  {
+    "size": 168,
+    "batch": 16,
+    "bf16": true,
+    "seconds": 0.16226248949897126,
+    "images_per_second": 98.60566079938913,
+    "tokens": [
+      16,
+      145,
+      384
+    ],
+    "seconds_for_19758_images": 200.37389172004214
+  },
+  {
+    "size": 168,
+    "batch": 16,
+    "bf16": false,
+    "seconds": 0.3389720764989761,
+    "images_per_second": 47.20152811775436,
+    "tokens": [
+      16,
+      145,
+      384
+    ],
+    "seconds_for_19758_images": 418.5881429666731
+  },
+  {
+    "size": 224,
+    "batch": 16,
+    "bf16": true,
+    "seconds": 0.3795539464990725,
+    "images_per_second": 42.15474545207792,
+    "tokens": [
+      16,
+      257,
+      384
+    ],
+    "seconds_for_19758_images": 468.70167968304213
+  },
+  {
+    "size": 224,
+    "batch": 16,
+    "bf16": false,
+    "seconds": 0.6810731615005352,
+    "images_per_second": 23.492336659910254,
+    "tokens": [
+      16,
+      257,
+      384
+    ],
+    "seconds_for_19758_images": 841.0402203079734
+  }
+]

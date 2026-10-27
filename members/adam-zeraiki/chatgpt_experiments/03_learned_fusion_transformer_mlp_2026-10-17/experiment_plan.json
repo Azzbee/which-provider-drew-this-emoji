@@ -1,0 +1,59 @@
+{
+  "created_utc": "2026-10-17T19:12:38.455405+00:00",
+  "task": "Three-expert TRIBE-inspired fusion and Jev-style decision-model comparison",
+  "user_correction": "Jev means TypeSafe-style decision models, not JEPA. JEPA branch cancelled before evaluation.",
+  "reference": {
+    "correct": 1919,
+    "total": 1976,
+    "model": "50:50 fine-tuned DINOv2/ConvNeXt probability average",
+    "score_type": "reused development holdout"
+  },
+  "experiments": [
+    "original public pretrained DINOv2 + ConvNeXt + pixel-style features",
+    "existing task-fine-tuned DINOv2 + ConvNeXt + pixel-style features"
+  ],
+  "families": [
+    "matched MLP",
+    "one-layer expert-token transformer"
+  ],
+  "seeds": [
+    17,
+    43,
+    101
+  ],
+  "seed_rule": "Average fixed seeds, never select best outer seed",
+  "architecture": {
+    "projection_width": 64,
+    "transformer_layers": 1,
+    "attention_heads": 4,
+    "feedforward_width": 128,
+    "mlp_hidden": 160,
+    "dropout": 0.15
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 256,
+    "max_epochs": 60,
+    "patience": 8,
+    "schedule": "cosine fixed60epoch horizon"
+  },
+  "model_selection": "Grouped inner split inside original7903 for training duration and family; complete original7903 refit for selectedepochs; all choices fixed before outer1976 evaluation",
+  "standardization": "Fit means/scales only on respective headtraining partition;std floor;clip+-8",
+  "reused_encoder_limit": "Existing tuned encoders saw all7903 training labels and were selected on1976; their internal headholdout is not unseen to fullpipeline. Frozen-public-encoder condition removes this supervised-encoder exposure, but overall validation set remains reused.",
+  "exact_duplicate_rule": "Connected union of exact96px and actual224px RGB image hashes",
+  "counts": {
+    "train": 7903,
+    "validation": 1976,
+    "test": 9879
+  },
+  "release_rule": {
+    "minimum_correct_for_more_complex_replacement": 1927,
+    "minimum_gain_over_reference": 8,
+    "meaning": "Practical complexity threshold, not a statistical significance claim. Lower-scoring CSVs may be provided as explicitly experimental."
+  },
+  "jev_plan": "Julia-1 (SupersonicLabs) open pretrained decisionmodel, frozenweights, typed sevenwaychoice over DINO/Conv/HGBprobabilities; fixedprompt and noimages/labels/IDs instate. Jev APIcredentials unavailable; noJevclaimedscore. Also fixedrouting onlyonDINO/Convtop1disagreement.",
+  "kaggle_upload": false,
+  "all_label_refit": false
+}

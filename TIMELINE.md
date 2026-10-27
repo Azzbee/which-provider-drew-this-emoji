@@ -14,9 +14,11 @@ How the project actually unfolded, reconstructed from dated records: Kaggle's su
 | ~17 Oct | Lina | Two entries (no description recorded) | 0.83259, 0.96983 private | Kaggle |
 | 17 Oct | Adam (with Claude) | Codebase: EDA, metadata diagnostic (87.4% without pixels), baseline re-score, EmojiCNNv2 (90.96%), fusion with metadata (93.38%) | 0.91700, 0.94615 private | `codebase/outputs/cpu/` |
 | 17 Oct | Adam (with Claude, RunPod RTX 4090) | ConvNeXt-Tiny 224 px, 5 grouped folds, flip TTA: run A (lowest val. loss) and run B (last epoch) | 97.29% and **97.69% OOF** | `codebase/outputs/convnext224*/`, `codebase/outputs/runpod_training_logs.txt` |
-| 17 to 18 Oct | Lina | DINOv2 fine-tuned | 0.95607 private | Kaggle; file in Adam's Downloads dated 17 Oct 17:34 |
+| 17 Oct | Adam (with ChatGPT) | DINOv2 ViT-S/14, last 2 blocks fine-tuned; uploaded from Lina's account | 95.90% dev.; 0.95607 private | `members/adam-zeraiki/chatgpt_experiments/01_*` |
+| 17 Oct | Adam (with ChatGPT) | Style features, partially tuned ConvNeXt, DINOv2 + ConvNeXt average; learned fusion (transformer, MLP); Julia-1 decision model | average 97.12% dev.; fusion best 97.01%; Julia-1 router 93.98% | `chatgpt_experiments/02_*` to `04_*` |
+| 18 Oct | Adam (with ChatGPT) | Live Jev (jev-1.14.0) decision trial on 112 disagreements | router 95.65% dev.; not submitted | `chatgpt_experiments/05_*` |
 | 18 Oct | Adam | 10-checkpoint average (runs A + B) | 0.98198 private | `codebase/outputs/submissions/` |
-| 18 Oct, 19:24 | Adam | DINOv2 + ConvNeXt ensemble (configuration not recorded) | 0.96477 private | Kaggle; file in Adam's Downloads |
+| 18 Oct, 19:24 | Adam | DINOv2 + ConvNeXt equal average submitted | 0.96477 private | Kaggle; `chatgpt_experiments/submissions/` |
 | 18 Oct, 21:51 | Adam | Final model (run B) submitted; run B and E15 selected as the team's two entries | 0.98319 public, **0.98218 private** | `codebase/report/public_leaderboard.json` |
 | 18 Oct, 22:00 | | Kaggle competition closes | team 5th of 18 (private) | Kaggle leaderboard |
 | 18 Oct | Adam (with Claude) | First report draft (HTML/PDF) and shared report document | | `codebase/report/` |

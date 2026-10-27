@@ -1,0 +1,74 @@
+{
+  "family": "transformer",
+  "seed": 17,
+  "stage": "original_training_refit",
+  "training_rows": 7903,
+  "completed_epochs": 12,
+  "selected_epochs": 12,
+  "internal_validation_metrics": null,
+  "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style/transformer/seed_17/refit/model.pt",
+  "checkpoint_sha256": "086b4cbd9a5ee0d3615962055fa11ac8f3544ad998b5227677f169d326f77075",
+  "parameter_counts": {
+    "total_trainable": 226631,
+    "shared_projection_design": 192320,
+    "fusion_and_classifier": 34311
+  },
+  "standardization": [
+    {
+      "branch_index": 0,
+      "fit_rows": 7903,
+      "minimum_std": 0.001463825821876526,
+      "floored_dimensions": 0,
+      "mean_min": -3.766852855682373,
+      "mean_max": 6.491615295410156,
+      "std_min": 0.38618776202201843,
+      "std_max": 3.481154203414917
+    },
+    {
+      "branch_index": 1,
+      "fit_rows": 7903,
+      "minimum_std": 0.0005457502007484436,
+      "floored_dimensions": 1,
+      "mean_min": -2.1616861820220947,
+      "mean_max": 6.606710910797119,
+      "std_min": 0.0005457501974888146,
+      "std_max": 2.573944568634033
+    },
+    {
+      "branch_index": 2,
+      "fit_rows": 7903,
+      "minimum_std": 0.00024199002981185912,
+      "floored_dimensions": 0,
+      "mean_min": 0.0010755218099802732,
+      "mean_max": 1.3524744510650635,
+      "std_min": 0.0035274343099445105,
+      "std_max": 0.4167998135089874
+    }
+  ],
+  "gradient_check": {
+    "projection_0": {
+      "finite": true,
+      "gradient_l2": 1.3837055027427623
+    },
+    "projection_1": {
+      "finite": true,
+      "gradient_l2": 1.4510660902909756
+    },
+    "projection_2": {
+      "finite": true,
+      "gradient_l2": 1.6609390184060793
+    },
+    "fusion": {
+      "finite": true,
+      "gradient_l2": 1.2032304600620685
+    },
+    "classifier": {
+      "finite": true,
+      "gradient_l2": 0.762527695431029
+    }
+  },
+  "checkpoint_reload_exact": true,
+  "first_epoch_training_loss": 0.9103964865245382,
+  "last_epoch_training_loss": 0.03215027370542103,
+  "training_seconds": 7.238532488998317
+}

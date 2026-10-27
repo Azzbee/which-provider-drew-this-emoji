@@ -1,0 +1,23 @@
+{
+  "updated_utc": "2026-10-18T19:23:36.502984+00:00",
+  "protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "partition": "development",
+  "requested_rows": 112,
+  "completed_this_pass": 112,
+  "complete": false,
+  "stop": null,
+  "budget": {
+    "budget_usd": "5",
+    "known_usage_cost_usd": "0.035226030",
+    "unresolved_reservations_usd": "0",
+    "committed_upper_bound_usd": "0.035226030",
+    "remaining_uncommitted_usd": "4.964773970",
+    "reservation_per_attempt_usd": "0.002752512",
+    "attempts": 324,
+    "statuses": {
+      "complete": 324
+    },
+    "frozen": false
+  },
+  "warning": "REUSED development set used in earlier model selection; results are exploratory and not an unbiased final-test score. Pilot is training data and is for integration/cost checks only."
+}

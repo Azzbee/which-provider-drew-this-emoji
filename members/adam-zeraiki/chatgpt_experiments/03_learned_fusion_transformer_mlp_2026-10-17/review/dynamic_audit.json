@@ -1,0 +1,49 @@
+{
+  "heads_sha256": "2da31933a9659f5c05a229ae79d53f5eb70bbeaa97a902b215c0d39502ecaa9a",
+  "checks": {
+    "mlp": {
+      "shape": [
+        8,
+        7
+      ],
+      "train_only_mean_exact": true,
+      "scaler_unchanged_by_other_rows": true,
+      "missing_zero_nonfinite_gradients": [],
+      "batch_permutation_max_error": 0.0,
+      "probability_sum_max_error": 5.960464477539063e-08,
+      "parameters": {
+        "total_trainable": 224839,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 32519
+      }
+    },
+    "transformer": {
+      "shape": [
+        8,
+        7
+      ],
+      "train_only_mean_exact": true,
+      "scaler_unchanged_by_other_rows": true,
+      "missing_zero_nonfinite_gradients": [],
+      "batch_permutation_max_error": 0.0,
+      "probability_sum_max_error": 1.1920928955078125e-07,
+      "parameters": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      }
+    },
+    "convnext_reconstructed_existing_model": {
+      "completed_prior_validation_rows": 1976,
+      "exact_probability_equality": true,
+      "max_probability_error": 0.0,
+      "labels_used_for_metric": false
+    },
+    "dino_reconstructed_existing_model": {
+      "completed_prior_validation_rows": 1342,
+      "exact_probability_equality": true,
+      "max_probability_error": 0.0,
+      "labels_used_for_metric": false
+    }
+  }
+}

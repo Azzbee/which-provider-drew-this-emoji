@@ -1,0 +1,30 @@
+{
+  "status": "complete_verified",
+  "count": 1976,
+  "routed_count": 112,
+  "classes": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "ids_sha256": "eb635246066d95fec795df1afc45f74491b9c68e49576cc5930e9ffc34b52557",
+  "probabilities_sha256": "55c7caec43bbc4825d7cb378575ec27479ca4547ca5a7ab9469372de091223fb",
+  "hybrid_probabilities_sha256": "8014cc84726f9e72273e7e2c8a637fa9bf5be8fe9a9be3cc40acc45ad83056a7",
+  "requests_sha256": "daaa0cdd51b70c82c6e04478875c036692c7d4c59e7db2a59967b2bdb919dfc6",
+  "model_weights_sha256": "df853bf7fe424420011f3d0c47a05d7341aa9eefa7fb9f203ea4aada4ad95b72",
+  "verified": [
+    "complete finite arrays",
+    "exact ID alignment",
+    "class order",
+    "logits softmax",
+    "fixed prediction-only routing",
+    "all request payloads match only the21suppliedscores",
+    "no labels or IDs in encoded state",
+    "CSV labels match probability argmax"
+  ],
+  "accuracy_scored_here": false
+}

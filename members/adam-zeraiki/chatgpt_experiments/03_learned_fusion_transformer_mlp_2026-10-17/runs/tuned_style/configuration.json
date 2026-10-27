@@ -1,0 +1,126 @@
+{
+  "configuration": {
+    "width": 64,
+    "heads": 4,
+    "feedforward_multiplier": 2,
+    "transformer_layers": 1,
+    "mlp_hidden": 160,
+    "dropout": 0.15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 256,
+    "max_epochs": 60,
+    "patience": 8,
+    "clip_input": 8.0,
+    "std_floor_absolute": 1e-05,
+    "std_floor_relative": 0.001,
+    "max_gradient_norm": 5.0,
+    "inner_folds": 5,
+    "inner_split_seed": 271828,
+    "seeds": [
+      17,
+      43,
+      101
+    ],
+    "families": [
+      "mlp",
+      "transformer"
+    ],
+    "scheduler": "cosine_fixed_max_epoch_horizon",
+    "minimum_lr_fraction": 0.05,
+    "label_smoothing": 0.0
+  },
+  "manifest_path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/tuned_style.json",
+  "manifest_sha256": "ab5c4975272d75f575c1b976acf8bfce0cc7412e0c4d697442dc827a9f204f18",
+  "manifest": {
+    "name": "tuned_style",
+    "train_paths": {
+      "dino": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/dino/train_tuned.npy",
+      "convnext": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/convnext/train_tuned.npy",
+      "style": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_style/results/train_features.npy"
+    },
+    "test_paths": {
+      "dino": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/dino/test_tuned.npy",
+      "convnext": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/convnext/test_tuned.npy",
+      "style": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_style/results/test_features.npy"
+    },
+    "class_order": [
+      "apple",
+      "facebook",
+      "google",
+      "messenger",
+      "mozilla",
+      "samsung",
+      "whatsapp"
+    ],
+    "provenance": {
+      "encoder_supervised_exposure": "Existing task-fine-tuned DINO and Conv checkpointssaw all7903 projecttraining labels and werechosen onreused1976. Internal headvalidationisnotunseenforentirepipeline.",
+      "development_holdout": "1976 reusedvalidationimages; no newouter labels usedforheadgradient/epoch/familyselection. Any modelrecommendation basedonthisholdoutisexploratory.",
+      "feature_freezing": "All threebranchfeatures fixed; trainonlyprojections,fusion,classifier.",
+      "data_provenance": "Originalsplit andexact96/224pxduplicateunionmetadata",
+      "experiment_plan": "experiment_plan.json"
+    },
+    "ids": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/metadata/ids.json",
+    "test_ids": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/metadata/test_ids.json",
+    "labels": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/metadata/labels.json",
+    "groups": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/metadata/groups.json",
+    "train_indices": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/metadata/train_indices.json",
+    "validation_indices": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/metadata/validation_indices.json"
+  },
+  "feature_files": [
+    {
+      "branch": "dino",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/dino/train_tuned.npy",
+      "shape": [
+        9879,
+        768
+      ],
+      "source_dtype": "float32",
+      "sha256": "0059fd9307a6a7af742bec275a19b33b1cd5c09d12d07354874a4562f34b1d67"
+    },
+    {
+      "branch": "convnext",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/convnext/train_tuned.npy",
+      "shape": [
+        9879,
+        768
+      ],
+      "source_dtype": "float32",
+      "sha256": "2ab74ab2d9d8d8fdeeff4af628635f30be07f3399e8c8bc9958da39a94153c14"
+    },
+    {
+      "branch": "style",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_style/results/train_features.npy",
+      "shape": [
+        9879,
+        1460
+      ],
+      "source_dtype": "float32",
+      "sha256": "b5b00d4e64e064cc230802276ef5a64cb43629aa2606ab1b3979078b6b9643a0"
+    }
+  ],
+  "script_sha256": "2da31933a9659f5c05a229ae79d53f5eb70bbeaa97a902b215c0d39502ecaa9a",
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.8.0+cpu",
+    "numpy": "2.3.5",
+    "threads": 2
+  },
+  "selection_rule": "Per-seed epochs: inner correct count, then lower log loss. Family: equal-seed averaged inner probability accuracy, then lower log loss, then fewer parameters.",
+  "outer_evaluation": "Deferred: this script never calculates metrics using outer validation labels.",
+  "normalization": "Mean and standard deviation fitted on inner training for selection, original training for refit; per-dimension std floor then input clipping to +/-8.",
+  "class_order": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "branch_names": [
+    "dino",
+    "convnext",
+    "style"
+  ]
+}

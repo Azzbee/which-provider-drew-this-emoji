@@ -1,0 +1,11 @@
+{
+  "checked_utc": "2026-10-18T18:59:46.580479+00:00",
+  "protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "request_shapes_checked": 4052,
+  "request_shapes_sha256": "07c92bf6b8a95f9890632d84e1b5a1f17781ec0fb873e9ab8562b30369315599",
+  "api_calls": 0,
+  "api_spend_usd": "0",
+  "status": "OFFLINE_READY_AWAITING_ACTUAL_JEV_ACCESS",
+  "jev_metrics": null,
+  "final_stage_note": "Dry-run uses a uniform synthetic Jev vector solely to validate request structure. It is never submitted or counted as a Jev result."
+}

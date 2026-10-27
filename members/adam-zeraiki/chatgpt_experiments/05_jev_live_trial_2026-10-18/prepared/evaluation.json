@@ -1,0 +1,36 @@
+{
+  "evaluated_utc": "2026-10-18T19:34:22.397910+00:00",
+  "protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "warning": "REUSED development set used in earlier model selection; results are exploratory and not an unbiased final-test score. Pilot is training data and is for integration/cost checks only.",
+  "baseline": {
+    "rows": 1976,
+    "correct": 1919,
+    "accuracy": 0.9711538461538461,
+    "nll": 0.1376897645783902,
+    "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]"
+  },
+  "complete_two_stage_rows": 112,
+  "required_rows_for_all_candidates": 1976,
+  "routed_rows_completed": 112,
+  "routed_rows_required": 112,
+  "candidates": {
+    "disagreement_router": {
+      "rows": 1976,
+      "correct": 1890,
+      "accuracy": 0.9564777327935222,
+      "nll": 0.1561514790944964,
+      "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]",
+      "errors_corrected": 8,
+      "new_errors": 37,
+      "net_additional_correct": -29,
+      "prediction_changes": 53,
+      "paired_exact_p_descriptive": 1.5374090196473844e-05,
+      "passes_frozen_exploratory_gate": false,
+      "eligible_for_deployment": false
+    }
+  },
+  "selected_deployment_candidate": null,
+  "selection_rule": "First passing candidate in preregistered priority, not highest observed accuracy",
+  "missing_rows_are_not_filled_as_Jev_predictions": true,
+  "nll_note": "Float64 normalization/floor1e-12 shared by all candidates and baseline; historical float32 NLL differs slightly."
+}

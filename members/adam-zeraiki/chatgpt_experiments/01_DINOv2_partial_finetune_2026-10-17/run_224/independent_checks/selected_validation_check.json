@@ -1,0 +1,158 @@
+{
+  "scope": "Independent recomputation from final held-out prediction CSV, recorded split and training history; no new model inference.",
+  "validation_predictions_sha256": "edf6f331a24fb01941797094ab0b409548064c6c334767de29507c209a37e788",
+  "split_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+  "correct": 1895,
+  "count": 1976,
+  "accuracy": 0.9590080971659919,
+  "macro_f1": 0.958658185012385,
+  "weighted_f1": 0.9590602799278091,
+  "cross_entropy_from_csv_float64": 0.21407276846071407,
+  "cross_entropy_logged_float32": 0.21407277882099152,
+  "classification_report_max_error": 0,
+  "confusion_matrix_matches": true,
+  "probabilities_valid": true,
+  "max_probability_row_sum_error": 2.0929628896659835e-07,
+  "prediction_argmax_and_class_mapping_match": true,
+  "ids_and_true_labels_match_heldout_split": true,
+  "selected_epoch": 3,
+  "epochs_completed": 7,
+  "early_stopping_patience": 4,
+  "best_history_accuracy": 0.9590080971659919,
+  "best_history_cross_entropy": 0.21407277882099152,
+  "selection_criterion_matches": true,
+  "selected_model_mode": "selection",
+  "all_label_refit_used": false,
+  "recorded_backbone_tensors_changed": 30,
+  "recorded_backbone_delta_l2": 2.0321461933419602,
+  "provenance_note": "Backbone-change fields are checked for consistency with logged training provenance; this lightweight pass does not reload checkpoint tensors.",
+  "per_class_report": {
+    "apple": {
+      "precision": 0.9341772151898734,
+      "recall": 0.9584415584415584,
+      "f1-score": 0.9461538461538461,
+      "support": 385.0
+    },
+    "facebook": {
+      "precision": 0.9436201780415431,
+      "recall": 0.9520958083832335,
+      "f1-score": 0.9478390461997019,
+      "support": 334.0
+    },
+    "google": {
+      "precision": 0.9862258953168044,
+      "recall": 0.9546666666666667,
+      "f1-score": 0.9701897018970189,
+      "support": 375.0
+    },
+    "messenger": {
+      "precision": 0.9344262295081968,
+      "recall": 0.9827586206896551,
+      "f1-score": 0.957983193277311,
+      "support": 116.0
+    },
+    "mozilla": {
+      "precision": 0.9285714285714286,
+      "recall": 0.9873417721518988,
+      "f1-score": 0.9570552147239264,
+      "support": 79.0
+    },
+    "samsung": {
+      "precision": 0.9696132596685083,
+      "recall": 0.9804469273743017,
+      "f1-score": 0.975,
+      "support": 358.0
+    },
+    "whatsapp": {
+      "precision": 0.9808306709265175,
+      "recall": 0.9331306990881459,
+      "f1-score": 0.956386292834891,
+      "support": 329.0
+    },
+    "accuracy": 0.9590080971659919,
+    "macro avg": {
+      "precision": 0.9539235538889815,
+      "recall": 0.9641260075422087,
+      "f1-score": 0.958658185012385,
+      "support": 1976.0
+    },
+    "weighted avg": {
+      "precision": 0.9596293022439383,
+      "recall": 0.9590080971659919,
+      "f1-score": 0.9590602799278091,
+      "support": 1976.0
+    }
+  },
+  "history": [
+    {
+      "epoch": "1",
+      "train_loss": "0.46242533771618854",
+      "train_accuracy": "0.8439832974819689",
+      "backbone_lr": "3e-05",
+      "head_lr": "0.001",
+      "validation_accuracy": "0.9159919028340081",
+      "validation_cross_entropy": "0.25217893719673157",
+      "seconds": "104.943"
+    },
+    {
+      "epoch": "2",
+      "train_loss": "0.19953143768035858",
+      "train_accuracy": "0.9487536378590409",
+      "backbone_lr": "2.9704992609906378e-05",
+      "head_lr": "0.0009901664203302125",
+      "validation_accuracy": "0.9352226720647774",
+      "validation_cross_entropy": "0.2772012948989868",
+      "seconds": "99.836"
+    },
+    {
+      "epoch": "3",
+      "train_loss": "0.1372023823968154",
+      "train_accuracy": "0.9659622928002024",
+      "backbone_lr": "2.883286367817511e-05",
+      "head_lr": "0.0009610954559391703",
+      "validation_accuracy": "0.9590080971659919",
+      "validation_cross_entropy": "0.21407277882099152",
+      "seconds": "95.314"
+    },
+    {
+      "epoch": "4",
+      "train_loss": "0.07749750093697498",
+      "train_accuracy": "0.979881057826142",
+      "backbone_lr": "2.742172942406179e-05",
+      "head_lr": "0.0009140576474687263",
+      "validation_accuracy": "0.9559716599190283",
+      "validation_cross_entropy": "0.26035261154174805",
+      "seconds": "94.05"
+    },
+    {
+      "epoch": "5",
+      "train_loss": "0.03901867087175471",
+      "train_accuracy": "0.9907630013918765",
+      "backbone_lr": "2.553326318584459e-05",
+      "head_lr": "0.0008511087728614862",
+      "validation_accuracy": "0.9534412955465587",
+      "validation_cross_entropy": "0.3379904329776764",
+      "seconds": "95.984"
+    },
+    {
+      "epoch": "6",
+      "train_loss": "0.027708762097323703",
+      "train_accuracy": "0.9925344805769961",
+      "backbone_lr": "2.3250000000000003e-05",
+      "head_lr": "0.0007750000000000001",
+      "validation_accuracy": "0.9529352226720648",
+      "validation_cross_entropy": "0.3774644434452057",
+      "seconds": "96.479"
+    },
+    {
+      "epoch": "7",
+      "train_loss": "0.012409359453866628",
+      "train_accuracy": "0.9974693154498292",
+      "backbone_lr": "2.067172942406179e-05",
+      "head_lr": "0.0006890576474687264",
+      "validation_accuracy": "0.9493927125506073",
+      "validation_cross_entropy": "0.44901126623153687",
+      "seconds": "96.186"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "rgb16",
+    "start": 0,
+    "end": 768
+  },
+  {
+    "name": "rgb8",
+    "start": 768,
+    "end": 960
+  },
+  {
+    "name": "rgb_hist_0",
+    "start": 960,
+    "end": 976
+  },
+  {
+    "name": "rgb_hist_1",
+    "start": 976,
+    "end": 992
+  },
+  {
+    "name": "rgb_hist_2",
+    "start": 992,
+    "end": 1008
+  },
+  {
+    "name": "hue_hist",
+    "start": 1008,
+    "end": 1032
+  },
+  {
+    "name": "saturation_hist",
+    "start": 1032,
+    "end": 1048
+  },
+  {
+    "name": "value_hist",
+    "start": 1048,
+    "end": 1064
+  },
+  {
+    "name": "joint_hs",
+    "start": 1064,
+    "end": 1128
+  },
+  {
+    "name": "rgb_statistics",
+    "start": 1128,
+    "end": 1149
+  },
+  {
+    "name": "alpha8",
+    "start": 1149,
+    "end": 1213
+  },
+  {
+    "name": "alpha_hist",
+    "start": 1213,
+    "end": 1229
+  },
+  {
+    "name": "alpha_summary",
+    "start": 1229,
+    "end": 1236
+  },
+  {
+    "name": "hog_4x4x8",
+    "start": 1236,
+    "end": 1364
+  },
+  {
+    "name": "edge_cell_energy",
+    "start": 1364,
+    "end": 1396
+  },
+  {
+    "name": "edge_quantiles",
+    "start": 1396,
+    "end": 1402
+  },
+  {
+    "name": "laplacian",
+    "start": 1402,
+    "end": 1410
+  },
+  {
+    "name": "uniform_lbp",
+    "start": 1410,
+    "end": 1460
+  }
+]

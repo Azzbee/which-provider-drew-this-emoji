@@ -1,0 +1,74 @@
+{
+  "family": "transformer",
+  "seed": 43,
+  "stage": "original_training_refit",
+  "training_rows": 7903,
+  "completed_epochs": 14,
+  "selected_epochs": 14,
+  "internal_validation_metrics": null,
+  "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/transformer/seed_43/refit/model.pt",
+  "checkpoint_sha256": "58602d4a7e18814bd32648badce9aa864e51ea43d4b396096d6653e6b03388e4",
+  "parameter_counts": {
+    "total_trainable": 226631,
+    "shared_projection_design": 192320,
+    "fusion_and_classifier": 34311
+  },
+  "standardization": [
+    {
+      "branch_index": 0,
+      "fit_rows": 7903,
+      "minimum_std": 0.001740018367767334,
+      "floored_dimensions": 0,
+      "mean_min": -3.7610278129577637,
+      "mean_max": 3.2807235717773438,
+      "std_min": 0.6320998668670654,
+      "std_max": 3.7790088653564453
+    },
+    {
+      "branch_index": 1,
+      "fit_rows": 7903,
+      "minimum_std": 0.0006916985511779785,
+      "floored_dimensions": 1,
+      "mean_min": -1.4590901136398315,
+      "mean_max": 1.1736782789230347,
+      "std_min": 0.000691698573064059,
+      "std_max": 2.2540500164031982
+    },
+    {
+      "branch_index": 2,
+      "fit_rows": 7903,
+      "minimum_std": 0.00024199002981185912,
+      "floored_dimensions": 0,
+      "mean_min": 0.0010755218099802732,
+      "mean_max": 1.3524744510650635,
+      "std_min": 0.0035274343099445105,
+      "std_max": 0.4167998135089874
+    }
+  ],
+  "gradient_check": {
+    "projection_0": {
+      "finite": true,
+      "gradient_l2": 2.313775357565094
+    },
+    "projection_1": {
+      "finite": true,
+      "gradient_l2": 2.4049861219887188
+    },
+    "projection_2": {
+      "finite": true,
+      "gradient_l2": 1.5678318863815124
+    },
+    "fusion": {
+      "finite": true,
+      "gradient_l2": 1.8567677196360641
+    },
+    "classifier": {
+      "finite": true,
+      "gradient_l2": 1.1692103709289445
+    }
+  },
+  "checkpoint_reload_exact": true,
+  "first_epoch_training_loss": 0.3309677592508743,
+  "last_epoch_training_loss": 0.0016133362150803025,
+  "training_seconds": 7.903105436002079
+}

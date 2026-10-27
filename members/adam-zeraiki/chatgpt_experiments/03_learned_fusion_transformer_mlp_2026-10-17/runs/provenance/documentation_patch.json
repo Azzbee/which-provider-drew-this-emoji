@@ -1,0 +1,11 @@
+{
+  "change": "Documentation only: replace \"No competition labels or leaderboard scores enter training.\" with \"No hidden test labels or leaderboard scores enter training.\"",
+  "executed_source": "heads_executed.py",
+  "executed_source_sha256": "2da31933a9659f5c05a229ae79d53f5eb70bbeaa97a902b215c0d39502ecaa9a",
+  "current_source_sha256": "2300ae824d60b238567e797cc85a047d617ec78f773e44dc310c0288895e683e",
+  "executable_ast_identical": true,
+  "comparison_method": "Parse both sources and remove docstring expression nodes from Module, FunctionDef, AsyncFunctionDef and ClassDef; compare ast.dump(include_attributes=False).",
+  "executable_ast_sha256": "5879698794929c060754d5be7fc9daf2e2784e2f4e538a07bfa0092cd256038f",
+  "historical_training_configuration_hashes_unchanged": true,
+  "models_rerun": false
+}

@@ -1,0 +1,28 @@
+{
+  "prepared_utc": "2026-10-18T18:58:51.611919+00:00",
+  "protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "reference_ids": {
+    "apple": "03054",
+    "facebook": "09572",
+    "google": "08730",
+    "messenger": "00187",
+    "mozilla": "05289",
+    "samsung": "09766",
+    "whatsapp": "08098"
+  },
+  "pilot_rows": 50,
+  "development_rows": 1976,
+  "development_disagreements": 112,
+  "baseline": {
+    "rows": 1976,
+    "correct": 1919,
+    "accuracy": 0.9711538461538461,
+    "nll": 0.1376897645783902,
+    "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]"
+  },
+  "historical_float32_clipped_nll": 0.1376239145136072,
+  "nll_note": "This experiment recomputes every NLL with the same float64/floor1e-12 convention; do not compare its NLL gate to historical float32-clipped NLL.",
+  "api_calls": 0,
+  "api_spend_usd": "0",
+  "jev_results_available": false
+}

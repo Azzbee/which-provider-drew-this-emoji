@@ -1,0 +1,45 @@
+{
+  "reviewed_utc": "2026-10-17T19:15:28.414171+00:00",
+  "review_scope": [
+    "heads.py",
+    "extract_features.py"
+  ],
+  "files": {
+    "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/heads.py": "2da31933a9659f5c05a229ae79d53f5eb70bbeaa97a902b215c0d39502ecaa9a",
+    "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/extract_features.py": "101ba61a4dfb20d2d14dd94b72d4b5b84ca0f439c7356c52f133f8606ebeba07"
+  },
+  "status": "No material computation or isolation bug found. Safe to train once feature completion is explicitly verified.",
+  "checked": {
+    "matched_inputs_and_projection_design": true,
+    "batch_four_token_attention_shape": true,
+    "single_seven_class_classifier": true,
+    "shared_backbone_tails_are_deep_copies": true,
+    "frozen_extraction_uses_eval_and_inference_mode": true,
+    "train_eval_modes_and_gradients": true,
+    "inner_train_and_validation_partition_original_training": true,
+    "inner_and_outer_duplicate_group_overlap_zero": true,
+    "selection_scaler_fit_only_inner_train": true,
+    "refit_scaler_fit_only_original_train": true,
+    "fixed_max_epoch_cosine_horizon_preserved_at_refit": true,
+    "family_and_seed_epoch_lock_written_before_refit": true,
+    "same_fixed_seed_average_no_best_seed_selection": true,
+    "all_labelled_probabilities_saved_without_outer_label_scoring": true,
+    "skip_test_defers_read_of_nonexistent_test_arrays": true,
+    "source_class_order_and_saved_checkpoint_order_checked": true,
+    "convnext_frozen_cache_ids_and_source_match": true,
+    "style_feature_ids_match": true
+  },
+  "counts": {
+    "train": 7903,
+    "development_validation": 1976,
+    "inner_train": 6322,
+    "inner_validation": 1581,
+    "mlp_parameters": 224839,
+    "transformer_parameters": 226631
+  },
+  "operational_guard": "load_features checks shape and finiteness, not completion masks. A partially filled memmap can pass. Assert each train_complete mask is all true and extraction receipts exist before fitting. Root notified.",
+  "interpretation_limit": "Task-fine-tuned backbone condition internal head-validation examples were seen during supervised encoder fitting. Public-pretrained condition avoids that exposure. Both outer comparisons remain development results on a reused holdout.",
+  "dynamic_audit": "dynamic_audit.json",
+  "no_heavy_training_performed": true,
+  "no_main_files_changed": true
+}

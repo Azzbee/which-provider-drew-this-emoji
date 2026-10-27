@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-10-18T19:28:22.214527+00:00",
+  "status": "NO_FROZEN_CANDIDATE_CAN_PASS",
+  "protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "pipeline_sha256": "219cebf859385258901c00be91892ca133b1d407b183729afd44c1f43023c1a4",
+  "feasibility_script_sha256": "ae0b7be6c3f77f1e064f2ea0fed2c28701f7f0767ebf191a2bf0886ac8ba30b8",
+  "validated_outcome_hashes_sha256": "935be2e13994879f40a0fb04b5d19f2d45c3644042244118700625d8247d370f",
+  "completed_two_stage_development_rows": 112,
+  "remaining_unqueried_development_rows": 1864,
+  "completed_routed_rows": 112,
+  "required_routed_rows": 112,
+  "baseline_full_development": {
+    "rows": 1976,
+    "correct": 1919,
+    "accuracy": 0.9711538461538461,
+    "nll": 0.1376897645783902,
+    "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]"
+  },
+  "gate_minimum_correct": 1927,
+  "gate_additional_requirement": "Candidate NLL must also be no worse than the baseline; an accuracy upper bound below the gate suffices to exclude a candidate regardless of future NLL.",
+  "observed_cached_subset_comparisons": {
+    "baseline": {
+      "rows": 112,
+      "correct": 78,
+      "accuracy": 0.6964285714285714,
+      "nll": 1.2112700313983844,
+      "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]"
+    },
+    "third_expert_blend": {
+      "rows": 112,
+      "correct": 69,
+      "accuracy": 0.6160714285714286,
+      "nll": 1.0418391540732743,
+      "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]",
+      "errors_corrected_vs_baseline_on_same_rows": 5,
+      "new_errors_vs_baseline_on_same_rows": 14,
+      "net_additional_correct_on_same_rows": -9
+    },
+    "final_jev": {
+      "rows": 112,
+      "correct": 49,
+      "accuracy": 0.4375,
+      "nll": 1.5369874232182579,
+      "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]",
+      "errors_corrected_vs_baseline_on_same_rows": 8,
+      "new_errors_vs_baseline_on_same_rows": 37,
+      "net_additional_correct_on_same_rows": -29
+    },
+    "jev_image_only_diagnostic": {
+      "rows": 112,
+      "correct": 23,
+      "accuracy": 0.20535714285714285,
+      "nll": 1.9979476852525455,
+      "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]",
+      "errors_corrected_vs_baseline_on_same_rows": 7,
+      "new_errors_vs_baseline_on_same_rows": 62,
+      "net_additional_correct_on_same_rows": -55
+    }
+  },
+  "complete_full_development_router": {
+    "rows": 1976,
+    "correct": 1890,
+    "accuracy": 0.9564777327935222,
+    "nll": 0.1561514790944964,
+    "nll_definition": "float64; normalize each row; true-class probability clipped to [1e-12,1]",
+    "errors_corrected": 8,
+    "new_errors": 37,
+    "net_additional_correct": -29,
+    "prediction_changes": 53,
+    "paired_exact_p_descriptive": 1.5374090196473844e-05,
+    "passes_frozen_exploratory_gate": false
+  },
+  "optimistic_full_development_upper_bounds": {
+    "third_expert_blend": {
+      "observed_correct": 69,
+      "remaining_baseline_correct_granted_preserved": 1841,
+      "remaining_baseline_errors": 23,
+      "remaining_errors_potentially_fixable_with_any_jev_distribution": 1,
+      "remaining_errors_impossible_to_fix_at_weight_0_2": 22,
+      "maximum_possible_full_development_correct": 1911,
+      "can_reach_accuracy_gate": false,
+      "true_class_probability_gap_threshold": 0.25,
+      "conservative_tie_tolerance": 1e-12,
+      "optimistically_fixable_image_ids": [
+        "09372"
+      ],
+      "proof": "For baseline b=(DINO+ConvNeXt)/2, blend=0.8b+0.2j. The best possible j assigns 1 to the true class and 0 elsewhere. A baseline error is fixable only when max_other(b)-b_true<=0.25. Count ties within 1e-12 as potentially fixable and grant that every remaining baseline-correct image stays correct. Add these optimistic counts to the already-observed blend correct predictions."
+    },
+    "final_jev": {
+      "observed_correct": 49,
+      "remaining_rows_granted_all_correct": 1864,
+      "maximum_possible_full_development_correct": 1913,
+      "can_reach_accuracy_gate": false
+    },
+    "jev_image_only_diagnostic": {
+      "observed_correct": 23,
+      "remaining_rows_granted_all_correct": 1864,
+      "maximum_possible_full_development_correct": 1887,
+      "can_reach_accuracy_gate": false,
+      "eligible_for_deployment_under_frozen_protocol": false
+    }
+  },
+  "conclusion": "Further requests cannot make the frozen blend or direct final Jev meet the accuracy gate; the completed router also fails.",
+  "interpretation": "Upper bounds are mathematical best cases for unobserved responses, not measured full-development scores. Observed subset scores cover completed rows only. The original development split was reused for earlier model selection; no unbiased test-set score is claimed.",
+  "api_calls_made_by_this_script": 0,
+  "credentials_read_by_this_script": false,
+  "ledger_modified_by_this_script": false,
+  "only_written_artifact": "feasibility_receipt.json"
+}

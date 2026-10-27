@@ -1,0 +1,10 @@
+{
+  "candidate": "baseline_dinov2_convnext_equal",
+  "best_observed_fusion_candidate": "tuned_style_mlp",
+  "reason": "No new candidate surpassed the existing ensemble on the reused development holdout.",
+  "reference_correct": 1919,
+  "validation_total": 1976,
+  "minimum_more_complex_replacement_correct": 1927,
+  "score_type": "Exploratory reused development holdout, not Kaggle",
+  "kaggle_uploaded": false
+}

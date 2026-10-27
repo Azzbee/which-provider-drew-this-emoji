@@ -1,0 +1,4 @@
+{
+  "cpu_threads": 2,
+  "reason": "At run time the parent allocated two CPU threads to Julia so its extraction and fusion-head training could proceed concurrently. No model or inference precision changed."
+}

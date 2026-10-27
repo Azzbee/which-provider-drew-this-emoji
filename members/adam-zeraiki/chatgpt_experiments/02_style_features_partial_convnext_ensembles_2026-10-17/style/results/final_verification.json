@@ -1,0 +1,67 @@
+{
+  "csv_checks": {
+    "submission_dinov2_extra_trees_style10.csv": {
+      "rows": 9879,
+      "csv_sha256": "4cb5d0c637f06b3f981d88d330d89733e14ab9d56a988bfeb3c061925ad4fa81",
+      "probability_sha256": "afd1ffae1ee99b7028b66f90e4f8c43f8248050448b11c9c6053dee10e8ba8a6",
+      "validation_correct": 1894,
+      "validation_total": 1976,
+      "valid": true
+    },
+    "submission_dinov2_extra_trees_style25.csv": {
+      "rows": 9879,
+      "csv_sha256": "5d01bf4831c6f1efb7c6ae2e83d38226fb30324479a3f511512e79661d2ba40b",
+      "probability_sha256": "9f859e26d70f12a80890c00849f716d183ab38f64aff4c980c1137dd5ff98c90",
+      "validation_correct": 1897,
+      "validation_total": 1976,
+      "valid": true
+    },
+    "submission_dinov2_hist_gradient_boosting_style10.csv": {
+      "rows": 9879,
+      "csv_sha256": "f40bb2002a21a09b73c7ae079fddb3b60e549c9465cf89ee2906c24cde71a31c",
+      "probability_sha256": "f7252f38cd56eb7b9eb61fa0d494cf908f02e042f7bfda3669d27d4cf89a8bf8",
+      "validation_correct": 1899,
+      "validation_total": 1976,
+      "valid": true
+    },
+    "submission_dinov2_hist_gradient_boosting_style25.csv": {
+      "rows": 9879,
+      "csv_sha256": "05908eaae75c761efa531f3eb968c346149946e74f412a3b223afdab10412bb5",
+      "probability_sha256": "4560adb7126fb5a5a6a663ac448702faae824b30bdd313dfcad88f3a6225a79f",
+      "validation_correct": 1900,
+      "validation_total": 1976,
+      "valid": true
+    },
+    "submission_extra_trees_style.csv": {
+      "rows": 9879,
+      "csv_sha256": "3a6a79796382b43b244f0e0e82d7f2cc03a24e5e4414bf4706e32836547bba75",
+      "probability_sha256": "23ea81ce1c8b95e466da0144feb9da51e271cf5016e4f94f8046dd567709f615",
+      "validation_correct": 1674,
+      "validation_total": 1976,
+      "valid": true
+    },
+    "submission_hist_gradient_boosting_style.csv": {
+      "rows": 9879,
+      "csv_sha256": "427b42c5be6894d07c7bc537c55c446582a80cee0f53648ee52a461fc00b406c",
+      "probability_sha256": "09aa0e9674a17cc182fa9cfc5c4a9b6d2c0b5be865826378c4518d5be8ae19fe",
+      "validation_correct": 1779,
+      "validation_total": 1976,
+      "valid": true
+    }
+  },
+  "saved_model_actual_image_replay": {
+    "extra_trees": {
+      "actual_image_rows_replayed": 12,
+      "max_probability_abs_error": 0.0,
+      "passed": true
+    },
+    "hist_gradient_boosting": {
+      "actual_image_rows_replayed": 12,
+      "max_probability_abs_error": 0.0,
+      "passed": true
+    }
+  },
+  "all_checks_passed": true,
+  "all_label_refit": false,
+  "kaggle_uploaded": false
+}

@@ -14,8 +14,13 @@ Team leader. Built the shared codebase (`codebase/`) and wrote the paper with AI
 | 6 | ConvNeXt-Tiny 224 px, 5 grouped folds, flip TTA, lowest-val-loss epoch (run A) | `codebase/scripts/train_backbone.py`, `codebase/outputs/convnext224/` | 97.29% OOF | |
 | 7 | **Same, last epoch (run B): final model** | `codebase/outputs/convnext224_last/` | **97.69% OOF** | **0.98218** |
 | 8 | Average of runs A and B (10 checkpoints) | `codebase/scripts/make_final_submission.py` | 97.70% OOF | 0.98198 |
-| 9 | DINOv2 + ConvNeXt ensemble | not in the codebase | not recorded | 0.96477 |
+| 9 | DINOv2 ViT-S/14, last 2 blocks fine-tuned (with ChatGPT); submitted from Lina's account | `chatgpt_experiments/01_*` | 95.90% (branch dev split) | 0.95607 |
+| 10 | DINOv2 + partially tuned ConvNeXt, equal average | `chatgpt_experiments/02_*` | 97.12% (branch dev split) | 0.96477 |
+| 11 | Style features (ExtraTrees, gradient boosting), frozen ConvNeXt + logistic regression | `chatgpt_experiments/02_*` | 84.72%, 90.03%, 90.64% | |
+| 12 | Learned fusion of DINOv2, ConvNeXt and style features: transformer and MLP heads | `chatgpt_experiments/03_*` | best 97.01% (MLP) | not submitted |
+| 13 | Decision models: Julia-1 (open) and Jev (hosted) on the expert outputs | `chatgpt_experiments/04_*`, `05_*` | 93.98%, 95.65% | not submitted |
 
-## To complete
+## Notes
 
-- Method 9 and the three-backbone fusion idea (paper Section 4.5, red box): which backbones, features or probabilities, fusion transformer size, training data. Codex's session logs on this Mac contain no record of it (checked 27 October), so it was run elsewhere, perhaps in ChatGPT in the browser. If you find the notebook or chat, add it here.
+- Methods 9 to 13 were run with ChatGPT; see `chatgpt_experiments/README.md`. Their accuracies are on that branch's own 1,976-image development split, not comparable to the codebase's 1,979-image stored split or 5-fold OOF.
+- Weights, cached features and the full API caches are in the 2.1 GB archive on Google Drive, not in this repository.

@@ -1,0 +1,70 @@
+{
+  "source_run": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style",
+  "partition": "test",
+  "manifest_sha256": "aecdc2d07c6cbf9f7e864c98af62744ce5811f1618bf855ce80071d8cbd8a541",
+  "feature_files": [
+    {
+      "branch": "dino",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/dino/test_pretrained.npy",
+      "shape": [
+        9879,
+        768
+      ],
+      "source_dtype": "float32",
+      "sha256": "fe54d2140eff2b68672ca7e8a7426093dc5a2da4c6f1a8823a72366f3c33b10e"
+    },
+    {
+      "branch": "convnext",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/convnext/test_pretrained.npy",
+      "shape": [
+        9879,
+        768
+      ],
+      "source_dtype": "float32",
+      "sha256": "4ddc5b4296dd56e1f28b2e75d52a3c5609389e568f8ead618d47a6f481883515"
+    },
+    {
+      "branch": "style",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_style/results/test_features.npy",
+      "shape": [
+        9879,
+        1460
+      ],
+      "source_dtype": "float32",
+      "sha256": "d69063c5e24e810bf711afede31937794e9039d629d9e49a7f3c85e750e1da78"
+    }
+  ],
+  "class_order": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "ids_sha256": "737f5f3276a66637c0afe4777f6ee9f0f599f928689c0852b9888c038dc0c31d",
+  "families": {
+    "mlp": {
+      "rows": 9879,
+      "probabilities_sha256": "abdab5b79ab7611c4ba999d3eaac535b70a8d64b93b87d163240f3841e298ab9",
+      "equal_seed_weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "submission_sha256": "5083155cd96bb156a5bbeb10fba249b469981382c4e3e5a6c3f086aa6d76eb04"
+    },
+    "transformer": {
+      "rows": 9879,
+      "probabilities_sha256": "044e5736cc404519825803a24d652d00804aa1b82e0ffccf7b067e44dd484fd8",
+      "equal_seed_weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "submission_sha256": "6402e6c612aee7810ee4b051f4c87ede829a11ef0832e872a1ba7a61f6065d15"
+    }
+  },
+  "outer_metrics_calculated": false
+}

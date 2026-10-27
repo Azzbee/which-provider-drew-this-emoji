@@ -1,0 +1,15 @@
+{
+  "status": {
+    "dino": {
+      "complete": 9879,
+      "total": 9879,
+      "receipt": true
+    },
+    "convnext": {
+      "complete": 9879,
+      "total": 9879,
+      "receipt": true
+    }
+  },
+  "unix_time": 1792264601.3032556
+}

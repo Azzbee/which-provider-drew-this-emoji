@@ -1,0 +1,20 @@
+{
+  "threads": 6,
+  "batch": 16,
+  "prefix_shape": [
+    16,
+    384,
+    14,
+    14
+  ],
+  "suffix_shape": [
+    16,
+    768,
+    7,
+    7
+  ],
+  "full_split_maximum_absolute_difference": 0.0,
+  "prefix_seconds_per_batch": 0.3208041371995932,
+  "suffix_seconds_per_batch": 0.045248694800102386,
+  "prefix_estimated_labeled_cache_seconds": 198.07650446217383
+}

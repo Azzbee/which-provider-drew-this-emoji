@@ -1,0 +1,244 @@
+{
+  "generated_utc": "2026-10-17T19:30:46.309364+00:00",
+  "purpose": "Independent authorized outer evaluation; no further training, tuning or seed selection.",
+  "source_labels": {
+    "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_recovered/dataset/train_labels.csv",
+    "sha256": "37385b8fa192a03230d170654d255351a1cc3f42dfcd94b55f98f03abcfd55fb"
+  },
+  "source_split": {
+    "path": "/workspace/scratch/9c7afe2f05a2/outputs/cv_improvement/CV_Improvement_Experiments_2026-10-17/dino_original/run_224/split.csv",
+    "sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e"
+  },
+  "outer_rows": 1976,
+  "outer_id_order": "Original split.csv order, with an explicit ID join to each saved probability row.",
+  "seed_set": [
+    17,
+    43,
+    101
+  ],
+  "seed_aggregation": "Equal arithmetic mean of all three probability arrays using float64 accumulation, cast to float32.",
+  "comparisons": {
+    "frozen_style/mlp": {
+      "ensemble_correct": 1895,
+      "ensemble_errors": 81,
+      "ensemble_accuracy": 0.9590080971659919,
+      "matches_root_count": true,
+      "labelled_equal_seed_average_bit_exact": true,
+      "test_equal_seed_average_bit_exact": true,
+      "outer_slice_bit_exact": true,
+      "per_seed": [
+        {
+          "seed": 17,
+          "correct": 1875,
+          "errors": 101,
+          "accuracy": 0.9488866396761133,
+          "probability_sha256": "bdc77c551bd18ae79f0d368743ff7e2bbc77b581fd4c3f3083726785e3ba3f04"
+        },
+        {
+          "seed": 43,
+          "correct": 1889,
+          "errors": 87,
+          "accuracy": 0.9559716599190283,
+          "probability_sha256": "45875aec3fc17e5c41036b6d199de424150ba657a831aed088528c317d2c93c1"
+        },
+        {
+          "seed": 101,
+          "correct": 1895,
+          "errors": 81,
+          "accuracy": 0.9590080971659919,
+          "probability_sha256": "1f20162ec86aacbd291f253ad88ae1bad4ffa2508e5e7668797c2ce153253121"
+        }
+      ],
+      "seed_accuracy_mean": 0.9546221322537112,
+      "seed_accuracy_sample_sd": 0.00519392858243614,
+      "seed_accuracy_sample_sd_percentage_points": 0.5193928582436139,
+      "seed_correct_min": 1875,
+      "seed_correct_max": 1895,
+      "seed_accuracy_min": 0.9488866396761133,
+      "seed_accuracy_max": 0.9590080971659919,
+      "labelled_probabilities_sha256": "1a961a8e4f7d63dcc1b5b4bd9340488156f00b52991d1774986c0a89b9337574",
+      "class_order": [
+        "apple",
+        "facebook",
+        "google",
+        "messenger",
+        "mozilla",
+        "samsung",
+        "whatsapp"
+      ]
+    },
+    "frozen_style/transformer": {
+      "ensemble_correct": 1892,
+      "ensemble_errors": 84,
+      "ensemble_accuracy": 0.9574898785425101,
+      "matches_root_count": true,
+      "labelled_equal_seed_average_bit_exact": true,
+      "test_equal_seed_average_bit_exact": true,
+      "outer_slice_bit_exact": true,
+      "per_seed": [
+        {
+          "seed": 17,
+          "correct": 1873,
+          "errors": 103,
+          "accuracy": 0.9478744939271255,
+          "probability_sha256": "03965e44d4c5b4c08a3987655be2370fd5b7f659d6095669d4fa9932fed1f926"
+        },
+        {
+          "seed": 43,
+          "correct": 1870,
+          "errors": 106,
+          "accuracy": 0.9463562753036437,
+          "probability_sha256": "2cd6cb8ef429a36d6684ac96881aee3a3109e9a02cd0282fd71689aad685de5e"
+        },
+        {
+          "seed": 101,
+          "correct": 1870,
+          "errors": 106,
+          "accuracy": 0.9463562753036437,
+          "probability_sha256": "fbcf6f116c3a6ecc02e7b9a17ebb96fe17834393599a359d061390c71f6a7e99"
+        }
+      ],
+      "seed_accuracy_mean": 0.9468623481781376,
+      "seed_accuracy_sample_sd": 0.0008765439309559098,
+      "seed_accuracy_sample_sd_percentage_points": 0.08765439309559098,
+      "seed_correct_min": 1870,
+      "seed_correct_max": 1873,
+      "seed_accuracy_min": 0.9463562753036437,
+      "seed_accuracy_max": 0.9478744939271255,
+      "labelled_probabilities_sha256": "0e39f0f0b55839f399c25c601d2ca0951c8f13ce8627f4a0802668dacec8256c",
+      "class_order": [
+        "apple",
+        "facebook",
+        "google",
+        "messenger",
+        "mozilla",
+        "samsung",
+        "whatsapp"
+      ]
+    },
+    "tuned_style/mlp": {
+      "ensemble_correct": 1917,
+      "ensemble_errors": 59,
+      "ensemble_accuracy": 0.9701417004048583,
+      "matches_root_count": true,
+      "labelled_equal_seed_average_bit_exact": true,
+      "test_equal_seed_average_bit_exact": true,
+      "outer_slice_bit_exact": true,
+      "per_seed": [
+        {
+          "seed": 17,
+          "correct": 1915,
+          "errors": 61,
+          "accuracy": 0.9691295546558705,
+          "probability_sha256": "d3420d5fbfc6a5cb605145bc45848cdd1729b56b6a72dd6a119fd630dcf10844"
+        },
+        {
+          "seed": 43,
+          "correct": 1915,
+          "errors": 61,
+          "accuracy": 0.9691295546558705,
+          "probability_sha256": "b16002c6a55c5a274c6939fd274f27f37c2a7505b6331c2d2abb23f2bf45e60e"
+        },
+        {
+          "seed": 101,
+          "correct": 1918,
+          "errors": 58,
+          "accuracy": 0.9706477732793523,
+          "probability_sha256": "909d4ed931377b4608312bdc2b15b1a9ebd8b59433792a30aa83b5ca0e633c08"
+        }
+      ],
+      "seed_accuracy_mean": 0.9696356275303644,
+      "seed_accuracy_sample_sd": 0.0008765439309559098,
+      "seed_accuracy_sample_sd_percentage_points": 0.08765439309559098,
+      "seed_correct_min": 1915,
+      "seed_correct_max": 1918,
+      "seed_accuracy_min": 0.9691295546558705,
+      "seed_accuracy_max": 0.9706477732793523,
+      "labelled_probabilities_sha256": "afdf21c55f617bf0b29990f4ac2d30f93c82390fa62d21a940ba27614bfbe781",
+      "class_order": [
+        "apple",
+        "facebook",
+        "google",
+        "messenger",
+        "mozilla",
+        "samsung",
+        "whatsapp"
+      ]
+    },
+    "tuned_style/transformer": {
+      "ensemble_correct": 1904,
+      "ensemble_errors": 72,
+      "ensemble_accuracy": 0.9635627530364372,
+      "matches_root_count": true,
+      "labelled_equal_seed_average_bit_exact": true,
+      "test_equal_seed_average_bit_exact": true,
+      "outer_slice_bit_exact": true,
+      "per_seed": [
+        {
+          "seed": 17,
+          "correct": 1906,
+          "errors": 70,
+          "accuracy": 0.9645748987854251,
+          "probability_sha256": "d0ea6f86df49370b5c6f65f68ead438a47f175f3fdc627c7e174fd2b1ca8c767"
+        },
+        {
+          "seed": 43,
+          "correct": 1896,
+          "errors": 80,
+          "accuracy": 0.9595141700404858,
+          "probability_sha256": "ded764583f2ccb735dde4311dee826dbedbc73d02c34af694a319d15251f2595"
+        },
+        {
+          "seed": 101,
+          "correct": 1904,
+          "errors": 72,
+          "accuracy": 0.9635627530364372,
+          "probability_sha256": "486f9ad52d4018bf790a441652f451dc20c1dabcc4a9a2667cd1015dfdeb6816"
+        }
+      ],
+      "seed_accuracy_mean": 0.9625506072874493,
+      "seed_accuracy_sample_sd": 0.0026778859423731032,
+      "seed_accuracy_sample_sd_percentage_points": 0.26778859423731033,
+      "seed_correct_min": 1896,
+      "seed_correct_max": 1906,
+      "seed_accuracy_min": 0.9595141700404858,
+      "seed_accuracy_max": 0.9645748987854251,
+      "labelled_probabilities_sha256": "17707d6147a6f4d061c8687d4813c52e1d84ccbe527807caad94e04a1b73f1b1",
+      "class_order": [
+        "apple",
+        "facebook",
+        "google",
+        "messenger",
+        "mozilla",
+        "samsung",
+        "whatsapp"
+      ]
+    }
+  },
+  "baseline_control": {
+    "correct": 1919,
+    "errors": 57,
+    "accuracy": 0.9711538461538461,
+    "matches_root_count": true,
+    "method": "Rebuilt fixed50:50DINOv2+ConvNeXt from original component validation prediction CSVs, joined by original validation IDs.",
+    "source_files": [
+      {
+        "path": "/workspace/scratch/9c7afe2f05a2/outputs/cv_improvement/CV_Improvement_Experiments_2026-10-17/dino_original/run_224/selection/validation_predictions.csv",
+        "sha256": "edf6f331a24fb01941797094ab0b409548064c6c334767de29507c209a37e788"
+      },
+      {
+        "path": "/workspace/scratch/9c7afe2f05a2/outputs/cv_improvement/CV_Improvement_Experiments_2026-10-17/convnext/run_224/selection/validation_predictions.csv",
+        "sha256": "d5853e11f730cb252f17297b6e7e5182557a3cc608654e05dd0d6c4fcb22dab5"
+      }
+    ]
+  },
+  "decision": {
+    "required_correct_gain": 8,
+    "baseline_correct": 1919,
+    "largest_fusion_correct": 1917,
+    "threshold_met": false,
+    "recommendation": "Preserve the existing DINOv2+ConvNeXt ensemble recommendation.",
+    "further_training_or_tuning_performed": false,
+    "best_seed_selection_performed": false
+  }
+}

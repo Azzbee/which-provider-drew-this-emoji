@@ -1,0 +1,529 @@
+{
+  "selected_family_by_internal_validation": "transformer",
+  "families": {
+    "mlp": {
+      "family": "mlp",
+      "internal_ensemble_metrics": {
+        "rows": 1581,
+        "correct": 1579,
+        "accuracy": 0.9987349778621126,
+        "log_loss": 0.003448374987439898,
+        "macro_f1": 0.9989798842156608
+      },
+      "per_seed": [
+        {
+          "family": "mlp",
+          "seed": 17,
+          "stage": "internal_selection",
+          "training_rows": 6322,
+          "completed_epochs": 44,
+          "selected_epochs": 36,
+          "internal_validation_metrics": {
+            "rows": 1581,
+            "correct": 1579,
+            "accuracy": 0.9987349778621126,
+            "log_loss": 0.003637622150497315,
+            "macro_f1": 0.9989798842156608
+          },
+          "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/mlp/seed_17/selection/best.pt",
+          "checkpoint_sha256": "699c23d0747952b7aec0fbd5e844fed910f6657d9ca6426f496fc53eec818169",
+          "parameter_counts": {
+            "total_trainable": 224839,
+            "shared_projection_design": 192320,
+            "fusion_and_classifier": 32519
+          },
+          "standardization": [
+            {
+              "branch_index": 0,
+              "fit_rows": 6322,
+              "minimum_std": 0.0017448209524154664,
+              "floored_dimensions": 0,
+              "mean_min": -3.7659425735473633,
+              "mean_max": 3.2948830127716064,
+              "std_min": 0.6317100524902344,
+              "std_max": 3.78086256980896
+            },
+            {
+              "branch_index": 1,
+              "fit_rows": 6322,
+              "minimum_std": 0.0006926100850105285,
+              "floored_dimensions": 1,
+              "mean_min": -1.4589881896972656,
+              "mean_max": 1.1694622039794922,
+              "std_min": 0.0006926101050339639,
+              "std_max": 2.257708787918091
+            },
+            {
+              "branch_index": 2,
+              "fit_rows": 6322,
+              "minimum_std": 0.0002416907697916031,
+              "floored_dimensions": 0,
+              "mean_min": 0.0011006782297044992,
+              "mean_max": 1.3484389781951904,
+              "std_min": 0.003551601432263851,
+              "std_max": 0.4158346354961395
+            }
+          ],
+          "gradient_check": {
+            "projection_0": {
+              "finite": true,
+              "gradient_l2": 1.8542842404863988
+            },
+            "projection_1": {
+              "finite": true,
+              "gradient_l2": 1.93202880442493
+            },
+            "projection_2": {
+              "finite": true,
+              "gradient_l2": 1.0334133119587927
+            },
+            "fusion": {
+              "finite": true,
+              "gradient_l2": 1.4376584022700607
+            },
+            "classifier": {
+              "finite": true,
+              "gradient_l2": 1.3306191685366437
+            }
+          },
+          "checkpoint_reload_exact": true,
+          "first_epoch_training_loss": 0.374358049305424,
+          "last_epoch_training_loss": 0.00020054635914037143,
+          "training_seconds": 12.258034297999984
+        },
+        {
+          "family": "mlp",
+          "seed": 43,
+          "stage": "internal_selection",
+          "training_rows": 6322,
+          "completed_epochs": 14,
+          "selected_epochs": 6,
+          "internal_validation_metrics": {
+            "rows": 1581,
+            "correct": 1579,
+            "accuracy": 0.9987349778621126,
+            "log_loss": 0.005302475785638839,
+            "macro_f1": 0.9989798842156608
+          },
+          "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/mlp/seed_43/selection/best.pt",
+          "checkpoint_sha256": "a5977816e52e4dbe88bfe94b1ec244d0f2b08ed058fc3eb26bec72c2a559ad5e",
+          "parameter_counts": {
+            "total_trainable": 224839,
+            "shared_projection_design": 192320,
+            "fusion_and_classifier": 32519
+          },
+          "standardization": [
+            {
+              "branch_index": 0,
+              "fit_rows": 6322,
+              "minimum_std": 0.0017448209524154664,
+              "floored_dimensions": 0,
+              "mean_min": -3.7659425735473633,
+              "mean_max": 3.2948830127716064,
+              "std_min": 0.6317100524902344,
+              "std_max": 3.78086256980896
+            },
+            {
+              "branch_index": 1,
+              "fit_rows": 6322,
+              "minimum_std": 0.0006926100850105285,
+              "floored_dimensions": 1,
+              "mean_min": -1.4589881896972656,
+              "mean_max": 1.1694622039794922,
+              "std_min": 0.0006926101050339639,
+              "std_max": 2.257708787918091
+            },
+            {
+              "branch_index": 2,
+              "fit_rows": 6322,
+              "minimum_std": 0.0002416907697916031,
+              "floored_dimensions": 0,
+              "mean_min": 0.0011006782297044992,
+              "mean_max": 1.3484389781951904,
+              "std_min": 0.003551601432263851,
+              "std_max": 0.4158346354961395
+            }
+          ],
+          "gradient_check": {
+            "projection_0": {
+              "finite": true,
+              "gradient_l2": 2.104363746987833
+            },
+            "projection_1": {
+              "finite": true,
+              "gradient_l2": 1.9176227483752326
+            },
+            "projection_2": {
+              "finite": true,
+              "gradient_l2": 1.1472301362402506
+            },
+            "fusion": {
+              "finite": true,
+              "gradient_l2": 1.4879290078868819
+            },
+            "classifier": {
+              "finite": true,
+              "gradient_l2": 1.3194735252564058
+            }
+          },
+          "checkpoint_reload_exact": true,
+          "first_epoch_training_loss": 0.3695820187374935,
+          "last_epoch_training_loss": 0.0008264396881993432,
+          "training_seconds": 3.6214649449975695
+        },
+        {
+          "family": "mlp",
+          "seed": 101,
+          "stage": "internal_selection",
+          "training_rows": 6322,
+          "completed_epochs": 46,
+          "selected_epochs": 38,
+          "internal_validation_metrics": {
+            "rows": 1581,
+            "correct": 1578,
+            "accuracy": 0.9981024667931688,
+            "log_loss": 0.0027710104126323232,
+            "macro_f1": 0.9984928722680146
+          },
+          "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/mlp/seed_101/selection/best.pt",
+          "checkpoint_sha256": "6685dfbbe65ac01738fdcfcfd8b7e6b63a71497241d33728e61f38cd39455f1e",
+          "parameter_counts": {
+            "total_trainable": 224839,
+            "shared_projection_design": 192320,
+            "fusion_and_classifier": 32519
+          },
+          "standardization": [
+            {
+              "branch_index": 0,
+              "fit_rows": 6322,
+              "minimum_std": 0.0017448209524154664,
+              "floored_dimensions": 0,
+              "mean_min": -3.7659425735473633,
+              "mean_max": 3.2948830127716064,
+              "std_min": 0.6317100524902344,
+              "std_max": 3.78086256980896
+            },
+            {
+              "branch_index": 1,
+              "fit_rows": 6322,
+              "minimum_std": 0.0006926100850105285,
+              "floored_dimensions": 1,
+              "mean_min": -1.4589881896972656,
+              "mean_max": 1.1694622039794922,
+              "std_min": 0.0006926101050339639,
+              "std_max": 2.257708787918091
+            },
+            {
+              "branch_index": 2,
+              "fit_rows": 6322,
+              "minimum_std": 0.0002416907697916031,
+              "floored_dimensions": 0,
+              "mean_min": 0.0011006782297044992,
+              "mean_max": 1.3484389781951904,
+              "std_min": 0.003551601432263851,
+              "std_max": 0.4158346354961395
+            }
+          ],
+          "gradient_check": {
+            "projection_0": {
+              "finite": true,
+              "gradient_l2": 1.9722042084253508
+            },
+            "projection_1": {
+              "finite": true,
+              "gradient_l2": 2.0887174903075
+            },
+            "projection_2": {
+              "finite": true,
+              "gradient_l2": 1.107866308333027
+            },
+            "fusion": {
+              "finite": true,
+              "gradient_l2": 1.5141416759015147
+            },
+            "classifier": {
+              "finite": true,
+              "gradient_l2": 1.414229208628052
+            }
+          },
+          "checkpoint_reload_exact": true,
+          "first_epoch_training_loss": 0.39886310502382366,
+          "last_epoch_training_loss": 0.00019484038047603875,
+          "training_seconds": 11.144949904999521
+        }
+      ],
+      "internal_seed_accuracy_mean": 0.9985241408391313,
+      "internal_seed_accuracy_sample_sd": 0.00036518043592011933,
+      "parameter_counts_per_seed": {
+        "total_trainable": 224839,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 32519
+      }
+    },
+    "transformer": {
+      "family": "transformer",
+      "internal_ensemble_metrics": {
+        "rows": 1581,
+        "correct": 1580,
+        "accuracy": 0.9993674889310563,
+        "log_loss": 0.0024208978794637154,
+        "macro_f1": 0.9995129865415864
+      },
+      "per_seed": [
+        {
+          "family": "transformer",
+          "seed": 17,
+          "stage": "internal_selection",
+          "training_rows": 6322,
+          "completed_epochs": 20,
+          "selected_epochs": 12,
+          "internal_validation_metrics": {
+            "rows": 1581,
+            "correct": 1579,
+            "accuracy": 0.9987349778621126,
+            "log_loss": 0.0028562601328038202,
+            "macro_f1": 0.9989924320038474
+          },
+          "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/transformer/seed_17/selection/best.pt",
+          "checkpoint_sha256": "37e1031eed813406e638cdb677bc40d5553079a39fe3924718ebc7b9de575e37",
+          "parameter_counts": {
+            "total_trainable": 226631,
+            "shared_projection_design": 192320,
+            "fusion_and_classifier": 34311
+          },
+          "standardization": [
+            {
+              "branch_index": 0,
+              "fit_rows": 6322,
+              "minimum_std": 0.0017448209524154664,
+              "floored_dimensions": 0,
+              "mean_min": -3.7659425735473633,
+              "mean_max": 3.2948830127716064,
+              "std_min": 0.6317100524902344,
+              "std_max": 3.78086256980896
+            },
+            {
+              "branch_index": 1,
+              "fit_rows": 6322,
+              "minimum_std": 0.0006926100850105285,
+              "floored_dimensions": 1,
+              "mean_min": -1.4589881896972656,
+              "mean_max": 1.1694622039794922,
+              "std_min": 0.0006926101050339639,
+              "std_max": 2.257708787918091
+            },
+            {
+              "branch_index": 2,
+              "fit_rows": 6322,
+              "minimum_std": 0.0002416907697916031,
+              "floored_dimensions": 0,
+              "mean_min": 0.0011006782297044992,
+              "mean_max": 1.3484389781951904,
+              "std_min": 0.003551601432263851,
+              "std_max": 0.4158346354961395
+            }
+          ],
+          "gradient_check": {
+            "projection_0": {
+              "finite": true,
+              "gradient_l2": 2.5942682707712863
+            },
+            "projection_1": {
+              "finite": true,
+              "gradient_l2": 2.8127452015394714
+            },
+            "projection_2": {
+              "finite": true,
+              "gradient_l2": 1.6310558479937356
+            },
+            "fusion": {
+              "finite": true,
+              "gradient_l2": 1.7936492050501618
+            },
+            "classifier": {
+              "finite": true,
+              "gradient_l2": 1.067007216952076
+            }
+          },
+          "checkpoint_reload_exact": true,
+          "first_epoch_training_loss": 0.3937186993085784,
+          "last_epoch_training_loss": 0.0012497168765879156,
+          "training_seconds": 11.350232459997642
+        },
+        {
+          "family": "transformer",
+          "seed": 43,
+          "stage": "internal_selection",
+          "training_rows": 6322,
+          "completed_epochs": 22,
+          "selected_epochs": 14,
+          "internal_validation_metrics": {
+            "rows": 1581,
+            "correct": 1580,
+            "accuracy": 0.9993674889310563,
+            "log_loss": 0.003382462202282503,
+            "macro_f1": 0.9995129865415864
+          },
+          "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/transformer/seed_43/selection/best.pt",
+          "checkpoint_sha256": "50e92913a94eb914421f711c6fd3c75494014771ab3afbd83d2a298600014b50",
+          "parameter_counts": {
+            "total_trainable": 226631,
+            "shared_projection_design": 192320,
+            "fusion_and_classifier": 34311
+          },
+          "standardization": [
+            {
+              "branch_index": 0,
+              "fit_rows": 6322,
+              "minimum_std": 0.0017448209524154664,
+              "floored_dimensions": 0,
+              "mean_min": -3.7659425735473633,
+              "mean_max": 3.2948830127716064,
+              "std_min": 0.6317100524902344,
+              "std_max": 3.78086256980896
+            },
+            {
+              "branch_index": 1,
+              "fit_rows": 6322,
+              "minimum_std": 0.0006926100850105285,
+              "floored_dimensions": 1,
+              "mean_min": -1.4589881896972656,
+              "mean_max": 1.1694622039794922,
+              "std_min": 0.0006926101050339639,
+              "std_max": 2.257708787918091
+            },
+            {
+              "branch_index": 2,
+              "fit_rows": 6322,
+              "minimum_std": 0.0002416907697916031,
+              "floored_dimensions": 0,
+              "mean_min": 0.0011006782297044992,
+              "mean_max": 1.3484389781951904,
+              "std_min": 0.003551601432263851,
+              "std_max": 0.4158346354961395
+            }
+          ],
+          "gradient_check": {
+            "projection_0": {
+              "finite": true,
+              "gradient_l2": 2.391869430139197
+            },
+            "projection_1": {
+              "finite": true,
+              "gradient_l2": 2.553450221778981
+            },
+            "projection_2": {
+              "finite": true,
+              "gradient_l2": 1.4975623886029357
+            },
+            "fusion": {
+              "finite": true,
+              "gradient_l2": 1.9485047016734869
+            },
+            "classifier": {
+              "finite": true,
+              "gradient_l2": 1.259891889386772
+            }
+          },
+          "checkpoint_reload_exact": true,
+          "first_epoch_training_loss": 0.40450623691817394,
+          "last_epoch_training_loss": 0.0011811464756393698,
+          "training_seconds": 12.02591995200055
+        },
+        {
+          "family": "transformer",
+          "seed": 101,
+          "stage": "internal_selection",
+          "training_rows": 6322,
+          "completed_epochs": 25,
+          "selected_epochs": 17,
+          "internal_validation_metrics": {
+            "rows": 1581,
+            "correct": 1580,
+            "accuracy": 0.9993674889310563,
+            "log_loss": 0.001929029639366114,
+            "macro_f1": 0.9995129865415864
+          },
+          "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style/transformer/seed_101/selection/best.pt",
+          "checkpoint_sha256": "4c68589d39708dae64d4432935cc5cf730e82b5114b2870dd9571eb7bbaa70a3",
+          "parameter_counts": {
+            "total_trainable": 226631,
+            "shared_projection_design": 192320,
+            "fusion_and_classifier": 34311
+          },
+          "standardization": [
+            {
+              "branch_index": 0,
+              "fit_rows": 6322,
+              "minimum_std": 0.0017448209524154664,
+              "floored_dimensions": 0,
+              "mean_min": -3.7659425735473633,
+              "mean_max": 3.2948830127716064,
+              "std_min": 0.6317100524902344,
+              "std_max": 3.78086256980896
+            },
+            {
+              "branch_index": 1,
+              "fit_rows": 6322,
+              "minimum_std": 0.0006926100850105285,
+              "floored_dimensions": 1,
+              "mean_min": -1.4589881896972656,
+              "mean_max": 1.1694622039794922,
+              "std_min": 0.0006926101050339639,
+              "std_max": 2.257708787918091
+            },
+            {
+              "branch_index": 2,
+              "fit_rows": 6322,
+              "minimum_std": 0.0002416907697916031,
+              "floored_dimensions": 0,
+              "mean_min": 0.0011006782297044992,
+              "mean_max": 1.3484389781951904,
+              "std_min": 0.003551601432263851,
+              "std_max": 0.4158346354961395
+            }
+          ],
+          "gradient_check": {
+            "projection_0": {
+              "finite": true,
+              "gradient_l2": 2.984834944837911
+            },
+            "projection_1": {
+              "finite": true,
+              "gradient_l2": 2.938944922587724
+            },
+            "projection_2": {
+              "finite": true,
+              "gradient_l2": 1.771420711726012
+            },
+            "fusion": {
+              "finite": true,
+              "gradient_l2": 2.056438344278238
+            },
+            "classifier": {
+              "finite": true,
+              "gradient_l2": 1.114086354125067
+            }
+          },
+          "checkpoint_reload_exact": true,
+          "first_epoch_training_loss": 0.35196132402382707,
+          "last_epoch_training_loss": 0.0008332739611658923,
+          "training_seconds": 12.80765568499919
+        }
+      ],
+      "internal_seed_accuracy_mean": 0.9991566519080751,
+      "internal_seed_accuracy_sample_sd": 0.00036518043592005526,
+      "parameter_counts_per_seed": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      }
+    }
+  },
+  "configuration_sha256": "549920d114c9c9c1177c384d3de954f12bce0e344afaa42cd85704be2b13003e",
+  "split_sha256": "395f33a52a2d4e04113dccfa7aa17df5f484e2ef06d2c15990db3e4eccd972a9",
+  "outer_metrics_calculated": false,
+  "refit_completed": false,
+  "test_prediction_completed": false,
+  "selection_locked_before_refit": true
+}

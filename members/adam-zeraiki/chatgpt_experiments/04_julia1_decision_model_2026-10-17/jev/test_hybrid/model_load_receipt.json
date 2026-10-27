@@ -1,0 +1,17 @@
+{
+  "model": "SupersonicLabs/Julia-1",
+  "revision": "a85b127321d580d65176c89ced8273f305745d85",
+  "weights_sha256": "df853bf7fe424420011f3d0c47a05d7341aa9eefa7fb9f203ea4aada4ad95b72",
+  "parameters": 144292867,
+  "engine": "Upstream TransformerEngine, CPU float32, strict safetensors loading",
+  "fine_tuned_on_emojis": false,
+  "all_parameters_frozen": true,
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "transformers": "5.0.0",
+    "tokenizers": "0.22.2",
+    "huggingface_hub": "1.33.0",
+    "numpy": "2.3.5",
+    "safetensors": "0.6.2"
+  }
+}

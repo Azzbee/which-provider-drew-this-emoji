@@ -12,7 +12,7 @@ The research paper and code of team The Winners for the IDSI51006 Computer Visio
 |---|---|---|
 | `paper/main.tex` | paper skeleton: front page, abstract, data, architecture, metrics, performance, AI and code, conclusion, appendices | anyone, with care |
 | `paper/parts/background.tex` | Section 2, model families (RF/SVM, CNN, ResNet/MBConv/ConvNeXt, ViT, pretraining, ensembles) | anyone |
-| `paper/parts/fusion.tex` | Section 4.5, combining backbones; has a red **To complete** box | Adam |
+| `paper/parts/fusion.tex` | Section 4.5, averaging, learned fusion and decision models | Adam |
 | `paper/parts/journey.tex` | Section 6.1, the "tried, learned, changed" table | anyone |
 | `paper/parts/who.tex` | Appendix, who tried what | each member, own row only |
 | `paper/refs.bib` | bibliography | anyone; only add references you have opened |
@@ -45,8 +45,8 @@ The research paper and code of team The Winners for the IDSI51006 Computer Visio
 
 ## Open items before the hand-in
 
-- [ ] **Fusion experiment** (Adam): which three backbones, how the transformer fused them, and whether the `dinov2_convnext_ensemble` Kaggle entry came from it. Fill the red box in `paper/parts/fusion.tex` or remove it. No record of it exists in Codex's session logs.
-- [ ] **DINOv2 settings** (Lina): model size, input resolution, epochs, frozen or fine-tuned layers, validation score. Add to `members/lina-oumhand/README.md`, then to Section 4.4 of the paper. Also confirm whether it was DINOv2 or DINOv3.
+- [x] Fusion experiment and DINOv2 settings: recovered from Adam's ChatGPT records (`members/adam-zeraiki/chatgpt_experiments/`), now in paper sections 4.4 and 4.5.
+- [ ] **Lina**: confirm whether you ran anything beyond uploading the DINOv2 file; describe `submission.csv` and `submission2.csv`.
 - [ ] **ResNet18 at 160 px** (Charles): settings and validation score in `members/charles-montluc/README.md`. Confirm the spelling of your surname on the front page.
 - [ ] **AI-use record** (Adam): Adam adds `codebase/AI_USAGE.md` himself. Send him the AI tools you used and your prompts; do not create or edit that file.
 - [ ] **Erdem's E12b, E13**: what they were (they are members of the E13v ensemble).

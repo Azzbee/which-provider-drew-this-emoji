@@ -1,0 +1,183 @@
+{
+  "model": "SupersonicLabs/Julia-1",
+  "revision": "a85b127321d580d65176c89ced8273f305745d85",
+  "license": "Apache2.0 per upstream model card",
+  "implementation_used": [
+    "julia/inference.py:TransformerEngine",
+    "julia/model.py:JuliaDecisionModel",
+    "julia/data.py:Collator and strict sequence",
+    "julia/cuda.py:configure CPU"
+  ],
+  "source_files": [
+    {
+      "path": "julia_model/README.md",
+      "bytes": 13679,
+      "sha256": "bc46a6785ddbae32b769591841954393510b073f148aa9f7e4fced5a1bba9a81"
+    },
+    {
+      "path": "julia_model/config.json",
+      "bytes": 235,
+      "sha256": "da8dc5e01fa7c23035ac5b9f02979ba114aac6fc039d7635f56e8043ef8f9672"
+    },
+    {
+      "path": "julia_model/encoder/config.json",
+      "bytes": 1936,
+      "sha256": "c79cda42d42ddf777218254845ce92fb25a10dc35874be40d06abd707894523d"
+    },
+    {
+      "path": "julia_model/inference-policy.json",
+      "bytes": 355,
+      "sha256": "415468ae1c229186e63a277b2fd2e5ee3bbf4c00655125c0e43e01d5a8406e8a"
+    },
+    {
+      "path": "julia_model/julia/__init__.py",
+      "bytes": 178,
+      "sha256": "02485eb4dd7dadd13907380d1a9c3398709bd8af54b3e0e12b3061a3ebb5c1da"
+    },
+    {
+      "path": "julia_model/julia/cuda.py",
+      "bytes": 2309,
+      "sha256": "138ab63182f25473ce3886296c47ac44e94fc50ae5270927ae4c373f7bb49137"
+    },
+    {
+      "path": "julia_model/julia/data.py",
+      "bytes": 7163,
+      "sha256": "e3510fa4152ec11fa193046715991f44d7c2f85fd2488a98ef11c9d3db23da4e"
+    },
+    {
+      "path": "julia_model/julia/inference.py",
+      "bytes": 4613,
+      "sha256": "79b4e716365a6e07da4580ead725d5b76d06ef3a824a3ec23738feba64704b36"
+    },
+    {
+      "path": "julia_model/julia/model.py",
+      "bytes": 7539,
+      "sha256": "ef2ba82fe20cdf0db7bb887e9ef075476ed08b985ce9a95be0de3e26246ecc81"
+    },
+    {
+      "path": "julia_model/julia/probabilities.py",
+      "bytes": 595,
+      "sha256": "2a0197d2e0fa5a3c4b06b93599a85706724df7b0d2cc821a13ed293aef59f206"
+    },
+    {
+      "path": "julia_model/julia/router/README.md",
+      "bytes": 8209,
+      "sha256": "b590e128d869da6392f42145a7a235a08a49d4c94126fe77f83a96aede0cb547"
+    },
+    {
+      "path": "julia_model/julia/router/__init__.py",
+      "bytes": 357,
+      "sha256": "832cf0a44569941efba66dfa7099b645fdb1084082e40c6115bb0ac5edd78a96"
+    },
+    {
+      "path": "julia_model/julia/router/build.py",
+      "bytes": 3738,
+      "sha256": "ea059c3a97425cadb1068fe41626b6d3bcd77e1efccfc154dbde29352c432ed9"
+    },
+    {
+      "path": "julia_model/julia/router/encoder.py",
+      "bytes": 1787,
+      "sha256": "df25efee2ed916d52af9c4e9c0d98e80854ca70bbfc8140f1de871f290fd3238"
+    },
+    {
+      "path": "julia_model/julia/router/engine.py",
+      "bytes": 11624,
+      "sha256": "91bb30987ff8626ed1610955c6fd796939a5d271e2405b73f8674ccb947eb931"
+    },
+    {
+      "path": "julia_model/julia/router/native/LAWS.bend",
+      "bytes": 1502,
+      "sha256": "1aacac9a06d800208e4440108b98387bf276446f94092e1ae5617e970903b9da"
+    },
+    {
+      "path": "julia_model/julia/router/native/PROOF.bend",
+      "bytes": 2351,
+      "sha256": "360305f19b1172637e2013e44dea22b5ab2b4a9b27d1482d88198021e5524192"
+    },
+    {
+      "path": "julia_model/julia/router/native/bridge.c",
+      "bytes": 18808,
+      "sha256": "d479a67f4a8b6f47638b0a395162a90bf967b9b3035b2a828977d83a2fa8dbe5"
+    },
+    {
+      "path": "julia_model/julia/router/native/router.bend",
+      "bytes": 19699,
+      "sha256": "2445f1e982ac2ec707442aaf144b9b5315c7fef0fe4598f0f25f39b84afbc556"
+    },
+    {
+      "path": "julia_model/julia/router/native.py",
+      "bytes": 7840,
+      "sha256": "42bdba5ea7d874e1f53b2f17e99e731789611b5bd6734f687eaa2b0262c5d7ae"
+    },
+    {
+      "path": "julia_model/julia/router/router.py",
+      "bytes": 8494,
+      "sha256": "624b0b82fd34e4c6874a37595fa91a1d79553d0ca9d8111ef8330ed805f6be7c"
+    },
+    {
+      "path": "julia_model/julia/router/specialize.py",
+      "bytes": 1951,
+      "sha256": "4ba766a45785da0f48898143eb04e13bdf736019a8ba76b71ad84a4bfec8b2d9"
+    },
+    {
+      "path": "julia_model/julia/router/tests/synthetic.py",
+      "bytes": 1828,
+      "sha256": "f2b37bd6ceaf184449f1037b6aa8fda3bcb6263c76b3d11453c11c18d23d0196"
+    },
+    {
+      "path": "julia_model/julia/router/tests/test_engine.py",
+      "bytes": 18527,
+      "sha256": "eb91ee1963400cb732350dadb7f5e39cb68917c6314ca8039e24974310364d52"
+    },
+    {
+      "path": "julia_model/julia/router/tests/test_router.py",
+      "bytes": 4333,
+      "sha256": "e4df6d1f7d0962d0b5b119572d2d3897f1f4cadaa72600f26f3e72090a49172b"
+    },
+    {
+      "path": "julia_model/julia/router/transformer.py",
+      "bytes": 4254,
+      "sha256": "0ce04fab361ca4e8bed636c615e5a6e178fa1a52332db34457e5235c667e1786"
+    },
+    {
+      "path": "julia_model/julia/typed.py",
+      "bytes": 2415,
+      "sha256": "ed89e66a70fcedac1339347bd8fcca69fd2cd1a31535ad0148dae42c610b544d"
+    },
+    {
+      "path": "julia_model/julia_config.json",
+      "bytes": 147,
+      "sha256": "b9b881646beeac5414eaa78b39d3fe89ff8a2c062731ad718432620f9aee6bf7"
+    },
+    {
+      "path": "julia_model/model.safetensors",
+      "bytes": 577189056,
+      "sha256": "df853bf7fe424420011f3d0c47a05d7341aa9eefa7fb9f203ea4aada4ad95b72"
+    },
+    {
+      "path": "julia_model/provenance.json",
+      "bytes": 11773,
+      "sha256": "d3322e07820ad33b38e4bf5b4c4833c6b7e858ca553754fb8cac682ee802fd25"
+    },
+    {
+      "path": "julia_model/pyproject.toml",
+      "bytes": 619,
+      "sha256": "863dcbbc79ab1b903dcc3b69d3bb6e1443ffcd025050174d33b1ef20c30ef84d"
+    },
+    {
+      "path": "julia_model/tokenizer/tokenizer.json",
+      "bytes": 34363188,
+      "sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f"
+    },
+    {
+      "path": "julia_model/tokenizer/tokenizer_config.json",
+      "bytes": 652,
+      "sha256": "6b069e57db0ce0794c22547725275f22618809c4ef4249307337e651a0dfef8c"
+    }
+  ],
+  "notes": [
+    "Optional native router/build code is retained from upstream but is never imported by the direct TransformerEngine path.",
+    "Model parameters are frozen. The temperature buffer is not applied by the published TransformerEngine; our code uses its original logits-to-softmax behavior.",
+    "The manifest includes only published model/source files, excluding transfer artifacts and generated Python caches."
+  ]
+}

@@ -1,0 +1,1 @@
+{"event": "prediction_complete", "partition": "test", "rows": 9879, "output": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style"}

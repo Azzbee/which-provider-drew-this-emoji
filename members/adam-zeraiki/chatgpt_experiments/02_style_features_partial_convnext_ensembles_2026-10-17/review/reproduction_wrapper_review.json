@@ -1,0 +1,44 @@
+{
+  "scope": "Independent static review of fresh-computer inference wrapper and lightweight validation of both packaged selected checkpoints; no model inference in this wrapper check.",
+  "source_path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_results/reproduce_submission.py",
+  "source_sha256": "e4c52b96b9fb804b8a93580061ca1ab994097654fb1594dfa1f149a323e67dd5",
+  "blocking_findings": [],
+  "dino_packaged_checkpoint_validation": {
+    "component": "dinov2",
+    "checkpoint_sha256": "731f53ccaf235be2747bb64b13c0846ed07e01f28633e72ce97c1a6074a211fc",
+    "model_state_sha256": "a81be5823cd839f995eca16801ef8f915dccaa624e7854b518fd626b041a3f15",
+    "pretrained_suffix_state_sha256": "7100828c4f7e86f987e5b75c1d8ff923ac61752ae228d743cdb120e0848e0000",
+    "classifier_state_sha256": "e5d088ec4bbbef9834fc16a3d7772122ea106d6c816fce33fee618eccb12a4d3",
+    "pretrained_checkpoint_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+    "split_manifest_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+    "selected_epoch": 3,
+    "packaging_verified": true,
+    "all_label_refit": false
+  },
+  "checks": [
+    "All subprocess paths resolve relative to package directory and current Python interpreter.",
+    "DINO uses evaluate_tta --split test --views original with local pretrained and selected suffix state.",
+    "ConvNeXt uses --stage predict --method finetune with explicit data, source split, hashes, pretrained and saved trained checkpoint.",
+    "No download or fitting code is called by the wrapper; offline environment flags are set for subprocesses.",
+    "Both component CLI interfaces and receipt field names match the current bundled scripts.",
+    "DINO full-state/head/suffix hashes agree with saved metrics and portable checkpoint packaging.",
+    "ConvNeXt final portable artifact passes the actual wrapper validator, including full model-state hash, selected epoch, suffix hash, official pretrained origin and checkpoint packaging.",
+    "Canonical provider order and exact 10001-19879 test ID order are verified before averaging.",
+    "Float32 weighted probability arithmetic matches the declared blend; output is checked against probability argmax."
+  ],
+  "remaining_packaging_requirements": [],
+  "cross_hardware_note": "The wrapper records whether its CSV SHA matches reference_submission_sha256 when provided; BF16 results may vary across hardware/library builds.",
+  "convnext_packaged_checkpoint_validation": {
+    "component": "convnext",
+    "checkpoint_sha256": "f8c081ca533695a702412952dc2f9e4ca450814ed993e3f60adffeadbeb8a9cf",
+    "model_state_sha256": "11e863642b547222500392fa25ea32ff8b3871c80b43c046ea1a99bd28bfbf3b",
+    "pretrained_suffix_state_sha256": "614ad7dc21574e3840896af11e457a9213de9873e051048c81a94c16732ea1f4",
+    "classifier_state_sha256": "b98eabe6bd1ec20750f8466c1da2e1fee29d31412407c605f2e104df706c2398",
+    "pretrained_checkpoint_sha256": "983f1562536e84ff750a1576fb08e54de751dbf2e17c0d8a4a13704341fdcd3d",
+    "split_manifest_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+    "selected_epoch": 4,
+    "packaging_verified": true,
+    "all_label_refit": false
+  },
+  "all_selected_checkpoint_packaging_validations_passed": true
+}

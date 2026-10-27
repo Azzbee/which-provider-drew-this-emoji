@@ -1,0 +1,484 @@
+{
+  "family": "transformer",
+  "internal_ensemble_metrics": {
+    "rows": 1581,
+    "correct": 1510,
+    "accuracy": 0.9550917141049968,
+    "log_loss": 0.15881912334855816,
+    "macro_f1": 0.9537956420391754
+  },
+  "per_seed": [
+    {
+      "family": "transformer",
+      "seed": 17,
+      "stage": "internal_selection",
+      "training_rows": 6322,
+      "completed_epochs": 20,
+      "selected_epochs": 12,
+      "internal_validation_metrics": {
+        "rows": 1581,
+        "correct": 1499,
+        "accuracy": 0.948134092346616,
+        "log_loss": 0.21794869466960431,
+        "macro_f1": 0.9442593450262274
+      },
+      "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style/transformer/seed_17/selection/best.pt",
+      "checkpoint_sha256": "648fb0b25663850b33e11e2ae0546b6f892495340ae9944ef4b2d242e380c43a",
+      "parameter_counts": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      },
+      "standardization": [
+        {
+          "branch_index": 0,
+          "fit_rows": 6322,
+          "minimum_std": 0.0014623899459838868,
+          "floored_dimensions": 0,
+          "mean_min": -3.763733148574829,
+          "mean_max": 6.506143569946289,
+          "std_min": 0.3867741823196411,
+          "std_max": 3.4799821376800537
+        },
+        {
+          "branch_index": 1,
+          "fit_rows": 6322,
+          "minimum_std": 0.0005454717874526977,
+          "floored_dimensions": 1,
+          "mean_min": -2.163022994995117,
+          "mean_max": 6.613400936126709,
+          "std_min": 0.0005454717902466655,
+          "std_max": 2.5749990940093994
+        },
+        {
+          "branch_index": 2,
+          "fit_rows": 6322,
+          "minimum_std": 0.0002416907697916031,
+          "floored_dimensions": 0,
+          "mean_min": 0.0011006782297044992,
+          "mean_max": 1.3484389781951904,
+          "std_min": 0.003551601432263851,
+          "std_max": 0.4158346354961395
+        }
+      ],
+      "gradient_check": {
+        "projection_0": {
+          "finite": true,
+          "gradient_l2": 1.333936531359835
+        },
+        "projection_1": {
+          "finite": true,
+          "gradient_l2": 1.4751176311833767
+        },
+        "projection_2": {
+          "finite": true,
+          "gradient_l2": 1.639085806875164
+        },
+        "fusion": {
+          "finite": true,
+          "gradient_l2": 1.2250427376198882
+        },
+        "classifier": {
+          "finite": true,
+          "gradient_l2": 0.7116629784849174
+        }
+      },
+      "checkpoint_reload_exact": true,
+      "first_epoch_training_loss": 1.0306117527472072,
+      "last_epoch_training_loss": 0.010888636633412007,
+      "training_seconds": 10.280146942997817
+    },
+    {
+      "family": "transformer",
+      "seed": 43,
+      "stage": "internal_selection",
+      "training_rows": 6322,
+      "completed_epochs": 13,
+      "selected_epochs": 5,
+      "internal_validation_metrics": {
+        "rows": 1581,
+        "correct": 1490,
+        "accuracy": 0.9424414927261227,
+        "log_loss": 0.2137058895913786,
+        "macro_f1": 0.937914848402588
+      },
+      "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style/transformer/seed_43/selection/best.pt",
+      "checkpoint_sha256": "f3438681449ecb31c12c1ee65c0b9526a67840533f85104b24c9464e7c9ea9f0",
+      "parameter_counts": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      },
+      "standardization": [
+        {
+          "branch_index": 0,
+          "fit_rows": 6322,
+          "minimum_std": 0.0014623899459838868,
+          "floored_dimensions": 0,
+          "mean_min": -3.763733148574829,
+          "mean_max": 6.506143569946289,
+          "std_min": 0.3867741823196411,
+          "std_max": 3.4799821376800537
+        },
+        {
+          "branch_index": 1,
+          "fit_rows": 6322,
+          "minimum_std": 0.0005454717874526977,
+          "floored_dimensions": 1,
+          "mean_min": -2.163022994995117,
+          "mean_max": 6.613400936126709,
+          "std_min": 0.0005454717902466655,
+          "std_max": 2.5749990940093994
+        },
+        {
+          "branch_index": 2,
+          "fit_rows": 6322,
+          "minimum_std": 0.0002416907697916031,
+          "floored_dimensions": 0,
+          "mean_min": 0.0011006782297044992,
+          "mean_max": 1.3484389781951904,
+          "std_min": 0.003551601432263851,
+          "std_max": 0.4158346354961395
+        }
+      ],
+      "gradient_check": {
+        "projection_0": {
+          "finite": true,
+          "gradient_l2": 1.353866038905567
+        },
+        "projection_1": {
+          "finite": true,
+          "gradient_l2": 1.290286589843422
+        },
+        "projection_2": {
+          "finite": true,
+          "gradient_l2": 1.4858696822070119
+        },
+        "fusion": {
+          "finite": true,
+          "gradient_l2": 1.3980312503608936
+        },
+        "classifier": {
+          "finite": true,
+          "gradient_l2": 0.8429512152209901
+        }
+      },
+      "checkpoint_reload_exact": true,
+      "first_epoch_training_loss": 1.01645891921349,
+      "last_epoch_training_loss": 0.023794361620868017,
+      "training_seconds": 7.455495857000642
+    },
+    {
+      "family": "transformer",
+      "seed": 101,
+      "stage": "internal_selection",
+      "training_rows": 6322,
+      "completed_epochs": 15,
+      "selected_epochs": 7,
+      "internal_validation_metrics": {
+        "rows": 1581,
+        "correct": 1505,
+        "accuracy": 0.9519291587602783,
+        "log_loss": 0.2054987531964779,
+        "macro_f1": 0.952525532651787
+      },
+      "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style/transformer/seed_101/selection/best.pt",
+      "checkpoint_sha256": "0d935fb0d21dbec7f579d92a59dfa32d6081891978769c8038179f7ad1976373",
+      "parameter_counts": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      },
+      "standardization": [
+        {
+          "branch_index": 0,
+          "fit_rows": 6322,
+          "minimum_std": 0.0014623899459838868,
+          "floored_dimensions": 0,
+          "mean_min": -3.763733148574829,
+          "mean_max": 6.506143569946289,
+          "std_min": 0.3867741823196411,
+          "std_max": 3.4799821376800537
+        },
+        {
+          "branch_index": 1,
+          "fit_rows": 6322,
+          "minimum_std": 0.0005454717874526977,
+          "floored_dimensions": 1,
+          "mean_min": -2.163022994995117,
+          "mean_max": 6.613400936126709,
+          "std_min": 0.0005454717902466655,
+          "std_max": 2.5749990940093994
+        },
+        {
+          "branch_index": 2,
+          "fit_rows": 6322,
+          "minimum_std": 0.0002416907697916031,
+          "floored_dimensions": 0,
+          "mean_min": 0.0011006782297044992,
+          "mean_max": 1.3484389781951904,
+          "std_min": 0.003551601432263851,
+          "std_max": 0.4158346354961395
+        }
+      ],
+      "gradient_check": {
+        "projection_0": {
+          "finite": true,
+          "gradient_l2": 1.419484667011139
+        },
+        "projection_1": {
+          "finite": true,
+          "gradient_l2": 1.509477543604241
+        },
+        "projection_2": {
+          "finite": true,
+          "gradient_l2": 1.798836311926476
+        },
+        "fusion": {
+          "finite": true,
+          "gradient_l2": 1.292775233313009
+        },
+        "classifier": {
+          "finite": true,
+          "gradient_l2": 0.7092740188969113
+        }
+      },
+      "checkpoint_reload_exact": true,
+      "first_epoch_training_loss": 1.0134628967501929,
+      "last_epoch_training_loss": 0.015191940716251245,
+      "training_seconds": 7.883586105002905
+    }
+  ],
+  "internal_seed_accuracy_mean": 0.9475015812776725,
+  "internal_seed_accuracy_sample_sd": 0.004775353849001123,
+  "parameter_counts_per_seed": {
+    "total_trainable": 226631,
+    "shared_projection_design": 192320,
+    "fusion_and_classifier": 34311
+  },
+  "refit_per_seed": [
+    {
+      "family": "transformer",
+      "seed": 17,
+      "stage": "original_training_refit",
+      "training_rows": 7903,
+      "completed_epochs": 12,
+      "selected_epochs": 12,
+      "internal_validation_metrics": null,
+      "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style/transformer/seed_17/refit/model.pt",
+      "checkpoint_sha256": "086b4cbd9a5ee0d3615962055fa11ac8f3544ad998b5227677f169d326f77075",
+      "parameter_counts": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      },
+      "standardization": [
+        {
+          "branch_index": 0,
+          "fit_rows": 7903,
+          "minimum_std": 0.001463825821876526,
+          "floored_dimensions": 0,
+          "mean_min": -3.766852855682373,
+          "mean_max": 6.491615295410156,
+          "std_min": 0.38618776202201843,
+          "std_max": 3.481154203414917
+        },
+        {
+          "branch_index": 1,
+          "fit_rows": 7903,
+          "minimum_std": 0.0005457502007484436,
+          "floored_dimensions": 1,
+          "mean_min": -2.1616861820220947,
+          "mean_max": 6.606710910797119,
+          "std_min": 0.0005457501974888146,
+          "std_max": 2.573944568634033
+        },
+        {
+          "branch_index": 2,
+          "fit_rows": 7903,
+          "minimum_std": 0.00024199002981185912,
+          "floored_dimensions": 0,
+          "mean_min": 0.0010755218099802732,
+          "mean_max": 1.3524744510650635,
+          "std_min": 0.0035274343099445105,
+          "std_max": 0.4167998135089874
+        }
+      ],
+      "gradient_check": {
+        "projection_0": {
+          "finite": true,
+          "gradient_l2": 1.3837055027427623
+        },
+        "projection_1": {
+          "finite": true,
+          "gradient_l2": 1.4510660902909756
+        },
+        "projection_2": {
+          "finite": true,
+          "gradient_l2": 1.6609390184060793
+        },
+        "fusion": {
+          "finite": true,
+          "gradient_l2": 1.2032304600620685
+        },
+        "classifier": {
+          "finite": true,
+          "gradient_l2": 0.762527695431029
+        }
+      },
+      "checkpoint_reload_exact": true,
+      "first_epoch_training_loss": 0.9103964865245382,
+      "last_epoch_training_loss": 0.03215027370542103,
+      "training_seconds": 7.238532488998317
+    },
+    {
+      "family": "transformer",
+      "seed": 43,
+      "stage": "original_training_refit",
+      "training_rows": 7903,
+      "completed_epochs": 5,
+      "selected_epochs": 5,
+      "internal_validation_metrics": null,
+      "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style/transformer/seed_43/refit/model.pt",
+      "checkpoint_sha256": "6f46204cd4c82b04a202e4385d2c41718c87063f20b0c7e35b4a8bc8d7ced201",
+      "parameter_counts": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      },
+      "standardization": [
+        {
+          "branch_index": 0,
+          "fit_rows": 7903,
+          "minimum_std": 0.001463825821876526,
+          "floored_dimensions": 0,
+          "mean_min": -3.766852855682373,
+          "mean_max": 6.491615295410156,
+          "std_min": 0.38618776202201843,
+          "std_max": 3.481154203414917
+        },
+        {
+          "branch_index": 1,
+          "fit_rows": 7903,
+          "minimum_std": 0.0005457502007484436,
+          "floored_dimensions": 1,
+          "mean_min": -2.1616861820220947,
+          "mean_max": 6.606710910797119,
+          "std_min": 0.0005457501974888146,
+          "std_max": 2.573944568634033
+        },
+        {
+          "branch_index": 2,
+          "fit_rows": 7903,
+          "minimum_std": 0.00024199002981185912,
+          "floored_dimensions": 0,
+          "mean_min": 0.0010755218099802732,
+          "mean_max": 1.3524744510650635,
+          "std_min": 0.0035274343099445105,
+          "std_max": 0.4167998135089874
+        }
+      ],
+      "gradient_check": {
+        "projection_0": {
+          "finite": true,
+          "gradient_l2": 1.2624827739400355
+        },
+        "projection_1": {
+          "finite": true,
+          "gradient_l2": 1.2681775554997552
+        },
+        "projection_2": {
+          "finite": true,
+          "gradient_l2": 1.4878084718103235
+        },
+        "fusion": {
+          "finite": true,
+          "gradient_l2": 1.3139258038335115
+        },
+        "classifier": {
+          "finite": true,
+          "gradient_l2": 0.7503657609359035
+        }
+      },
+      "checkpoint_reload_exact": true,
+      "first_epoch_training_loss": 0.9102009128320523,
+      "last_epoch_training_loss": 0.07379579251059608,
+      "training_seconds": 3.085237718994904
+    },
+    {
+      "family": "transformer",
+      "seed": 101,
+      "stage": "original_training_refit",
+      "training_rows": 7903,
+      "completed_epochs": 7,
+      "selected_epochs": 7,
+      "internal_validation_metrics": null,
+      "checkpoint": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/frozen_style/transformer/seed_101/refit/model.pt",
+      "checkpoint_sha256": "a93cf6117a6dffcf6b4387166feca6a3b7e15228c7ecbb6c4ac3f02563094e68",
+      "parameter_counts": {
+        "total_trainable": 226631,
+        "shared_projection_design": 192320,
+        "fusion_and_classifier": 34311
+      },
+      "standardization": [
+        {
+          "branch_index": 0,
+          "fit_rows": 7903,
+          "minimum_std": 0.001463825821876526,
+          "floored_dimensions": 0,
+          "mean_min": -3.766852855682373,
+          "mean_max": 6.491615295410156,
+          "std_min": 0.38618776202201843,
+          "std_max": 3.481154203414917
+        },
+        {
+          "branch_index": 1,
+          "fit_rows": 7903,
+          "minimum_std": 0.0005457502007484436,
+          "floored_dimensions": 1,
+          "mean_min": -2.1616861820220947,
+          "mean_max": 6.606710910797119,
+          "std_min": 0.0005457501974888146,
+          "std_max": 2.573944568634033
+        },
+        {
+          "branch_index": 2,
+          "fit_rows": 7903,
+          "minimum_std": 0.00024199002981185912,
+          "floored_dimensions": 0,
+          "mean_min": 0.0010755218099802732,
+          "mean_max": 1.3524744510650635,
+          "std_min": 0.0035274343099445105,
+          "std_max": 0.4167998135089874
+        }
+      ],
+      "gradient_check": {
+        "projection_0": {
+          "finite": true,
+          "gradient_l2": 1.2675936594594188
+        },
+        "projection_1": {
+          "finite": true,
+          "gradient_l2": 1.4522631874159049
+        },
+        "projection_2": {
+          "finite": true,
+          "gradient_l2": 1.7244500667048315
+        },
+        "fusion": {
+          "finite": true,
+          "gradient_l2": 1.314234737209542
+        },
+        "classifier": {
+          "finite": true,
+          "gradient_l2": 0.7346523148886421
+        }
+      },
+      "checkpoint_reload_exact": true,
+      "first_epoch_training_loss": 0.8956786619135658,
+      "last_epoch_training_loss": 0.046432953871862956,
+      "training_seconds": 3.8481754309977987
+    }
+  ],
+  "labeled_probabilities_sha256": "0e39f0f0b55839f399c25c601d2ca0951c8f13ce8627f4a0802668dacec8256c"
+}
