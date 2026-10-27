@@ -1,4 +1,4 @@
-# Charles Montluc
+# Charles Montluc-Giannopoulou
 
 Explored transfer learning with a pretrained ResNet at a higher input resolution.
 
@@ -14,5 +14,4 @@ Your 160 px ResNet18 (0.96396 private) supports the paper's resolution finding: 
 ## To complete
 
 - Training settings (optimiser, learning rate, epochs, augmentation, preprocessing) and a validation score.
-- Confirm the spelling of your surname on the paper's front page.
 - Add your notebook here, and send Adam the AI tools and prompts you used (he keeps the AI-use record).

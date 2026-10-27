@@ -45,9 +45,9 @@ The research paper and code of team The Winners for the IDSI51006 Computer Visio
 
 ## Open items before the hand-in
 
-- [x] Fusion experiment and DINOv2 settings: recovered from Adam's ChatGPT records (`members/adam-zeraiki/chatgpt_experiments/`), now in paper sections 4.4 and 4.5.
-- [ ] **Lina**: confirm whether you ran anything beyond uploading the DINOv2 file; describe `submission.csv` and `submission2.csv`.
-- [ ] **ResNet18 at 160 px** (Charles): settings and validation score in `members/charles-montluc/README.md`. Confirm the spelling of your surname on the front page.
+- [x] Fusion experiment and DINOv2 settings: in `members/adam-zeraiki/` and `members/lina-oumhand/dinov2-partial-finetune/`, and in paper sections 4.4 and 4.5.
+- [ ] **Lina**: describe `submission.csv` and `submission2.csv`.
+- [ ] **ResNet18 at 160 px** (Charles): settings and validation score in `members/charles-montluc-giannopoulou/README.md`.
 - [ ] **AI-use record** (Adam): Adam adds `codebase/AI_USAGE.md` himself. Send him the AI tools you used and your prompts; do not create or edit that file.
 - [ ] **Erdem's E12b, E13**: what they were (they are members of the E13v ensemble).
 
