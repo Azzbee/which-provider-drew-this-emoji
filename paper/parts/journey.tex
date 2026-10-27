@@ -1,0 +1,34 @@
+\subsection{How we got to the final model}
+\label{sec:journey}
+The final model was not designed in one step. \Cref{tab:journey} tells the project in the order it happened: each row is something we tried, what it gave, and what that taught us, which is what decided the next row. The complete list of runs with their settings is in \cref{app:log,app:who}.
+
+\begin{table}[t]
+\centering\small
+\caption{\textbf{From first try to final model.} Accuracies are validation accuracies unless marked $^\dagger$ (private leaderboard). \ver\ verified by the codebase, \rep\ from the team's log or Kaggle.}
+\label{tab:journey}
+\renewcommand{\arraystretch}{1.18}
+\newcommand{\stp}[1]{\tikz[baseline=(n.base)]\node[circle, fill=accent, text=white, inner sep=1.2pt, minimum size=4.2mm, font=\sffamily\scriptsize\bfseries](n){#1};}
+\begin{tabularx}{\textwidth}{@{}c>{\raggedright\arraybackslash}p{44mm}>{\raggedleft\arraybackslash}p{17mm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+ & What we tried & Result & What we learned, and what we changed\\
+\midrule
+\stp{1} & First CNN: 3 conv blocks, no normalisation, Adam at a constant $10^{-3}$, 20 epochs (30 Sept.) & 76.71\%\ver & Training accuracy only 75\%: the model underfits. \textbf{Next:} BatchNorm, a fourth stage and a OneCycle schedule.\\
+\stp{2} & EmojiCNNv2 (0.39\,M parameters), same data & 90.96\%\ver & +14 points from optimisation and normalisation alone, no extra data. A good CNN from scratch is a strong baseline.\\
+\stp{3} & File metadata only (size, PNG mode, hidden colour), random forest & 87.37\%\ver & The file format leaks the label. \textbf{Next:} composite on white, square canvas, exact-pixel augmentation; keep the final model pixel-only. Same CNN with compositing: 92.11\% $\to$ 93.62\%\rep.\\
+\stp{4} & Hand-crafted features: colour histogram + HOG, SVM & 81.28\%\rep & Below every trained CNN: the cues are too fine for generic descriptors. \textbf{Next:} learn the features.\\
+\stp{5} & Pretrained ResNet18 as a frozen feature extractor, 128\,px & 77.48\%\rep & ImageNet features describe objects, not drawing style. \textbf{Next:} fine-tune the whole network.\\
+\stp{6} & Full fine-tuning at 128\,px: ResNet18, EfficientNet-B0, ConvNeXt-Tiny; ResNet18 at 160\,px (Charles) & 93.72\%, 93.12\%, 95.90\%\rep; 0.96396$^\dagger$ & Fine-tuning recovers 16 points; ConvNeXt is best. \textbf{Next:} build on ConvNeXt-Tiny.\\
+\stp{7} & Stronger augmentation: rotation, scaling, label smoothing & 94.38\%\rep & $-1.5$ points: resampling blurs the outlines that identify a vendor. \textbf{Next:} flips and integer shifts only.\\
+\stp{8} & Input resolution 128 $\to$ 224\,px & 97.57\%\rep & +1.7 points, the largest single gain: resolution matters more than architecture.\\
+\stp{9} & Ensembles (128 + 224\,px), retraining on all data, nearest-neighbour upscaling (E15, Erdem) & 97.93\%\rep; 0.98238$^\dagger$ & Retraining on all data changed the private score by +0.14 and $-0.08$ points: no reliable gain. Exact integer upscaling gave the team's best entry.\\
+\stp{10} & Self-supervised ViT: DINOv2 fine-tuned (Lina); DINOv2 + ConvNeXt ensemble & 0.95607$^\dagger$, 0.96477$^\dagger$ & The transformer is weaker here, and adding it pulls ConvNeXt down. \textbf{Next:} combine only comparably strong members.\\
+\stp{11} & ConvNeXt-Tiny, 5 grouped folds, flip TTA, lowest-validation-loss epoch (run A) & 97.29\%\ver & Validation loss and accuracy disagree. \textbf{Next:} keep the last epoch of the schedule.\\
+\rowcolor{panel}\stp{12} & Same, last epoch (run B): \textbf{final model} & 97.69\%\ver; 0.98218$^\dagger$ & +0.40 points over run A ($p=2.4\times10^{-5}$), 13 minutes of training.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Three turns shaped the project. The first was finding the file-format shortcut (step 3): it changed the question from ``how high can we score'' to ``how high can we score from the drawing'', and every later comparison was made under that rule. The second was the failure of frozen features (step 5), which showed that vendor style is not what ImageNet pretraining encodes, and that the backbone has to be adapted. The third was the gap between validation loss and accuracy at the end (step 11), which changed how we choose a checkpoint. Several ideas did not work, and they are as informative as the ones that did: resampling augmentation, retraining on all data, and adding a weaker transformer to a strong CNN all lost or failed to gain accuracy (\cref{sec:nowork}).
+
+\subsection{Experiment ladder}
+\label{sec:ladder}

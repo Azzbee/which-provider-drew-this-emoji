@@ -1,0 +1,152 @@
+% ================================================================== 2 BACKGROUND
+\section{Background: the model families we used}
+\label{sec:background}
+The project moved through most of the families of models used in computer vision today, from hand-crafted features to self-supervised transformers. This section introduces each one at the level needed to follow the rest of the paper; \cref{tab:families} summarises them and points to where each appears in our experiments.
+
+\begin{table}[t]
+\centering\small
+\caption{\textbf{Model families at a glance}, with the best validation (or private leaderboard, $^\dagger$) accuracy each reached in this project. Parameter counts are for the seven-class versions, counted with \texttt{timm}.}
+\label{tab:families}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{30mm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedleft\arraybackslash}p{15mm}>{\raggedleft\arraybackslash}p{15mm}@{}}
+\toprule
+Family & What it sees & Built-in assumption & Params & Best here\\
+\midrule
+Random forest, SVM & hand-made features (file statistics, colour histogram, HOG) & the features are the right ones & n/a & 87.37\%\\
+CNN from scratch & pixels, through small local filters & locality, translation equivariance & 0.39\,M & 90.96\%\\
+Pretrained CNN (ResNet18, EfficientNet-B0, ConvNeXt-Tiny) & pixels, filters initialised on ImageNet & as above, plus ImageNet features transfer & 4.0--27.8\,M & 97.69\%\\
+Vision transformer (DINOv2) & $14\times14$ patches as tokens, global attention & almost none; learned from 142\,M images & 22.1\,M (S/14) & 0.95607$^\dagger$\\
+Ensembles and fusion & the outputs of several models & errors of the members are not identical & sum & 0.98238$^\dagger$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Classical machine learning on hand-crafted features}
+Before deep learning, an image classifier had two separate parts: a human-designed feature extractor and a generic classifier. Histograms of oriented gradients (HOG) \cite{dalal2005hog} describe local shape by the distribution of edge directions in small cells; colour histograms describe the palette. A support vector machine \cite{cortes1995svm} then finds the maximum-margin boundary between classes, possibly in a higher-dimensional space reached through a kernel, and a random forest \cite{breiman2001rf} averages many decision trees, each trained on a bootstrap sample with random feature subsets. Both are fast and interpretable, but they can only use the information the features expose. We used them twice: as a diagnostic of the file-format shortcut (a random forest on file metadata, \cref{sec:fingerprints}) and as a hand-crafted baseline on pixels (HOG and colour histogram with an SVM, \pct{81.28}).
+
+\subsection{Convolutional neural networks}
+A convolutional neural network (CNN) \cite{lecun1998gradient,krizhevsky2012alexnet} learns the features instead. A convolutional layer slides a small filter $w$ of size $k\times k$ over the input and computes, at every position and for every output channel $c'$,
+\begin{equation}
+  y_{c'}(i,j) \;=\; b_{c'} + \sum_{c}\sum_{u,v=-\lfloor k/2\rfloor}^{\lfloor k/2\rfloor} w_{c',c}(u,v)\, x_c(i+u,\, j+v),
+\end{equation}
+so the same few weights are reused across the image (\cref{fig:cnn-basics}). Two assumptions are built in: what matters is local (locality), and a pattern means the same thing wherever it appears (translation equivariance). Pooling layers downsample the feature maps, so each later filter sees a larger part of the image (its receptive field), and stacking layers builds a hierarchy from edges to textures to parts. Batch normalisation \cite{ioffe2015batchnorm} standardises activations within each mini-batch and makes deeper networks trainable at larger learning rates. These biases suit our task well: anti-aliasing, outline weight and shading are local, repeated patterns.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\sffamily\scriptsize, x=4.2mm, y=4.2mm,
+  arr/.style={-{Stealth[length=2mm]}, color=ink2, line width=0.6pt}]
+  % input grid 7x7
+  \foreach \i in {0,...,6} \foreach \j in {0,...,6} \draw[rule, fill=white] (\i,\j) rectangle ++(1,1);
+  \fill[verified!25] (1,3) rectangle (4,6); \draw[verified, line width=0.9pt] (1,3) rectangle (4,6);
+  \node[anchor=north] at (3.5,-0.2) {input $x$ (one channel shown)};
+  % kernel
+  \begin{scope}[shift={(8.6,2.2)}]
+    \foreach \i in {0,...,2} \foreach \j in {0,...,2} \draw[verified, fill=verified!12] (\i,\j) rectangle ++(1,1);
+    \node at (1.5,1.5) {$w$};
+    \node[anchor=north] at (1.5,-0.2) {$3\times3$ filter};
+  \end{scope}
+  \node at (12.6,3.7) {\Large$\Rightarrow$};
+  % feature map 5x5
+  \begin{scope}[shift={(14,1)}]
+    \foreach \i in {0,...,4} \foreach \j in {0,...,4} \draw[rule, fill=white] (\i,\j) rectangle ++(1,1);
+    \fill[verified!55] (1,3) rectangle (2,4);
+    \node[anchor=north] at (2.5,-0.2) {feature map $y$};
+  \end{scope}
+  \draw[densely dotted, verified] (4,6) -- (15,4); \draw[densely dotted, verified] (4,3) -- (15,3);
+  \node at (20.4,3.7) {\Large$\Rightarrow$};
+  % pooled 2x2 (from 4x4 top-left region)
+  \begin{scope}[shift={(21.8,2.5)}]
+    \foreach \i in {0,...,1} \foreach \j in {0,...,1} \draw[rule, fill=white] (\i,\j) rectangle ++(1,1);
+    \fill[alert!35] (0,1) rectangle (1,2);
+    \node[anchor=north, align=center] at (1,-0.2) {max-pool $2\times2$};
+  \end{scope}
+  \node[align=left, anchor=west, text width=46mm, color=ink2] at (25,3.6) {the same 9 weights are applied at every position; pooling halves the resolution, so the next layer's filters see twice as far};
+\end{tikzpicture}
+\caption{\textbf{What a convolutional layer computes.} A $3\times3$ filter (blue) slides over the input and produces one value of the feature map per position; max-pooling then keeps the strongest response in each $2\times2$ window.}
+\label{fig:cnn-basics}
+\end{figure}
+
+\subsection{Deeper CNNs: residual, efficient and modernised blocks}
+Simply stacking more layers eventually makes networks harder to optimise. ResNet \cite{he2016resnet} adds the input of each block to its output, $\bm{x}\leftarrow\bm{x}+F(\bm{x})$, so that a block only has to learn a correction and gradients flow through the identity path; ResNet18 stacks eight such blocks of two $3\times3$ convolutions. EfficientNet-B0 \cite{tan2019efficientnet} is built from the inverted bottleneck (MBConv) of MobileNetV2 \cite{sandler2018mobilenetv2}: a $1\times1$ convolution expands the channels, a cheap depthwise $3\times3$ convolution filters each channel separately, a squeeze-and-excitation gate \cite{hu2018senet} reweights channels, and a $1\times1$ convolution projects back. ConvNeXt \cite{liu2022convnext} revisits ResNet with design choices borrowed from transformers: a $7\times7$ depthwise convolution, LayerNorm instead of BatchNorm, a four-times expansion, GELU and fewer normalisation layers. \Cref{fig:blocks} compares the three blocks; ConvNeXt-Tiny became our final backbone.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\sffamily\scriptsize, node distance=1.6mm,
+  l/.style={draw=accent, rounded corners=1.5pt, fill=accent!8, minimum width=27mm, minimum height=4.6mm, inner sep=1.5pt, align=center},
+  n/.style={draw=rule, rounded corners=1.5pt, fill=white, minimum width=27mm, minimum height=4.6mm, inner sep=1.5pt, align=center},
+  arr/.style={-{Stealth[length=1.5mm]}, color=ink2, line width=0.5pt},
+  plus/.style={circle, draw=ink2, inner sep=0.5pt, font=\sffamily\footnotesize}]
+  % ResNet basic block
+  \node[font=\sffamily\scriptsize\bfseries] (t1) at (0,0) {ResNet basic block};
+  \node[n, below=2.5mm of t1] (a0) {$\bm{x}$, $C$ channels};
+  \node[l, below=of a0] (a1) {conv $3{\times}3$, BN, ReLU};
+  \node[l, below=of a1] (a2) {conv $3{\times}3$, BN};
+  \node[plus, below=2mm of a2] (ap) {$+$};
+  \node[n, below=2mm of ap] (a3) {ReLU};
+  \foreach \u/\v in {a0/a1,a1/a2,a2/ap,ap/a3} \draw[arr] (\u) -- (\v);
+  \draw[arr] (a0.east) -- ++(4mm,0) |- (ap.east);
+  \node[color=ink2, below=1mm of a3, align=center] {ResNet18: 8 blocks, 11.2\,M params};
+  % MBConv
+  \node[font=\sffamily\scriptsize\bfseries] (t2) at (5.3,0) {MBConv (EfficientNet)};
+  \node[n, below=2.5mm of t2] (b0) {$\bm{x}$, $C$ channels};
+  \node[l, below=of b0] (b1) {conv $1{\times}1$ to $6C$, BN, SiLU};
+  \node[l, below=of b1] (b2) {depthwise $3{\times}3$, BN, SiLU};
+  \node[l, below=of b2] (b3) {squeeze-excitation};
+  \node[l, below=of b3] (b4) {conv $1{\times}1$ to $C$, BN};
+  \node[plus, below=2mm of b4] (bp) {$+$};
+  \foreach \u/\v in {b0/b1,b1/b2,b2/b3,b3/b4,b4/bp} \draw[arr] (\u) -- (\v);
+  \draw[arr] (b0.east) -- ++(4mm,0) |- (bp.east);
+  \node[color=ink2, below=1mm of bp, align=center] {EfficientNet-B0: 16 blocks, 4.0\,M params};
+  % ConvNeXt block
+  \node[font=\sffamily\scriptsize\bfseries] (t3) at (10.6,0) {ConvNeXt block};
+  \node[n, below=2.5mm of t3] (c0) {$\bm{x}$, $C$ channels};
+  \node[l, below=of c0] (c1) {depthwise $7{\times}7$};
+  \node[l, below=of c1] (c2) {LayerNorm};
+  \node[l, below=of c2] (c3) {conv $1{\times}1$ to $4C$, GELU};
+  \node[l, below=of c3] (c4) {conv $1{\times}1$ to $C$, scale $\gamma$};
+  \node[plus, below=2mm of c4] (cp) {$+$};
+  \foreach \u/\v in {c0/c1,c1/c2,c2/c3,c3/c4,c4/cp} \draw[arr] (\u) -- (\v);
+  \draw[arr] (c0.east) -- ++(4mm,0) |- (cp.east);
+  \node[color=ink2, below=1mm of cp, align=center] {ConvNeXt-Tiny: 18 blocks, 27.8\,M params};
+\end{tikzpicture}
+\caption{\textbf{The three convolutional blocks we fine-tuned.} All three add a learned correction to their input (the arrow on the right is the residual connection). They differ in how they filter: two dense $3\times3$ convolutions (ResNet), an expand, depthwise-filter and project sequence with channel gating (MBConv), or one large $7\times7$ depthwise filter followed by a transformer-style MLP (ConvNeXt).}
+\label{fig:blocks}
+\end{figure}
+
+\subsection{Transformers and the Vision Transformer}
+The transformer \cite{vaswani2017attention} processes a sequence of tokens with self-attention: every token is projected to a query $q$, a key $k$ and a value $v$, and each output is a weighted average of all values, with weights given by query-key similarity,
+\begin{equation}
+  \operatorname{Attention}(Q,K,V)=\operatorname{softmax}\!\Big(\frac{QK^\top}{\sqrt{d}}\Big)V .
+\end{equation}
+The Vision Transformer (ViT) \cite{dosovitskiy2021vit} applies this to images by cutting them into fixed-size patches, embedding each patch as a token, adding a position embedding and a learnable class token, and passing the sequence through a stack of attention and MLP layers (\cref{fig:vit}). Unlike a CNN, a ViT assumes almost nothing about images: any patch can attend to any other from the first layer, and locality must be learned from data. This makes ViTs data-hungry, which is why they are almost always used after large-scale pretraining.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\sffamily\scriptsize, x=1mm, y=1mm,
+  arr/.style={-{Stealth[length=1.8mm]}, color=ink2, line width=0.6pt},
+  tok/.style={draw=accent, fill=accent!15, minimum width=4.2mm, minimum height=5.5mm, inner sep=0pt},
+  box/.style={draw=accent, rounded corners=2pt, fill=accent!6, align=center, inner sep=3pt}]
+  % image with patch grid
+  \node[anchor=south west, inner sep=0] (img) at (0,0) {\includegraphics[width=22mm]{figs/vit_input.png}};
+  \foreach \k in {1,...,3} { \draw[white, line width=0.8pt] (\k*5.5,0) -- (\k*5.5,22); \draw[white, line width=0.8pt] (0,\k*5.5) -- (22,\k*5.5); }
+  \node[anchor=north, align=center] at (11,-1) {image cut into patches\\($16\times16$ grid of $14\,$px at 224\,px)};
+  % tokens
+  \draw[arr] (24,11) -- (30,11);
+  \node[tok, fill=alert!25, draw=alert] (cls) at (34,11) {};
+  \node[above=0.3mm of cls, color=alert] {\textsc{cls}};
+  \foreach \t in {1,...,6} \node[tok] at (34+\t*5,11) {};
+  \node at (69,11) {$\cdots$};
+  \node[anchor=north, align=center] at (52,5) {linear embedding of each patch\\+ position embedding};
+  % encoder
+  \draw[arr] (75,11) -- (80,11);
+  \node[box, anchor=west, minimum height=21mm, text width=29mm] (enc) at (80,11) {\textbf{transformer encoder}\\[2pt] LayerNorm $\to$ multi-head self-attention $\to$ $+$\\[2pt] LayerNorm $\to$ MLP $\to$ $+$\\[2pt] {\color{ink2}repeated 12 times (ViT-S/B)}};
+  \draw[arr] (enc.east) -- ++(5,0) node[right, box, fill=white, draw=rule] {\textsc{cls} token\\$\to$ linear $\to$ 7};
+\end{tikzpicture}
+\caption{\textbf{Vision Transformer.} The image becomes a sequence of patch tokens; self-attention lets every patch interact with every other one in every layer, and the class token's final state is used for classification. DINOv2 models use 14-pixel patches.}
+\label{fig:vit}
+\end{figure}
+
+\subsection{Pretraining and transfer learning}
+Training a large network from scratch on \num{9879} images would overfit. Transfer learning starts instead from weights learned on a much larger dataset and adapts them. With \emph{supervised} pretraining, the network was trained to classify ImageNet's 1.28 million photographs into 1{,}000 classes \cite{deng2009imagenet}; all our pretrained CNNs come from this setting. With \emph{self-supervised} pretraining, no labels are used at all: DINO \cite{caron2021dino} trains a student network to match the output of a teacher network, an exponential moving average of the student, on different augmented crops of the same image, and DINOv2 \cite{oquab2024dinov2} scales this recipe to 142 million curated images. Either way, the pretrained network can be used \emph{frozen}, as a fixed feature extractor with only a new linear head trained, or \emph{fine-tuned}, with every weight updated at a small learning rate. Which of the two works depends on how close the pretraining task is to the new one; for vendor style, it turned out to be far (\cref{sec:journey}).
+
+\subsection{Combining models}
+An ensemble averages the predictions of several models; it helps when their errors differ \cite{dietterich1998tests,lakshminarayanan2017ensembles}. Soft voting averages probabilities with equal weights. Stacking \cite{wolpert1992stacking} trains a second-level model on the first-level models' predictions, which must be made on data those models did not train on (out-of-fold predictions), otherwise the meta-model learns to trust overfitted members. A learned fusion goes one step further and combines the members' internal features rather than their final probabilities; we describe our version in \cref{sec:fusion}.

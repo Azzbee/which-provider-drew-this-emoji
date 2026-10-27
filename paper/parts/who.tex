@@ -1,0 +1,16 @@
+\section{Who tried what}
+\label{app:who}
+\begin{table}[H]
+\centering\small
+\caption{Methods tried by each team member, with their best recorded score. The repository has one folder per member (\texttt{members/}) that holds these notes and, where available, the code.}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{40mm}@{}}
+\toprule
+Member & Methods & Best recorded score\\
+\midrule
+Adam Zeraiki & First CNN (30 September, with OpenAI Codex); EmojiCNNv2 and the metadata diagnostic; ConvNeXt-Tiny 5-fold runs A and B and the 10-checkpoint average; DINOv2 + ConvNeXt combination; this paper & 97.69\% OOF, 0.98218 private (final model)\\
+Erdem Sanver & Experiments E1a to E15: metadata random forest, HOG + colour SVM, simple CNN with and without compositing, ResNet18 frozen and fine-tuned, EfficientNet-B0, ConvNeXt-Tiny at 128 and 224\,px, augmentation study, ensembles, retraining on all data, nearest-neighbour upscaling & 97.93\% validation (E9); 0.98238 private (E15, team best)\\
+Lina Oumhand & DINOv2 fine-tuned; two earlier entries (no description recorded) & 0.96983 private (\texttt{submission2})\\
+Charles Montluc & ResNet18 pretrained on ImageNet, fine-tuned on 160\,px RGB images & 0.96396 private\\
+\bottomrule
+\end{tabularx}
+\end{table}
