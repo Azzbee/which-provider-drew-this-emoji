@@ -1,0 +1,211 @@
+===== run.log (run A: select_on=val_loss) =====
+nohup: ignoring input
+checking archive
+-rw-r--r-- 1 root root 259717586 Oct 17 18:20 2-computer-vision-2026-b-sc-aidams-final-proj.zip
+7f8c12a2a36591e45f761b21a49dc2e9be1276e7d04cbf6d06ca8df2d844ad8d  2-computer-vision-2026-b-sc-aidams-final-proj.zip
+device: cuda | torch 2.8.0+cu128 | model convnext_tiny.fb_in1k @ 224px | folds 5
+  loaded 2,000/9,879 images at 224px
+  loaded 4,000/9,879 images at 224px
+  loaded 6,000/9,879 images at 224px
+  loaded 8,000/9,879 images at 224px
+  loaded 2,000/9,879 images at 224px
+  loaded 4,000/9,879 images at 224px
+  loaded 6,000/9,879 images at 224px
+  loaded 8,000/9,879 images at 224px
+pixels ready in 35s: (9879, 224, 224, 3), (9879, 224, 224, 3)
+  loaded 2,000/9,879 images at 96px
+  loaded 4,000/9,879 images at 96px
+  loaded 6,000/9,879 images at 96px
+  loaded 8,000/9,879 images at 96px
+
+===== fold 0: train 7,903 | val 1,976 =====
+parameters: 27,825,511
+[fold0] epoch 01 | train loss 1.3812 acc 55.751% | val loss 0.4067 acc 88.209% | 41s
+[fold0] epoch 02 | train loss 0.2708 acc 92.231% | val loss 0.1716 acc 95.395% | 14s
+[fold0] epoch 03 | train loss 0.1277 acc 96.356% | val loss 0.1193 acc 96.204% | 15s
+[fold0] epoch 04 | train loss 0.0757 acc 97.596% | val loss 0.1172 acc 96.812% | 13s
+[fold0] epoch 05 | train loss 0.0359 acc 98.950% | val loss 0.1579 acc 95.800% | 15s
+[fold0] epoch 06 | train loss 0.0295 acc 99.291% | val loss 0.1196 acc 97.115% | 15s
+[fold0] epoch 07 | train loss 0.0093 acc 99.760% | val loss 0.1096 acc 97.571% | 14s
+[fold0] epoch 08 | train loss 0.0054 acc 99.873% | val loss 0.1128 acc 97.571% | 15s
+[fold0] epoch 09 | train loss 0.0035 acc 99.962% | val loss 0.1143 acc 97.672% | 15s
+[fold0] epoch 10 | train loss 0.0036 acc 99.924% | val loss 0.1140 acc 97.621% | 15s
+[fold0] restored epoch 7 (val acc 97.5709%); 2.9 min
+fold 0: val acc 97.6721% (1930/1976), macro F1 0.9766
+
+===== fold 1: train 7,903 | val 1,976 =====
+parameters: 27,825,511
+[fold1] epoch 01 | train loss 1.3625 acc 55.093% | val loss 0.4355 acc 88.613% | 16s
+[fold1] epoch 02 | train loss 0.3048 acc 91.282% | val loss 0.3308 acc 88.613% | 13s
+[fold1] epoch 03 | train loss 0.1634 acc 95.217% | val loss 0.1612 acc 95.496% | 14s
+[fold1] epoch 04 | train loss 0.0890 acc 97.204% | val loss 0.0979 acc 96.964% | 15s
+[fold1] epoch 05 | train loss 0.0364 acc 98.899% | val loss 0.1137 acc 96.609% | 14s
+[fold1] epoch 06 | train loss 0.0245 acc 99.241% | val loss 0.1075 acc 97.470% | 13s
+[fold1] epoch 07 | train loss 0.0121 acc 99.696% | val loss 0.1039 acc 97.470% | 15s
+[fold1] epoch 08 | train loss 0.0069 acc 99.848% | val loss 0.1164 acc 97.318% | 14s
+[fold1] epoch 09 | train loss 0.0052 acc 99.924% | val loss 0.1096 acc 97.419% | 14s
+[fold1] epoch 10 | train loss 0.0047 acc 99.899% | val loss 0.1097 acc 97.368% | 15s
+[fold1] restored epoch 4 (val acc 96.9636%); 2.4 min
+fold 1: val acc 96.7611% (1912/1976), macro F1 0.9672
+
+===== fold 2: train 7,902 | val 1,977 =====
+parameters: 27,825,511
+[fold2] epoch 01 | train loss 1.3584 acc 53.518% | val loss 0.4175 acc 88.821% | 28s
+[fold2] epoch 02 | train loss 0.2828 acc 92.002% | val loss 0.1831 acc 94.689% | 15s
+[fold2] epoch 03 | train loss 0.1469 acc 95.672% | val loss 0.1419 acc 95.852% | 15s
+[fold2] epoch 04 | train loss 0.0770 acc 97.823% | val loss 0.1056 acc 97.016% | 15s
+[fold2] epoch 05 | train loss 0.0387 acc 98.899% | val loss 0.1441 acc 96.813% | 14s
+[fold2] epoch 06 | train loss 0.0172 acc 99.620% | val loss 0.0983 acc 97.572% | 15s
+[fold2] epoch 07 | train loss 0.0079 acc 99.810% | val loss 0.1045 acc 97.926% | 14s
+[fold2] epoch 08 | train loss 0.0042 acc 99.937% | val loss 0.1111 acc 97.825% | 15s
+[fold2] epoch 09 | train loss 0.0045 acc 99.886% | val loss 0.1074 acc 97.825% | 14s
+[fold2] epoch 10 | train loss 0.0043 acc 99.911% | val loss 0.1112 acc 97.825% | 15s
+[fold2] restored epoch 6 (val acc 97.5721%); 2.7 min
+fold 2: val acc 97.4203% (1926/1977), macro F1 0.9757
+
+===== fold 3: train 7,905 | val 1,974 =====
+parameters: 27,825,511
+[fold3] epoch 01 | train loss 1.4487 acc 49.235% | val loss 0.3597 acc 87.741% | 24s
+[fold3] epoch 02 | train loss 0.2759 acc 92.283% | val loss 0.1634 acc 95.390% | 13s
+[fold3] epoch 03 | train loss 0.1449 acc 95.484% | val loss 0.1469 acc 95.390% | 15s
+[fold3] epoch 04 | train loss 0.0829 acc 97.508% | val loss 0.1261 acc 96.758% | 15s
+[fold3] epoch 05 | train loss 0.0428 acc 98.697% | val loss 0.1191 acc 97.062% | 15s
+[fold3] epoch 06 | train loss 0.0160 acc 99.570% | val loss 0.1196 acc 97.315% | 15s
+[fold3] epoch 07 | train loss 0.0076 acc 99.899% | val loss 0.1570 acc 96.657% | 15s
+[fold3] epoch 08 | train loss 0.0058 acc 99.886% | val loss 0.1349 acc 97.112% | 15s
+[fold3] epoch 09 | train loss 0.0047 acc 99.911% | val loss 0.1194 acc 97.568% | 15s
+[fold3] epoch 10 | train loss 0.0037 acc 99.949% | val loss 0.1207 acc 97.568% | 14s
+[fold3] restored epoch 5 (val acc 97.0618%); 2.6 min
+fold 3: val acc 96.8085% (1911/1974), macro F1 0.9615
+
+===== fold 4: train 7,903 | val 1,976 =====
+parameters: 27,825,511
+[fold4] epoch 01 | train loss 1.3354 acc 55.688% | val loss 0.3293 acc 92.814% | 15s
+[fold4] epoch 02 | train loss 0.2605 acc 92.851% | val loss 0.1864 acc 94.484% | 14s
+[fold4] epoch 03 | train loss 0.1332 acc 96.153% | val loss 0.1241 acc 96.812% | 14s
+[fold4] epoch 04 | train loss 0.0668 acc 97.975% | val loss 0.1127 acc 97.014% | 14s
+[fold4] epoch 05 | train loss 0.0519 acc 98.482% | val loss 0.1291 acc 96.609% | 14s
+[fold4] epoch 06 | train loss 0.0195 acc 99.431% | val loss 0.1203 acc 97.115% | 15s
+[fold4] epoch 07 | train loss 0.0163 acc 99.544% | val loss 0.1134 acc 97.672% | 14s
+[fold4] epoch 08 | train loss 0.0061 acc 99.899% | val loss 0.1125 acc 97.773% | 14s
+[fold4] epoch 09 | train loss 0.0041 acc 99.937% | val loss 0.1144 acc 97.773% | 14s
+[fold4] epoch 10 | train loss 0.0048 acc 99.937% | val loss 0.1141 acc 97.723% | 15s
+[fold4] restored epoch 8 (val acc 97.7733%); 2.4 min
+fold 4: val acc 97.7733% (1932/1976), macro F1 0.9798
+
+OUT-OF-FOLD over 9,879 images: acc 97.2872%, macro F1 0.9722
+stored validation split (OOF): {'accuracy': 0.965133906013138, 'macro_f1': 0.9638602020629771, 'n': 1979, 'correct': 1910}
+wrote /workspace/outputs/convnext224/submission.csv
+google       1933
+apple        1900
+samsung      1817
+whatsapp     1640
+facebook     1572
+messenger     607
+mozilla       410
+RUN_DONE
+-rw-r--r-- 1 root root 4388733 Oct 17 18:36 /workspace/convnext224_results.zip
+ZIP_DONE
+
+
+===== run2.log (run B: select_on=last) =====
+nohup: ignoring input
+device: cuda | torch 2.8.0+cu128 | model convnext_tiny.fb_in1k @ 224px | folds 5
+pixels ready in 0s: (9879, 224, 224, 3), (9879, 224, 224, 3)
+
+===== fold 0: train 7,903 | val 1,976 =====
+parameters: 27,825,511
+[fold0] epoch 01 | train loss 1.3812 acc 55.751% | val loss 0.4067 acc 88.209% | 41s
+[fold0] epoch 02 | train loss 0.2708 acc 92.231% | val loss 0.1716 acc 95.395% | 15s
+[fold0] epoch 03 | train loss 0.1277 acc 96.356% | val loss 0.1193 acc 96.204% | 14s
+[fold0] epoch 04 | train loss 0.0757 acc 97.596% | val loss 0.1172 acc 96.812% | 15s
+[fold0] epoch 05 | train loss 0.0359 acc 98.950% | val loss 0.1579 acc 95.800% | 15s
+[fold0] epoch 06 | train loss 0.0295 acc 99.291% | val loss 0.1196 acc 97.115% | 14s
+[fold0] epoch 07 | train loss 0.0093 acc 99.760% | val loss 0.1096 acc 97.571% | 14s
+[fold0] epoch 08 | train loss 0.0054 acc 99.873% | val loss 0.1128 acc 97.571% | 15s
+[fold0] epoch 09 | train loss 0.0035 acc 99.962% | val loss 0.1143 acc 97.672% | 14s
+[fold0] epoch 10 | train loss 0.0036 acc 99.924% | val loss 0.1140 acc 97.621% | 14s
+[fold0] restored epoch 10 (val acc 97.6215%); 2.9 min
+fold 0: val acc 97.8745% (1934/1976), macro F1 0.9800
+
+===== fold 1: train 7,903 | val 1,976 =====
+parameters: 27,825,511
+[fold1] epoch 01 | train loss 1.3625 acc 55.093% | val loss 0.4355 acc 88.613% | 15s
+[fold1] epoch 02 | train loss 0.3048 acc 91.282% | val loss 0.3308 acc 88.613% | 14s
+[fold1] epoch 03 | train loss 0.1634 acc 95.217% | val loss 0.1612 acc 95.496% | 15s
+[fold1] epoch 04 | train loss 0.0890 acc 97.204% | val loss 0.0979 acc 96.964% | 15s
+[fold1] epoch 05 | train loss 0.0364 acc 98.899% | val loss 0.1137 acc 96.609% | 15s
+[fold1] epoch 06 | train loss 0.0245 acc 99.241% | val loss 0.1075 acc 97.470% | 15s
+[fold1] epoch 07 | train loss 0.0121 acc 99.696% | val loss 0.1039 acc 97.470% | 15s
+[fold1] epoch 08 | train loss 0.0069 acc 99.848% | val loss 0.1164 acc 97.318% | 15s
+[fold1] epoch 09 | train loss 0.0052 acc 99.924% | val loss 0.1096 acc 97.419% | 13s
+[fold1] epoch 10 | train loss 0.0047 acc 99.899% | val loss 0.1097 acc 97.368% | 15s
+[fold1] restored epoch 10 (val acc 97.3684%); 2.4 min
+fold 1: val acc 97.4696% (1926/1976), macro F1 0.9726
+
+===== fold 2: train 7,902 | val 1,977 =====
+parameters: 27,825,511
+[fold2] epoch 01 | train loss 1.3584 acc 53.518% | val loss 0.4175 acc 88.821% | 28s
+[fold2] epoch 02 | train loss 0.2828 acc 92.002% | val loss 0.1831 acc 94.689% | 15s
+[fold2] epoch 03 | train loss 0.1469 acc 95.672% | val loss 0.1419 acc 95.852% | 14s
+[fold2] epoch 04 | train loss 0.0770 acc 97.823% | val loss 0.1056 acc 97.016% | 15s
+[fold2] epoch 05 | train loss 0.0387 acc 98.899% | val loss 0.1441 acc 96.813% | 15s
+[fold2] epoch 06 | train loss 0.0172 acc 99.620% | val loss 0.0983 acc 97.572% | 15s
+[fold2] epoch 07 | train loss 0.0079 acc 99.810% | val loss 0.1045 acc 97.926% | 15s
+[fold2] epoch 08 | train loss 0.0042 acc 99.937% | val loss 0.1111 acc 97.825% | 15s
+[fold2] epoch 09 | train loss 0.0045 acc 99.886% | val loss 0.1074 acc 97.825% | 14s
+[fold2] epoch 10 | train loss 0.0043 acc 99.911% | val loss 0.1112 acc 97.825% | 14s
+[fold2] restored epoch 10 (val acc 97.8250%); 2.7 min
+fold 2: val acc 97.6732% (1931/1977), macro F1 0.9779
+
+===== fold 3: train 7,905 | val 1,974 =====
+parameters: 27,825,511
+[fold3] epoch 01 | train loss 1.4487 acc 49.235% | val loss 0.3597 acc 87.741% | 25s
+[fold3] epoch 02 | train loss 0.2759 acc 92.283% | val loss 0.1634 acc 95.390% | 15s
+[fold3] epoch 03 | train loss 0.1449 acc 95.484% | val loss 0.1469 acc 95.390% | 15s
+[fold3] epoch 04 | train loss 0.0829 acc 97.508% | val loss 0.1261 acc 96.758% | 14s
+[fold3] epoch 05 | train loss 0.0428 acc 98.697% | val loss 0.1191 acc 97.062% | 14s
+[fold3] epoch 06 | train loss 0.0160 acc 99.570% | val loss 0.1196 acc 97.315% | 15s
+[fold3] epoch 07 | train loss 0.0076 acc 99.899% | val loss 0.1570 acc 96.657% | 15s
+[fold3] epoch 08 | train loss 0.0058 acc 99.886% | val loss 0.1349 acc 97.112% | 15s
+[fold3] epoch 09 | train loss 0.0047 acc 99.911% | val loss 0.1194 acc 97.568% | 15s
+[fold3] epoch 10 | train loss 0.0037 acc 99.949% | val loss 0.1207 acc 97.568% | 14s
+[fold3] restored epoch 10 (val acc 97.5684%); 2.6 min
+fold 3: val acc 97.6190% (1927/1974), macro F1 0.9759
+
+===== fold 4: train 7,903 | val 1,976 =====
+parameters: 27,825,511
+[fold4] epoch 01 | train loss 1.3354 acc 55.688% | val loss 0.3293 acc 92.814% | 16s
+[fold4] epoch 02 | train loss 0.2605 acc 92.851% | val loss 0.1864 acc 94.484% | 14s
+[fold4] epoch 03 | train loss 0.1332 acc 96.153% | val loss 0.1241 acc 96.812% | 14s
+[fold4] epoch 04 | train loss 0.0668 acc 97.975% | val loss 0.1127 acc 97.014% | 14s
+[fold4] epoch 05 | train loss 0.0519 acc 98.482% | val loss 0.1291 acc 96.609% | 14s
+[fold4] epoch 06 | train loss 0.0195 acc 99.431% | val loss 0.1203 acc 97.115% | 14s
+[fold4] epoch 07 | train loss 0.0163 acc 99.544% | val loss 0.1134 acc 97.672% | 15s
+[fold4] epoch 08 | train loss 0.0061 acc 99.899% | val loss 0.1125 acc 97.773% | 14s
+[fold4] epoch 09 | train loss 0.0041 acc 99.937% | val loss 0.1144 acc 97.773% | 14s
+[fold4] epoch 10 | train loss 0.0048 acc 99.937% | val loss 0.1141 acc 97.723% | 14s
+[fold4] restored epoch 10 (val acc 97.7227%); 2.4 min
+fold 4: val acc 97.8239% (1933/1976), macro F1 0.9801
+
+OUT-OF-FOLD over 9,879 images: acc 97.6921%, macro F1 0.9773
+stored validation split (OOF): {'accuracy': 0.9706922688226377, 'macro_f1': 0.969473222653927, 'n': 1979, 'correct': 1921}
+wrote /workspace/outputs/convnext224_last/submission.csv
+google       1941
+apple        1908
+samsung      1814
+whatsapp     1628
+facebook     1573
+messenger     604
+mozilla       411
+RUN_DONE
+-rw-r--r-- 1 root root 8855223 Oct 17 18:52 /workspace/convnext224_results.zip
+ZIP_DONE
+
+
+===== setup.log =====
+name, memory.total [MiB], driver_version
+NVIDIA GeForce RTX 4090, 24564 MiB, 570.169
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'sklearn'

@@ -1,0 +1,61 @@
+device: cpu | torch 2.14.1+cu130
+9,879 train / 9,879 test images; classes ['apple', 'facebook', 'google', 'messenger', 'mozilla', 'samsung', 'whatsapp']
+loading pixels at 96px ...
+pixels ready in 0s: (9879, 96, 96, 3) (9879, 96, 96, 3)
+duplicates: {'duplicate_images_beyond_first': 158, 'conflicting_duplicate_groups': 0}
+stored split loaded; identical to regenerated StratifiedGroupKFold fold 0: False
+train 7,900 | validation 1,979
+
+== metadata-only diagnostic ==
+  size+mode / logreg                       val acc 0.6463  (8 features)
+  size+mode / random_forest                val acc 0.6640  (8 features)
+  size+mode+file stats / logreg            val acc 0.7413  (10 features)
+  size+mode+file stats / random_forest     val acc 0.8444  (10 features)
+  size+mode+file stats+under-colour / logreg val acc 0.7620  (13 features)
+  size+mode+file stats+under-colour / random_forest val acc 0.8737  (13 features)
+
+== saved baseline checkpoint (30 Sept) ==
+  val acc 76.7054% (1518/1979), macro F1 0.7382
+
+== EmojiCNNv2 (pixels only), from saved probabilities: val acc 90.9550% ==
+
+== EmojiCNNv2 + metadata late fusion (ablation) ==
+[emojicnnv2_fusion] epoch 01 | train loss 1.7102 acc 33.544% | val loss 1.5174 acc 39.616% | 111s
+[emojicnnv2_fusion] epoch 02 | train loss 1.2368 acc 55.633% | val loss 1.1583 acc 56.190% | 131s
+[emojicnnv2_fusion] epoch 03 | train loss 0.9251 acc 67.759% | val loss 1.1387 acc 59.222% | 95s
+[emojicnnv2_fusion] epoch 04 | train loss 0.7486 acc 74.025% | val loss 1.1598 acc 61.344% | 99s
+[emojicnnv2_fusion] epoch 05 | train loss 0.6530 acc 77.405% | val loss 0.9372 acc 61.748% | 104s
+[emojicnnv2_fusion] epoch 06 | train loss 0.5994 acc 79.937% | val loss 0.8104 acc 75.594% | 97s
+[emojicnnv2_fusion] epoch 07 | train loss 0.5203 acc 82.747% | val loss 0.8973 acc 66.246% | 96s
+[emojicnnv2_fusion] epoch 08 | train loss 0.4711 acc 84.987% | val loss 0.4783 acc 84.891% | 97s
+[emojicnnv2_fusion] epoch 09 | train loss 0.4446 acc 85.532% | val loss 0.7725 acc 72.562% | 96s
+[emojicnnv2_fusion] epoch 10 | train loss 0.4048 acc 86.962% | val loss 0.4353 acc 86.357% | 101s
+[emojicnnv2_fusion] epoch 11 | train loss 0.3784 acc 87.734% | val loss 0.7323 acc 71.905% | 97s
+[emojicnnv2_fusion] epoch 12 | train loss 0.3355 acc 89.165% | val loss 0.4906 acc 84.992% | 95s
+[emojicnnv2_fusion] epoch 13 | train loss 0.3156 acc 89.608% | val loss 0.4084 acc 86.609% | 92s
+[emojicnnv2_fusion] epoch 14 | train loss 0.2887 acc 90.911% | val loss 0.3628 acc 88.883% | 95s
+[emojicnnv2_fusion] epoch 15 | train loss 0.2640 acc 91.684% | val loss 0.4180 acc 85.599% | 94s
+[emojicnnv2_fusion] epoch 16 | train loss 0.2529 acc 91.810% | val loss 0.7189 acc 75.240% | 92s
+[emojicnnv2_fusion] epoch 17 | train loss 0.2326 acc 92.646% | val loss 0.3316 acc 90.248% | 92s
+[emojicnnv2_fusion] epoch 18 | train loss 0.2181 acc 93.190% | val loss 0.3107 acc 90.803% | 95s
+[emojicnnv2_fusion] epoch 19 | train loss 0.1877 acc 94.443% | val loss 0.2810 acc 91.764% | 98s
+[emojicnnv2_fusion] epoch 20 | train loss 0.1796 acc 94.506% | val loss 0.2881 acc 91.309% | 94s
+[emojicnnv2_fusion] epoch 21 | train loss 0.1634 acc 95.101% | val loss 0.2490 acc 93.279% | 94s
+[emojicnnv2_fusion] epoch 22 | train loss 0.1571 acc 95.203% | val loss 0.2592 acc 92.521% | 100s
+[emojicnnv2_fusion] epoch 23 | train loss 0.1433 acc 95.747% | val loss 0.2419 acc 93.229% | 102s
+[emojicnnv2_fusion] epoch 24 | train loss 0.1422 acc 95.949% | val loss 0.2420 acc 93.229% | 100s
+[emojicnnv2_fusion] epoch 25 | train loss 0.1334 acc 96.241% | val loss 0.2401 acc 93.380% | 98s
+[emojicnnv2_fusion] restored epoch 25 (val acc 93.3805%); 41.1 min
+  val acc 93.3805% (1848/1979), macro F1 0.9260
+
+saved outputs/cpu/results.json
+  majority_class                                          0.1961
+  metadata-only / size+mode / logreg                      0.6463
+  metadata-only / size+mode / random_forest               0.6640
+  metadata-only / size+mode+file stats / logreg           0.7413
+  metadata-only / size+mode+file stats / random_forest    0.8444
+  metadata-only / size+mode+file stats+under-colour / logreg 0.7620
+  metadata-only / size+mode+file stats+under-colour / random_forest 0.8737
+  baseline_sept30 / EmojiCNN 96px                         0.7671
+  EmojiCNNv2 96px / pixels only                           0.9096
+  EmojiCNNv2 96px / pixels + file metadata                0.9338

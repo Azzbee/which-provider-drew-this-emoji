@@ -1,0 +1,48 @@
+device: cpu | torch 2.14.1+cu130
+9,879 train / 9,879 test images; classes ['apple', 'facebook', 'google', 'messenger', 'mozilla', 'samsung', 'whatsapp']
+loading pixels at 96px ...
+pixels ready in 0s: (9879, 96, 96, 3) (9879, 96, 96, 3)
+duplicates: {'duplicate_images_beyond_first': 158, 'conflicting_duplicate_groups': 0}
+stored split loaded; identical to regenerated StratifiedGroupKFold fold 0: False
+train 7,900 | validation 1,979
+
+== metadata-only diagnostic ==
+  size+mode / logreg                       val acc 0.6544  (9 features)
+  size+mode / random_forest                val acc 0.7868  (9 features)
+  size+mode+under-colour / logreg          val acc 0.7135  (12 features)
+  size+mode+under-colour / random_forest   val acc 0.8383  (12 features)
+
+== saved baseline checkpoint (30 Sept) ==
+  val acc 76.7054% (1518/1979), macro F1 0.7382
+
+== EmojiCNNv2 (pixels only) ==
+  parameters: 390,695
+[emojicnnv2] epoch 01 | train loss 1.7176 acc 31.532% | val loss 1.5828 acc 36.786% | 107s
+[emojicnnv2] epoch 02 | train loss 1.3021 acc 51.481% | val loss 1.1951 acc 55.230% | 248s
+[emojicnnv2] epoch 03 | train loss 1.0522 acc 60.544% | val loss 1.1579 acc 52.804% | 243s
+[emojicnnv2] epoch 04 | train loss 0.9310 acc 65.405% | val loss 1.6618 acc 43.406% | 251s
+[emojicnnv2] epoch 05 | train loss 0.8328 acc 69.861% | val loss 1.7524 acc 48.408% | 215s
+[emojicnnv2] epoch 06 | train loss 0.7794 acc 71.228% | val loss 2.1288 acc 46.235% | 108s
+[emojicnnv2] epoch 07 | train loss 0.6951 acc 74.481% | val loss 2.1482 acc 42.749% | 219s
+[emojicnnv2] epoch 08 | train loss 0.6364 acc 77.367% | val loss 0.9534 acc 66.094% | 189s
+[emojicnnv2] epoch 09 | train loss 0.5997 acc 77.962% | val loss 0.8809 acc 71.400% | 140s
+[emojicnnv2] epoch 10 | train loss 0.5558 acc 79.494% | val loss 1.1503 acc 60.889% | 267s
+[emojicnnv2] epoch 11 | train loss 0.5060 acc 81.937% | val loss 1.0488 acc 65.690% | 156s
+[emojicnnv2] epoch 12 | train loss 0.4583 acc 83.810% | val loss 1.5152 acc 56.847% | 102s
+[emojicnnv2] epoch 13 | train loss 0.4366 acc 84.709% | val loss 0.9372 acc 70.945% | 104s
+[emojicnnv2] epoch 14 | train loss 0.4080 acc 85.671% | val loss 0.6844 acc 77.868% | 101s
+[emojicnnv2] epoch 15 | train loss 0.3679 acc 87.506% | val loss 0.5748 acc 79.990% | 101s
+[emojicnnv2] epoch 16 | train loss 0.3443 acc 88.038% | val loss 0.7383 acc 72.057% | 103s
+[emojicnnv2] epoch 17 | train loss 0.3130 acc 89.380% | val loss 0.5312 acc 81.304% | 105s
+[emojicnnv2] epoch 18 | train loss 0.2930 acc 90.291% | val loss 0.4629 acc 83.931% | 102s
+[emojicnnv2] epoch 19 | train loss 0.2608 acc 91.215% | val loss 0.3867 acc 87.974% | 101s
+[emojicnnv2] epoch 20 | train loss 0.2424 acc 91.785% | val loss 0.4326 acc 85.498% | 102s
+[emojicnnv2] epoch 21 | train loss 0.2231 acc 92.696% | val loss 0.3941 acc 86.862% | 105s
+[emojicnnv2] epoch 22 | train loss 0.2146 acc 92.443% | val loss 0.3487 acc 89.540% | 101s
+[emojicnnv2] epoch 23 | train loss 0.1942 acc 93.823% | val loss 0.3092 acc 90.955% | 107s
+[emojicnnv2] epoch 24 | train loss 0.1843 acc 94.165% | val loss 0.3116 acc 90.803% | 99s
+[emojicnnv2] epoch 25 | train loss 0.1856 acc 94.241% | val loss 0.3138 acc 90.652% | 100s
+[emojicnnv2] restored epoch 23 (val acc 90.9550%); 59.6 min
+  val acc 90.9550% (1800/1979), macro F1 0.9069
+
+== EmojiCNNv2 + metadata late fusion (ablation) ==

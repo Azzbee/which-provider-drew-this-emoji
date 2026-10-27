@@ -1,0 +1,116 @@
+{
+  "source": "Strategies Computer Vision Project - 13 October.xlsx (Erdem Sanver), columns 'Test Accuracy'/'Test Precision' which the explanations identify as held-out validation (80/20, ~1,976 images); public LB values from the unnamed column O",
+  "status": "REPORTED by a teammate; not reproduced in this codebase (checkpoints, split and code not recovered)",
+  "experiments": [
+    {
+      "id": "E1a_metadata_only",
+      "model": "Random Forest (300 trees)",
+      "method": "Classifier on file metadata only, no pixel content",
+      "epochs": null,
+      "val_accuracy": 0.6584,
+      "val_macro_precision": 0.6305,
+      "public_lb": null,
+      "preprocessing": "Features: image width/height, PIL colour mode, RGB value stored under fully transparent pixels"
+    },
+    {
+      "id": "E1b_hog_color_svm",
+      "model": "SVM (RBF, C=10)",
+      "method": "512-bin RGB colour histogram + HOG (9 orient., 8x8 cells)",
+      "epochs": null,
+      "val_accuracy": 0.8128,
+      "val_macro_precision": 0.8483,
+      "public_lb": null,
+      "preprocessing": "Alpha-composited on white, resized to 64x64 (bicubic)"
+    },
+    {
+      "id": "E2_simple_cnn_naive",
+      "model": "simple_cnn (from scratch)",
+      "method": "3 conv blocks (32-64-128), AdamW 1e-3, OneCycle, batch 64",
+      "epochs": 15,
+      "val_accuracy": 0.9211,
+      "val_macro_precision": 0.9068,
+      "public_lb": null,
+      "preprocessing": "PIL convert('RGB') (default), resize 96x96 bicubic, ImageNet normalisation"
+    },
+    {
+      "id": "E3_simple_cnn_white",
+      "model": "simple_cnn (from scratch)",
+      "method": "Same CNN as E2, only preprocessing changes",
+      "epochs": 15,
+      "val_accuracy": 0.9362,
+      "val_macro_precision": 0.9284,
+      "public_lb": 0.93642,
+      "preprocessing": "Alpha-composite on white, resize 96x96 (bicubic), ImageNet normalisation"
+    },
+    {
+      "id": "E4_resnet18_frozen",
+      "model": "resnet18 (ImageNet, frozen backbone)",
+      "method": "Feature extraction: only the linear head is trained (AdamW 3e-3, OneCycle)",
+      "epochs": 10,
+      "val_accuracy": 0.7748,
+      "val_macro_precision": 0.7691,
+      "public_lb": null,
+      "preprocessing": "Alpha-composite on white, resize 128x128 (bicubic), ImageNet normalisation"
+    },
+    {
+      "id": "E5_resnet18_finetune",
+      "model": "resnet18 (ImageNet pretrained)",
+      "method": "Full fine-tuning (AdamW 5e-4, OneCycle)",
+      "epochs": 10,
+      "val_accuracy": 0.9372,
+      "val_macro_precision": 0.9377,
+      "public_lb": null,
+      "preprocessing": "as E4"
+    },
+    {
+      "id": "E6_effnetb0_finetune",
+      "model": "efficientnet_b0 (ImageNet pretrained)",
+      "method": "Full fine-tuning (AdamW 1e-3, OneCycle)",
+      "epochs": 10,
+      "val_accuracy": 0.9312,
+      "val_macro_precision": 0.9286,
+      "public_lb": null,
+      "preprocessing": "as E5"
+    },
+    {
+      "id": "E6b_convnext_tiny_finetune",
+      "model": "convnext_tiny (ImageNet pretrained)",
+      "method": "Full fine-tuning (AdamW 2e-4, OneCycle, batch 32)",
+      "epochs": 10,
+      "val_accuracy": 0.959,
+      "val_macro_precision": 0.9614,
+      "public_lb": null,
+      "preprocessing": "as E5 (128 px)"
+    },
+    {
+      "id": "E7_convnext_tiny_aug",
+      "model": "convnext_tiny (ImageNet pretrained)",
+      "method": "As E6b + geometric augmentation (h-flip, \u00b110\u00b0 rotation, 5% shift, 0.9-1.1 scale) + label smoothing 0.1",
+      "epochs": 15,
+      "val_accuracy": 0.9438,
+      "val_macro_precision": 0.9464,
+      "public_lb": null,
+      "preprocessing": "as E6b + train-time random flip/affine"
+    },
+    {
+      "id": "E8_convnext_tiny_224",
+      "model": "convnext_tiny (ImageNet pretrained)",
+      "method": "Exactly as E6b; input resolution 128 -> 224",
+      "epochs": 10,
+      "val_accuracy": 0.9757,
+      "val_macro_precision": 0.9792,
+      "public_lb": 0.97408,
+      "preprocessing": "Alpha-composite on white, resize 224x224 (bicubic), ImageNet normalisation"
+    },
+    {
+      "id": "E9_ens_convnext128_224",
+      "model": "Ensemble: E6b + E8",
+      "method": "Soft voting: equal-weight average of softmax probabilities",
+      "epochs": null,
+      "val_accuracy": 0.9793,
+      "val_macro_precision": 0.9821,
+      "public_lb": 0.97671,
+      "preprocessing": "as in each member"
+    }
+  ]
+}

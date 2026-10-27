@@ -1,0 +1,27 @@
+{
+  "inputs": [
+    "outputs/convnext224/test_proba_mean.npy",
+    "outputs/convnext224_last/test_proba_mean.npy"
+  ],
+  "weights": [
+    0.5,
+    0.5
+  ],
+  "rules": {
+    "consistency_changed": 0,
+    "duplicate_lookup_matches": 333,
+    "duplicate_lookup_changed": 0
+  },
+  "changed_vs_plain_average": 0,
+  "label_counts": {
+    "google": 1939,
+    "apple": 1902,
+    "samsung": 1816,
+    "whatsapp": 1633,
+    "facebook": 1574,
+    "messenger": 606,
+    "mozilla": 409
+  },
+  "mean_max_proba": 0.9830551268703506,
+  "agreement_with_compare": 1.0
+}

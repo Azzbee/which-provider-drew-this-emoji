@@ -1,0 +1,10 @@
+# For a machine whose image already ships a CUDA build of torch/torchvision (RunPod "PyTorch" pod templates,
+# Google Colab, Databricks ML runtimes): installs what the scripts import on top of the image's own torch,
+# without replacing it. pip skips anything already present.
+# The RunPod PyTorch 2.8.0 image used for the final runs (torch 2.8.0+cu128, NVIDIA driver 570.169) was missing
+# scikit-learn (ModuleNotFoundError at the first import check, see outputs/runpod_training_logs.txt) and timm.
+scikit-learn>=1.6
+timm>=1.0.19
+pandas>=2.2
+matplotlib>=3.9
+pillow>=10

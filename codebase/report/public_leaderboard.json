@@ -1,0 +1,123 @@
+{
+  "source": "Kaggle submissions page of the competition, read on 17 Oct 2026 at 19:32, 18 Oct 2026 at 21:36 and 18 Oct 2026 at 21:52 (Paris)",
+  "note": "Public score = accuracy on the public subset of the 9,879 test images. Private score decides the final ranking.",
+  "entries": [
+    {
+      "file": "submission_convnext224_last.csv",
+      "model": "ConvNeXt-Tiny 224 px, 5 folds, last-epoch checkpoints, flip TTA (final model, GPU)",
+      "by": "Adam",
+      "public_score": 0.98319,
+      "validation_accuracy": 0.9769,
+      "status": "verified",
+      "submitted": "18 Oct 2026, 21:51 Paris",
+      "selected": true
+    },
+    {
+      "file": "submission_convnext224_AB_10models.csv",
+      "model": "ConvNeXt-Tiny 224 px, 5 folds x 2 checkpoints averaged, flip TTA (ablation, GPU)",
+      "by": "Adam",
+      "public_score": 0.98279,
+      "validation_accuracy": 0.977,
+      "status": "verified",
+      "submitted": "18 Oct 2026, about 11:30 Paris",
+      "selected": true
+    },
+    {
+      "file": "submission_dinov2_convnext_ensemble.csv",
+      "model": "DINOv2 + ConvNeXt ensemble (not produced by this codebase)",
+      "by": "Adam",
+      "public_score": 0.96881,
+      "validation_accuracy": null,
+      "status": "reported"
+    },
+    {
+      "file": "submission_dinov2_finetuned.csv",
+      "model": "DINOv2 fine-tuned (not produced by this codebase)",
+      "by": "Lina",
+      "public_score": 0.95586,
+      "validation_accuracy": null,
+      "status": "reported"
+    },
+    {
+      "file": "submission_emojicnnv2_fusion.csv",
+      "model": "EmojiCNNv2 + file metadata (96 px, CPU)",
+      "by": "Adam",
+      "public_score": 0.93824,
+      "validation_accuracy": 0.9338,
+      "status": "verified"
+    },
+    {
+      "file": "submission_emojicnnv2.csv",
+      "model": "EmojiCNNv2 from scratch, pixels only (96 px, CPU)",
+      "by": "Adam",
+      "public_score": 0.90747,
+      "validation_accuracy": 0.9096,
+      "status": "verified"
+    },
+    {
+      "file": "submission_adam_baseline.csv",
+      "model": "Baseline CNN, 30 Sept (96 px)",
+      "by": "Adam",
+      "public_score": 0.77546,
+      "validation_accuracy": 0.7671,
+      "status": "verified"
+    },
+    {
+      "file": "submission2.csv",
+      "model": "not recorded in the codebase",
+      "by": "Lina",
+      "public_score": 0.96719,
+      "validation_accuracy": null,
+      "status": "reported"
+    },
+    {
+      "file": "submission.csv",
+      "model": "not recorded in the codebase",
+      "by": "Lina",
+      "public_score": 0.81838,
+      "validation_accuracy": null,
+      "status": "reported"
+    },
+    {
+      "file": "submission.csv",
+      "model": "not recorded in the codebase",
+      "by": "Charles",
+      "public_score": 0.95889,
+      "validation_accuracy": null,
+      "status": "reported"
+    },
+    {
+      "file": "E3 (spreadsheet)",
+      "model": "simple CNN, white compositing (96 px)",
+      "by": "Erdem",
+      "public_score": 0.93642,
+      "validation_accuracy": 0.9362,
+      "status": "reported"
+    },
+    {
+      "file": "E8 (spreadsheet)",
+      "model": "ConvNeXt-Tiny 224 px",
+      "by": "Erdem",
+      "public_score": 0.97408,
+      "validation_accuracy": 0.9757,
+      "status": "reported"
+    },
+    {
+      "file": "E9 (spreadsheet)",
+      "model": "Ensemble ConvNeXt 128 + 224 px",
+      "by": "Erdem",
+      "public_score": 0.97671,
+      "validation_accuracy": 0.9793,
+      "status": "reported"
+    }
+  ],
+  "final_entry": {
+    "file": "submission_convnext224_last.csv",
+    "public_score": 0.98319,
+    "oof_accuracy": 0.9769
+  },
+  "selected_entries": [
+    "submission_convnext224_last.csv",
+    "submission_convnext224_AB_10models.csv"
+  ]
+}

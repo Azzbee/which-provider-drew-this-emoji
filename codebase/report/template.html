@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Emoji provider classification</title>
+<style>
+  @page { size: A4; }
+  :root { --ink:#1a1a1a; --muted:#5b6470; --line:#d9dee5; --accent:#1f5fbf; --ok:#1e7f4f; --warn:#b4540a; --bg:#f4f6f9; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, "Times New Roman", serif; color: var(--ink); font-size: 10.6pt; line-height: 1.42; margin: 0; }
+  h1, h2, h3, h4 { font-family: Helvetica, Arial, sans-serif; color: #111; line-height: 1.2; }
+  h1 { font-size: 24pt; margin: 0 0 6px; }
+  h2 { font-size: 15pt; margin: 26px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--accent); page-break-after: avoid; }
+  h3 { font-size: 12pt; margin: 18px 0 6px; page-break-after: avoid; }
+  h4 { font-size: 10.6pt; margin: 12px 0 4px; }
+  p { margin: 0 0 8px; text-align: justify; }
+  ul, ol { margin: 0 0 8px 18px; padding: 0; } li { margin-bottom: 3px; }
+  table { border-collapse: collapse; width: 100%; font-family: Helvetica, Arial, sans-serif; font-size: 8.6pt; margin: 6px 0 10px; }
+  tr { page-break-inside: avoid; } thead { display: table-header-group; }
+  th, td { border: 1px solid var(--line); padding: 3px 5px; text-align: left; vertical-align: top; }
+  th { background: var(--bg); font-weight: 600; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .small { font-size: 8.6pt; color: var(--muted); }
+  .fig { margin: 8px 0 12px; page-break-inside: avoid; text-align: center; }
+  .fig img { max-width: 100%; height: auto; }
+  .fig .cap { font-family: Helvetica, Arial, sans-serif; font-size: 8.6pt; color: var(--muted); text-align: left; margin-top: 4px; }
+  .two { display: flex; gap: 10px; align-items: flex-start; } .two > div { flex: 1; min-width: 0; }
+  .tag { display: inline-block; font-family: Helvetica, Arial, sans-serif; font-size: 7.4pt; font-weight: 700; letter-spacing: .3px; padding: 1px 5px; border-radius: 3px; vertical-align: middle; }
+  .v { background: #e3f1e9; color: var(--ok); } .r { background: #eef0f3; color: #4b5563; } .p { background: #fdebd9; color: var(--warn); }
+  .box { border: 1px solid var(--line); border-left: 4px solid var(--accent); background: var(--bg); padding: 8px 10px; margin: 8px 0 12px; page-break-inside: avoid; }
+  .pending { border-left-color: var(--warn); background: #fff7ef; }
+  .cover { height: 257mm; display: flex; flex-direction: column; justify-content: space-between; page-break-after: always; }
+  .cover .kicker { font-family: Helvetica, Arial, sans-serif; color: var(--accent); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 9pt; }
+  .cover .sub { font-family: Helvetica, Arial, sans-serif; font-size: 13pt; color: var(--muted); margin-top: 8px; }
+  .cover table { width: auto; font-size: 10pt; } .cover td { border: none; padding: 2px 14px 2px 0; }
+  .toc { font-family: Helvetica, Arial, sans-serif; font-size: 9.2pt; } .toc li { margin: 2px 0; } .toc ol { margin-left: 22px; }
+  .pb { page-break-before: always; }
+  code, .mono { font-family: Menlo, Consolas, monospace; font-size: 8.8pt; background: #f1f3f6; padding: 0 3px; border-radius: 2px; }
+  pre { font-family: Menlo, Consolas, monospace; font-size: 8.2pt; background: #f1f3f6; padding: 8px; border-radius: 3px; white-space: pre-wrap; }
+  .note { font-size: 9pt; color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+{% set eda = N.eda %}{% set cpu = N.cpu %}{% set gpu = N.gpu %}{% set rep = N.reported %}
+{% set base = cpu["baseline_sept30 / EmojiCNN 96px"] if cpu and "baseline_sept30 / EmojiCNN 96px" in cpu else None %}
+{% set v2 = cpu["EmojiCNNv2 96px / pixels only"] if cpu and "EmojiCNNv2 96px / pixels only" in cpu else None %}
+{% set fu = cpu["EmojiCNNv2 96px / pixels + file metadata"] if cpu and "EmojiCNNv2 96px / pixels + file metadata" in cpu else None %}
+{% set e8 = (rep.experiments | selectattr("id", "equalto", "E8_convnext_tiny_224") | first) if rep else None %}
+{% set e9 = (rep.experiments | selectattr("id", "equalto", "E9_ens_convnext128_224") | first) if rep else None %}
+{% set fin = N.final if N.final else gpu %}
+
+<!-- ============================================================ 1. FRONT PAGE -->
+<div class="cover">
+  <div>
+    <div class="kicker">IDSI51006 Computer Vision · BSc AIDAMS · ESSEC Business School × CentraleSupélec · Winter 2026</div>
+    <h1 style="margin-top:70px">Which provider drew this emoji?</h1>
+    <div class="sub">Classifying emoji images by vendor with convolutional neural networks</div>
+    <p style="margin-top:28px;max-width:150mm">Final project report for the Kaggle challenge <i>2-computer-vision-2026-b-sc-aidams-final-proj</i>:
+      7 providers (apple, facebook, google, messenger, mozilla, samsung, whatsapp), 9,879 labelled images, 9,879 test images, accuracy metric.</p>
+  </div>
+  <div>
+    <table>
+      <tr><td><b>Team</b></td><td>The Winners</td></tr>
+      <tr><td><b>Students</b></td><td>Adam Zeraiki (group leader) · Lina · Charles · Erdem Sanver</td></tr>
+      <tr><td><b>Teacher</b></td><td>Titouan Rigaud</td></tr>
+      <tr><td><b>Date</b></td><td>{{ today }}</td></tr>
+      <tr><td><b>Codebase</b></td><td><span class="mono">emoji_provider_codebase.zip</span> (notebook, library, scripts, pinned requirements, AI usage log)</td></tr>
+    </table>
+    <p class="small" style="margin-top:14px">Legend used throughout: <span class="tag v">verified</span> a number produced by the submitted codebase on the stored validation split or out-of-fold, re-runnable from the saved files;
+      <span class="tag r">reported</span> a number from a teammate's experiment log (13 October) that we could not re-run from saved weights;
+      <span class="tag p">pending</span> a value not yet available (none left in this version).</p>
+  </div>
+</div>
+
+<!-- ============================================================ 2. SUMMARY, TOC, MODEL CHOSEN -->
+<h2>1. Summary</h2>
+<p>The task is to recognise the <i>vendor</i> of an emoji image, not the emoji itself: a plate of spaghetti drawn by Apple and the same plate drawn by Google show the same object, so what separates the classes is rendering style (outline thickness, shading, gradients, palette) rather than content. We treat it as a 7-class image classification problem and solve it with a <b>convolutional neural network</b>.</p>
+<p>Three findings shaped the work. First, the files leak the answer: each provider exported its emoji at its own resolution (72 px for Apple, Google and Samsung, 160 px for WhatsApp, 240 px for Facebook, Messenger and Mozilla) and in its own PNG mode, and a classifier that reads only the file's dimensions and colour mode, never a pixel, reaches {{ meta_format.accuracy|pct if meta_format else "well above chance" }} validation accuracy, and {{ best_meta.accuracy|pct if best_meta else "more" }} once file size, the share of transparent pixels and the colour hidden under them are added, still without looking at the drawing <span class="tag v">verified</span>. We therefore preprocess every image onto the same white square canvas so that the network is judged on how it <i>sees</i>, not on the export pipeline, and we keep the metadata model as a diagnostic only. Second, the default way of loading PNGs drops transparency and exposes a vendor-specific colour hidden under transparent pixels; alpha-compositing on white fixes it and improves a from-scratch CNN by 1.5 points <span class="tag r">reported</span>. Third, 158 training images are exact duplicates and 333 test files are byte-identical to training files, so validation is done with a group-aware split that keeps copies together.</p>
+<p>Our ladder goes from a majority-class guess ({{ cpu.majority_class.accuracy|pct if cpu else "19.5%" }}) to the team's first CNN ({{ base.accuracy|pct(2) if base else "76.71%" }} <span class="tag v">verified</span>), a compact four-stage CNN trained from scratch ({{ v2.accuracy|pct(2) if v2 else "pending" }} <span class="tag {{ 'v' if v2 else 'p' }}">{{ 'verified' if v2 else 'pending' }}</span>), and ImageNet-pretrained backbones fine-tuned end to end, where resolution turned out to matter more than architecture ({{ e8.val_accuracy|pct(2) if e8 else "97.57%" }} for ConvNeXt-Tiny at 224 px <span class="tag r">reported</span>). The final model is <b>ConvNeXt-Tiny fine-tuned at 224 px, trained in 5 folds for a fixed 10-epoch budget (the last epoch is kept, no checkpoint selection) and averaged with horizontal-flip test-time augmentation</b>{% if fin %}: <b>{{ fin.accuracy|pct(2) }} out-of-fold accuracy</b> over {{ "{:,}".format(fin.n) }} images, macro F1 {{ fin.macro_f1|num }} <span class="tag v">verified</span>{% else %} <span class="tag p">pending</span>{% endif %}, and <b>{{ N.public_lb.final_entry.public_score|num(5) if N.public_lb and N.public_lb.final_entry else "" }} on the public leaderboard</b>, the team's best entry <span class="tag v">verified</span>. Along the way we found that the usual rule of keeping the lowest-validation-loss epoch cost 0.4 points here, because validation loss and accuracy diverge once the network becomes over-confident (Section 5.2). The three CPU files produced by this codebase score 0.77546, 0.90747 and 0.93824 on the public board, each within half a point of its validation accuracy <span class="tag v">verified</span>.</p>
+
+<div class="two">
+<div>
+<h3>Table of contents</h3>
+<ol class="toc">
+  <li>Summary and model chosen</li>
+  <li>Data and preprocessing<ol><li>The dataset</li><li>What the files reveal before any pixel is read</li><li>Preprocessing recipe</li><li>Data augmentation</li><li>Duplicates and validation protocol</li></ol></li>
+  <li>Architecture<ol><li>Reference model trained from scratch (EmojiCNNv2)</li><li>Final model: ConvNeXt-Tiny</li><li>Training recipe, ensemble and test-time augmentation</li></ol></li>
+  <li>Metrics chosen</li>
+  <li>Performance<ol><li>Experiment ladder</li><li>Final model</li><li>Error analysis and explainability</li><li>Kaggle leaderboard</li><li>What did not work</li></ol></li>
+  <li>AI and code</li>
+  <li>Conclusion</li>
+  <li>Appendix: full experiment log, per-class tables, environment</li>
+</ol>
+</div>
+<div>
+<h3>Model chosen</h3>
+<div class="box">
+<p><b>Type:</b> convolutional neural network (CNN). Final entry: <b>ConvNeXt-Tiny</b> (Liu et al., 2022; 28 M parameters), initialised from ImageNet-1k weights and <b>fully fine-tuned</b> on 224 × 224 inputs; 5 fold-models (one per fold, final epoch of a fixed 10-epoch schedule) averaged (soft voting) with horizontal-flip TTA. Reference model: <b>EmojiCNNv2</b>, a 0.39 M-parameter CNN trained from scratch at 96 px, used for ablations and explainability.</p>
+<p><b>Not a vision-language model.</b> VLMs are trained to describe <i>what</i> is in an image; here every class contains the same objects and the signal is low-level drawing style, exactly what the early convolutional filters of a CNN capture. A CNN is also cheaper (minutes to an hour of training), easier to inspect (Grad-CAM, per-class confusion) and easier to reproduce, which matches the brief's advice to prefer something simple that we master.</p>
+<p><b>Not hand-crafted features.</b> Colour histograms + HOG with an SVM reached {{ (rep.experiments | selectattr("id","equalto","E1b_hog_color_svm") | first).val_accuracy|pct if rep else "81%" }} <span class="tag r">reported</span>, well below any CNN we trained.</p>
+</div>
+</div>
+</div>
+
+<!-- ============================================================ 3. PREPROCESSING -->
+<h2>2. Data and preprocessing</h2>
+<h3>2.1 The dataset</h3>
+<p>The archive contains {{ "{:,}".format(eda.n_train) if eda else "9,879" }} training PNGs with a label file and {{ "{:,}".format(eda.n_test) if eda else "9,879" }} unlabelled test PNGs. Classes are imbalanced (Figure 1): five providers have between 1,644 and 1,924 images, Messenger has {{ eda.class_counts.messenger if eda else 580 }} ({{ eda.class_share.messenger|pct if eda else "5.9%" }}) and Mozilla {{ eda.class_counts.mozilla if eda else 397 }} ({{ eda.class_share.mozilla|pct if eda else "4.0%" }}). Always predicting the majority class (Apple) gives {{ eda.majority_share|pct if eda else "19.5%" }}; chance is {{ eda.chance|pct if eda else "14.3%" }}. Figure 2 shows random examples: the same concepts (flags, faces, food) appear in every class, drawn in each vendor's style.</p>
+<div class="two">
+<div style="flex:1.05"><div class="fig">{% if F.class_distribution %}<img src="{{ F.class_distribution }}">{% endif %}<div class="cap"><b>Figure 1.</b> Class distribution of the training set.</div></div>
+<p class="small" style="margin-top:6px">Every provider covers the same Unicode range, so the classes differ in <i>how</i> things are drawn, not <i>what</i> is drawn. Looking at Figure 2: Apple and Samsung use soft shading and gradients, Google flatter shapes with dark outlines, Facebook and Messenger glossy highlights, WhatsApp a look close to Apple's, Mozilla flat geometric shapes without outlines. These are the cues a classifier has to pick up.</p></div>
+<div class="fig" style="flex:0.95">{% if F.samples %}<img src="{{ F.samples }}">{% endif %}<div class="cap"><b>Figure 2.</b> Six random training images per provider after compositing on white; the title of each tile is the native file size.</div></div>
+</div>
+
+<h3>2.2 What the files reveal before any pixel is read</h3>
+<p>We scanned every PNG once and recorded its native width, height and PIL colour mode. The result (Figure 4, Table 1) is striking: {% if eda %}{{ eda.modal.apple.share|pct }} of Apple files are {{ eda.modal.apple.size }}, {{ eda.modal.whatsapp.share|pct }} of WhatsApp files are {{ eda.modal.whatsapp.size }}, {{ eda.modal.facebook.share|pct }} of Facebook, {{ eda.modal.messenger.share|pct }} of Messenger and {{ eda.modal.mozilla.share|pct }} of Mozilla files are 240x240, and {{ eda.modal.samsung.mode_share|pct }} of Samsung files are palette ("P") PNGs while every other vendor is mostly RGBA{% else %}each vendor has its own export resolution and PNG mode{% endif %}. The test set has the same mixture: the total-variation distance between the train and test distributions of (size, mode) is {{ eda.size_mode_total_variation_train_test|pct if eda else "0.5%" }}, so whatever the files leak in training also leaks at test time.</p>
+<p>To measure the leak we trained classifiers on file metadata only, with the same validation split as every other experiment (Section 2.5):</p>
+{% if cpu %}
+<table>
+<tr><th>Features (no pixel content)</th><th>Model</th><th class="n">Validation accuracy</th><th></th></tr>
+{% for k in meta_keys %}<tr><td>{{ k.split("/")[1].strip() }}</td><td>{{ k.split("/")[2].strip() }}</td><td class="n">{{ cpu[k].accuracy|pct(2) }}</td><td><span class="tag v">verified</span></td></tr>{% endfor %}
+<tr><td colspan="4" class="small">"size+mode" = log width, log height, one-hot PIL mode, alpha flag (nothing read from the drawing); "file stats" adds the fraction of transparent pixels and the file size; "under-colour" adds the mean RGB stored under fully transparent pixels. Erdem's independent metadata random forest reached {{ (rep.experiments | selectattr("id","equalto","E1a_metadata_only") | first).val_accuracy|pct if rep else "65.8%" }} on his split <span class="tag r">reported</span>.</td></tr>
+</table>
+{% else %}<div class="box pending">Metadata diagnostic <span class="tag p">pending</span>: run <span class="mono">scripts/run_cpu_experiments.py</span>.</div>{% endif %}
+<p>So a model can score far above chance without recognising any drawing style. We consider this a property of how the dataset was built, not of the providers' art, and we took two decisions: (i) every image is composited on white and placed on a square canvas of one size, which removes the hidden-colour cue and makes the canvas identical for all classes; (ii) the file-metadata model is reported as a diagnostic and the final model sees <b>pixels only</b>. The native resolution cannot be fully erased, since a 72 px image upscaled to 224 px is blurrier than a 240 px image downscaled to 224 px, and we measure how much a pixel model still benefits from explicit metadata in the fusion ablation of Section 5.1.</p>
+<div class="two">
+<div class="fig">{% if F.native_size %}<img src="{{ F.native_size }}">{% endif %}<div class="cap"><b>Figure 4.</b> Native PNG dimensions per provider (counts; shading = share of the provider's images).</div></div>
+<div class="fig">{% if F.native_mode %}<img src="{{ F.native_mode }}" style="max-width:88%">{% endif %}<div class="cap"><b>Figure 5.</b> PNG colour mode per provider. Samsung files are palette PNGs; the others are mostly RGBA.</div></div>
+</div>
+{% if eda %}
+<table>
+<tr><th>Provider</th><th class="n">Images</th><th>Modal size (share)</th><th>Modal mode (share)</th><th class="n">Mean colour under transparent pixels (R, G, B)</th><th class="n">Transparent fraction</th></tr>
+{% for p in ["apple","facebook","google","messenger","mozilla","samsung","whatsapp"] %}
+<tr><td>{{ p }}</td><td class="n">{{ "{:,}".format(eda.class_counts[p]) }}</td><td>{{ eda.modal[p].size }} ({{ eda.modal[p].share|pct }})</td><td>{{ eda.modal[p].mode }} ({{ eda.modal[p].mode_share|pct }})</td>
+<td class="n">{{ eda.under_colour[p].under_r }}, {{ eda.under_colour[p].under_g }}, {{ eda.under_colour[p].under_b }}</td><td class="n">{{ eda.under_colour[p].frac_transparent|pct(0) }}</td></tr>
+{% endfor %}
+</table>
+<p class="small"><b>Table 1.</b> File-level fingerprints per provider, computed on the real training files <span class="tag v">verified</span>. Samsung's palette PNGs store an almost constant teal under transparency; Mozilla's store near-black.</p>
+{% endif %}
+
+<h3>2.3 Preprocessing recipe</h3>
+<p>One function (<span class="mono">emoji_provider.data.load_rgb_white</span>) feeds every model:</p>
+<ol>
+  <li><b>Decode as RGBA and alpha-composite on a white background.</b> This is how a chat application renders an emoji on a light bubble, and it discards the colour hidden under transparent pixels (Figure 3). Erdem measured the effect on the from-scratch CNN: {{ (rep.experiments | selectattr("id","equalto","E2_simple_cnn_naive") | first).val_accuracy|pct if rep else "92.1%" }} with naive RGB loading versus {{ (rep.experiments | selectattr("id","equalto","E3_simple_cnn_white") | first).val_accuracy|pct if rep else "93.6%" }} with white compositing, everything else equal <span class="tag r">reported</span>.</li>
+  <li><b>Fit inside a square keeping the aspect ratio, pad with white.</b> A few Google files are 72x68 or 66x72; stretching them would distort stroke widths, so we use <span class="mono">ImageOps.contain</span> (Lanczos) and centre the result on a white square.</li>
+  <li><b>Resize to the model's input size</b> (96 px for the small CNN, 224 px for ConvNeXt-Tiny) and store as <span class="mono">uint8</span>. The arrays are cached as <span class="mono">.npy</span> so that a rerun does not decode 19,758 PNGs again.</li>
+  <li><b>Normalise</b> with ImageNet mean and standard deviation for the pretrained backbone, and to [-1, 1] for networks trained from scratch.</li>
+</ol>
+<p>We deliberately did not crop, did not convert to grayscale (colour palettes are part of the style) and did not equalise histograms.</p>
+<div class="fig">{% if F.alpha %}<img src="{{ F.alpha }}" style="max-width:88%">{% endif %}<div class="cap"><b>Figure 3.</b> The same files loaded two ways. Top: alpha channel dropped (what <span class="mono">skimage.io.imread</span> and <span class="mono">convert("RGB")</span> give). Bottom: alpha-composited on white. The colour under transparent pixels is a vendor fingerprint, not part of the drawing.</div></div>
+
+<h3>2.4 Data augmentation</h3>
+<p>The vendor signature lives in anti-aliased outlines, gradients and exact colours. Any augmentation that resamples the image (rotation, scaling, elastic warps) blurs precisely those cues, and colour jitter destroys palette information. Erdem tested rotation ±10°, 5% shifts, 0.9 to 1.1 scaling and label smoothing on ConvNeXt-Tiny at 128 px and lost 1.5 points ({{ (rep.experiments | selectattr("id","equalto","E6b_convnext_tiny_finetune") | first).val_accuracy|pct if rep else "95.9%" }} to {{ (rep.experiments | selectattr("id","equalto","E7_convnext_tiny_aug") | first).val_accuracy|pct if rep else "94.4%" }}) <span class="tag r">reported</span>; because three things changed at once that experiment is not conclusive about which one hurt, but it is consistent with the reasoning.</p>
+<p>We therefore use only <b>exact-pixel augmentation</b>: a horizontal flip with probability 0.5 and an integer translation of at most 4 px obtained by padding with white and cropping. Neither operation interpolates, so an outline that is 1.3 px wide stays 1.3 px wide. Augmentation is applied on the fly to training images only. For the compact CNN trained from scratch, which overfits quickly on 7,900 images, this is the main regulariser besides dropout and weight decay.</p>
+
+<h3>2.5 Duplicates and validation protocol</h3>
+<p>Hashing the preprocessed pixels shows {{ eda.pix96_duplicate_images_beyond_first if eda else 158 }} training images that are exact copies of another training image ({{ eda.raw_duplicate_images_beyond_first if eda else 149 }} are byte-identical files), always with the same label ({{ eda.pix96_conflicting_groups if eda else 0 }} conflicting groups). A random split would place copies on both sides and inflate validation accuracy. We use <span class="mono">StratifiedGroupKFold</span> with the pixel hash as the group, so identical images stay together and class proportions are preserved. The split used by every single-model experiment (7,900 train / 1,979 validation, seed 42) is stored as <span class="mono">data/split_seed42.csv</span>; we ship the file because the shuffled assignment is not stable across scikit-learn versions. All verified single-model numbers in this report are computed on exactly these 1,979 images, so they are directly comparable. The final model additionally uses 5-fold cross-validation with the same grouping: every training image is predicted once by a model that did not see it, which gives an <b>out-of-fold</b> estimate on all 9,879 images with a standard error of about 0.17 points at 97% accuracy, versus 0.4 points on 1,979 images.</p>
+<p>We also found that {{ eda.test_images_identical_to_a_train_image_raw if eda else 333 }} test files are byte-identical to a training file ({{ eda.test_images_identical_to_a_train_image_pix96 if eda else 352 }} after preprocessing) and {{ eda.test_duplicate_images_beyond_first_pix96 if eda else 163 }} test images duplicate another test image. The codebase contains two optional post-processing rules (copy the known label; share one prediction among identical test images). They are switched <b>off</b> by default; Section 5.4 states whether the submitted entry used them.</p>
+
+<!-- ============================================================ 4. ARCHITECTURE -->
+<h2>3. Architecture</h2>
+<h3>3.1 Reference model trained from scratch: EmojiCNNv2</h3>
+<p>The team's first model (30 September) had three Conv-ReLU-MaxPool blocks without normalisation, global average pooling and a linear layer, trained with Adam at 1e-3 for 20 epochs; it reached {{ base.accuracy|pct(2) if base else "76.71%" }} and was still improving when it stopped <span class="tag v">verified</span>. EmojiCNNv2 keeps the same philosophy (small, from scratch, explainable) and fixes what held it back: BatchNorm after every convolution, a fourth stage so the receptive field covers the whole 96 px canvas, AdamW with a OneCycle learning-rate schedule, and the augmentation above.</p>
+<table>
+<tr><th>Stage</th><th>Layers</th><th class="n">Output (C × H × W)</th><th class="n">Parameters</th></tr>
+<tr><td>input</td><td>96 × 96 RGB, normalised to [-1, 1]</td><td class="n">3 × 96 × 96</td><td class="n">0</td></tr>
+<tr><td>1</td><td>Conv 3×3 (3→32) + BN + ReLU, MaxPool 2</td><td class="n">32 × 48 × 48</td><td class="n">928</td></tr>
+<tr><td>2</td><td>Conv 3×3 (32→64) + BN + ReLU, MaxPool 2</td><td class="n">64 × 24 × 24</td><td class="n">18,560</td></tr>
+<tr><td>3</td><td>Conv 3×3 (64→128) + BN + ReLU, MaxPool 2</td><td class="n">128 × 12 × 12</td><td class="n">73,984</td></tr>
+<tr><td>4</td><td>Conv 3×3 (128→256) + BN + ReLU</td><td class="n">256 × 12 × 12</td><td class="n">295,424</td></tr>
+<tr><td>head</td><td>Global average pooling, Dropout 0.3, Linear 256→7</td><td class="n">7</td><td class="n">1,799</td></tr>
+<tr><td colspan="3"><b>Total</b></td><td class="n"><b>390,695</b></td></tr>
+</table>
+<p class="small"><b>Table 2.</b> EmojiCNNv2. About 0.14 GFLOPs per image; one epoch over 7,900 images takes {{ cpu.emojicnnv2_history.seconds_per_epoch|round|int if cpu and cpu.emojicnnv2_history else "about 110" }} s on two CPU cores.</p>
+
+<h3>3.2 Final model: ConvNeXt-Tiny, fine-tuned end to end</h3>
+<p>ConvNeXt (Liu et al., CVPR 2022) is a pure convolutional network that borrows the macro-design of vision transformers: a 4×4 stride-4 "patchify" stem, four stages with [3, 3, 9, 3] blocks and widths [96, 192, 384, 768], and in every block a <b>7×7 depthwise convolution</b> followed by LayerNorm and an inverted-bottleneck MLP (1×1 convolutions expanding to 4× the width with GELU), with a residual connection, layer scale and stochastic depth. Global average pooling, LayerNorm and a linear layer form the head; we replace the 1,000-way ImageNet head with a 7-way layer. The Tiny variant has 27.8 M parameters and about 4.5 GFLOPs per 224 × 224 image.</p>
+<div class="fig">
+<svg viewBox="0 0 1000 250" width="100%" style="max-width:720px;font-family:Helvetica,Arial,sans-serif">
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#5b6470"/></marker></defs>
+  <g font-size="12" fill="#1a1a1a">
+    <rect x="10" y="60" width="120" height="110" rx="6" fill="#f4f6f9" stroke="#1f5fbf"/><text x="70" y="88" text-anchor="middle" font-weight="700">PNG</text><text x="70" y="108" text-anchor="middle" font-size="10">RGBA, 72 / 160 / 240 px</text><text x="70" y="128" text-anchor="middle" font-size="10">alpha-composite on white</text><text x="70" y="146" text-anchor="middle" font-size="10">contain + pad, 224×224</text>
+    <line x1="130" y1="115" x2="160" y2="115" stroke="#5b6470" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="160" y="80" width="70" height="70" rx="6" fill="#e8eef9" stroke="#1f5fbf"/><text x="195" y="110" text-anchor="middle" font-size="10">stem</text><text x="195" y="126" text-anchor="middle" font-size="10">4×4 /4</text><text x="195" y="140" text-anchor="middle" font-size="9">96 × 56²</text>
+    <line x1="230" y1="115" x2="255" y2="115" stroke="#5b6470" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="255" y="70" width="95" height="90" rx="6" fill="#dce6f7" stroke="#1f5fbf"/><text x="302" y="97" text-anchor="middle" font-weight="700" font-size="11">stage 1</text><text x="302" y="115" text-anchor="middle" font-size="10">3 blocks</text><text x="302" y="131" text-anchor="middle" font-size="9">96 × 56²</text>
+    <line x1="350" y1="115" x2="375" y2="115" stroke="#5b6470" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="375" y="70" width="95" height="90" rx="6" fill="#cfdcf3" stroke="#1f5fbf"/><text x="422" y="97" text-anchor="middle" font-weight="700" font-size="11">stage 2</text><text x="422" y="115" text-anchor="middle" font-size="10">3 blocks</text><text x="422" y="131" text-anchor="middle" font-size="9">192 × 28²</text>
+    <line x1="470" y1="115" x2="495" y2="115" stroke="#5b6470" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="495" y="70" width="95" height="90" rx="6" fill="#c0d1ef" stroke="#1f5fbf"/><text x="542" y="97" text-anchor="middle" font-weight="700" font-size="11">stage 3</text><text x="542" y="115" text-anchor="middle" font-size="10">9 blocks</text><text x="542" y="131" text-anchor="middle" font-size="9">384 × 14²</text>
+    <line x1="590" y1="115" x2="615" y2="115" stroke="#5b6470" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="615" y="70" width="95" height="90" rx="6" fill="#b1c6eb" stroke="#1f5fbf"/><text x="662" y="97" text-anchor="middle" font-weight="700" font-size="11">stage 4</text><text x="662" y="115" text-anchor="middle" font-size="10">3 blocks</text><text x="662" y="131" text-anchor="middle" font-size="9">768 × 7²</text>
+    <line x1="710" y1="115" x2="735" y2="115" stroke="#5b6470" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="735" y="80" width="105" height="70" rx="6" fill="#e8eef9" stroke="#1f5fbf"/><text x="787" y="104" text-anchor="middle" font-size="10">global avg pool</text><text x="787" y="120" text-anchor="middle" font-size="10">LayerNorm</text><text x="787" y="136" text-anchor="middle" font-size="10">Linear 768→7</text>
+    <line x1="840" y1="115" x2="870" y2="115" stroke="#5b6470" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="870" y="88" width="120" height="54" rx="6" fill="#f4f6f9" stroke="#1e7f4f"/><text x="930" y="110" text-anchor="middle" font-weight="700" font-size="11">softmax</text><text x="930" y="128" text-anchor="middle" font-size="10">7 providers</text>
+    <!-- block detail -->
+    <rect x="255" y="185" width="455" height="52" rx="6" fill="#fff" stroke="#b0b7c3" stroke-dasharray="4 3"/>
+    <text x="482" y="205" text-anchor="middle" font-size="10" fill="#5b6470">one ConvNeXt block: 7×7 depthwise conv → LayerNorm → 1×1 conv (×4 width) → GELU → 1×1 conv → layer scale → stochastic depth → + input</text>
+    <text x="482" y="225" text-anchor="middle" font-size="10" fill="#5b6470">downsampling between stages: LayerNorm + 2×2 conv stride 2</text>
+    <text x="20" y="235" font-size="10" fill="#5b6470">ImageNet-1k initialisation; all 27.8 M weights updated</text>
+  </g>
+</svg>
+<div class="cap"><b>Figure 6.</b> The final network. Five copies (one per fold) are trained; at test time their softmax outputs on the image and on its mirror are averaged.</div>
+</div>
+<p><b>Why a pretrained CNN, and why this one.</b> The team's experiments isolate the ingredients <span class="tag r">reported</span>: with the ImageNet backbone <i>frozen</i>, ResNet18 reached only {{ (rep.experiments | selectattr("id","equalto","E4_resnet18_frozen") | first).val_accuracy|pct if rep else "77.5%" }}, below the from-scratch CNN, because generic object features say little about rendering style; <i>fine-tuning</i> the same network gave {{ (rep.experiments | selectattr("id","equalto","E5_resnet18_finetune") | first).val_accuracy|pct if rep else "93.7%" }}. Among fine-tuned backbones at 128 px, ConvNeXt-Tiny ({{ (rep.experiments | selectattr("id","equalto","E6b_convnext_tiny_finetune") | first).val_accuracy|pct if rep else "95.9%" }}) beat ResNet18 and EfficientNet-B0 ({{ (rep.experiments | selectattr("id","equalto","E6_effnetb0_finetune") | first).val_accuracy|pct if rep else "93.1%" }}), with the largest gain on the minority classes; its 7×7 kernels see a whole stroke and its LayerNorm does not depend on the batch. Moving the <i>same</i> model from 128 to 224 px added another 1.7 points ({{ e8.val_accuracy|pct(2) if e8 else "97.57%" }}), mostly on Facebook and WhatsApp: 224 px is the pre-training resolution and close to the 240 px native size of the Meta and Mozilla files, so fine detail survives. Resolution, not depth, was the biggest lever after fine-tuning.</p>
+
+<h3>3.3 Training recipe, ensemble and test-time augmentation</h3>
+<table>
+<tr><th>Item</th><th>EmojiCNNv2 (reference)</th><th>ConvNeXt-Tiny (final)</th></tr>
+<tr><td>Input</td><td>96 × 96, [-1, 1]</td><td>224 × 224, ImageNet mean/std</td></tr>
+<tr><td>Initialisation</td><td>random (PyTorch defaults)</td><td>ImageNet-1k (timm <span class="mono">convnext_tiny.fb_in1k</span>)</td></tr>
+<tr><td>Optimiser</td><td>AdamW, lr 2e-3, weight decay 1e-4</td><td>AdamW, lr 2e-4, weight decay 0.05</td></tr>
+<tr><td>Schedule</td><td>OneCycle, 25 epochs, batch 64</td><td>OneCycle, 10 epochs per fold, batch 32</td></tr>
+<tr><td>Regularisation</td><td>BatchNorm, dropout 0.3, flip + 4 px shift</td><td>stochastic depth 0.1, flip + 4 px shift</td></tr>
+<tr><td>Loss</td><td>cross-entropy</td><td>cross-entropy (no label smoothing)</td></tr>
+<tr><td>Model selection</td><td>checkpoint with the lowest validation loss</td><td>run A: lowest validation loss per fold (ablation); run B: last epoch (final model)</td></tr>
+<tr><td>Validation</td><td>stored split (7,900 / 1,979)</td><td>5-fold StratifiedGroupKFold (out-of-fold on 9,879) </td></tr>
+<tr><td>Inference</td><td>single pass</td><td>mean of the 5 fold-models × {image, mirrored image}</td></tr>
+<tr><td>Precision / device</td><td>fp32, CPU</td><td>mixed precision, NVIDIA RTX 4090 (RunPod)</td></tr>
+<tr><td>Seeds</td><td colspan="2">42 (+ fold index); <span class="mono">cudnn.deterministic = True</span></td></tr>
+</table>
+<p class="small"><b>Table 3.</b> Training recipes. Soft voting averages probabilities, so a confident fold cannot be outvoted by three unsure ones; adding weaker models to a vote lowered accuracy in the team's tests <span class="tag r">reported</span>, so only equally strong models are averaged.</p>
+
+<!-- ============================================================ 5. METRICS -->
+<h2>4. Metrics chosen</h2>
+<ul>
+  <li><b>Accuracy</b> is the competition metric and the headline number. On 1,979 validation images the binomial standard error at 95% accuracy is 0.5 points, so differences below about one point between two single runs are not meaningful; out-of-fold accuracy on 9,879 images has a standard error of 0.15 to 0.2 points.</li>
+  <li><b>Macro F1 and balanced accuracy</b> because Messenger (5.9%) and Mozilla (4.0%) barely move the accuracy but are the hardest classes; macro averages weight them like the others.</li>
+  <li><b>Per-class recall and the confusion matrix</b> to see <i>which</i> providers are confused; the meaningful pairs are within the same export family (Facebook / Messenger / Mozilla at 240 px, Apple / Google / Samsung at 72 px).</li>
+  <li><b>Log loss</b> of the validation probabilities: averaging probabilities (soft voting) only makes sense if they are reasonably calibrated.</li>
+  <li><b>Paired counts</b> (images one model gets right and the other wrong) when comparing two models on the same split, which is more informative than the difference of two accuracies.</li>
+</ul>
+
+<!-- ============================================================ 6. PERFORMANCE -->
+<h2 class="pb">5. Performance</h2>
+<h3>5.1 Experiment ladder</h3>
+<div class="fig">{% if F.ladder %}<img src="{{ F.ladder }}" style="max-width:92%">{% endif %}<div class="cap"><b>Figure 7.</b> Validation accuracy of every model in the project. Blue bars were produced by the submitted codebase (stored split or out-of-fold); grey bars come from Erdem's log on his own 80/20 split and could not be re-run from saved weights.</div></div>
+<table>
+<tr><th>Model</th><th>Input</th><th class="n">Val. accuracy</th><th class="n">Macro F1</th><th>Status</th></tr>
+{% if cpu %}
+<tr><td>Majority class (always "{{ cpu.majority_class.label }}")</td><td>none</td><td class="n">{{ cpu.majority_class.accuracy|pct(2) }}</td><td class="n"></td><td><span class="tag v">verified</span></td></tr>
+{% if meta_format %}<tr><td>File format only: dimensions + PNG mode ({{ meta_format_key.split("/")[2].strip() }})</td><td>no pixels</td><td class="n">{{ meta_format.accuracy|pct(2) }}</td><td class="n"></td><td><span class="tag v">verified</span></td></tr>{% endif %}
+{% if best_meta and best_meta_key != meta_format_key %}<tr><td>File metadata incl. colour under transparency ({{ best_meta_key.split("/")[2].strip() }})</td><td>no drawing</td><td class="n">{{ best_meta.accuracy|pct(2) }}</td><td class="n">{{ best_meta.macro_f1|num if best_meta.macro_f1 is defined else "" }}</td><td><span class="tag v">verified</span></td></tr>{% endif %}
+{% if base %}<tr><td>Baseline CNN, 30 Sept (3 blocks, no BN, Adam, 20 epochs)</td><td>96 px</td><td class="n">{{ base.accuracy|pct(2) }}</td><td class="n">{{ base.macro_f1|num }}</td><td><span class="tag v">verified</span></td></tr>{% endif %}
+{% if v2 %}<tr><td>EmojiCNNv2 from scratch, pixels only</td><td>96 px</td><td class="n">{{ v2.accuracy|pct(2) }}</td><td class="n">{{ v2.macro_f1|num }}</td><td><span class="tag v">verified</span></td></tr>{% else %}<tr><td>EmojiCNNv2 from scratch, pixels only</td><td>96 px</td><td class="n" colspan="2">pending</td><td><span class="tag p">pending</span></td></tr>{% endif %}
+{% if fu %}<tr><td>EmojiCNNv2 + file metadata (late fusion, ablation)</td><td>96 px + 8 format features</td><td class="n">{{ fu.accuracy|pct(2) }}</td><td class="n">{{ fu.macro_f1|num }}</td><td><span class="tag v">verified</span></td></tr>{% endif %}
+{% endif %}
+{% if rep %}{% for e in rep.experiments if e.id in ["E1b_hog_color_svm","E3_simple_cnn_white","E4_resnet18_frozen","E5_resnet18_finetune","E6_effnetb0_finetune","E6b_convnext_tiny_finetune","E7_convnext_tiny_aug","E8_convnext_tiny_224","E9_ens_convnext128_224"] %}
+<tr><td>{{ e.model }}: {{ e.method }}</td><td>{{ "64 px" if "64x64" in e.preprocessing else "96 px" if "96x96" in e.preprocessing else "224 px" if "224" in e.preprocessing else "128 px" if "128" in e.preprocessing or "as E" in e.preprocessing else "" }}</td><td class="n">{{ e.val_accuracy|pct(2) }}</td><td class="n">{{ e.val_macro_precision|num }}*</td><td><span class="tag r">reported</span></td></tr>
+{% endfor %}{% endif %}
+{% if gpu %}<tr><td><b>ConvNeXt-Tiny fine-tuned, 5 folds, flip TTA</b>, each fold keeps its lowest-validation-loss epoch (run A)</td><td>224 px</td><td class="n"><b>{{ gpu.accuracy|pct(2) }}</b> (OOF, {{ "{:,}".format(gpu.covered_images) }} img.)</td><td class="n"><b>{{ gpu.macro_f1|num }}</b></td><td><span class="tag v">verified</span></td></tr>
+{% if gpu.stored_split_validation_oof %}<tr><td class="small">same model, restricted to the stored 1,979-image split (out-of-fold)</td><td></td><td class="n">{{ gpu.stored_split_validation_oof.accuracy|pct(2) }}</td><td class="n">{{ gpu.stored_split_validation_oof.macro_f1|num }}</td><td><span class="tag v">verified</span></td></tr>{% endif %}
+{% if N.gpu_alt %}<tr><td><b>Same recipe, each fold keeps its last epoch (run B): the final model</b></td><td>224 px</td><td class="n"><b>{{ N.gpu_alt.accuracy|pct(2) }}</b> (OOF)</td><td class="n"><b>{{ N.gpu_alt.macro_f1|num }}</b></td><td><span class="tag v">verified</span></td></tr>{% endif %}
+{% if N.gpu_ensemble %}<tr><td>Both snapshots of every fold averaged (10 checkpoints, flip TTA), ablation</td><td>224 px</td><td class="n">{{ N.gpu_ensemble.accuracy_mean|pct(2) }} (OOF)</td><td class="n">{{ N.gpu_ensemble.macro_f1_mean|num }}</td><td><span class="tag v">verified</span></td></tr>{% endif %}
+{% else %}<tr><td><b>ConvNeXt-Tiny fine-tuned, 5 folds, flip TTA (final)</b></td><td>224 px</td><td class="n" colspan="2">pending (GPU run)</td><td><span class="tag p">pending</span></td></tr>{% endif %}
+</table>
+<p class="small"><b>Table 4.</b> Validation results. Verified rows share the stored split (or are out-of-fold); reported rows use Erdem's 80/20 split of about 1,976 images, so they are comparable among themselves and only roughly with the verified rows. *For reported rows the fourth column is macro <i>precision</i>, the only macro metric in the log.</p>
+{% if v2 and fu %}
+<p><b>What the file format adds on top of pixels.</b> Giving EmojiCNNv2 the eight file-format features (log dimensions, one-hot PNG mode, alpha flag; nothing read from the drawing) through late fusion moves accuracy from {{ v2.accuracy|pct(2) }} to {{ fu.accuracy|pct(2) }}{% if cpu["paired / v2_vs_fusion"] %}; on the same 1,979 images, {{ cpu["paired / v2_vs_fusion"].only_fusion_right }} are fixed and {{ cpu["paired / v2_vs_fusion"].only_v2_right }} are broken, {{ cpu["paired / v2_vs_fusion"].both_wrong }} are wrong for both{% endif %} <span class="tag v">verified</span>. The final model does not use these features; the number tells us how much of the remaining error of a small pixel model is "which export family is this" rather than "which style is this".</p>
+{% endif %}
+{% if cpu and cpu.family_breakdown %}
+<p><b>Where the errors are.</b> Grouping validation images by their native export resolution separates two kinds of mistakes: confusions <i>inside</i> a family (Facebook / Messenger / Mozilla at 240 px, Apple / Google / Samsung at 72 px), which are about drawing style, and errors that <i>cross</i> families, which a model that knew the file size could not make. Table 4b counts both <span class="tag v">verified</span>.</p>
+<table>
+<tr><th>Model</th>{% for f in ["72 px family", "160 px family", "240 px family"] %}<th class="n">{{ f }} (n = {{ (cpu.family_breakdown.values()|list)[0][f].n }})</th>{% endfor %}<th class="n">Errors</th><th class="n">of which cross-family</th></tr>
+{% for label, fb in cpu.family_breakdown.items() %}<tr><td>{{ label }}</td>{% for f in ["72 px family", "160 px family", "240 px family"] %}<td class="n">{{ fb[f].accuracy|pct }}</td>{% endfor %}<td class="n">{{ fb.errors_total }}</td><td class="n">{{ fb.errors_crossing_family }} ({{ (fb.errors_crossing_family / fb.errors_total)|pct(0) if fb.errors_total else "" }})</td></tr>{% endfor %}
+{% set fb = fin.family_breakdown if fin and fin.family_breakdown else (gpu.family_breakdown if gpu else None) %}{% if fb %}<tr><td>ConvNeXt-Tiny 224 px, 5-fold + TTA, final model (out-of-fold, all 9,879 images)</td>{% for f in ["72 px family", "160 px family", "240 px family"] %}<td class="n">{{ fb[f].accuracy|pct }}</td>{% endfor %}<td class="n">{{ fb.errors_total }}</td><td class="n">{{ fb.errors_crossing_family }} ({{ (fb.errors_crossing_family / fb.errors_total)|pct(0) if fb.errors_total else "" }})</td></tr>{% endif %}
+</table>
+<p class="small"><b>Table 4b.</b> Accuracy inside each native-resolution family and the share of errors that assign an image to a provider from another family (judged by the provider's modal export size). Cross-family errors are the ceiling of what explicit file metadata could fix{% if cpu.family_breakdown["EmojiCNNv2 (pixels)"] and cpu.family_breakdown["EmojiCNNv2 + metadata"] %}: the fusion model removes almost all of them ({{ cpu.family_breakdown["EmojiCNNv2 (pixels)"].errors_crossing_family }} to {{ cpu.family_breakdown["EmojiCNNv2 + metadata"].errors_crossing_family }}) while the within-family errors barely move ({{ cpu.family_breakdown["EmojiCNNv2 (pixels)"].errors_total - cpu.family_breakdown["EmojiCNNv2 (pixels)"].errors_crossing_family }} to {{ cpu.family_breakdown["EmojiCNNv2 + metadata"].errors_total - cpu.family_breakdown["EmojiCNNv2 + metadata"].errors_crossing_family }}), which is exactly the split one expects if the metadata carries family information and nothing about style{% endif %}.</p>
+{% endif %}
+{% if base and v2 %}
+<div class="two">
+<div class="fig">{% if F.curves_v2 %}<img src="{{ F.curves_v2 }}">{% endif %}<div class="cap"><b>Figure 8.</b> EmojiCNNv2 learning curves (OneCycle: the validation curve is noisy while the learning rate is at its peak and settles as it decays). Selected epoch: {{ v2.best_epoch }}.</div></div>
+<div class="fig">{% if F.per_class_f1 %}<img src="{{ F.per_class_f1 }}">{% endif %}<div class="cap"><b>Figure 9.</b> Per-class validation F1 of the CPU models. Messenger and Mozilla gain the most from the better small CNN.</div></div>
+</div>
+{% endif %}
+
+<h3>5.2 Final model</h3>
+{% if gpu %}
+<p>The final model reaches an out-of-fold accuracy of <b>{{ fin.accuracy|pct(2) }}</b> ({{ "{:,}".format(fin.accuracy_correct) }} of {{ "{:,}".format(fin.n) }} images; ± {{ fin.accuracy_stderr|pct(2) }} one standard error), balanced accuracy {{ fin.balanced_accuracy|num(4) }}, macro F1 {{ fin.macro_f1|num(4) }} and log loss {{ fin.log_loss|num(4) }} <span class="tag v">verified</span>{% if fin.stored_split_validation_oof %}; restricted to the stored 1,979-image split it scores {{ fin.stored_split_validation_oof.accuracy|pct(2) }} ({{ fin.stored_split_validation_oof.correct }} correct), the number to compare with the CPU models of Table 4{% endif %}. Every training image is predicted by models that never saw it, and nothing was selected by looking at the test set. Its fold accuracies range from {{ (N.gpu_alt.fold_table|map(attribute="val_accuracy")|min)|pct(2) if N.gpu_alt else (gpu.fold_table|map(attribute="val_accuracy")|min)|pct(2) }} to {{ (N.gpu_alt.fold_table|map(attribute="val_accuracy")|max)|pct(2) if N.gpu_alt else (gpu.fold_table|map(attribute="val_accuracy")|max)|pct(2) }} (Table 5, run B), the spread one should expect from 1,976-image folds. Training took {{ (gpu.fold_table|map(attribute="minutes")|sum)|num(1) }} minutes for the five folds on the {{ gpu.device_name }}.</p>
+<table>
+<tr><th class="n">Fold</th><th class="n">Val. accuracy (run A, lowest val loss)</th><th class="n">Macro F1</th><th class="n">Log loss</th><th class="n">Kept epoch</th>{% if N.gpu_alt and N.gpu_alt.fold_table %}<th class="n">Val. accuracy (run B, last epoch)</th><th class="n">Macro F1</th>{% endif %}<th class="n">Minutes</th></tr>
+{% for f in gpu.fold_table %}<tr><td class="n">{{ f.fold }}</td><td class="n">{{ f.val_accuracy|pct(2) }}</td><td class="n">{{ f.macro_f1|num(4) }}</td><td class="n">{{ f.log_loss|num(4) }}</td><td class="n">{{ f.best_epoch }}</td>{% if N.gpu_alt and N.gpu_alt.fold_table %}<td class="n">{{ N.gpu_alt.fold_table[loop.index0].val_accuracy|pct(2) }}</td><td class="n">{{ N.gpu_alt.fold_table[loop.index0].macro_f1|num(4) }}</td>{% endif %}<td class="n">{{ f.minutes|num(1) }}</td></tr>{% endfor %}
+</table>
+<p class="small"><b>Table 5.</b> Per-fold results (each fold validated on images it never saw; flip TTA applied). Training and validation batches are identical between the two runs (same seeds); only the epoch whose weights are kept differs.</p>
+{% if N.gpu_alt %}
+<p><b>Which epoch to keep.</b> Run A kept, for each fold, the epoch with the lowest validation loss; this chose epochs {{ gpu.fold_table|map(attribute="best_epoch")|join(", ") }} while validation accuracy was still rising at epoch 10. The two quantities diverge once a network becomes over-confident: a handful of confident mistakes inflate the cross-entropy even as the number of mistakes keeps falling. Run B therefore keeps the final epoch of the OneCycle schedule (learning rate annealed to zero), which involves no selection on the validation set at all: out-of-fold accuracy {{ N.gpu_alt.accuracy|pct(2) }} versus {{ gpu.accuracy|pct(2) }} <span class="tag v">verified</span>. Run B re-trained the five folds from the same seeds on the same GPU, and the two runs reproduced each other to the last decimal at every epoch (the <span class="mono">fold*_history.csv</span> files differ only in wall-clock seconds){% if N.gpu_curves and N.gpu_curves.identical_trajectories %} <span class="tag v">verified</span>{% endif %}, so the gain is entirely due to the epoch that was kept, and the "two runs" are one training trajectory per fold with two checkpoints each (Figure 9b). Run B is therefore the final model: the simpler rule, no selection on the validation set, and the better number. On the {{ "{:,}".format(N.gpu_ensemble.n) }} training images, {{ N.gpu_ensemble.only_b_right }} are right only under B and {{ N.gpu_ensemble.only_a_right }} only under A, {{ N.gpu_ensemble.both_wrong }} are wrong under both{% if N.gpu_ensemble.test_agreement_a_b %}; on the test set the two checkpoint sets agree on {{ N.gpu_ensemble.test_agreement_a_b|pct(2) }} of the images{% endif %}. We also tried averaging the ten checkpoints (both snapshots of every fold): {{ N.gpu_ensemble.accuracy_mean|pct(2) }} out-of-fold, a tie with run B, and {{ (N.public_lb.entries | selectattr("file","equalto","submission_convnext224_AB_10models.csv") | first).public_score|num(5) if N.public_lb else "" }} against {{ N.public_lb.final_entry.public_score|num(5) if N.public_lb and N.public_lb.final_entry else "" }} on the public board; giving half the vote to the less-converged snapshots does not help, so the final entry stays the five last-epoch models <span class="tag v">verified</span>.</p>
+<div class="fig">{% if F.curves_runs %}<img src="{{ F.curves_runs }}" style="max-width:100%">{% endif %}<div class="cap"><b>Figure 9b.</b> Learning curves of the five folds of the final model (one trajectory per fold; runs A and B are identical up to the checkpoint kept). Left: cross-entropy (solid validation, dashed train, log scale). Middle: validation accuracy; the dots mark the epoch run A kept (lowest validation loss), the dotted line the epoch run B kept (10). Right: training accuracy, which reaches 99.9% by epoch 8 while validation accuracy still gains a little: the flip/shift augmentation and stochastic depth slow the overfit but do not remove it.</div></div>
+{% endif %}
+<table>
+<tr><th>Provider</th><th class="n">Support</th><th class="n">Precision</th><th class="n">Recall</th><th class="n">F1</th></tr>
+{% for p, s in fin.per_class.items() %}<tr><td>{{ p }}</td><td class="n">{{ s.support|int }}</td><td class="n">{{ s.precision|num(4) }}</td><td class="n">{{ s.recall|num(4) }}</td><td class="n">{{ s["f1-score"]|num(4) }}</td></tr>{% endfor %}
+</table>
+<p class="small"><b>Table 6.</b> Per-class out-of-fold metrics of the final model (run B, five last-epoch fold-models).</p>
+<div class="two">
+<div class="fig">{% if F.cm_final %}<img src="{{ F.cm_final }}">{% elif F.cm_oof %}<img src="{{ F.cm_oof }}">{% endif %}<div class="cap"><b>Figure 10.</b> Out-of-fold confusion matrix of the final model (counts).</div></div>
+<div class="fig">{% if F.cm_final_norm %}<img src="{{ F.cm_final_norm }}">{% elif F.cm_oof_norm %}<img src="{{ F.cm_oof_norm }}">{% endif %}<div class="cap"><b>Figure 11.</b> The same matrix, row-normalised (recall on the diagonal).</div></div>
+</div>
+{% else %}
+<div class="box pending"><b>Final model results <span class="tag p">pending</span>.</b> This version of the report was built before the 5-fold ConvNeXt-Tiny run finished on the GPU. Run <span class="mono">python scripts/train_backbone.py --out outputs/convnext224</span> (or the notebook with <span class="mono">RUN_FINAL_GPU = True</span>), copy the <span class="mono">outputs/convnext224</span> folder next to the codebase, then <span class="mono">python scripts/build_report_tables.py &amp;&amp; python report/build_report.py</span>: Tables 4 to 6 and Figures 10 to 12 fill themselves from <span class="mono">oof_summary.json</span>, <span class="mono">fold_summary.csv</span> and the saved figures. Until then, the best single-run evidence for this architecture is the reported {{ e8.val_accuracy|pct(2) if e8 else "97.57%" }} validation accuracy and {{ e8.public_lb|num(5) if e8 else "0.97408" }} public leaderboard score of E8 <span class="tag r">reported</span>.</div>
+{% endif %}
+
+<h3>5.3 Error analysis and explainability</h3>
+{% if fin and fin.top_confusions %}
+<p>The remaining {{ fin.family_breakdown.errors_total if fin.family_breakdown else "" }} out-of-fold errors concentrate on a few pairs: {% for c in fin.top_confusions[:6] %}{{ c.true }} predicted as {{ c.pred }} ({{ c.count }}){{ ", " if not loop.last else "" }}{% endfor %} <span class="tag v">verified</span>. Apple sits at the centre of them, and for a documented reason: when WhatsApp released its own emoji set in October 2017, Emojipedia described it as "heavily inspired by the Apple Color Emoji font", with smileys that closely resemble Apple's; Google's and Facebook's faces share the same conventions. Messenger (99.3% recall) and Samsung (99.0%) are the easiest classes; Mozilla ({{ fin.per_class.mozilla.recall|pct }} recall, the smallest class) and WhatsApp ({{ fin.per_class.whatsapp.recall|pct }}) the hardest.</p>
+{% if fin.family_breakdown %}
+<p>Grouping by native export resolution (as in Table 4b): accuracy is {{ fin.family_breakdown["72 px family"].accuracy|pct }} inside the 72 px family (Apple, Google, Samsung), {{ fin.family_breakdown["160 px family"].accuracy|pct }} for the 160 px WhatsApp files and {{ fin.family_breakdown["240 px family"].accuracy|pct }} inside the 240 px family (Facebook, Messenger, Mozilla). Only {{ fin.family_breakdown.errors_crossing_family }} of the {{ fin.family_breakdown.errors_total }} errors cross a family ({{ (fin.family_breakdown.errors_crossing_family / fin.family_breakdown.errors_total)|pct(0) }}); most of those are WhatsApp files predicted as Apple, exactly the pair whose drawings are related. The network therefore separates the export families almost perfectly from pixels alone and spends its remaining errors on style look-alikes, which is the behaviour one wants from a style classifier <span class="tag v">verified</span>.</p>
+{% endif %}
+<div class="fig">{% if F.failures_final %}<img src="{{ F.failures_final }}" style="max-width:96%">{% elif F.failures_oof %}<img src="{{ F.failures_oof }}" style="max-width:96%">{% endif %}<div class="cap"><b>Figure 12.</b> The most confident out-of-fold mistakes of the final model (true → predicted, confidence). Several are near-identical designs across related vendors; a few are flags or symbols with almost no vendor-specific drawing.</div></div>
+{% elif v2 %}
+<p>Until the final run is in, the error analysis uses EmojiCNNv2 on the stored split. Its confusions (Figure 13) stay inside the expected groups: Facebook with Messenger (same company, same 240 px export), Mozilla with those two, Apple with Samsung. Figure 14 shows its most confident mistakes: many are flags or symbols with almost no vendor-specific drawing, or near-identical designs across sibling vendors.</p>
+<div class="two">
+<div class="fig">{% if F.cm_v2 %}<img src="{{ F.cm_v2 }}">{% endif %}<div class="cap"><b>Figure 13.</b> EmojiCNNv2 confusion matrix on the stored split, row-normalised.</div></div>
+<div class="fig">{% if F.cm_baseline %}<img src="{{ F.cm_baseline }}">{% endif %}<div class="cap"><b>Figure 13b.</b> The September baseline for comparison: Messenger recall was 0.42.</div></div>
+</div>
+<div class="fig">{% if F.failures_v2 %}<img src="{{ F.failures_v2 }}" style="max-width:96%">{% endif %}<div class="cap"><b>Figure 14.</b> Most confident validation mistakes of EmojiCNNv2 (true → predicted, confidence).</div></div>
+{% endif %}
+{% if F.gradcam %}
+<div class="fig"><img src="{{ F.gradcam }}" style="max-width:96%"><div class="cap"><b>Figure 15.</b> Grad-CAM on the last convolutional stage of EmojiCNNv2 for correctly classified validation images (two per provider). The network attends to outlines and shaded regions of the drawing rather than to the empty canvas, which is the behaviour we wanted the preprocessing to enforce.</div></div>
+{% endif %}
+
+<h3>5.4 Kaggle leaderboard</h3>
+{% if N.public_lb %}
+<p>Public leaderboard scores of the files produced by this codebase, read from the competition's submissions page on 17 and 18 October <span class="tag v">verified</span>, next to the scores of the team's other entries. The public score tracks our validation estimates within 0.9 points for every file (0.84 points for the September baseline, at most 0.65 for the four others; the final model {{ N.public_lb.final_entry.public_score|num(5) if N.public_lb.final_entry else "" }} public against {{ fin.accuracy|pct(2) if fin else "" }} out-of-fold), which supports the validation protocol: the stored split and the fold assignment are neither optimistic nor pessimistic about the test set.</p>
+<table>
+<tr><th>Entry</th><th>Model</th><th>By</th><th class="n">Public score</th><th class="n">Our validation accuracy</th><th>Status</th></tr>
+{% for e in N.public_lb.entries %}<tr><td class="mono">{{ e.file }}</td><td>{{ e.model }}</td><td>{{ e.by }}</td><td class="n">{{ e.public_score|num(5) }}</td><td class="n">{{ e.validation_accuracy|pct(2) if e.validation_accuracy else "" }}</td><td><span class="tag {{ 'v' if e.status == 'verified' else 'r' }}">{{ e.status }}</span></td></tr>{% endfor %}
+</table>
+<p class="small"><b>Table 7.</b> {{ N.public_lb.source }}. {{ N.public_lb.note }}</p>
+{% endif %}
+<p>Public leaderboard scores recorded in the team log <span class="tag r">reported</span>: {{ (rep.experiments | selectattr("id","equalto","E3_simple_cnn_white") | first).public_lb|num(5) if rep else "0.93642" }} for the from-scratch CNN with white compositing (E3), {{ e8.public_lb|num(5) if e8 else "0.97408" }} for ConvNeXt-Tiny at 224 px (E8) and {{ e9.public_lb|num(5) if e9 else "0.97671" }} for the 128 + 224 px soft-voting ensemble (E9). The public score is computed on a subset of the 9,879 test images; the private score decides the ranking.</p>
+<div class="box"><b>Selected entries.</b> {% if gpu %}Kaggle scores the private leaderboard on the best of two selected files; ours are the two ConvNeXt-Tiny files, both with flip TTA and no post-processing rule (duplicate lookup and within-test consistency both off: on these files they would change 0 predictions, because the 333 test images identical to a training image are already predicted with that label). <b>(1) <span class="mono">submission_convnext224_last.csv</span></b>, the final model (five last-epoch fold-models): <b>public score {{ N.public_lb.final_entry.public_score|num(5) if N.public_lb and N.public_lb.final_entry else "[fill in]" }}</b> <span class="tag v">verified</span>, the team's best entry, submitted on 18 October. <b>(2) <span class="mono">submission_convnext224_AB_10models.csv</span></b>, the ten-checkpoint average: public score {{ (N.public_lb.entries | selectattr("file","equalto","submission_convnext224_AB_10models.csv") | first).public_score|num(5) if N.public_lb else "" }} <span class="tag v">verified</span>; it differs from (1) on {{ N.gpu_ensemble.test_changed_by_mean_vs_b if N.gpu_ensemble else "" }} of the 9,879 test images. Private scores are published after the deadline and go in the final version of this report.{% else %}<b>To fill in after the GPU run and the final Kaggle selection</b>: which file was submitted, its public score, and whether the two optional post-processing rules were used (with the number of predictions they changed, printed by <span class="mono">make_final_submission.py</span>).{% endif %}</div>
+
+<h3>5.5 What did not work</h3>
+<ul>
+  <li><b>Frozen ImageNet features</b> (ResNet18 as a fixed feature extractor): {{ (rep.experiments | selectattr("id","equalto","E4_resnet18_frozen") | first).val_accuracy|pct if rep else "77.5%" }}, below a 0.4 M-parameter CNN trained from scratch. Object-level features do not encode rendering style; the backbone must be adapted <span class="tag r">reported</span>.</li>
+  <li><b>Resampling augmentation and label smoothing</b> on ConvNeXt-Tiny: minus 1.5 points, with errors concentrating on Facebook → WhatsApp and Mozilla <span class="tag r">reported</span>. Our exact-pixel augmentation is the response.</li>
+  <li><b>Voting with weaker members</b>: adding ResNet18 or the small CNN to the ConvNeXt ensemble lowered accuracy to 97.3 to 97.4% <span class="tag r">reported</span>. Averaging helps only between comparably strong models, which is why the final ensemble is five copies of the same recipe, one per fold; even averaging in our own earlier snapshots of those five models (Section 5.2) did not help.</li>
+  <li><b>The first baseline's training budget</b>: with Adam at a constant 1e-3 and 20 epochs the September CNN was still underfitting ({{ base.accuracy|pct(2) if base else "76.71%" }}, train accuracy 75%) <span class="tag v">verified</span>; BatchNorm and a OneCycle schedule, not more parameters, closed most of the gap.</li>
+</ul>
+
+<!-- ============================================================ 7. AI AND CODE -->
+<h2 class="pb">6. AI and code</h2>
+<h3>6.1 Transparency about AI</h3>
+<p>We used AI assistants for the code and to understand the models, as the brief allows, and we list every use with its prompts in <span class="mono">AI_USAGE.md</span> at the root of the codebase. In short: the September baseline notebook was generated and debugged with OpenAI Codex from Adam's prompts; the 13 October experiment series was run by Erdem (tool to be stated by him in the same file); the submitted codebase (library, scripts, notebook, figures) was written with Claude (Anthropic) on 17 October from Adam's prompts, which are quoted verbatim in the log. The structure of this report follows the teacher's outline and its text is ours; the numbers and figures were generated by the codebase and copied without manual edits (the report builder reads them from <span class="mono">report/numbers.json</span>).</p>
+<h3>6.2 Codebase</h3>
+<pre>notebooks/Emoji_Provider_Classification.ipynb   entry point: GPU pod (RunPod) / Colab / Databricks / laptop (set ZIP_PATH, run all)
+src/emoji_provider/   data.py (archive, metadata scan, preprocessing + cache, splits, datasets)   eda.py
+                      models.py (EmojiCNN, EmojiCNNv2, MetaFusion, timm backbones)   train.py (AdamW + OneCycle, AMP, TTA)
+                      evaluate.py (metrics, confusion, curves, failures, Grad-CAM)   metadata_model.py   submit.py
+scripts/              run_cpu_experiments.py   train_backbone.py   make_final_submission.py   explain_checkpoint.py   build_report_tables.py
+data/                 split_seed42.csv (the validation split)   baseline_sept30/best_model.pt
+outputs/              eda/   cpu/   convnext224/ (run A)   convnext224_last/ (run B)   submissions/   runpod_training_logs.txt
+requirements.txt (pinned versions)   requirements-gpu-runtime.txt   AI_USAGE.md   README.md   RUNBOOK.md</pre>
+<p>Every script checks its inputs with assertions (label file columns, ID sets, train/test disjointness, duplicate isolation across the split, submission format and round trip through CSV). Each run writes a <span class="mono">*_run.json</span> with the configuration, device and best epoch, its history as CSV, the validation and test probabilities as <span class="mono">.npy</span>, and its figures, so every number here can be checked without retraining; the console output of the two GPU runs (every epoch of every fold) is kept as <span class="mono">outputs/runpod_training_logs.txt</span>. Seeds are fixed (42); the split and fold assignment are stored as files. Running the codebase on a new computer needs the Kaggle archive and the codebase zip only; the README gives the exact commands of the two GPU runs and the Colab, Databricks and laptop variants.</p>
+<h3>6.3 Compute</h3>
+<p>EmojiCNNv2: {{ cpu.emojicnnv2_history.seconds_per_epoch|round|int if cpu and cpu.emojicnnv2_history else "about 110" }} s per epoch on two CPU cores ({{ (cpu.emojicnnv2_history.epochs if cpu and cpu.emojicnnv2_history else 25) }} epochs). ConvNeXt-Tiny at 224 px: we expected roughly 10 to 12 minutes per fold on an NVIDIA T4{% if gpu and gpu.fold_table %}; measured: {{ (gpu.fold_table|map(attribute="minutes")|sum)|num(1) }} minutes of training for the five folds of one run on an {{ gpu.device_name if gpu.device_name else "RTX 4090" }} (RunPod on-demand pod, $0.89 per hour; about 16 minutes of pod time per run including PNG decoding, inference with TTA and the figures; both runs together used about $1.10 of credit){% endif %}. Erdem's single 224 px model took about 2 h 10 on an Apple M4 (MPS) <span class="tag r">reported</span>.</p>
+
+<!-- ============================================================ 8. CONCLUSION -->
+<h2>7. Conclusion</h2>
+<p>Recognising who drew an emoji is a style-recognition problem, and the project taught us as much about the data as about the models. Looking at the files before the pixels showed a leak large enough to score {{ meta_format.accuracy|pct if meta_format else "far above chance" }} from dimensions and colour mode alone; deciding to neutralise it (white compositing, one canvas, pixels only) made every later comparison about what the network sees. On the modelling side the lessons were plain: a small CNN trained properly beats hand-crafted features by a wide margin; pretrained features only help once the whole backbone is fine-tuned; input resolution mattered more than the choice of architecture; and augmentations that resample the image remove the very detail that identifies the vendor. The final ConvNeXt-Tiny ensemble{% if fin %} reaches {{ fin.accuracy|pct(2) }} out-of-fold accuracy{% endif %}, separates the export families almost perfectly from pixels alone, and spends its remaining errors on documented look-alikes (WhatsApp's Apple-inspired set, the shared face conventions of Apple, Google and Facebook), which is a reassuring sign that it learned style rather than shortcuts.</p>
+<p>With more time we would (i) train at the native 240 px for the Meta and Mozilla files instead of 224, (ii) try a two-stage classifier that first predicts the export family and then the vendor within it, as an explicit and interpretable version of what the network does implicitly, (iii) run a proper seed study to put error bars on the architecture comparisons that we currently cite from single runs, and (iv) replace the equal-weight vote with a learned combiner (a small transformer or logistic layer over the base models' outputs, trained only on out-of-fold predictions so that it never sees a prediction made on its own training image). Our own evidence suggests the gain would be small: an equal-weight vote of a DINOv2 model with the ConvNeXt entry scored {{ (N.public_lb.entries | selectattr("file","equalto","submission_dinov2_convnext_ensemble.csv") | first).public_score|num(5) if N.public_lb else "0.96881" }} on the public board, below the ConvNeXt entry alone, so a combiner would mostly learn to ignore the weaker member.</p>
+
+<!-- ============================================================ APPENDIX -->
+<h2 class="pb">8. Appendix</h2>
+<h3>A. Full experiment log (13 October, Erdem Sanver) <span class="tag r">reported</span></h3>
+{% if rep %}
+<table>
+<tr><th>Id</th><th>Model</th><th>Method</th><th class="n">Epochs</th><th class="n">Val. acc.</th><th class="n">Macro prec.</th><th class="n">Public LB</th><th>Preprocessing</th></tr>
+{% for e in rep.experiments %}<tr><td class="mono">{{ e.id }}</td><td>{{ e.model }}</td><td>{{ e.method }}</td><td class="n">{{ e.epochs or "" }}</td><td class="n">{{ e.val_accuracy|pct(2) }}</td><td class="n">{{ e.val_macro_precision|num(4) }}</td><td class="n">{{ e.public_lb|num(5) if e.public_lb else "" }}</td><td>{{ e.preprocessing }}</td></tr>{% endfor %}
+</table>
+<p class="small">{{ rep.source }}. {{ rep.status }}.</p>
+{% endif %}
+<h3>B. Per-class tables of the CPU models <span class="tag v">verified</span></h3>
+{% for label, s in [("Baseline CNN (30 Sept)", base), ("EmojiCNNv2, pixels only", v2), ("EmojiCNNv2 + file metadata", fu)] if s %}
+<table>
+<tr><th colspan="5">{{ label }}: accuracy {{ s.accuracy|pct(2) }}, macro F1 {{ s.macro_f1|num(4) }}, balanced accuracy {{ s.balanced_accuracy|num(4) }}, log loss {{ s.log_loss|num(4) }}</th></tr>
+<tr><th>Provider</th><th class="n">Support</th><th class="n">Precision</th><th class="n">Recall</th><th class="n">F1</th></tr>
+{% for p, r in s.per_class.items() %}<tr><td>{{ p }}</td><td class="n">{{ r.support|int }}</td><td class="n">{{ r.precision|num(4) }}</td><td class="n">{{ r.recall|num(4) }}</td><td class="n">{{ r["f1-score"]|num(4) }}</td></tr>{% endfor %}
+</table>
+{% endfor %}
+<h3>C. Environment</h3>
+<p class="small">CPU experiments: Python 3.13, torch 2.14.1, torchvision 0.29.1, timm 1.0.30, scikit-learn 1.9.1, numpy 2.5.3, pandas 3.0.5, Pillow 12.3.0, matplotlib 3.11.2 (pinned in <span class="mono">requirements.txt</span>). GPU runs: RunPod "PyTorch 2.8.0" pod image, torch 2.8.0+cu128, NVIDIA driver 570.169, RTX 4090 24 GB, plus scikit-learn and timm installed from PyPI on 17 October (<span class="mono">requirements-gpu-runtime.txt</span>; the image's torch is kept). The versions printed at the start of each run are in <span class="mono">outputs/runpod_training_logs.txt</span>; runs made after 18 October also store them in each <span class="mono">*_run.json</span>. September baseline: torch 2.11.0+cu128, scikit-learn 1.6.1 (<span class="mono">requirements-used.txt</span> of that run); its checkpoint was re-scored with the current versions and reproduced 1,518 / 1,979 correct exactly.</p>
+<h3>D. References</h3>
+<p class="small">Z. Liu, H. Mao, C.-Y. Wu, C. Feichtenhofer, T. Darrell, S. Xie. <i>A ConvNet for the 2020s.</i> CVPR 2022. · R. Wightman. <i>PyTorch Image Models (timm).</i> · R. R. Selvaraju et al. <i>Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization.</i> ICCV 2017. · L. N. Smith, N. Topin. <i>Super-Convergence: Very Fast Training of Neural Networks Using Large Learning Rates.</i> 2018 (OneCycle). · I. Loshchilov, F. Hutter. <i>Decoupled Weight Decay Regularization.</i> ICLR 2019 (AdamW). · Emojipedia, <i>Facebook Discontinues Messenger Emojis</i> (2 Oct 2017), <i>WhatsApp Releases Its Own Emoji Set</i> (Oct 2017) and the Mozilla vendor page (fxemoji, Firefox OS, 2015-2016). · Course slides IDSI51006 (T. Rigaud, 2026).</p>
+</body>
+</html>
