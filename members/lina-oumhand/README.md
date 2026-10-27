@@ -16,4 +16,4 @@ The paper discusses DINOv2 in Section 4.4 and why it trailed ConvNeXt here (pret
 
 - DINOv2 settings: model size (ViT-S/14, B/14, ...), input resolution, epochs, learning rate, which layers were trained, validation score and split. Confirm whether it was DINOv2 or DINOv3.
 - What `submission.csv` and `submission2.csv` were (submission2 is your best entry).
-- Add your notebook here, and your AI-assistance line in `codebase/AI_USAGE.md`.
+- Add your notebook here, and send Adam the AI tools and prompts you used (he keeps the AI-use record).

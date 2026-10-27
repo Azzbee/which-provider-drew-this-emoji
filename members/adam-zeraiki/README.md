@@ -1,6 +1,6 @@
 # Adam Zeraiki
 
-Team leader. Built the shared codebase (`codebase/`) and wrote the paper with AI assistance (see `codebase/AI_USAGE.md`).
+Team leader. Built the shared codebase (`codebase/`) and wrote the paper with AI assistance (record to be added in `codebase/AI_USAGE.md`).
 
 ## Methods tried
 

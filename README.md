@@ -27,7 +27,6 @@ paper/                  the LaTeX paper (main.tex + parts/*.tex), bibliography, 
 codebase/               the submitted code: src/emoji_provider, scripts, notebook, tests, saved outputs
   outputs/                probabilities, histories, metrics and submissions of every verified run
   README.md               how to rerun everything (laptop, Colab, Databricks, RunPod)
-  AI_USAGE.md             record of AI assistance (required by the course)
 members/                one folder per person: what they tried, scores, code or notes
 TIMELINE.md             dated history of the project, reconstructed from Kaggle and run logs
 AGENTS.md               rules for teammates and AI coding agents working on this repo
