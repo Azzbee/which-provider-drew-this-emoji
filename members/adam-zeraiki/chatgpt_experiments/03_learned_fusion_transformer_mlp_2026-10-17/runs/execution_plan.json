@@ -1,0 +1,20 @@
+{
+  "variants": [
+    "frozen_style",
+    "tuned_style"
+  ],
+  "script_sha256": "2da31933a9659f5c05a229ae79d53f5eb70bbeaa97a902b215c0d39502ecaa9a",
+  "threads": 2,
+  "outer_metrics_calculated": false,
+  "seeds": [
+    17,
+    43,
+    101
+  ],
+  "families": [
+    "mlp",
+    "transformer"
+  ],
+  "max_epochs": 60,
+  "patience": 8
+}

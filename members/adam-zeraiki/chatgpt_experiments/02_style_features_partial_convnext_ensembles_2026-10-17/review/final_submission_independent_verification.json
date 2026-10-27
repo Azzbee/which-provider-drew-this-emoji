@@ -1,0 +1,99 @@
+{
+  "scope": "Independent final CSV audit against complete component probability arrays, exact test IDs, selected packaged checkpoints and separate 12-image replay.",
+  "all_checks_passed": true,
+  "submission_path": "/workspace/scratch/9c7afe2f05a2/outputs/cv_improvement/submission_dinov2_convnext_ensemble.csv",
+  "submission_sha256": "2b3266bbfea272f6d4e0e802d55e7f357e1d76c98dea12c43bc7433cadf43156",
+  "rows": 9879,
+  "columns": [
+    "Id",
+    "Label"
+  ],
+  "first_id": "10001",
+  "last_id": "19879",
+  "unique_ids": true,
+  "missing_values": 0,
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "label_counts": {
+    "google": 1939,
+    "apple": 1935,
+    "samsung": 1830,
+    "facebook": 1588,
+    "whatsapp": 1572,
+    "messenger": 618,
+    "mozilla": 397
+  },
+  "exact_float32_equal_weight_component_average": true,
+  "all_labels_match_probability_argmax": true,
+  "maximum_probability_sum_error": 2.384185791015625e-07,
+  "component_model_checks": [
+    {
+      "component": "dinov2",
+      "checkpoint_sha256": "731f53ccaf235be2747bb64b13c0846ed07e01f28633e72ce97c1a6074a211fc",
+      "model_state_sha256": "a81be5823cd839f995eca16801ef8f915dccaa624e7854b518fd626b041a3f15",
+      "pretrained_suffix_state_sha256": "7100828c4f7e86f987e5b75c1d8ff923ac61752ae228d743cdb120e0848e0000",
+      "classifier_state_sha256": "e5d088ec4bbbef9834fc16a3d7772122ea106d6c816fce33fee618eccb12a4d3",
+      "pretrained_checkpoint_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "split_manifest_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+      "selected_epoch": 3,
+      "packaging_verified": true,
+      "all_label_refit": false
+    },
+    {
+      "component": "convnext",
+      "checkpoint_sha256": "f8c081ca533695a702412952dc2f9e4ca450814ed993e3f60adffeadbeb8a9cf",
+      "model_state_sha256": "11e863642b547222500392fa25ea32ff8b3871c80b43c046ea1a99bd28bfbf3b",
+      "pretrained_suffix_state_sha256": "614ad7dc21574e3840896af11e457a9213de9873e051048c81a94c16732ea1f4",
+      "classifier_state_sha256": "b98eabe6bd1ec20750f8466c1da2e1fee29d31412407c605f2e104df706c2398",
+      "pretrained_checkpoint_sha256": "983f1562536e84ff750a1576fb08e54de751dbf2e17c0d8a4a13704341fdcd3d",
+      "split_manifest_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+      "selected_epoch": 4,
+      "packaging_verified": true,
+      "all_label_refit": false
+    }
+  ],
+  "selected_ensemble_sha256": "6bf83a83f62b5eda182bae91562f8a433c39db93de018eb708b98036fb073c65",
+  "ensemble_probabilities_sha256": "c968824abc35ab8df9c834c56bc18bc81f9d0a845ad49d2283c362981ad67bca",
+  "source_component_receipts_match_packaged_original_checkpoint_hashes": true,
+  "independent_sample_replay": {
+    "sample_count": 12,
+    "sample_ids": [
+      "10001",
+      "10899",
+      "11797",
+      "12695",
+      "13593",
+      "14491",
+      "15389",
+      "16287",
+      "17185",
+      "18083",
+      "18981",
+      "19879"
+    ],
+    "exact_pixel_hash_match": true,
+    "maximum_absolute_probability_difference": 0.0,
+    "bit_identical_probabilities": true,
+    "predicted_label_disagreements": 0,
+    "reference_array_shape": [
+      9879,
+      7
+    ],
+    "reference_array_sha256": "04d3db8a3107a895df3180e5b17dfbf2afb2acb1052f2376a5b05cee674d54bf"
+  },
+  "test_predictions_changed_vs_dinov2": 293,
+  "changed_predictions_are_not_an_accuracy_measure": true,
+  "validation_correct": 1919,
+  "validation_total": 1976,
+  "validation_is_exploratory_after_selection": true,
+  "hidden_test_accuracy_unknown": true,
+  "all_label_refit": false,
+  "kaggle_uploaded": false
+}

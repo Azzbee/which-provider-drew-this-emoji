@@ -1,0 +1,19 @@
+{
+  "count": 32,
+  "elapsed_s": 7.516341640002793,
+  "rows_per_second": 4.2573903013791305,
+  "threads": 2,
+  "batch_size": 8,
+  "token_length_mean": 285.71875,
+  "token_length_max": 304,
+  "all_complete": true,
+  "finite": true,
+  "probabilities_sha256": "885647edfe27fc7a3c1373b4d0f55d186439f6e18ea5d680bb7708f62ed8ccbe",
+  "no_model_request_contains_labels_or_ids": true,
+  "source_probabilities_sha256": {
+    "dino_original/run_224/selection/validation_predictions.csv": "edf6f331a24fb01941797094ab0b409548064c6c334767de29507c209a37e788",
+    "convnext/run_224/selection/validation_predictions.csv": "d5853e11f730cb252f17297b6e7e5182557a3cc608654e05dd0d6c4fcb22dab5",
+    "style/results/hist_gradient_boosting_validation_probabilities.npy": "87543d391bf67d5629ef018be054380839f3ffcee2ead4a56acfba41bebcad1d"
+  },
+  "mode": "JEV-style zero-shot Julia-1 decision model over three image experts; not TypeSafe Jev"
+}

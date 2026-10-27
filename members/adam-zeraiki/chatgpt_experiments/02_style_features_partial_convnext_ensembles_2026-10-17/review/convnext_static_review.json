@@ -1,0 +1,23 @@
+{
+  "scope": "Independent static review of ConvNeXt-Tiny final-stage training, selection, loading and inference. No model training/inference performed by reviewer.",
+  "source_path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_convnext/train_convnext.py",
+  "reviewed_source_sha256": "6ebf2e328cb8d293e71d63d0499256dcbb974bd13c5fee09debee320b481b71f",
+  "blocking_findings": [],
+  "checks": [
+    "Official checkpoint SHA is enforced and state loading is strict.",
+    "Prefix features[0:6] and copied final-stage features[6:8] split is structurally correct.",
+    "White RGBA composite, Lanczos letterbox 224 and ImageNet normalization match prior DINO implementation.",
+    "LayerNorm2d follows adaptive average pooling as in the original architecture; 768-to-7 head is trainable.",
+    "AdamW includes the final stage and final LayerNorm; nonzero pretrained gradient and parameter changes are verified.",
+    "model.train enables suffix stochastic depth only; validation and prediction call model.eval.",
+    "Gradient clipping, epoch budget, early stopping and immediate best-checkpoint serialization are consistent.",
+    "Best checkpoint is reloaded before saving validation probabilities.",
+    "Validation uses fixed ordered indices and explicit canonical class order.",
+    "Test prediction verifies checkpoint precision, split, model, class order and source provenance.",
+    "Resume restores optimizer, selected score, history and global torch RNG; DataLoader permutation is seeded per epoch.",
+    "Union-find combines RGB96 and RGB224 exact-image equivalence relations, including transitive chains.",
+    "Merged groups are checked against the unchanged outer split and passed to training-only StratifiedGroupKFold.",
+    "StandardScaler is fit inside each inner training fold; C selection sees only original training examples.",
+    "Final classifier is fit on the fixed training partition; portable coefficients, class order and predictor equivalence are checked."
+  ]
+}

@@ -1,0 +1,173 @@
+{"event": "model_loaded", "model": "SupersonicLabs/Julia-1", "revision": "a85b127321d580d65176c89ced8273f305745d85", "weights_sha256": "df853bf7fe424420011f3d0c47a05d7341aa9eefa7fb9f203ea4aada4ad95b72", "parameters": 144292867, "engine": "Upstream TransformerEngine, CPU float32, strict safetensors loading", "fine_tuned_on_emojis": false, "all_parameters_frozen": true, "versions": {"torch": "2.8.0+cpu", "transformers": "5.0.0", "tokenizers": "0.22.2", "huggingface_hub": "1.33.0", "numpy": "2.3.5", "safetensors": "0.6.2"}}
+{
+  "purpose": "Post-evaluation implementation audit, with unchanged requests and weights",
+  "classes": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "predicted_label_histogram": {
+    "apple": 20,
+    "facebook": 46,
+    "google": 1211,
+    "messenger": 656,
+    "mozilla": 29,
+    "samsung": 1,
+    "whatsapp": 13
+  },
+  "mean_probability": {
+    "apple": 0.025533266365528107,
+    "facebook": 0.050986360758543015,
+    "google": 0.503730833530426,
+    "messenger": 0.33628275990486145,
+    "mozilla": 0.04034712538123131,
+    "samsung": 0.019411612302064896,
+    "whatsapp": 0.02370830439031124
+  },
+  "std_probability": {
+    "apple": 0.05961315706372261,
+    "facebook": 0.08894228935241699,
+    "google": 0.327609658241272,
+    "messenger": 0.328764408826828,
+    "mozilla": 0.08109127730131149,
+    "samsung": 0.027449339628219604,
+    "whatsapp": 0.05612281709909439
+  },
+  "top_probability_quantiles": {
+    "minimum": 0.22881297767162323,
+    "q25": 0.5518306344747543,
+    "median": 0.7563888132572174,
+    "q75": 0.9074722230434418,
+    "maximum": 0.996068000793457
+  },
+  "distinct_logit_rows": 1965,
+  "all_logit_rows_finite": true,
+  "audited_request_count": 9,
+  "audited_rows": [
+    {
+      "row_index": 0,
+      "external_Id": "00003",
+      "saved_index": 3,
+      "saved_label": "messenger",
+      "upstream_predict_index": 3,
+      "fresh_logits_argmax": 3
+    },
+    {
+      "row_index": 1,
+      "external_Id": "00005",
+      "saved_index": 2,
+      "saved_label": "google",
+      "upstream_predict_index": 2,
+      "fresh_logits_argmax": 2
+    },
+    {
+      "row_index": 8,
+      "external_Id": "00025",
+      "saved_index": 1,
+      "saved_label": "facebook",
+      "upstream_predict_index": 1,
+      "fresh_logits_argmax": 1
+    },
+    {
+      "row_index": 16,
+      "external_Id": "00049",
+      "saved_index": 4,
+      "saved_label": "mozilla",
+      "upstream_predict_index": 4,
+      "fresh_logits_argmax": 4
+    },
+    {
+      "row_index": 39,
+      "external_Id": "00178",
+      "saved_index": 6,
+      "saved_label": "whatsapp",
+      "upstream_predict_index": 6,
+      "fresh_logits_argmax": 6
+    },
+    {
+      "row_index": 47,
+      "external_Id": "00234",
+      "saved_index": 0,
+      "saved_label": "apple",
+      "upstream_predict_index": 0,
+      "fresh_logits_argmax": 0
+    },
+    {
+      "row_index": 733,
+      "external_Id": "03700",
+      "saved_index": 5,
+      "saved_label": "samsung",
+      "upstream_predict_index": 5,
+      "fresh_logits_argmax": 5
+    },
+    {
+      "row_index": 988,
+      "external_Id": "04994",
+      "saved_index": 2,
+      "saved_label": "google",
+      "upstream_predict_index": 2,
+      "fresh_logits_argmax": 2
+    },
+    {
+      "row_index": 1975,
+      "external_Id": "09877",
+      "saved_index": 3,
+      "saved_label": "messenger",
+      "upstream_predict_index": 3,
+      "fresh_logits_argmax": 3
+    }
+  ],
+  "maximum_logit_difference_from_original_batch": 1.621246337890625e-05,
+  "upstream_predict_and_exported_argmax_agree_on_all_audited_rows": true,
+  "decoded_option_marker_order": [
+    {
+      "index": 0,
+      "option": "apple",
+      "marker_position": 41,
+      "decoded_option": " apple"
+    },
+    {
+      "index": 1,
+      "option": "facebook",
+      "marker_position": 43,
+      "decoded_option": " facebook"
+    },
+    {
+      "index": 2,
+      "option": "google",
+      "marker_position": 45,
+      "decoded_option": " google"
+    },
+    {
+      "index": 3,
+      "option": "messenger",
+      "marker_position": 47,
+      "decoded_option": " messenger"
+    },
+    {
+      "index": 4,
+      "option": "mozilla",
+      "marker_position": 49,
+      "decoded_option": " mozilla"
+    },
+    {
+      "index": 5,
+      "option": "samsung",
+      "marker_position": 52,
+      "decoded_option": " samsung"
+    },
+    {
+      "index": 6,
+      "option": "whatsapp",
+      "marker_position": 54,
+      "decoded_option": " whatsapp"
+    }
+  ],
+  "qtype_index": 0,
+  "orientation": "Upstream predict uses softmax and argmax over the caller-supplied option list, in the same order as exported columns",
+  "interpretation": "No class-index reversal or constant-output implementation error found. Outputs vary, but their winners strongly favour google and messenger. This is a failed zero-shot decision-layer configuration; the audit alone does not identify the cause of the semantic bias or measure TypeSafe Jev."
+}

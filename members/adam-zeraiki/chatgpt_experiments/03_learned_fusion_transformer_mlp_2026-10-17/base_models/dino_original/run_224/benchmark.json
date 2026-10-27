@@ -1,0 +1,16 @@
+[
+  {
+    "precision": "fp32",
+    "batch": 16,
+    "prefix_seconds": 0.5122574720007833,
+    "images_per_second": 31.234293054832264,
+    "full_backbone_max_error": 0.0
+  },
+  {
+    "precision": "bf16",
+    "batch": 16,
+    "prefix_seconds": 0.3060347893333528,
+    "images_per_second": 52.281637766913384,
+    "full_backbone_max_error": 0.0
+  }
+]

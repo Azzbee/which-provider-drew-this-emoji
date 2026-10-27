@@ -1,0 +1,45 @@
+{
+  "scope": "Independent light CPU check of cached actual224-resolution input hashes against persisted split; no training or inference.",
+  "split_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+  "id_count": 9879,
+  "ids_unique": true,
+  "ids_sorted": true,
+  "train_count": 7903,
+  "validation_count": 1976,
+  "pixel_hash_count": 9879,
+  "pixel_hash_dtype": "|S64",
+  "cache_complete_count": 9879,
+  "all_cache_rows_complete": true,
+  "all_hashes_are_64_hex": true,
+  "cross_boundary_hash_intersection_count": 0,
+  "train_unique_pixel_groups": 7777,
+  "validation_unique_pixel_groups": 1944,
+  "repeated_pixel_images_beyond_first": 158,
+  "conflicting_label_hash_groups": 0,
+  "train_class_counts": {
+    "apple": 1539,
+    "facebook": 1333,
+    "google": 1502,
+    "messenger": 464,
+    "mozilla": 318,
+    "samsung": 1432,
+    "whatsapp": 1315
+  },
+  "validation_class_counts": {
+    "apple": 385,
+    "facebook": 334,
+    "google": 375,
+    "messenger": 116,
+    "mozilla": 79,
+    "samsung": 358,
+    "whatsapp": 329
+  },
+  "split_sha256_matches_audit": true,
+  "resolution": 224,
+  "storage_shape": [
+    9879,
+    257,
+    384
+  ],
+  "split_sha256_matches_cache": true
+}

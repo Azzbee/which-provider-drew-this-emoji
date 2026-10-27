@@ -1,0 +1,17 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "torchvision": "0.23.0+cpu",
+    "timm": "1.0.20",
+    "huggingface_hub": "0.35.3",
+    "safetensors": "0.6.2",
+    "numpy": "2.3.5",
+    "Pillow": "12.3.0",
+    "scikit-learn": "1.8.0",
+    "pandas": "2.2.3"
+  },
+  "training_device": "cpu",
+  "cpu_threads": 8
+}

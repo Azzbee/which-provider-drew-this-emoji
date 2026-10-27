@@ -1,0 +1,25 @@
+{
+  "format_version": 1,
+  "model": "torchvision_convnext_tiny_imagenet1k_v1",
+  "checkpoint_sha256": "983f1562536e84ff750a1576fb08e54de751dbf2e17c0d8a4a13704341fdcd3d",
+  "split": "train",
+  "ids_sha256": "15f9c849e040f38978dce2a6ab3588d4a36df8a82d2305f904c928f474e35a3c",
+  "split_manifest_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+  "image_hash_manifest_sha256": "6244df64073fb8241c5e750835cf06ffaf9e758a9dce555a1b0c4138c35a8529",
+  "resolution": 224,
+  "frozen_prefix": "torchvision features[0:6], always eval",
+  "compute_precision": "bf16",
+  "storage_dtype": "float16",
+  "shape": [
+    9879,
+    384,
+    14,
+    14
+  ],
+  "preprocessing": "RGBA on white; Lanczos contain; centered square; ImageNet mean/std",
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "torchvision": "0.23.0+cpu",
+    "Pillow": "12.3.0"
+  }
+}

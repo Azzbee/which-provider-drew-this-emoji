@@ -1,0 +1,83 @@
+{
+  "scope": "Independent light verification from original component validation CSVs and current selected ConvNeXt checkpoint; no training or model inference.",
+  "paired_comparisons": [
+    {
+      "name": "convnext_finetuned",
+      "correct": 1888,
+      "accuracy": 0.9554655870445344,
+      "macro_f1": 0.9512680200628548,
+      "paired": {
+        "both_correct": 1841,
+        "both_wrong": 34,
+        "baseline_wrong_candidate_correct": 47,
+        "baseline_correct_candidate_wrong": 54,
+        "net_additional_correct": -7,
+        "accuracy_delta_percentage_points": -0.354251012145749,
+        "predicted_class_changes": 112,
+        "mcnemar_exact_two_sided_image_level_p": 0.5507089135982696,
+        "mcnemar_caveat": "Descriptive only: image-level calculation ignores repeated-image dependence and is uncorrected for multiple candidate selection; use grouped bootstrap for the paired interval."
+      },
+      "bootstrap95_percentage_points": [
+        -1.3224821973550356,
+        0.6585696415284147
+      ]
+    },
+    {
+      "name": "dinov2_convnext_equal",
+      "correct": 1919,
+      "accuracy": 0.9711538461538461,
+      "macro_f1": 0.969598106900691,
+      "paired": {
+        "both_correct": 1881,
+        "both_wrong": 43,
+        "baseline_wrong_candidate_correct": 38,
+        "baseline_correct_candidate_wrong": 14,
+        "net_additional_correct": 24,
+        "accuracy_delta_percentage_points": 1.214574898785425,
+        "predicted_class_changes": 59,
+        "mcnemar_exact_two_sided_image_level_p": 0.0011951203200073759,
+        "mcnemar_caveat": "Descriptive only: image-level calculation ignores repeated-image dependence and is uncorrected for multiple candidate selection; use grouped bootstrap for the paired interval."
+      },
+      "bootstrap95_percentage_points": [
+        0.5063291139240507,
+        1.957831325301205
+      ]
+    },
+    {
+      "name": "dinov2_convnext_dino75",
+      "correct": 1900,
+      "accuracy": 0.9615384615384616,
+      "macro_f1": 0.9607036256282496,
+      "paired": {
+        "both_correct": 1894,
+        "both_wrong": 75,
+        "baseline_wrong_candidate_correct": 6,
+        "baseline_correct_candidate_wrong": 1,
+        "net_additional_correct": 5,
+        "accuracy_delta_percentage_points": 0.25303643724696356,
+        "predicted_class_changes": 8,
+        "mcnemar_exact_two_sided_image_level_p": 0.12499999999999996,
+        "mcnemar_caveat": "Descriptive only: image-level calculation ignores repeated-image dependence and is uncorrected for multiple candidate selection; use grouped bootstrap for the paired interval."
+      },
+      "bootstrap95_percentage_points": [
+        0.0,
+        0.5089058524173028
+      ]
+    }
+  ],
+  "selected_convnext_epoch": 4,
+  "completed_convnext_epochs": 7,
+  "convnext_selection_checkpoint_sha256": "39f1c8a029621b571aa38ce31e65c5d701779c001ce39e9b4fad79b6e99e8791",
+  "convnext_full_model_state_sha256": "11e863642b547222500392fa25ea32ff8b3871c80b43c046ea1a99bd28bfbf3b",
+  "convnext_pretrained_suffix_state_sha256": "614ad7dc21574e3840896af11e457a9213de9873e051048c81a94c16732ea1f4",
+  "convnext_classifier_state_sha256": "b98eabe6bd1ec20750f8466c1da2e1fee29d31412407c605f2e104df706c2398",
+  "all_component_probabilities_and_fixed_blends_exact": true,
+  "fixed_validation_id_order_confirmed": true,
+  "all_label_refit": false,
+  "reference_validation_errors": 81,
+  "equal_ensemble_validation_errors": 57,
+  "validation_errors_reduced_by": 24,
+  "validation_relative_error_reduction": 0.2962962962962963,
+  "explanation": "81 previous validation errors fall to 57 on the same 1,976 images: 24/81 = 29.63% fewer validation errors. This is exploratory after model selection and is not a measured hidden-test improvement.",
+  "hidden_kaggle_score_measured": false
+}

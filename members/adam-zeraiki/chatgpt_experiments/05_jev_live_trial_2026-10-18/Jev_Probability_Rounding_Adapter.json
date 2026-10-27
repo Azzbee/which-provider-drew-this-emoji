@@ -1,0 +1,26 @@
+{
+  "recorded_utc": "2026-10-18T19:18:23.859521+00:00",
+  "change": "Bounded rounding adapter for Jev Choice API probabilities",
+  "reason": "An observed seven-class response used hundredth-grid probabilities summing to 0.99; its labels, chosen maximum, model and usage were otherwise valid.",
+  "general_sum_tolerance": 1e-05,
+  "hundredth_grid_value_tolerance": 1e-08,
+  "hundredth_grid_sum_tolerance": "number_of_classes * 0.005 + 1e-8",
+  "acceptance_requirements": [
+    "Every class remains present exactly once.",
+    "Every probability remains finite and within [0,1].",
+    "A rounded vector must have a positive sum.",
+    "The chosen class must still be a highest-probability option.",
+    "Exact pinned model and valid confidence remain required."
+  ],
+  "normalization": "Only accepted hundredth-grid vectors whose sum differs from 1 by more than 1e-5 are divided by their original sum.",
+  "provenance_fields": [
+    "raw_probability_sum",
+    "normalization_applied",
+    "normalization_reason"
+  ],
+  "raw_response_policy": "Raw response bytes and returned raw API response JSON are not modified. parse_choice returns adapted analysis probabilities.",
+  "request_and_protocol_changes": false,
+  "api_calls_for_adapter": 0,
+  "live_ledger_changes_by_adapter": false,
+  "client_sha256": "775bf550b64174af32977ea6f7d8d2e9cf380d4d508f7eda6731c9d2b46a2fd2"
+}

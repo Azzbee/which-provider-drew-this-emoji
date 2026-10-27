@@ -1,0 +1,60 @@
+{
+  "protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "partition": "pilot",
+  "id": "07306",
+  "expert": {
+    "payload_sha256": "2f5d7960c2bef2fcf58774cff13b024cf768382052c6827b994ebb0a637d7127",
+    "response_sha256": "0d2ab5ff207e6a11259e0db7a42ad74970ff569b973122785d99e818c8b92e2e",
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "provider": {
+          "type": "choice",
+          "choice": "google",
+          "confidence": 0.22,
+          "probabilities": {
+            "apple": 0.22,
+            "facebook": 0.11,
+            "google": 0.33,
+            "messenger": 0.12,
+            "mozilla": 0.06,
+            "samsung": 0.12,
+            "whatsapp": 0.04
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 2331,
+        "output_tokens": 71
+      }
+    }
+  },
+  "final": {
+    "payload_sha256": "dcec222178897ee256e2966fcb7225fef38971e645a8a6a748a1ea8c57bda852",
+    "response_sha256": "d37d262cabac3f6e679e7650d7ff9eefb563751d761a6b945025471c4a8d7651",
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "provider": {
+          "type": "choice",
+          "choice": "mozilla",
+          "confidence": 0.45,
+          "probabilities": {
+            "apple": 0.04,
+            "facebook": 0.01,
+            "google": 0.3,
+            "messenger": 0.1,
+            "mozilla": 0.53,
+            "samsung": 0.02,
+            "whatsapp": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 2836,
+        "output_tokens": 71
+      }
+    }
+  },
+  "updated_utc": "2026-10-18T19:20:11.885140+00:00"
+}

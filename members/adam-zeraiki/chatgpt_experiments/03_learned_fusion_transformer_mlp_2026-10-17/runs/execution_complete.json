@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "variants": [
+    "frozen_style",
+    "tuned_style"
+  ],
+  "outer_metrics_calculated": false,
+  "unix_time": 1792265153.122562,
+  "initial_runner_restart": "Initial gated runner was interrupted before any training configuration was written; both fits subsequently completed through direct CLI invocation."
+}

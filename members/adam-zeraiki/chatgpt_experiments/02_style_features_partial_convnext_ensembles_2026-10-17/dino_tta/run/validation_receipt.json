@@ -1,0 +1,109 @@
+{
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "split": "validation",
+  "views": [
+    "original",
+    "flip"
+  ],
+  "average_rule": "0.5 original + 0.5 horizontal-flip probabilities",
+  "model_checkpoint_sha256": "731f53ccaf235be2747bb64b13c0846ed07e01f28633e72ce97c1a6074a211fc",
+  "pretrained_checkpoint_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+  "split_manifest_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+  "metrics": {
+    "original": {
+      "correct": 1895,
+      "total": 1976,
+      "accuracy": 0.9590080971659919,
+      "macro_f1": 0.958658185012385,
+      "log_loss": 0.2114396196691634
+    },
+    "flip": {
+      "correct": 1883,
+      "total": 1976,
+      "accuracy": 0.9529352226720648,
+      "macro_f1": 0.9503020325463175,
+      "log_loss": 0.23046626108675494
+    },
+    "tta": {
+      "correct": 1896,
+      "total": 1976,
+      "accuracy": 0.9595141700404858,
+      "macro_f1": 0.9576623373440929,
+      "log_loss": 0.20436925216888907,
+      "classification_report": {
+        "apple": {
+          "precision": 0.934010152284264,
+          "recall": 0.9558441558441558,
+          "f1-score": 0.944801026957638,
+          "support": 385.0
+        },
+        "facebook": {
+          "precision": 0.9520958083832335,
+          "recall": 0.9520958083832335,
+          "f1-score": 0.9520958083832335,
+          "support": 334.0
+        },
+        "google": {
+          "precision": 0.9863013698630136,
+          "recall": 0.96,
+          "f1-score": 0.972972972972973,
+          "support": 375.0
+        },
+        "messenger": {
+          "precision": 0.9193548387096774,
+          "recall": 0.9827586206896551,
+          "f1-score": 0.95,
+          "support": 116.0
+        },
+        "mozilla": {
+          "precision": 0.927710843373494,
+          "recall": 0.9746835443037974,
+          "f1-score": 0.9506172839506173,
+          "support": 79.0
+        },
+        "samsung": {
+          "precision": 0.9669421487603306,
+          "recall": 0.9804469273743017,
+          "f1-score": 0.9736477115117892,
+          "support": 358.0
+        },
+        "whatsapp": {
+          "precision": 0.9840255591054313,
+          "recall": 0.9361702127659575,
+          "f1-score": 0.9595015576323987,
+          "support": 329.0
+        },
+        "accuracy": 0.9595141700404858,
+        "macro avg": {
+          "precision": 0.952920102925635,
+          "recall": 0.9631427527658716,
+          "f1-score": 0.9576623373440929,
+          "support": 1976.0
+        },
+        "weighted avg": {
+          "precision": 0.9601725396997902,
+          "recall": 0.9595141700404858,
+          "f1-score": 0.9595920641993594,
+          "support": 1976.0
+        }
+      },
+      "baseline_wrong_candidate_correct": 6,
+      "baseline_correct_candidate_wrong": 5
+    },
+    "reproduction": {
+      "maximum_probability_difference": 0.0,
+      "prediction_disagreements": 0,
+      "reference_correct": 1895
+    }
+  },
+  "validation_is_exploratory": true,
+  "kaggle_uploaded": false
+}

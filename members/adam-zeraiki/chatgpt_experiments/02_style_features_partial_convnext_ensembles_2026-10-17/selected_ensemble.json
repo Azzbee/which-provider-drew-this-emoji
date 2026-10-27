@@ -1,0 +1,35 @@
+{
+  "name": "DINOv2 + ConvNeXt equal probability ensemble",
+  "dinov2_weight": 0.5,
+  "convnext_weight": 0.5,
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "model_state_sha256": {
+    "dinov2": "a81be5823cd839f995eca16801ef8f915dccaa624e7854b518fd626b041a3f15",
+    "convnext": "11e863642b547222500392fa25ea32ff8b3871c80b43c046ea1a99bd28bfbf3b"
+  },
+  "selection_epochs": {
+    "dinov2": 3,
+    "convnext": 4
+  },
+  "validation_correct": 1919,
+  "validation_total": 1976,
+  "validation_accuracy": 0.9711538461538461,
+  "reference_correct": 1895,
+  "errors_corrected": 38,
+  "correct_predictions_lost": 14,
+  "net_additional_correct": 24,
+  "validation_gain_percentage_points": 1.214574898785425,
+  "relative_validation_error_reduction": 0.2962962962962963,
+  "practical_minimum_additional_correct": 8,
+  "all_label_refit": false,
+  "validation_interpretation": "Exploratory selection on the same reused holdout; not a measured Kaggle score.",
+  "kaggle_uploaded": false
+}

@@ -1,0 +1,196 @@
+{
+  "candidate": "tuned_style_transformer",
+  "rows": 12,
+  "mode": "sample",
+  "complete_kaggle_submission": false,
+  "class_order": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "input_manifest_sha256": "784d84bb23b0e63420d8f30483aa56e9e6d38de051285b355b2d12c875de9ed3",
+  "csv": "sample_predictions.csv",
+  "csv_sha256": "b275c0e8c2268a3f87e721b23b1d73dd77ee82c4e8d09647d2489b8429d31c23",
+  "probabilities": "sample_probabilities.npy",
+  "probabilities_sha256": "12404b40e0ac4be96b0327877282f97c98b4cf8a7e3df35ff4b6d14100ff0064",
+  "source_files": {
+    "base_models/dino_original/train_meta.py": "1cfd165616fd1ff3dff4d246ba655a0485b0ca18775e648430ab7242fc14c810",
+    "base_models/dino_original/dinov2_vits14_pretrain.pth": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+    "base_models/dino_original/run_224/split.csv": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+    "base_models/dino_original/run_224/selection/best.pt": "731f53ccaf235be2747bb64b13c0846ed07e01f28633e72ce97c1a6074a211fc",
+    "base_models/convnext/train_convnext.py": "6ebf2e328cb8d293e71d63d0499256dcbb974bd13c5fee09debee320b481b71f",
+    "base_models/convnext/convnext_tiny-983f1562.pth": "983f1562536e84ff750a1576fb08e54de751dbf2e17c0d8a4a13704341fdcd3d",
+    "base_models/convnext/run_224/selection/best.pt": "f8c081ca533695a702412952dc2f9e4ca450814ed993e3f60adffeadbeb8a9cf",
+    "base_models/style/run_style_experiment.py": "f6824b4d1e6efa68f4b4cb455c3d4ba75e7a377c4d360c4df84ef2c62a161523",
+    "base_models/style/results/feature_schema.json": "81d2d8937a978264ea10ee6b6ba6e0eb9a056da81a7a43583f10976bbbf504b0",
+    "heads.py": "2300ae824d60b238567e797cc85a047d617ec78f773e44dc310c0288895e683e",
+    "extract_features.py": "101ba61a4dfb20d2d14dd94b72d4b5b84ca0f439c7356c52f133f8606ebeba07"
+  },
+  "wrapper_sha256": "236e4cf16737bd5feb34cf6cd37815bdbb468591d110e0fc7bc9af17d9439d5d",
+  "features": {
+    "dino": {
+      "pretrained": {
+        "shape": [
+          12,
+          768
+        ],
+        "dtype": "float32",
+        "sha256": "62a04ae348dcb64969c9aedc507465822a4e2b8ca4647c73acb7f62660e88319"
+      },
+      "tuned": {
+        "shape": [
+          12,
+          768
+        ],
+        "dtype": "float32",
+        "sha256": "abe21348916cf1bdef81ec1d54d87166e0233e5c84d86b30bd83daf0334a0c88"
+      },
+      "tuned_probabilities": {
+        "shape": [
+          12,
+          7
+        ],
+        "dtype": "float32",
+        "sha256": "dc995c3344cebdaec368567b4b8cba1df6a54ac483ec2054e07314e682f33d7a"
+      }
+    },
+    "convnext": {
+      "pretrained": {
+        "shape": [
+          12,
+          768
+        ],
+        "dtype": "float32",
+        "sha256": "45cee3bfb1655588648abbe99a1b6fd37e199b2a7522d028ea5d67c61f42cfdb"
+      },
+      "tuned": {
+        "shape": [
+          12,
+          768
+        ],
+        "dtype": "float32",
+        "sha256": "a530da14c38bded40bfb7b0a3fb965814298bb7b2aef5ec4ea8590891170b42c"
+      },
+      "tuned_probabilities": {
+        "shape": [
+          12,
+          7
+        ],
+        "dtype": "float32",
+        "sha256": "6731926009a5ccf48f396cfd031eef00c474bb74d55950b60aa0c41b6259c8f4"
+      }
+    },
+    "style": {
+      "features": {
+        "shape": [
+          12,
+          1460
+        ],
+        "dtype": "float32",
+        "sha256": "802b1adabfaf0f2956663365fac487abdb0f8eafa7137794687f3d7fa6ca4516"
+      }
+    }
+  },
+  "predictor": {
+    "condition": "tuned_style",
+    "family": "transformer",
+    "rule": "Equal fixed-seed mean, accumulated in float64 then stored as float32",
+    "seeds": [
+      {
+        "seed": 17,
+        "epochs": 12,
+        "checkpoint": "runs/tuned_style/transformer/seed_17/refit/model.pt",
+        "checkpoint_sha256": "2dc17d1803f65be2656c9d9964567cbcf2a07932abb8d6fd256314dc83b0e938",
+        "probabilities_sha256": "4fa0d094977ded04abe88836491e8a109d14262b1c8fccf6b65d9f79c1eff385"
+      },
+      {
+        "seed": 43,
+        "epochs": 14,
+        "checkpoint": "runs/tuned_style/transformer/seed_43/refit/model.pt",
+        "checkpoint_sha256": "58602d4a7e18814bd32648badce9aa864e51ea43d4b396096d6653e6b03388e4",
+        "probabilities_sha256": "b8466505f93aa06873731ae5a352bfe5d99026aedd71c6610b8d9a3972b7c000"
+      },
+      {
+        "seed": 101,
+        "epochs": 17,
+        "checkpoint": "runs/tuned_style/transformer/seed_101/refit/model.pt",
+        "checkpoint_sha256": "19d06205cb6b0f093f6ce2072bc4514edceef6a8d5c1f13b349030507ce7da62",
+        "probabilities_sha256": "cc45f06488b9eda394ba4bcb91829bd6a844eb7a66d640b2936dbee7f5c081e0"
+      }
+    ],
+    "equal_seed_weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "configuration_sha256": "549920d114c9c9c1177c384d3de954f12bce0e344afaa42cd85704be2b13003e",
+    "selection_summary_sha256": "1149609a850e538911d6457350f51e094171648409b208ef3ddcbc38f87d1c59",
+    "head_source_verification": {
+      "status": "verified_recorded_documentation_only_correction",
+      "executed_source_sha256": "2da31933a9659f5c05a229ae79d53f5eb70bbeaa97a902b215c0d39502ecaa9a",
+      "current_source_sha256": "2300ae824d60b238567e797cc85a047d617ec78f773e44dc310c0288895e683e",
+      "documentation_patch_sha256": "bfdfca3c792e98e65cbd13d5cc5639c1da61a235ea9f0669c9eab48841a28a06",
+      "executable_ast_sha256": "5879698794929c060754d5be7fc9daf2e2784e2f4e538a07bfa0092cd256038f",
+      "exact_single_phrase_replacement_verified": true
+    },
+    "feature_files": [
+      {
+        "branch": "dino",
+        "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/sample_replay/features/dino/test_tuned.npy",
+        "shape": [
+          12,
+          768
+        ],
+        "source_dtype": "float32",
+        "sha256": "abe21348916cf1bdef81ec1d54d87166e0233e5c84d86b30bd83daf0334a0c88"
+      },
+      {
+        "branch": "convnext",
+        "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/sample_replay/features/convnext/test_tuned.npy",
+        "shape": [
+          12,
+          768
+        ],
+        "source_dtype": "float32",
+        "sha256": "a530da14c38bded40bfb7b0a3fb965814298bb7b2aef5ec4ea8590891170b42c"
+      },
+      {
+        "branch": "style",
+        "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/sample_replay/features/style/test_features.npy",
+        "shape": [
+          12,
+          1460
+        ],
+        "source_dtype": "float32",
+        "sha256": "802b1adabfaf0f2956663365fac487abdb0f8eafa7137794687f3d7fa6ca4516"
+      }
+    ]
+  },
+  "default_selection_used": false,
+  "selected_candidate_file_sha256": null,
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.8.0+cpu",
+    "torchvision": "0.23.0+cpu",
+    "timm": "1.0.20",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "Pillow": "12.3.0",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "joblib": "1.5.3",
+    "threadpoolctl": "3.6.0"
+  },
+  "threads": 4,
+  "encoder_batch_size": 16,
+  "head_batch_size": 256,
+  "elapsed_seconds": 6.178412725996168,
+  "training_performed": false,
+  "large_prefix_cache_required": false,
+  "network_access_performed": false,
+  "kaggle_uploaded": false
+}

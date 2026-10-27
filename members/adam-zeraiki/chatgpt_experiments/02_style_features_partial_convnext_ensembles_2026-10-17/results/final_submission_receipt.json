@@ -1,0 +1,47 @@
+{
+  "submission_name": "submission_dinov2_convnext_ensemble.csv",
+  "submission_sha256": "2b3266bbfea272f6d4e0e802d55e7f357e1d76c98dea12c43bc7433cadf43156",
+  "rows": 9879,
+  "columns": [
+    "Id",
+    "Label"
+  ],
+  "first_id": "10001",
+  "last_id": "19879",
+  "unique_ids": true,
+  "missing_values": 0,
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "label_counts": {
+    "google": 1939,
+    "apple": 1935,
+    "samsung": 1830,
+    "facebook": 1588,
+    "whatsapp": 1572,
+    "messenger": 618,
+    "mozilla": 397
+  },
+  "dinov2_weight": 0.5,
+  "convnext_weight": 0.5,
+  "all_labels_match_saved_probability_argmax": true,
+  "finite_normalized_probabilities": true,
+  "maximum_probability_sum_error": 2.384185791015625e-07,
+  "probabilities_sha256": "c968824abc35ab8df9c834c56bc18bc81f9d0a845ad49d2283c362981ad67bca",
+  "dinov2_test_probabilities_sha256": "4db679b919126fb9d9d19b4e7d50e0554269ad8c8f6ef357dfa3ed689b0eb78a",
+  "convnext_test_probabilities_sha256": "04d3db8a3107a895df3180e5b17dfbf2afb2acb1052f2376a5b05cee674d54bf",
+  "test_predictions_changed_vs_dinov2": 293,
+  "changed_test_predictions_is_not_an_accuracy_measure": true,
+  "validation_correct": 1919,
+  "validation_total": 1976,
+  "validation_score_status": "Reused local holdout for selection; hidden Kaggle test score is unknown.",
+  "all_label_refit": false,
+  "kaggle_uploaded": false,
+  "selected_ensemble_sha256": "6bf83a83f62b5eda182bae91562f8a433c39db93de018eb708b98036fb073c65"
+}

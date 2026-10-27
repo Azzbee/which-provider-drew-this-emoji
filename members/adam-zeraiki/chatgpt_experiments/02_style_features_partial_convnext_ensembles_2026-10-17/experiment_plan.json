@@ -1,0 +1,18 @@
+{
+  "reference": "Saved DINOv2 ViT-S/14 final-two-block fine-tune, epoch 3",
+  "reference_correct": 1895,
+  "validation_total": 1976,
+  "split_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+  "experiments": [
+    "Reproduce DINOv2 original predictions; compare fixed 50:50 original/flip probability average",
+    "Two bounded pixel-style classifiers on fixed train partition",
+    "Frozen ConvNeXt-Tiny features with training-only grouped classifier selection",
+    "ConvNeXt-Tiny final-stage fine-tuning, 10 epoch maximum, patience 3",
+    "Fixed 50:50 DINOv2/ConvNeXt probability average and 75:25 DINOv2/ConvNeXt average",
+    "Optional fixed 90:10 DINOv2/best-style probability average"
+  ],
+  "selection_rule": "Highest held-out number correct; ties prefer lower complexity. Prefer a more complex replacement only for at least 8 additional correct images versus the reference. All results are exploratory after prior and current holdout selection.",
+  "no_kaggle_submissions": true,
+  "no_hidden_test_labels": true,
+  "all_label_refit": "Not included in this first comparison; preserve a directly validated checkpoint."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "size": 168,
+    "batch": 16,
+    "seconds_per_step": 0.11591942779996316,
+    "estimated_epoch_train7903_seconds": 57.256952368944305
+  },
+  {
+    "size": 168,
+    "batch": 32,
+    "seconds_per_step": 0.20699828159995376,
+    "estimated_epoch_train7903_seconds": 51.12210685888858
+  },
+  {
+    "size": 224,
+    "batch": 16,
+    "seconds_per_step": 0.14320224059993053,
+    "estimated_epoch_train7903_seconds": 70.73295671632819
+  },
+  {
+    "size": 224,
+    "batch": 32,
+    "seconds_per_step": 0.30268487360008295,
+    "estimated_epoch_train7903_seconds": 74.75370487692048
+  }
+]

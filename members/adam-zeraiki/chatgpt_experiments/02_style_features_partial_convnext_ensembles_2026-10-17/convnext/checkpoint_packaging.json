@@ -1,0 +1,21 @@
+{
+  "original_training_checkpoint_sha256": "39f1c8a029621b571aa38ce31e65c5d701779c001ce39e9b4fad79b6e99e8791",
+  "portable_inference_checkpoint_sha256": "f8c081ca533695a702412952dc2f9e4ca450814ed993e3f60adffeadbeb8a9cf",
+  "all_model_tensors_exactly_equal": true,
+  "removed_fields": [
+    "optimizer_state_dict",
+    "torch_rng_state"
+  ],
+  "selected_epoch": 4,
+  "class_names": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "pretrained_checkpoint_sha256": "983f1562536e84ff750a1576fb08e54de751dbf2e17c0d8a4a13704341fdcd3d",
+  "model_state_sha256": "11e863642b547222500392fa25ea32ff8b3871c80b43c046ea1a99bd28bfbf3b"
+}

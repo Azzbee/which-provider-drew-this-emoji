@@ -1,0 +1,302 @@
+{
+  "repo": "SupersonicLabs/Julia-1",
+  "revision": "a85b127321d580d65176c89ced8273f305745d85",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "size": 1758,
+      "oid": "02da5b6f81631caf36a978d663bc7db5bb7481e8",
+      "lfs": null
+    },
+    {
+      "path": ".gitignore",
+      "size": 77,
+      "oid": "3e6c5f664a35c4578499d453e896b405bed3af5b",
+      "lfs": null
+    },
+    {
+      "path": "README.md",
+      "size": 13679,
+      "oid": "4d2a8bce8c5f5bb77f73ec3be0c20c76d974b2ca",
+      "lfs": null
+    },
+    {
+      "path": "assets/julia-banner.png",
+      "size": 933172,
+      "oid": "a825e1558f168b2284a03fae9cfd069b87d0ad05",
+      "lfs": {
+        "oid": "6a039468c06177e462c85b944983118e1a5f2a5f3c725b9a7d52659c2af54de0",
+        "size": 933172,
+        "pointerSize": 131
+      }
+    },
+    {
+      "path": "assets/supersonic-labs-dark.svg",
+      "size": 16226,
+      "oid": "49a96dbe8b5c33c6c5c56e84a67b0f7038f51d19",
+      "lfs": {
+        "oid": "ff3acfbd4c5b41cffc1f7c4be56bf49349d2a60ba3166d14e81cd89bdf26c14e",
+        "size": 16226,
+        "pointerSize": 130
+      }
+    },
+    {
+      "path": "assets/supersonic-labs-light.svg",
+      "size": 16394,
+      "oid": "d107ea0250c7e5c68e5de12ea20506d46baa73d7",
+      "lfs": {
+        "oid": "4b17f4411ec052e68d4514afc13f66ea0a5015e6655c9bfa2971156e63e8a16f",
+        "size": 16394,
+        "pointerSize": 130
+      }
+    },
+    {
+      "path": "config.json",
+      "size": 235,
+      "oid": "65451445a5e98cd8bdadd59b8f2d7e76c8ceac8b",
+      "lfs": null
+    },
+    {
+      "path": "encoder/config.json",
+      "size": 1936,
+      "oid": "9a2464972b57dab9e383fcd4075999f7cfa58326",
+      "lfs": null
+    },
+    {
+      "path": "inference-policy.json",
+      "size": 355,
+      "oid": "a81b31b0677aa6bc5da8075fc268642c249835eb",
+      "lfs": null
+    },
+    {
+      "path": "julia/__init__.py",
+      "size": 178,
+      "oid": "f782db0b124d1151d1e054c3251f6763a3a792fb",
+      "lfs": null
+    },
+    {
+      "path": "julia/cuda.py",
+      "size": 2309,
+      "oid": "ca05f5ffb7bd36db53113d7634b0c28b99b8aaa8",
+      "lfs": null
+    },
+    {
+      "path": "julia/data.py",
+      "size": 7163,
+      "oid": "4e401e470dcea34f7d64ad944c1711becdeedd81",
+      "lfs": null
+    },
+    {
+      "path": "julia/inference.py",
+      "size": 4613,
+      "oid": "2c723d5728b8ea572b54e895142d6e1c90646f9a",
+      "lfs": null
+    },
+    {
+      "path": "julia/model.py",
+      "size": 7539,
+      "oid": "78d2d0748aeaa5ee44c3f0735227c72581d04cfc",
+      "lfs": null
+    },
+    {
+      "path": "julia/probabilities.py",
+      "size": 595,
+      "oid": "68a967e41bd1cc4c3d2f2e8ec5390b4c09b717ff",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/.gitignore",
+      "size": 26,
+      "oid": "255c2556dd252e4f92c92cedef9c8cb43b657c38",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/README.md",
+      "size": 8209,
+      "oid": "9bd27781280434eb68a2a37f7385af56de39c4f0",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/__init__.py",
+      "size": 357,
+      "oid": "45b266c658c621da7da6b9d25b560fd102104d75",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/build.py",
+      "size": 3738,
+      "oid": "6c8e49d92b260f6ee94e3435398fe2eccd59dbfd",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/encoder.py",
+      "size": 1787,
+      "oid": "cbb5b5f21fff88fc37e8266edfaef2d2e76fb6df",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/engine.py",
+      "size": 11624,
+      "oid": "cee0d14b75c2e9baa4c0079de3da89e5ce85ffa9",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/native.py",
+      "size": 7840,
+      "oid": "096c13d78da258e9d008deb2a5eac8f46f5bd1cd",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/native/LAWS.bend",
+      "size": 1502,
+      "oid": "cf18389ea6245afd59386762e841d93a0e3ad666",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/native/PROOF.bend",
+      "size": 2351,
+      "oid": "31987124735e8727707718f9c76391875784e407",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/native/bridge.c",
+      "size": 18808,
+      "oid": "6783d500a092a39e65c5a5420c487ced77e47daa",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/native/router.bend",
+      "size": 19699,
+      "oid": "fce0e0254cb30e32a43b719c626d0b302109d554",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/router.py",
+      "size": 8494,
+      "oid": "b4d51211c56f85d41196798017389b48b6c5a7a7",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/specialize.py",
+      "size": 1951,
+      "oid": "ab4c421eabb0c8eaad99ed3376bd25030e44675b",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/tests/synthetic.py",
+      "size": 1828,
+      "oid": "5f2f1f549372986e81f3d1e3c8afa1b59e69f270",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/tests/test_engine.py",
+      "size": 18527,
+      "oid": "a49b25883e6e35884e3a9f3347ba8ed165efa5a9",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/tests/test_router.py",
+      "size": 4333,
+      "oid": "5bb84dcbbb935463e9bfe3ebb9e5ee3d816b9432",
+      "lfs": null
+    },
+    {
+      "path": "julia/router/transformer.py",
+      "size": 4254,
+      "oid": "16f316e0e8e1a9b9a9c2835364629e9a64107961",
+      "lfs": null
+    },
+    {
+      "path": "julia/typed.py",
+      "size": 2415,
+      "oid": "fbfd88321c97ed8342831dd0c16f5b06b1f98c7a",
+      "lfs": null
+    },
+    {
+      "path": "julia_config.json",
+      "size": 147,
+      "oid": "1694c3b8280e1b177027f6888f33b2881b0d82e4",
+      "lfs": null
+    },
+    {
+      "path": "metrics/accuracy-20260924.json",
+      "size": 10106,
+      "oid": "e139539d9b3812bf72e510ac37bf44b87b0360a7",
+      "lfs": null
+    },
+    {
+      "path": "metrics/context-8k-smoke.json",
+      "size": 201,
+      "oid": "d700da3fe62292999f50aebe629542267de1233f",
+      "lfs": null
+    },
+    {
+      "path": "metrics/typed-cpu-20260926.json",
+      "size": 1310,
+      "oid": "d6336e97eacc3323cc91c68f51aec514dac11297",
+      "lfs": null
+    },
+    {
+      "path": "metrics/validation.json",
+      "size": 1061,
+      "oid": "cb7b49c20f2f91f49d3d8d7f32da7bae2bf52c96",
+      "lfs": null
+    },
+    {
+      "path": "model.safetensors",
+      "size": 577189056,
+      "oid": "1f35b2b1161e5511fca7608b01cd76c2329b2875",
+      "lfs": {
+        "oid": "df853bf7fe424420011f3d0c47a05d7341aa9eefa7fb9f203ea4aada4ad95b72",
+        "size": 577189056,
+        "pointerSize": 134
+      }
+    },
+    {
+      "path": "provenance.json",
+      "size": 11773,
+      "oid": "5914f68628c4a6d0991f691f5e9c3169e1fc0829",
+      "lfs": null
+    },
+    {
+      "path": "pyproject.toml",
+      "size": 619,
+      "oid": "fcf7b92768b5c6603d231796116627cbbcc376cd",
+      "lfs": null
+    },
+    {
+      "path": "scripts/reproduce_typed.py",
+      "size": 6040,
+      "oid": "47a05663b882318e4a4ce1ac0987c69542e52ed0",
+      "lfs": null
+    },
+    {
+      "path": "tests/test_context.py",
+      "size": 1041,
+      "oid": "ab490ac65fc58eccfb5a21db3683e8b5459f9529",
+      "lfs": null
+    },
+    {
+      "path": "tests/test_typed_api.py",
+      "size": 3087,
+      "oid": "642a08fb93005c91b717a39213cc134c2672d70a",
+      "lfs": null
+    },
+    {
+      "path": "tokenizer/tokenizer.json",
+      "size": 34363188,
+      "oid": "56d765858ed38eaabd35cd90759cbb1f89b0baa4",
+      "lfs": {
+        "oid": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+        "size": 34363188,
+        "pointerSize": 133
+      }
+    },
+    {
+      "path": "tokenizer/tokenizer_config.json",
+      "size": 652,
+      "oid": "2004be4e75a72111956ff170e81cb75034bfdf10",
+      "lfs": null
+    }
+  ]
+}

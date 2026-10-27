@@ -1,0 +1,70 @@
+{
+  "source_run": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/runs/tuned_style",
+  "partition": "test",
+  "manifest_sha256": "ab5c4975272d75f575c1b976acf8bfce0cc7412e0c4d697442dc827a9f204f18",
+  "feature_files": [
+    {
+      "branch": "dino",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/dino/test_tuned.npy",
+      "shape": [
+        9879,
+        768
+      ],
+      "source_dtype": "float32",
+      "sha256": "110281d45b3983c2dd292ec7760cb3a6852b92f4d1ff5991626d8c1d03f2f3f6"
+    },
+    {
+      "branch": "convnext",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_fusion/features/convnext/test_tuned.npy",
+      "shape": [
+        9879,
+        768
+      ],
+      "source_dtype": "float32",
+      "sha256": "414ab699b1f88a51297d821a4ee2b3508b240c264340f2fbd8ffc822129af88c"
+    },
+    {
+      "branch": "style",
+      "path": "/workspace/scratch/9c7afe2f05a2/tmp/cv_next_style/results/test_features.npy",
+      "shape": [
+        9879,
+        1460
+      ],
+      "source_dtype": "float32",
+      "sha256": "d69063c5e24e810bf711afede31937794e9039d629d9e49a7f3c85e750e1da78"
+    }
+  ],
+  "class_order": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "ids_sha256": "737f5f3276a66637c0afe4777f6ee9f0f599f928689c0852b9888c038dc0c31d",
+  "families": {
+    "mlp": {
+      "rows": 9879,
+      "probabilities_sha256": "727b61832d077f4097e75c84fec0caaaf50810534817597f8e4e781de273dbab",
+      "equal_seed_weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "submission_sha256": "39649e0443c49ce9c66c4665e97430cbd27022efa882c8b5a69a0625a8c57d05"
+    },
+    "transformer": {
+      "rows": 9879,
+      "probabilities_sha256": "c50e7818e184533f9f3698a08442e1ed3cf087ed70ab3bac77449a9309bd008e",
+      "equal_seed_weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "submission_sha256": "40b163a4d79a4f9964ce246b084024863f972541f3331de59e7d555357491e70"
+    }
+  },
+  "outer_metrics_calculated": false
+}

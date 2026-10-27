@@ -1,0 +1,35 @@
+{
+  "name": "tuned_style",
+  "train_paths": {
+    "dino": "features/dino/train_tuned.npy",
+    "convnext": "features/convnext/train_tuned.npy",
+    "style": "features/style/train_features.npy"
+  },
+  "test_paths": {
+    "dino": "features/dino/test_tuned.npy",
+    "convnext": "features/convnext/test_tuned.npy",
+    "style": "features/style/test_features.npy"
+  },
+  "class_order": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "provenance": {
+    "encoder_supervised_exposure": "Existing task-fine-tuned DINO and Conv checkpointssaw all7903 projecttraining labels and werechosen onreused1976. Internal headvalidationisnotunseenforentirepipeline.",
+    "development_holdout": "1976 reusedvalidationimages; no newouter labels usedforheadgradient/epoch/familyselection. Any modelrecommendation basedonthisholdoutisexploratory.",
+    "feature_freezing": "All threebranchfeatures fixed; trainonlyprojections,fusion,classifier.",
+    "data_provenance": "Originalsplit andexact96/224pxduplicateunionmetadata",
+    "experiment_plan": "experiment_plan.json"
+  },
+  "ids": "metadata/ids.json",
+  "test_ids": "metadata/test_ids.json",
+  "labels": "metadata/labels.json",
+  "groups": "metadata/groups.json",
+  "train_indices": "metadata/train_indices.json",
+  "validation_indices": "metadata/validation_indices.json"
+}

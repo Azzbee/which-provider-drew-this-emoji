@@ -1,0 +1,138 @@
+{
+  "model": "Meta DINOv2 ViT-S/14",
+  "submission_rows": 9879,
+  "submission_sha256": "fd4e1a9b05594e679fc2e87526bb924536b5c52d78b39d2d6d0d62b809f7bb57",
+  "training_status": "completed",
+  "selected_epoch": 3,
+  "validation_correct": 1895,
+  "validation_total": 1976,
+  "all_label_refit": false,
+  "kaggle_uploaded": false,
+  "checkpoint_note": "The included inference checkpoint has identical model tensors to the training checkpoint; see checkpoint_packaging.json for both hashes.",
+  "files": {
+    "AI_USAGE.md": {
+      "bytes": 2390,
+      "sha256": "6653f26839e53fdeecb6e6376b2ef1a9895df53b96d91b91de029b8b9c92db8d"
+    },
+    "LICENSE_DINOV2.txt": {
+      "bytes": 11359,
+      "sha256": "600cc67cc4cb2f5ea317dcfc687ad1c74dc4bec8782bbe9db0afd83513b935b7"
+    },
+    "README.md": {
+      "bytes": 6068,
+      "sha256": "7318674cc15f3a44eea950024c29bc6d8f523b237c81b38569a0d1308d3a7599"
+    },
+    "checkpoint_packaging.json": {
+      "bytes": 596,
+      "sha256": "929750b41951bc16664f28ec288ee150df0f867630a8f7bab2ca8981e143292a"
+    },
+    "compute_benchmark.json": {
+      "bytes": 1473,
+      "sha256": "b09d8bf008354785bcb445e5b976098f5c43b78b1be4d31d8d5b00a3554e744c"
+    },
+    "dinov2_vits14_pretrain.pth": {
+      "bytes": 88283115,
+      "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9"
+    },
+    "download_pretrained.py": {
+      "bytes": 857,
+      "sha256": "9b05c6c8dd2bf0baa1bdd2bc8968309b6dc3792573635c7eb224b211ba53af68"
+    },
+    "execution_plan.json": {
+      "bytes": 1510,
+      "sha256": "a2b3d429bfb42e91e763bad717f4f5ee0ab495f19cdd63622f5b92bb3e87c3ac"
+    },
+    "experiment_summary.json": {
+      "bytes": 624,
+      "sha256": "f8a824552048947f2ce0e4043d833a4959d1cddffa08d057bc7c7ac2406baf10"
+    },
+    "image_hashes.csv": {
+      "bytes": 2903208,
+      "sha256": "6244df64073fb8241c5e750835cf06ffaf9e758a9dce555a1b0c4138c35a8529"
+    },
+    "pretrained_source.json": {
+      "bytes": 311,
+      "sha256": "8ff645cc5c7bbe191e8fc8dfdd84a70e31cbc7122a51cde0598dafa8f941c85a"
+    },
+    "requirements.txt": {
+      "bytes": 214,
+      "sha256": "645138e43284d81951485ae7cbc67d317d56bb223dd6297da74d6efdf3f5d212"
+    },
+    "run_224/benchmark.json": {
+      "bytes": 349,
+      "sha256": "f759d7c666b61af7b9e5b39977acab72e3d2fa6d9947c3b44d64f0827e00379b"
+    },
+    "run_224/cache_provenance/test_metadata.json": {
+      "bytes": 799,
+      "sha256": "b44b29d9a2d201a210bba261c583fbce48a1a24fb0c3da6b9d0d11dca7dfcde6"
+    },
+    "run_224/cache_provenance/train_metadata.json": {
+      "bytes": 800,
+      "sha256": "2a59806b632f84471b00b65c75765d27cb3a7dd5089d5be4a0e15ad2c3e41313"
+    },
+    "run_224/data_audit.json": {
+      "bytes": 886,
+      "sha256": "e053f62b5f35b7f0d7de2af02db6ae1416d80fb7cb5167c61fce7c8e5880e306"
+    },
+    "run_224/independent_checks/actual224_split_check.json": {
+      "bytes": 1209,
+      "sha256": "dd02c1323b478cb135fe1dfb925c2c380257527c3b3521d9c3405997c927bb2b"
+    },
+    "run_224/independent_checks/final_submission_check.json": {
+      "bytes": 1551,
+      "sha256": "882c63ff51848f000c4f553ab4e7d8a5522c77ff1c7316fc77edaf02ac094cfc"
+    },
+    "run_224/independent_checks/selected_validation_check.json": {
+      "bytes": 5293,
+      "sha256": "9351d7a159a91847ab32fa3c4e27844e0626442e95695025b9e6bf2db0b889c8"
+    },
+    "run_224/selection/best.pt": {
+      "bytes": 14238929,
+      "sha256": "731f53ccaf235be2747bb64b13c0846ed07e01f28633e72ce97c1a6074a211fc"
+    },
+    "run_224/selection/configuration.json": {
+      "bytes": 1354,
+      "sha256": "4d40f6c1990a09958f09bc635e6b8a79f267b918be450924a5cb9f149c605819"
+    },
+    "run_224/selection/history.csv": {
+      "bytes": 989,
+      "sha256": "9cbef36941f5bdf002ce1009f1e13e79aa827d39f39117bc7c822abbfcf8e02b"
+    },
+    "run_224/selection/metrics.json": {
+      "bytes": 3054,
+      "sha256": "16b0ff092ec488f796e792800589fbb50051700c29001ebb50d6c9087abebe22"
+    },
+    "run_224/selection/validation_predictions.csv": {
+      "bytes": 221124,
+      "sha256": "edf6f331a24fb01941797094ab0b409548064c6c334767de29507c209a37e788"
+    },
+    "run_224/split.csv": {
+      "bytes": 206221,
+      "sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e"
+    },
+    "run_224/submission_dinov2_finetuned.csv": {
+      "bytes": 137058,
+      "sha256": "fd4e1a9b05594e679fc2e87526bb924536b5c52d78b39d2d6d0d62b809f7bb57"
+    },
+    "run_224/submission_receipt.json": {
+      "bytes": 2834,
+      "sha256": "4791a8f10f74d8afe254264ae9a0721c5ad23421628bbbdd0dbdfe614115c950"
+    },
+    "run_224/test_probabilities.npy": {
+      "bytes": 276740,
+      "sha256": "4db679b919126fb9d9d19b4e7d50e0554269ad8c8f6ef357dfa3ed689b0eb78a"
+    },
+    "runtime_environment.json": {
+      "bytes": 387,
+      "sha256": "f275858b23ad8fa51c3f4d106348dd785ec1f62f8be873a40666a75c33e3a7b7"
+    },
+    "tail_compute_benchmark.json": {
+      "bytes": 592,
+      "sha256": "4e6fffaf9857919fb3267738ac2ec33693d690c6a31e46c37f28a2e60455faa3"
+    },
+    "train_meta.py": {
+      "bytes": 35741,
+      "sha256": "1cfd165616fd1ff3dff4d246ba655a0485b0ca18775e648430ab7242fc14c810"
+    }
+  }
+}

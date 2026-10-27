@@ -1,0 +1,31 @@
+{
+  "model": "SupersonicLabs/Julia-1",
+  "revision": "a85b127321d580d65176c89ced8273f305745d85",
+  "model_family": "Open pretrained System One typed decision model; not TypeSafe Jev",
+  "weights_sha256": "df853bf7fe424420011f3d0c47a05d7341aa9eefa7fb9f203ea4aada4ad95b72",
+  "registered_before_validation_scores": true,
+  "mode": "Zero-shot, frozen on emoji data",
+  "question": "Which provider most likely rendered this emoji image? Use the three image classifiers' probability estimates as evidence. Each classifier can be wrong; choose the provider best supported by the combined evidence.",
+  "options": ["apple", "facebook", "google", "messenger", "mozilla", "samsung", "whatsapp"],
+  "state_schema": {
+    "task": "emoji rendering provider classification",
+    "predictions": {
+      "DINOv2 visual classifier": "seven provider probabilities, rounded to four decimal places",
+      "ConvNeXt visual classifier": "seven provider probabilities, rounded to four decimal places",
+      "colour-edge-texture style classifier": "seven provider probabilities, rounded to four decimal places"
+    }
+  },
+  "excluded_state_fields": ["true_label", "Id", "file_path", "model validation accuracy", "validation-derived heuristics"],
+  "evaluation": "All1976 development validation images, exact aligned IDs and class order from saved expert predictions",
+  "candidates_registered": [
+    "Julia decision model alone over three experts' score state",
+    "Fixed hybrid: preserve existing equal DINOv2/ConvNeXt probabilities wherever their top1labels agree; use Julia decision probabilities only when they disagree"
+  ],
+  "route_uses_ground_truth": false,
+  "hyperparameter_or_prompt_search": false,
+  "probability_calibration": "Use the published inference scoring without task-specific calibration; do not claim calibrated emoji probabilities",
+  "precision": "Native published CPU float32 path initially; any performance adaptation must be checked against it before evaluation",
+  "model_budget": "144.3M parameters,577MBsafetensors;4CPUthreads;batchedvalidation onlyinitially",
+  "test_prediction_gate": "After validation, test9879onlyif useful improvement or projected additional runtime under10minutes, coordinatedwithparent",
+  "validation_caveat": "The development split has already influenced earlier image-model choices; this is exploratory validation, not an independent generalization estimate"
+}

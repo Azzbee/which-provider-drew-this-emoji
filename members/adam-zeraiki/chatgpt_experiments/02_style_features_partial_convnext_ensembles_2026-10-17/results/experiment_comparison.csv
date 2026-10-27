@@ -1,0 +1,14 @@
+candidate,validation_correct,validation_total,validation_accuracy,additional_correct_vs_dinov2
+Original fine-tuned DINOv2,1895,1976,0.9590080971659919,0
+DINOv2 flipped view alone,1883,1976,0.9529352226720648,-12
+DINOv2 original + flip average,1896,1976,0.9595141700404858,1
+ExtraTrees image-style classifier,1674,1976,0.847165991902834,-221
+Histogram boosting image-style classifier,1779,1976,0.9003036437246964,-116
+90% DINOv2 + 10% ExtraTrees,1894,1976,0.958502024291498,-1
+75% DINOv2 + 25% ExtraTrees,1897,1976,0.9600202429149798,2
+90% DINOv2 + 10% histogram boosting,1899,1976,0.9610323886639676,4
+75% DINOv2 + 25% histogram boosting,1900,1976,0.9615384615384616,5
+Frozen ConvNeXt + linear classifier,1791,1976,0.9063765182186235,-104
+Fine-tuned ConvNeXt,1888,1976,0.9554655870445344,-7
+75% DINOv2 + 25% ConvNeXt,1900,1976,0.9615384615384616,5
+50% DINOv2 + 50% ConvNeXt — selected,1919,1976,0.9711538461538461,24

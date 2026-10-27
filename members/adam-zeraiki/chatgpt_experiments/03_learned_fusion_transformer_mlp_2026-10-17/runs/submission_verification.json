@@ -1,0 +1,42 @@
+{
+  "frozen_style": {
+    "mlp": {
+      "rows": 9879,
+      "exact_test_id_order": true,
+      "unique_ids": true,
+      "valid_labels": true,
+      "csv_argmax_matches": true,
+      "finite_normalized_probabilities": true,
+      "csv_sha256": "5083155cd96bb156a5bbeb10fba249b469981382c4e3e5a6c3f086aa6d76eb04"
+    },
+    "transformer": {
+      "rows": 9879,
+      "exact_test_id_order": true,
+      "unique_ids": true,
+      "valid_labels": true,
+      "csv_argmax_matches": true,
+      "finite_normalized_probabilities": true,
+      "csv_sha256": "6402e6c612aee7810ee4b051f4c87ede829a11ef0832e872a1ba7a61f6065d15"
+    }
+  },
+  "tuned_style": {
+    "mlp": {
+      "rows": 9879,
+      "exact_test_id_order": true,
+      "unique_ids": true,
+      "valid_labels": true,
+      "csv_argmax_matches": true,
+      "finite_normalized_probabilities": true,
+      "csv_sha256": "39649e0443c49ce9c66c4665e97430cbd27022efa882c8b5a69a0625a8c57d05"
+    },
+    "transformer": {
+      "rows": 9879,
+      "exact_test_id_order": true,
+      "unique_ids": true,
+      "valid_labels": true,
+      "csv_argmax_matches": true,
+      "finite_normalized_probabilities": true,
+      "csv_sha256": "40b163a4d79a4f9964ce246b084024863f972541f3331de59e7d555357491e70"
+    }
+  }
+}

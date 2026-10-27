@@ -1,0 +1,33 @@
+{
+  "status": "complete_verified",
+  "role": "experimental_not_recommended_for_kaggle",
+  "count": 9879,
+  "routed_count": 574,
+  "classes": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "ids_sha256": "e2cfe476bb3da301e017845549252c24687ae77b1adfbcb61220cf4192817b7a",
+  "hybrid_ids_sha256": "8ffd1db79b868c192dbbfaea99d54da93b44356af2a0ef9a838699e68d3d0a50",
+  "probabilities_sha256": "ebc830279ade8685f3c98f54c9841df93c62fdd36a8470c47579e168c64ccbaf",
+  "hybrid_probabilities_sha256": "e10418e1e848d84d98a27ca4d70e1c3ebc1a32bc0b0f202b475555883b7325c2",
+  "requests_sha256": "65f0a7a0b5f62af863f501c289dd577ace4eddeff4ea9e148febcf56f8d9ed42",
+  "csv_sha256": "fcf61029ba653164d03e0bb03de142b6939e911add03515b5be6bdc9f9931bac",
+  "model_weights_sha256": "df853bf7fe424420011f3d0c47a05d7341aa9eefa7fb9f203ea4aada4ad95b72",
+  "verified": [
+    "all 9879 test IDs exactly once in required order",
+    "complete finite arrays",
+    "class order",
+    "logits softmax",
+    "all 574 requests match the fixed score-state renderer",
+    "exact prediction-only routing",
+    "unrouted equal-ensemble outputs retained",
+    "CSV labels match hybrid probability argmax"
+  ],
+  "kaggle_uploaded": false
+}

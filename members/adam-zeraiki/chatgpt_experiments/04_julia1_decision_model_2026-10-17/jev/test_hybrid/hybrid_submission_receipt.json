@@ -1,0 +1,6 @@
+{
+  "count": 9879,
+  "routed_count": 574,
+  "csv_sha256": "fcf61029ba653164d03e0bb03de142b6939e911add03515b5be6bdc9f9931bac",
+  "rule": "Julia only where DINOv2 and ConvNeXt top1 differ"
+}

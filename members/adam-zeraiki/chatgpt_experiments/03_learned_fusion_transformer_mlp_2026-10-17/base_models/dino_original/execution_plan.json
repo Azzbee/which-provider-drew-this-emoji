@@ -1,0 +1,21 @@
+{
+  "model": "Meta DINOv2 ViT-S/14",
+  "training_examples": 7903,
+  "validation_examples": 1976,
+  "resolution": 224,
+  "trainable_backbone_blocks": 2,
+  "max_epochs": 15,
+  "patience": 4,
+  "selection_rule": "Highest validation accuracy, then lowest validation cross-entropy",
+  "prediction_model": "Selected held-out-validation checkpoint",
+  "all_data_refit_performed": false,
+  "all_data_refit_reason": "Retain the validated checkpoint for this experiment so the reported holdout score corresponds to the exact delivered model.",
+  "script_sha256": "1cfd165616fd1ff3dff4d246ba655a0485b0ca18775e648430ab7242fc14c810",
+  "commands": [
+    "python train_meta.py --stage benchmark --resolution 224 --batch-size 16 --cache-batch-size 16 --precision bf16 --threads 8 --split run_224/split.csv",
+    "python train_meta.py --stage cache --cache-set train --resolution 224 --batch-size 16 --cache-batch-size 16 --precision bf16 --threads 8 --split run_224/split.csv",
+    "python train_meta.py --stage train --resolution 224 --last-blocks 2 --batch-size 16 --precision bf16 --threads 8 --epochs 15 --patience 4 --tail-lr 0.00003 --head-lr 0.001 --split run_224/split.csv",
+    "python train_meta.py --stage predict --resolution 224 --last-blocks 2 --batch-size 16 --cache-batch-size 16 --precision bf16 --threads 8 --split run_224/split.csv"
+  ],
+  "path_note": "Portable command skeletons; pass --data DATA --checkpoint dinov2_vits14_pretrain.pth --hashes image_hashes.csv --out run_224 as described in README."
+}

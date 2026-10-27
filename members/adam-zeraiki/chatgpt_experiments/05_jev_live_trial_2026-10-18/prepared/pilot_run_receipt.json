@@ -1,0 +1,37 @@
+{
+  "updated_utc": "2026-10-18T19:21:23.431153+00:00",
+  "protocol_sha256": "141de6f4ee853c453da299c140fdaa0b0a9c64dd4e9f0a9a0ed7a6864f974837",
+  "partition": "pilot",
+  "requested_rows": 50,
+  "completed_this_pass": 50,
+  "complete": true,
+  "stop": null,
+  "budget": {
+    "budget_usd": "5",
+    "known_usage_cost_usd": "0.010868172",
+    "unresolved_reservations_usd": "0",
+    "committed_upper_bound_usd": "0.010868172",
+    "remaining_uncommitted_usd": "4.989131828",
+    "reservation_per_attempt_usd": "0.002752512",
+    "attempts": 100,
+    "statuses": {
+      "complete": 100
+    },
+    "frozen": false
+  },
+  "warning": "REUSED development set used in earlier model selection; results are exploratory and not an unbiased final-test score. Pilot is training data and is for integration/cost checks only.",
+  "observed_input_tokens": {
+    "expert": {
+      "min": 2331,
+      "max": 2331,
+      "mean": 2331.0
+    },
+    "final": {
+      "min": 2821,
+      "max": 2941,
+      "mean": 2844.32
+    }
+  },
+  "estimated_full_development_usd_at_pilot_mean": 0.42951015744000004,
+  "estimate_is_not_a_guarantee": true
+}

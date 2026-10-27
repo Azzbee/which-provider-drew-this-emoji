@@ -1,0 +1,93 @@
+{
+  "baseline_dinov2": {
+    "accuracy": 0.9590080971659919,
+    "correct": 1895,
+    "total": 1976,
+    "macro_f1": 0.958658185012385,
+    "log_loss": 0.21407277538235056,
+    "rescued_dino_errors": 0,
+    "lost_dino_correct": 0,
+    "disagreed_with_dino": 0
+  },
+  "attempts": {
+    "extra_trees": {
+      "style_only": {
+        "accuracy": 0.847165991902834,
+        "correct": 1674,
+        "total": 1976,
+        "macro_f1": 0.8421389062412616,
+        "log_loss": 0.5935931579877186,
+        "rescued_dino_errors": 37,
+        "lost_dino_correct": 258,
+        "disagreed_with_dino": 327
+      },
+      "blends": {
+        "dinov2_extra_trees_style10": {
+          "accuracy": 0.958502024291498,
+          "correct": 1894,
+          "total": 1976,
+          "macro_f1": 0.9582634287313365,
+          "log_loss": 0.15487399921799636,
+          "rescued_dino_errors": 0,
+          "lost_dino_correct": 1,
+          "disagreed_with_dino": 1,
+          "test_changed_from_dino": 7,
+          "style_weight": 0.1
+        },
+        "dinov2_extra_trees_style25": {
+          "accuracy": 0.9600202429149798,
+          "correct": 1897,
+          "total": 1976,
+          "macro_f1": 0.9594314037435737,
+          "log_loss": 0.18814533886012286,
+          "rescued_dino_errors": 3,
+          "lost_dino_correct": 1,
+          "disagreed_with_dino": 4,
+          "test_changed_from_dino": 12,
+          "style_weight": 0.25
+        }
+      }
+    },
+    "hist_gradient_boosting": {
+      "style_only": {
+        "accuracy": 0.9003036437246964,
+        "correct": 1779,
+        "total": 1976,
+        "macro_f1": 0.9036810625004753,
+        "log_loss": 0.3013668317743925,
+        "rescued_dino_errors": 42,
+        "lost_dino_correct": 158,
+        "disagreed_with_dino": 223
+      },
+      "blends": {
+        "dinov2_hist_gradient_boosting_style10": {
+          "accuracy": 0.9610323886639676,
+          "correct": 1899,
+          "total": 1976,
+          "macro_f1": 0.9602225003826986,
+          "log_loss": 0.12844598263409054,
+          "rescued_dino_errors": 4,
+          "lost_dino_correct": 0,
+          "disagreed_with_dino": 4,
+          "test_changed_from_dino": 9,
+          "style_weight": 0.1
+        },
+        "dinov2_hist_gradient_boosting_style25": {
+          "accuracy": 0.9615384615384616,
+          "correct": 1900,
+          "total": 1976,
+          "macro_f1": 0.9606244191517811,
+          "log_loss": 0.12851637222642037,
+          "rescued_dino_errors": 5,
+          "lost_dino_correct": 0,
+          "disagreed_with_dino": 5,
+          "test_changed_from_dino": 31,
+          "style_weight": 0.25
+        }
+      }
+    }
+  },
+  "status": "Exploratory holdout blend assessment; weights were prespecified at 0.1 and 0.25 for each style model. This shared split also selected the previous DINOv2 epoch, so it is not an independent final generalization estimate.",
+  "all_label_refit": false,
+  "kaggle_submission": false
+}

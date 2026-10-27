@@ -1,0 +1,14 @@
+{
+  "model": "Meta DINOv2 ViT-S/14 with last2blocks, finalnorm, and7-class head fine-tuned",
+  "selected_epoch": 3,
+  "epochs_completed": 7,
+  "early_stopping_triggered": true,
+  "validation_correct": 1895,
+  "validation_count": 1976,
+  "validation_accuracy": 0.9590080971659919,
+  "validation_macro_f1": 0.958658185012385,
+  "all_data_refit_performed": false,
+  "submitted_to_kaggle": false,
+  "comparison_to_old_baseline": "Unpaired: original baseline holdout manifest is unavailable; this experiment uses its own recorded holdout.",
+  "script_sha256": "1cfd165616fd1ff3dff4d246ba655a0485b0ca18775e648430ab7242fc14c810"
+}

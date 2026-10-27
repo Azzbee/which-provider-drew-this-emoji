@@ -4,7 +4,7 @@ Ran the team's main experiment series and the team's best Kaggle entry (E15, 0.9
 
 ## Experiments E1a to E9 (13 October, 80/20 split)
 
-Source: the team spreadsheet, copied into `codebase/report/reported_experiments.json`.
+Source: the original team spreadsheet, `Strategies_Computer_Vision_Project_13_October.xlsx` in this folder (also copied into `codebase/report/reported_experiments.json`).
 
 | Id | Model | Method | Epochs | Val. acc. | Public | Preprocessing |
 |---|---|---|---|---|---|---|

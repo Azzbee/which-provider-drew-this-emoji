@@ -1,0 +1,42 @@
+{
+  "scope": "Independent final CSV and saved-probability audit; no new model inference or accuracy inference on unlabeled test data.",
+  "submission_file": "/workspace/scratch/9c7afe2f05a2/tmp/cv_meta_training/run_224/submission_dinov2_finetuned.csv",
+  "submission_sha256": "fd4e1a9b05594e679fc2e87526bb924536b5c52d78b39d2d6d0d62b809f7bb57",
+  "row_count": 9879,
+  "unique_ids": 9879,
+  "schema": [
+    "Id",
+    "Label"
+  ],
+  "exact_dataset_test_ids_in_order": true,
+  "all_provider_labels_valid": true,
+  "probability_shape": [
+    9879,
+    7
+  ],
+  "probability_dtype": "float32",
+  "probabilities_finite_and_in_unit_interval": true,
+  "maximum_probability_row_sum_error": 2.384185791015625e-07,
+  "all_predictions_equal_argmax": true,
+  "sha256_matches_submission_receipt": true,
+  "checkpoint_sha256_matches_receipt": true,
+  "checkpoint_sha256": "5f4b78f6d84c74e050340e641a1c2fa3f0a6a982709b8eb28c52cb32cd79bb52",
+  "selected_epoch": 3,
+  "selected_model_mode": "selection",
+  "all_label_refit_used": false,
+  "training_configuration_matches": true,
+  "recorded_backbone_tensors_changed": 30,
+  "prediction_counts": {
+    "apple": 1895,
+    "facebook": 1642,
+    "google": 1914,
+    "messenger": 621,
+    "mozilla": 413,
+    "samsung": 1831,
+    "whatsapp": 1563
+  },
+  "predictions_differing_from_archived_baseline": 2234,
+  "baseline_comparison_note": "Prediction differences only; unlabeled test-set accuracy cannot be computed.",
+  "validation_accuracy_of_selected_checkpoint": 0.9590080971659919,
+  "test_submission_performed": false
+}

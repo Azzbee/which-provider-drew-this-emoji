@@ -1,0 +1,884 @@
+{
+  "convnext_finetuned": {
+    "candidate_name": "convnext_finetuned",
+    "class_order_used_for_metrics": [
+      "apple",
+      "facebook",
+      "google",
+      "messenger",
+      "mozilla",
+      "samsung",
+      "whatsapp"
+    ],
+    "candidate_supplied_class_order": [
+      "apple",
+      "facebook",
+      "google",
+      "messenger",
+      "mozilla",
+      "samsung",
+      "whatsapp"
+    ],
+    "provenance": {
+      "split_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+      "image_hash_manifest_sha256": "6244df64073fb8241c5e750835cf06ffaf9e758a9dce555a1b0c4138c35a8529",
+      "baseline_predictions_sha256": "edf6f331a24fb01941797094ab0b409548064c6c334767de29507c209a37e788",
+      "train_validation_exact_pixel_group_overlap": 0,
+      "conflicting_label_pixel_groups": 0,
+      "validation_id_order_sha256": "b4a9d3fd4901796ee463d057d02ecbecbbe6e782037f30dcdf0d49a467ce294f"
+    },
+    "reference": {
+      "correct": 1895,
+      "total": 1976,
+      "accuracy": 0.9590080971659919,
+      "macro_f1": 0.958658185012385,
+      "log_loss_clip_1e_minus_12": 0.21407276846071407,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          369,
+          4,
+          4,
+          1,
+          0,
+          6,
+          1
+        ],
+        [
+          7,
+          318,
+          0,
+          4,
+          2,
+          0,
+          3
+        ],
+        [
+          8,
+          5,
+          358,
+          0,
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          114,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          78,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          1,
+          0,
+          0,
+          351,
+          1
+        ],
+        [
+          7,
+          9,
+          0,
+          2,
+          2,
+          2,
+          307
+        ]
+      ],
+      "per_class": {
+        "apple": {
+          "support": 385,
+          "correct": 369,
+          "recall": 0.9584415584415584,
+          "f1": 0.9461538461538461
+        },
+        "facebook": {
+          "support": 334,
+          "correct": 318,
+          "recall": 0.9520958083832335,
+          "f1": 0.9478390461997019
+        },
+        "google": {
+          "support": 375,
+          "correct": 358,
+          "recall": 0.9546666666666667,
+          "f1": 0.9701897018970189
+        },
+        "messenger": {
+          "support": 116,
+          "correct": 114,
+          "recall": 0.9827586206896551,
+          "f1": 0.957983193277311
+        },
+        "mozilla": {
+          "support": 79,
+          "correct": 78,
+          "recall": 0.9873417721518988,
+          "f1": 0.9570552147239264
+        },
+        "samsung": {
+          "support": 358,
+          "correct": 351,
+          "recall": 0.9804469273743017,
+          "f1": 0.975
+        },
+        "whatsapp": {
+          "support": 329,
+          "correct": 307,
+          "recall": 0.9331306990881459,
+          "f1": 0.956386292834891
+        }
+      }
+    },
+    "candidate": {
+      "correct": 1888,
+      "total": 1976,
+      "accuracy": 0.9554655870445344,
+      "macro_f1": 0.9512680200628548,
+      "log_loss_clip_1e_minus_12": 0.2593389697198005,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          370,
+          0,
+          8,
+          0,
+          0,
+          6,
+          1
+        ],
+        [
+          7,
+          317,
+          1,
+          3,
+          1,
+          1,
+          4
+        ],
+        [
+          10,
+          0,
+          363,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          113,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          5,
+          2,
+          71,
+          0,
+          0
+        ],
+        [
+          11,
+          0,
+          2,
+          0,
+          0,
+          345,
+          0
+        ],
+        [
+          9,
+          5,
+          3,
+          0,
+          2,
+          1,
+          309
+        ]
+      ],
+      "per_class": {
+        "apple": {
+          "support": 385,
+          "correct": 370,
+          "recall": 0.961038961038961,
+          "f1": 0.9343434343434344
+        },
+        "facebook": {
+          "support": 334,
+          "correct": 317,
+          "recall": 0.9491017964071856,
+          "f1": 0.9649923896499238
+        },
+        "google": {
+          "support": 375,
+          "correct": 363,
+          "recall": 0.968,
+          "f1": 0.9590488771466315
+        },
+        "messenger": {
+          "support": 116,
+          "correct": 113,
+          "recall": 0.9741379310344828,
+          "f1": 0.9658119658119658
+        },
+        "mozilla": {
+          "support": 79,
+          "correct": 71,
+          "recall": 0.8987341772151899,
+          "f1": 0.9044585987261147
+        },
+        "samsung": {
+          "support": 358,
+          "correct": 345,
+          "recall": 0.9636871508379888,
+          "f1": 0.9691011235955056
+        },
+        "whatsapp": {
+          "support": 329,
+          "correct": 309,
+          "recall": 0.939209726443769,
+          "f1": 0.9611197511664075
+        }
+      }
+    },
+    "paired": {
+      "both_correct": 1841,
+      "both_wrong": 34,
+      "baseline_wrong_candidate_correct": 47,
+      "baseline_correct_candidate_wrong": 54,
+      "net_additional_correct": -7,
+      "accuracy_delta_percentage_points": -0.354251012145749,
+      "predicted_class_changes": 112,
+      "mcnemar_exact_two_sided_image_level_p": 0.5507089135982696,
+      "mcnemar_caveat": "Descriptive only: image-level calculation ignores repeated-image dependence and is uncorrected for multiple candidate selection; use grouped bootstrap for the paired interval."
+    },
+    "group_bootstrap": {
+      "method": "Percentile paired cluster bootstrap; resample whole RGB96 pixel-hash groups",
+      "statistic": "Image-weighted candidate accuracy minus reference accuracy",
+      "replicates": 10000,
+      "seed": 20261017,
+      "unique_validation_groups": 1944,
+      "validation_images": 1976,
+      "interval_95_fraction": [
+        -0.013224821973550356,
+        0.006585696415284147
+      ],
+      "interval_95_percentage_points": [
+        -1.3224821973550356,
+        0.6585696415284147
+      ],
+      "exploratory_after_model_selection": true,
+      "limitation": "Accounts for exact RGB96 image grouping only; does not correct repeated holdout selection, near-duplicate dependence, or other distribution shifts."
+    },
+    "interpretation": "Exploratory comparison on an already reused model-selection holdout. This is not an unbiased estimate of the selected winner and says nothing measured about hidden Kaggle test accuracy.",
+    "kaggle_submitted": false,
+    "dinov2_weight": 0.0,
+    "probabilities_sha256": "a358ea3656190a2e8e1a98867ea6c69bca6dc67c593c8fe6c13eadf098febfce"
+  },
+  "dinov2_convnext_equal": {
+    "candidate_name": "dinov2_convnext_equal",
+    "class_order_used_for_metrics": [
+      "apple",
+      "facebook",
+      "google",
+      "messenger",
+      "mozilla",
+      "samsung",
+      "whatsapp"
+    ],
+    "candidate_supplied_class_order": [
+      "apple",
+      "facebook",
+      "google",
+      "messenger",
+      "mozilla",
+      "samsung",
+      "whatsapp"
+    ],
+    "provenance": {
+      "split_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+      "image_hash_manifest_sha256": "6244df64073fb8241c5e750835cf06ffaf9e758a9dce555a1b0c4138c35a8529",
+      "baseline_predictions_sha256": "edf6f331a24fb01941797094ab0b409548064c6c334767de29507c209a37e788",
+      "train_validation_exact_pixel_group_overlap": 0,
+      "conflicting_label_pixel_groups": 0,
+      "validation_id_order_sha256": "b4a9d3fd4901796ee463d057d02ecbecbbe6e782037f30dcdf0d49a467ce294f"
+    },
+    "reference": {
+      "correct": 1895,
+      "total": 1976,
+      "accuracy": 0.9590080971659919,
+      "macro_f1": 0.958658185012385,
+      "log_loss_clip_1e_minus_12": 0.21407276846071407,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          369,
+          4,
+          4,
+          1,
+          0,
+          6,
+          1
+        ],
+        [
+          7,
+          318,
+          0,
+          4,
+          2,
+          0,
+          3
+        ],
+        [
+          8,
+          5,
+          358,
+          0,
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          114,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          78,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          1,
+          0,
+          0,
+          351,
+          1
+        ],
+        [
+          7,
+          9,
+          0,
+          2,
+          2,
+          2,
+          307
+        ]
+      ],
+      "per_class": {
+        "apple": {
+          "support": 385,
+          "correct": 369,
+          "recall": 0.9584415584415584,
+          "f1": 0.9461538461538461
+        },
+        "facebook": {
+          "support": 334,
+          "correct": 318,
+          "recall": 0.9520958083832335,
+          "f1": 0.9478390461997019
+        },
+        "google": {
+          "support": 375,
+          "correct": 358,
+          "recall": 0.9546666666666667,
+          "f1": 0.9701897018970189
+        },
+        "messenger": {
+          "support": 116,
+          "correct": 114,
+          "recall": 0.9827586206896551,
+          "f1": 0.957983193277311
+        },
+        "mozilla": {
+          "support": 79,
+          "correct": 78,
+          "recall": 0.9873417721518988,
+          "f1": 0.9570552147239264
+        },
+        "samsung": {
+          "support": 358,
+          "correct": 351,
+          "recall": 0.9804469273743017,
+          "f1": 0.975
+        },
+        "whatsapp": {
+          "support": 329,
+          "correct": 307,
+          "recall": 0.9331306990881459,
+          "f1": 0.956386292834891
+        }
+      }
+    },
+    "candidate": {
+      "correct": 1919,
+      "total": 1976,
+      "accuracy": 0.9711538461538461,
+      "macro_f1": 0.969598106900691,
+      "log_loss_clip_1e_minus_12": 0.1376897564795009,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          374,
+          0,
+          3,
+          1,
+          0,
+          6,
+          1
+        ],
+        [
+          8,
+          322,
+          1,
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          6,
+          0,
+          368,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          114,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          76,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          0,
+          353,
+          0
+        ],
+        [
+          7,
+          5,
+          1,
+          1,
+          2,
+          1,
+          312
+        ]
+      ],
+      "per_class": {
+        "apple": {
+          "support": 385,
+          "correct": 374,
+          "recall": 0.9714285714285714,
+          "f1": 0.9528662420382166
+        },
+        "facebook": {
+          "support": 334,
+          "correct": 322,
+          "recall": 0.9640718562874252,
+          "f1": 0.9742813918305597
+        },
+        "google": {
+          "support": 375,
+          "correct": 368,
+          "recall": 0.9813333333333333,
+          "f1": 0.9813333333333333
+        },
+        "messenger": {
+          "support": 116,
+          "correct": 114,
+          "recall": 0.9827586206896551,
+          "f1": 0.9702127659574468
+        },
+        "mozilla": {
+          "support": 79,
+          "correct": 76,
+          "recall": 0.9620253164556962,
+          "f1": 0.9559748427672956
+        },
+        "samsung": {
+          "support": 358,
+          "correct": 353,
+          "recall": 0.9860335195530726,
+          "f1": 0.9805555555555555
+        },
+        "whatsapp": {
+          "support": 329,
+          "correct": 312,
+          "recall": 0.9483282674772037,
+          "f1": 0.9719626168224299
+        }
+      }
+    },
+    "paired": {
+      "both_correct": 1881,
+      "both_wrong": 43,
+      "baseline_wrong_candidate_correct": 38,
+      "baseline_correct_candidate_wrong": 14,
+      "net_additional_correct": 24,
+      "accuracy_delta_percentage_points": 1.214574898785425,
+      "predicted_class_changes": 59,
+      "mcnemar_exact_two_sided_image_level_p": 0.0011951203200073759,
+      "mcnemar_caveat": "Descriptive only: image-level calculation ignores repeated-image dependence and is uncorrected for multiple candidate selection; use grouped bootstrap for the paired interval."
+    },
+    "group_bootstrap": {
+      "method": "Percentile paired cluster bootstrap; resample whole RGB96 pixel-hash groups",
+      "statistic": "Image-weighted candidate accuracy minus reference accuracy",
+      "replicates": 10000,
+      "seed": 20261017,
+      "unique_validation_groups": 1944,
+      "validation_images": 1976,
+      "interval_95_fraction": [
+        0.005063291139240506,
+        0.01957831325301205
+      ],
+      "interval_95_percentage_points": [
+        0.5063291139240507,
+        1.957831325301205
+      ],
+      "exploratory_after_model_selection": true,
+      "limitation": "Accounts for exact RGB96 image grouping only; does not correct repeated holdout selection, near-duplicate dependence, or other distribution shifts."
+    },
+    "interpretation": "Exploratory comparison on an already reused model-selection holdout. This is not an unbiased estimate of the selected winner and says nothing measured about hidden Kaggle test accuracy.",
+    "kaggle_submitted": false,
+    "dinov2_weight": 0.5,
+    "probabilities_sha256": "d472e873113133cc55ad7a288a8e7da1fd9d8101e362bce8486a8b65545617dd"
+  },
+  "dinov2_convnext_dino75": {
+    "candidate_name": "dinov2_convnext_dino75",
+    "class_order_used_for_metrics": [
+      "apple",
+      "facebook",
+      "google",
+      "messenger",
+      "mozilla",
+      "samsung",
+      "whatsapp"
+    ],
+    "candidate_supplied_class_order": [
+      "apple",
+      "facebook",
+      "google",
+      "messenger",
+      "mozilla",
+      "samsung",
+      "whatsapp"
+    ],
+    "provenance": {
+      "split_sha256": "32461c8bab69a90b659e5d8903cd8d43f8a5bf2262062ba02776333537889e5e",
+      "image_hash_manifest_sha256": "6244df64073fb8241c5e750835cf06ffaf9e758a9dce555a1b0c4138c35a8529",
+      "baseline_predictions_sha256": "edf6f331a24fb01941797094ab0b409548064c6c334767de29507c209a37e788",
+      "train_validation_exact_pixel_group_overlap": 0,
+      "conflicting_label_pixel_groups": 0,
+      "validation_id_order_sha256": "b4a9d3fd4901796ee463d057d02ecbecbbe6e782037f30dcdf0d49a467ce294f"
+    },
+    "reference": {
+      "correct": 1895,
+      "total": 1976,
+      "accuracy": 0.9590080971659919,
+      "macro_f1": 0.958658185012385,
+      "log_loss_clip_1e_minus_12": 0.21407276846071407,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          369,
+          4,
+          4,
+          1,
+          0,
+          6,
+          1
+        ],
+        [
+          7,
+          318,
+          0,
+          4,
+          2,
+          0,
+          3
+        ],
+        [
+          8,
+          5,
+          358,
+          0,
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          114,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          78,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          1,
+          0,
+          0,
+          351,
+          1
+        ],
+        [
+          7,
+          9,
+          0,
+          2,
+          2,
+          2,
+          307
+        ]
+      ],
+      "per_class": {
+        "apple": {
+          "support": 385,
+          "correct": 369,
+          "recall": 0.9584415584415584,
+          "f1": 0.9461538461538461
+        },
+        "facebook": {
+          "support": 334,
+          "correct": 318,
+          "recall": 0.9520958083832335,
+          "f1": 0.9478390461997019
+        },
+        "google": {
+          "support": 375,
+          "correct": 358,
+          "recall": 0.9546666666666667,
+          "f1": 0.9701897018970189
+        },
+        "messenger": {
+          "support": 116,
+          "correct": 114,
+          "recall": 0.9827586206896551,
+          "f1": 0.957983193277311
+        },
+        "mozilla": {
+          "support": 79,
+          "correct": 78,
+          "recall": 0.9873417721518988,
+          "f1": 0.9570552147239264
+        },
+        "samsung": {
+          "support": 358,
+          "correct": 351,
+          "recall": 0.9804469273743017,
+          "f1": 0.975
+        },
+        "whatsapp": {
+          "support": 329,
+          "correct": 307,
+          "recall": 0.9331306990881459,
+          "f1": 0.956386292834891
+        }
+      }
+    },
+    "candidate": {
+      "correct": 1900,
+      "total": 1976,
+      "accuracy": 0.9615384615384616,
+      "macro_f1": 0.9607036256282496,
+      "log_loss_clip_1e_minus_12": 0.14271533576235412,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          370,
+          3,
+          4,
+          1,
+          0,
+          6,
+          1
+        ],
+        [
+          7,
+          318,
+          0,
+          4,
+          2,
+          1,
+          2
+        ],
+        [
+          7,
+          3,
+          361,
+          0,
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          114,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          78,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          1,
+          0,
+          0,
+          351,
+          1
+        ],
+        [
+          8,
+          8,
+          0,
+          2,
+          2,
+          1,
+          308
+        ]
+      ],
+      "per_class": {
+        "apple": {
+          "support": 385,
+          "correct": 370,
+          "recall": 0.961038961038961,
+          "f1": 0.9475032010243278
+        },
+        "facebook": {
+          "support": 334,
+          "correct": 318,
+          "recall": 0.9520958083832335,
+          "f1": 0.9535232383808095
+        },
+        "google": {
+          "support": 375,
+          "correct": 361,
+          "recall": 0.9626666666666667,
+          "f1": 0.9743589743589743
+        },
+        "messenger": {
+          "support": 116,
+          "correct": 114,
+          "recall": 0.9827586206896551,
+          "f1": 0.957983193277311
+        },
+        "mozilla": {
+          "support": 79,
+          "correct": 78,
+          "recall": 0.9873417721518988,
+          "f1": 0.9570552147239264
+        },
+        "samsung": {
+          "support": 358,
+          "correct": 351,
+          "recall": 0.9804469273743017,
+          "f1": 0.975
+        },
+        "whatsapp": {
+          "support": 329,
+          "correct": 308,
+          "recall": 0.9361702127659575,
+          "f1": 0.9595015576323987
+        }
+      }
+    },
+    "paired": {
+      "both_correct": 1894,
+      "both_wrong": 75,
+      "baseline_wrong_candidate_correct": 6,
+      "baseline_correct_candidate_wrong": 1,
+      "net_additional_correct": 5,
+      "accuracy_delta_percentage_points": 0.25303643724696356,
+      "predicted_class_changes": 8,
+      "mcnemar_exact_two_sided_image_level_p": 0.12499999999999996,
+      "mcnemar_caveat": "Descriptive only: image-level calculation ignores repeated-image dependence and is uncorrected for multiple candidate selection; use grouped bootstrap for the paired interval."
+    },
+    "group_bootstrap": {
+      "method": "Percentile paired cluster bootstrap; resample whole RGB96 pixel-hash groups",
+      "statistic": "Image-weighted candidate accuracy minus reference accuracy",
+      "replicates": 10000,
+      "seed": 20261017,
+      "unique_validation_groups": 1944,
+      "validation_images": 1976,
+      "interval_95_fraction": [
+        0.0,
+        0.005089058524173028
+      ],
+      "interval_95_percentage_points": [
+        0.0,
+        0.5089058524173028
+      ],
+      "exploratory_after_model_selection": true,
+      "limitation": "Accounts for exact RGB96 image grouping only; does not correct repeated holdout selection, near-duplicate dependence, or other distribution shifts."
+    },
+    "interpretation": "Exploratory comparison on an already reused model-selection holdout. This is not an unbiased estimate of the selected winner and says nothing measured about hidden Kaggle test accuracy.",
+    "kaggle_submitted": false,
+    "dinov2_weight": 0.75,
+    "probabilities_sha256": "d0626f2c26d5137d617e83bfb3b875dc506d8e71c2a7ebbd0e20c96fae854c75"
+  }
+}
