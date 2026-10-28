@@ -1,0 +1,79 @@
+{
+ "w64_n0": {
+  "epochs_run": 2000,
+  "params": 11170631,
+  "best_dev_acc": 81.27530813217163,
+  "best_epoch": 858,
+  "smoothed_min_dev_err": 19.078945451312595,
+  "smoothed_min_epoch": 1854,
+  "final_dev_acc_mean_last50": 79.63664138317108,
+  "final_train_acc_mean_last50": 99.93673360347748,
+  "epoch_train_err_below_1pct": 103,
+  "smoothed_peak_dev_err_after_min": 21.00764513015747,
+  "smoothed_peak_epoch_after_min": 1876,
+  "memorised_corrupted_last50": null
+ },
+ "w64_n10": {
+  "epochs_run": 2000,
+  "params": 11170631,
+  "best_dev_acc": 73.32996129989624,
+  "best_epoch": 959,
+  "smoothed_min_dev_err": 27.063649892807003,
+  "smoothed_min_epoch": 1682,
+  "final_dev_acc_mean_last50": 71.56376719474792,
+  "final_train_acc_mean_last50": 99.49867188930511,
+  "epoch_train_err_below_1pct": 225,
+  "smoothed_peak_dev_err_after_min": 29.91452813148498,
+  "smoothed_peak_epoch_after_min": 1832,
+  "memorised_corrupted_last50": 97.76961851119995
+ },
+ "w64_n20": {
+  "epochs_run": 2000,
+  "params": 11170631,
+  "best_dev_acc": 67.76316165924072,
+  "best_epoch": 15,
+  "smoothed_min_dev_err": 34.2498865392473,
+  "smoothed_min_epoch": 26,
+  "final_dev_acc_mean_last50": 62.52935397624969,
+  "final_train_acc_mean_last50": 99.04466795921326,
+  "epoch_train_err_below_1pct": 440,
+  "smoothed_peak_dev_err_after_min": 39.96850980652703,
+  "smoothed_peak_epoch_after_min": 344,
+  "memorised_corrupted_last50": 97.19797217845917
+ },
+ "width4_noise20": {
+  "params": 44411,
+  "epochs_run": 2000,
+  "final_dev_err_last50": 47.31477677822114,
+  "best_dev_err": 44.12955045700073,
+  "final_train_err_last50": 20.81285524368286
+ },
+ "width8_noise20": {
+  "params": 175983,
+  "epochs_run": 2000,
+  "final_dev_err_last50": 44.45951187610626,
+  "best_dev_err": 38.36032152175903,
+  "final_train_err_last50": 2.7536369562149
+ },
+ "width16_noise20": {
+  "params": 700631,
+  "epochs_run": 2000,
+  "final_dev_err_last50": 40.924086809158325,
+  "best_dev_err": 36.28542423248291,
+  "final_train_err_last50": 1.1496889591217085
+ },
+ "width32_noise20": {
+  "params": 2795943,
+  "epochs_run": 2000,
+  "final_dev_err_last50": 38.296557545661926,
+  "best_dev_err": 34.159916639328,
+  "final_train_err_last50": 0.9867132902145359
+ },
+ "width64_noise20": {
+  "params": 11170631,
+  "epochs_run": 2000,
+  "final_dev_err_last50": 37.47064602375031,
+  "best_dev_err": 32.23683834075928,
+  "final_train_err_last50": 0.9553320407867383
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "routed_images": 205,
+ "geometric_mean_right": 177,
+ "majority_vote_right_on_two_vs_one": 159,
+ "two_vs_one": 186,
+ "three_way_split": 19,
+ "any_expert_right": 198,
+ "cost_usd": "0.0637",
+ "requests": 615,
+ "onehot": {
+  "right": 158,
+  "followed_two_vs_one_majority": 176,
+  "chose_a_proposed_label": 205,
+  "right_when_overruling_majority": 1
+ },
+ "agreement": {
+  "right": 156,
+  "followed_two_vs_one_majority": 179,
+  "chose_a_proposed_label": 205,
+  "right_when_overruling_majority": 0
+ },
+ "probs": {
+  "right": 153,
+  "followed_two_vs_one_majority": 171,
+  "chose_a_proposed_label": 205,
+  "right_when_overruling_majority": 1
+ }
+}

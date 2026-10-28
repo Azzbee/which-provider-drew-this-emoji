@@ -46,7 +46,7 @@ for n in (0, 10, 20):
     head, d = load(f"w64_n{n}_s0")
     ep = d["epoch"]; dev_err = 100 * (1 - d["dev_acc"]); tr_err = 100 * (1 - d["train_acc"])
     ax[0].plot(ep, dev_err, color=NOISE_COL[n], lw=0.35, alpha=0.35)
-    ax[0].plot(ep, smooth(dev_err), color=NOISE_COL[n], lw=1.3, label=f"{n}% noisy labels")
+    ax[0].plot(ep, smooth(dev_err), color=NOISE_COL[n], lw=1.3, label=f"{n}% of labels wrong")
     ax[1].plot(ep, tr_err, color=NOISE_COL[n], lw=1.3)
     sm = smooth(dev_err)
     i_min = int(np.argmin(sm[:max(10, len(sm))]))
@@ -67,7 +67,7 @@ for a in ax[:2]:
     a.set_xscale("log"); a.set_xlabel("epoch (log scale)"); a.grid(True, which="major")
 ax[0].set_ylabel("development error (%)"); ax[0].set_title("(a) Held-out error, width 64", loc="left")
 ax[1].set_ylabel("training error on its labels (%)"); ax[1].set_title("(b) Training error, width 64", loc="left")
-ax[0].legend(frameon=False, loc="upper right")
+h, l = ax[0].get_legend_handles_labels(); fig.legend(h, l, frameon=False, loc="upper center", bbox_to_anchor=(0.355, -0.09), ncol=3)
 
 widths = [4, 8, 16, 32, 64]
 fin, best, trn = [], [], []
@@ -75,7 +75,7 @@ for w in widths:
     head, d = load(f"w{w}_n20_s0")
     fin.append(100 * (1 - d["dev_acc"][-50:].mean())); best.append(100 * (1 - d["dev_acc"].max()))
     trn.append(100 * (1 - d["train_acc"][-50:].mean()))
-    summary[f"w{w}_n20"] = {"params": head["params"], "epochs_run": int(d["epoch"][-1]),
+    summary[f"width{w}_noise20"] = {"params": head["params"], "epochs_run": int(d["epoch"][-1]),
                             "final_dev_err_last50": fin[-1], "best_dev_err": best[-1], "final_train_err_last50": trn[-1]}
 ax[2].plot(widths, fin, "-o", color=NOISE_COL[20], ms=4, lw=1.3, label="dev, end of training")
 ax[2].plot(widths, best, "--o", color=NOISE_COL[20], ms=3.5, lw=1, mfc="white", label="dev, best epoch")
@@ -83,6 +83,6 @@ ax[2].plot(widths, trn, "-s", color="#8a8a85", ms=3.5, lw=1, label="train (noisy
 ax[2].set_xscale("log", base=2); ax[2].set_xticks(widths); ax[2].set_xticklabels(widths)
 ax[2].set_xlabel("width k (channels of the first stage)"); ax[2].set_ylabel("error (%)")
 ax[2].set_title("(c) Model size, 20% noisy labels", loc="left"); ax[2].grid(True); ax[2].legend(frameon=False, fontsize=6.8)
-fig.savefig(OUT / "fig_dd2000.pdf"); fig.savefig(OUT / "fig_dd2000.png", dpi=200)
+fig.savefig(OUT / "fig_dd2000.pdf")
 json.dump(summary, open(OUT.parent / "work" / "dd2000_summary.json", "w"), indent=1)
 print(json.dumps(summary, indent=1))

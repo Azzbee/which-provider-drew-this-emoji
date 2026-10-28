@@ -42,21 +42,33 @@ What it shows:
 1. **The file-byte model is the useful third expert that style features were not.** With style features, no combiner beat the plain average (paper, Table "Fusion and decision models"). With the file-byte model, a geometric mean with no training at all gains 17 images net, more than double the +8 gate fixed in advance. Its errors are different in kind: it fails on images that were encoded alike, not on images that look alike.
 2. **Probabilities beat one-hot votes.** Every combiner given only labels (majority vote, one-hot logistic regression, agreement routers) lost most of the gain. How sure each expert is matters as much as what it says.
 3. **Simple beats elaborate.** The geometric mean (no parameters) is within 3 images of the best learned stacker; gradient boosting on the same inputs does worse than both.
-4. **Jev never helped.** Every Jev configuration from 18 October stays below the three-expert geometric mean.
+4. **Jev never helped.** Every Jev configuration, from 18 October and the three new ones below, stays below the three-expert geometric mean and even below the two-model average.
 5. **With the strong final ConvNeXt (set B), the gain shrinks** to 2 to 3 images (98.08% reference, 98.18% geometric mean, 98.22% stacking): the file-byte model mainly fixes errors the weaker branch ConvNeXt makes and run B already gets right.
 
 ## Jev with three experts (`jev_three_experts.py`)
 
-Jev has never seen the file-byte model, so this needs new API calls. It is consulted only on the 205 development images where the three experts are not unanimous (on the other 1,771 the unanimous answer is 99.32% correct). Three encodings are compared: `onehot` (each expert's answer as a one-hot vector), `agreement` (only the proposed labels and who proposed them; Jev must choose among the proposals) and `probs` (full distributions). Each request also carries the query image and the same seven labelled reference images as on 18 October. 615 requests, about $0.07.
+Jev has never seen the file-byte model, so this needs new API calls. It is consulted only on the 205 development images where the three experts are not unanimous (on the other 1,771 the unanimous answer is 99.32% correct). Three encodings are compared: `onehot` (each expert's answer as a one-hot vector), `agreement` (only the proposed labels and who proposed them; Jev must choose among the proposals) and `probs` (full distributions). Each request also carries the query image and the same seven labelled reference images as on 18 October. 615 requests ($0.064 when run).
 
 ```bash
 python jev_three_experts.py dryrun          # builds and validates all 615 payloads, sends nothing
 export TYPESAFE_API_KEY=...                 # your own key, in your own shell; never written to disk
-python jev_three_experts.py run --budget 1  # paid, capped at $1, never retries
+python jev_three_experts.py run --budget 5  # paid, the client caps budgets at $5, never retries
 python jev_three_experts.py evaluate        # writes jev_results.json
 ```
 
 Run `python jev_three_experts.py prepare` first: it rebuilds `images/` (the query and reference images, not committed because they are competition data) from `codebase/data/extracted/`. The ceiling for any decider on these 205 images is 99.09% overall.
+
+### Results (run on 28 October from Adam's Mac with his key; 615 requests, $0.064)
+
+| Decider on the 205 non-unanimous images | Right of 205 | Overall accuracy | Fixed | New errors |
+|---|---|---|---|---|
+| Geometric mean of the three experts (no Jev) | 177 | 97.98% | 21 | 4 |
+| Jev, one-hot labels | 158 | 97.01% | 18 | 20 |
+| Jev, proposed labels and who proposed them | 156 | 96.91% | 13 | 17 |
+| Jev, full probability distributions | 153 | 96.76% | 15 | 22 |
+| Any expert right (bound) | 198 | 99.09% | 39 | 0 |
+
+Fixed and new errors are relative to the DINOv2 + ConvNeXt average (97.12%). Jev always picked one of the experts' labels and followed a two-to-one majority on 171 to 179 of the 186 such images; on the 7 to 15 per variant where it overruled the majority it was right at most once (`jev_analysis.json`). One answer (image 01814, probabilities variant) named Mozilla while giving Google the higher probability (0.39 vs 0.38); the strict client rejects such answers, so the script keeps Jev's stated choice and flags it. Answers are in `answers/`; `jev_results.json` is the evaluation. The request cache is not committed because it embeds the competition images.
 
 ## Test-set file
 

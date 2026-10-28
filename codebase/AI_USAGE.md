@@ -18,7 +18,7 @@ The course allows AI for the code and for understanding the models, provided its
 | 17 to 18 Oct | OpenAI Codex | Adam | Wrote and ran the DINOv2 partial fine-tuning, style features, partially tuned ConvNeXt, learned fusion (transformer and MLP), Julia-1 and Jev decision-model experiments (`members/adam-zeraiki/` and `members/lina-oumhand/dinov2-partial-finetune/`). |
 | 18 Oct | Claude (Anthropic) | Adam | Drafted the first report from the codebase's results. |
 | 27 to 28 Oct | Claude (Anthropic) | Adam | Wrote the LaTeX paper and its figures from the saved outputs; verified Kaggle scores on the competition pages; recovered the experiment records; built the GitHub repository; built the file-forensics model (`members/adam-zeraiki/file-forensics-shortcut-model/`); wrote this file. |
-| 28 Oct | Claude (Anthropic), driving Adam's browser | Adam | Ran the three-expert fusion (DINOv2 + ConvNeXt + file-byte model) and prepared the three-expert Jev experiment (`members/adam-zeraiki/three-expert-fusion-dinov2-convnext-filebytes/`); restarted Adam's RunPod pod from his signed-in browser at his request and ran the 2,000-epoch double-descent experiment (`members/adam-zeraiki/double-descent-2000-epochs/`). |
+| 28 Oct | Claude (Anthropic), driving Adam's browser | Adam | Ran the three-expert fusion (DINOv2 + ConvNeXt + file-byte model) and prepared the three-expert Jev experiment (`members/adam-zeraiki/three-expert-fusion-dinov2-convnext-filebytes/`); signed in to Adam's RunPod account through his Google session at his request, restarted his pod, ran the 2,000-epoch double-descent experiment and stopped the pod (`members/adam-zeraiki/double-descent-2000-epochs/`); opened the Jev launcher on Adam's Mac (Adam entered his own API key). |
 
 The team chose the experiments and the final model, reviewed every number against the saved outputs and is responsible for the content.
 
@@ -113,6 +113,12 @@ The team chose the experiments and the final model, reviewed every number agains
 > Also, feel free to do like a lot more epochs. Like, for example, in Double Descent, like with the thing that they did, they went like, there's 2,000 epochs and things like that, you know? So if you want to reach more, you can go for it. And if you want to use the run pod or whatever, you can go for it.
 
 > Okay, do all that yourself.
+
+(Adam then pasted his TypeSafe API key in the chat. Claude did not use it: it prepared a launcher script and opened it on Adam's Mac at his request, "take control of my screen we'll do it", and Adam pasted the key into his own Terminal, which sent the 615 Jev requests.)
+
+> Yes it's okay for the logs
+
+(approving the download of the training logs from the RunPod pod to his Mac)
 
 ## 3. What was not done by AI
 

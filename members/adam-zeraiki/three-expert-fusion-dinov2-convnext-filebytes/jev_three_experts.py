@@ -145,8 +145,20 @@ def run(args):
         for i, img_id, probs in iterate():
             if img_id in got: continue
             p = payload(mode, img_id, probs)
-            raw = client.run(p, request_key=f'three-experts:{mode}:{img_id}')
-            got[img_id] = raw['answers']['provider']
+            try:
+                raw = client.run(p, request_key=f'three-experts:{mode}:{img_id}')
+                got[img_id] = raw['answers']['provider']
+            except (jev_client.InvalidResponse, jev_client.PriorAttemptUnavailable):
+                # Jev answered but its stated choice disagreed with its own top probability, which the
+                # strict client rejects. The paid response is cached; keep Jev's explicit choice, flagged.
+                digest = hashlib.sha256(jev_client._validate_payload(p)).hexdigest()
+                rawp = HERE / 'jev_cache' / 'calls' / digest / 'response.raw'
+                if not rawp.exists():
+                    raise
+                ans = json.loads(rawp.read_text())['answers']['provider']
+                ans['validator_rejected'] = True
+                got[img_id] = ans
+                print(f'{mode} {img_id}: choice disagrees with its own probabilities; kept the choice, flagged')
             json.dump(got, open(path, 'w'), indent=0)
         print(mode, len(got), 'answers', client.budget_summary())
 
@@ -171,7 +183,8 @@ def evaluate(args):
             print(f'{mode}: {len(got)}/{len(routed)} answers, incomplete, not scored'); continue
         p = geo.copy()   # unanimous rows: all three agree, so geo = the unanimous label
         for i in routed: p[i] = CLASSES.index(got[ids[i]]['choice'])
-        rows.append((f'Jev decides the {len(routed)} non-unanimous images ({mode})', p))
+        flagged = sum(1 for v in got.values() if v.get('validator_rejected'))
+        rows.append((f'Jev decides the {len(routed)} non-unanimous images ({mode})' + (f', {flagged} flagged' if flagged else ''), p))
     rows.append(('Oracle: right whenever any expert is right (upper bound)', oracle))
     out = []
     for name, p in rows:
