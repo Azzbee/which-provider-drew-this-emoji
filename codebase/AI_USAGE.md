@@ -1,104 +1,96 @@
-# AI usage record
+# AI usage
 
-Team The Winners (Adam Zeraiki, Lina Oumhand, Charles Montluc-Giannopoulou, Erdem Sanver), IDSI51006 Computer Vision.
+Team The Winners: Adam Zeraiki, Lina Oumhand, Charles Montluc-Giannopoulou, Erdem Sanver. IDSI51006 Computer Vision, emoji vendor classification.
 
-The course allows AI for the code and for understanding the models, provided its use is disclosed and the prompts are kept in the codebase. The teacher also allowed AI for writing the paper, in class. This file lists every AI tool used on the project, what it did and the prompts given to it. Prompts are quoted exactly; messages that only granted permissions, pointed to file locations or handled repository housekeeping are left out.
+I keep this record for the team. The course allows AI for code and for understanding the models, provided every use is declared and the prompts are kept with the codebase, and our teacher also allowed it in class for writing the paper. This file says which tools each of us used, what they did, the prompts that shaped the work, and what we did ourselves.
 
-## 1. Summary
+## How we used AI
 
-| Date | Tool | Member | What the AI did |
-|---|---|---|---|
-| 30 Sept | Claude (Anthropic) | Adam | Drafted the first-submission Keras notebook (`members/adam-zeraiki/first-submission-keras-cnn/`). |
-| 30 Sept | OpenAI Codex | Adam | Generated and debugged the baseline PyTorch notebook (`members/adam-zeraiki/baseline-cnn/`). |
-| 13 to 28 Oct | Claude Code (Anthropic) | Erdem | Experiment series E1a to E16 (`members/erdem-sanver/experiment-series-E1-E16/`), run with Claude Code as a coding assistant. Erdem set the goals and constraints, chose to keep the model pixel-only rather than use the file-format shortcut, approved the plan, reviewed the results at each stage and decided which files to submit with the team's shared daily submissions. Claude implemented, debugged and ran the code (preprocessing, baselines, CNN/ConvNeXt training, ensembles, pseudo-labelling), which Erdem reviewed, drafted the write-ups and, on 28 Oct, added the records to the repository and the paper. |
-| ~15 Oct | Claude (Anthropic) | Charles | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
-| 28 Oct | Claude (Anthropic) | Charles | Modified the GitHub repository: added notes about Charles's own work (`members/charles-montluc-giannopoulou/README.md`) and corrected the description of his model in the paper (who-tried-what row, journey table step 6, Kaggle table) after a review of his notebook. |
-| ~17 Oct | OpenAI Codex | Lina | Wrote and ran the Extra Trees baseline, the hand-crafted style features, the frozen ResNet18 feature extraction and the SVM selection (members/lina-oumhand/extra-trees-and-resnet18-svm/); Lina reviewed the results and submitted the files. |
-| 28 Oct | OpenAI Codex | Lina | Imported Lina's Extra Trees and frozen ResNet18 + SVM files, added the measured ablation and original prompts, updated the AI-use completion record, and prepared and checked this pull request. |
-| 17 Oct | Claude (Anthropic) | Adam | Wrote this codebase (`src/emoji_provider`, scripts, notebook, tests); ran the EDA, the metadata diagnostic, the baseline re-score and the EmojiCNNv2 experiments; produced the figures and number tables. |
-| 17 to 18 Oct | Claude (Anthropic), driving Adam's browser | Adam | Ran both ConvNeXt-Tiny GPU runs on a RunPod pod that Adam created and paid for; added the last-epoch option; built the 10-checkpoint average; submitted the run B file on Kaggle and selected the entries, at Adam's request. |
-| 17 to 18 Oct | OpenAI Codex | Adam | Wrote and ran the DINOv2 partial fine-tuning, style features, partially tuned ConvNeXt, learned fusion (transformer and MLP), Julia-1 and Jev decision-model experiments (`members/adam-zeraiki/` and `members/lina-oumhand/dinov2-partial-finetune/`). |
-| 18 Oct | Claude (Anthropic) | Adam | Drafted the first report from the codebase's results. |
-| 27 to 28 Oct | Claude (Anthropic) | Adam | Wrote the LaTeX paper and its figures from the saved outputs; verified Kaggle scores on the competition pages; recovered the experiment records; built the GitHub repository; built the file-forensics model (`members/adam-zeraiki/file-forensics-shortcut-model/`); wrote this file. |
-| 28 Oct | Claude (Anthropic), driving Adam's browser | Adam | Ran the three-expert fusion (DINOv2 + ConvNeXt + file-byte model) and prepared the three-expert Jev experiment (`members/adam-zeraiki/three-expert-fusion-dinov2-convnext-filebytes/`); signed in to Adam's RunPod account through his Google session at his request, restarted his pod, ran the 2,000- and 4,000-epoch double-descent experiments (two batches, $2.42) and stopped the pod; tested combination rules beyond averaging (`combine_rules.py`) (`members/adam-zeraiki/double-descent-2000-epochs/`); opened the Jev launcher on Adam's Mac (Adam entered his own API key). |
+The questions and the ideas came from us: what to try, why, and what would count as an answer. We used AI the way we would use a fast, tireless engineer and a sparring partner: to turn an idea into working code, to run it, to point out where an idea could be made sharper, and to help us write it up. Every number in the paper was checked against the files that produced it, and we are responsible for everything in it.
 
-The team chose the experiments and the final model, reviewed every number against the saved outputs and is responsible for the content.
+A few examples of how an idea of ours was refined, not replaced:
 
-## 2. Prompts
+- **One model per idea, then combine them.** I wanted several different models with a transformer in the middle deciding between them, as in TRIBE v2. AI built it; it did not beat a plain average, and that is in the paper. I then asked to swap the third model for one that reads only the PNG file bytes, so the experts would make different kinds of mistakes. That version worked (97.98% against 97.12% on the same images).
+- **The poisoned-cup puzzle.** I came across it while preparing for interviews and asked whether its logic could combine our experts. AI identified the machine-learning version of the idea (error-correcting output codes) and tested it: the minimum number of "tasters" is the worst rule, and redundancy makes it work.
+- **Double descent.** I read Nakkiran et al. out of curiosity and wanted to know whether it applies to our task. AI replicated their protocol on our data, up to 4,000 epochs and 11 network sizes.
+- **Fitting.** I asked whether we overfitted or underfitted and why; the answer, built from our saved training curves, is a section of the paper.
 
-### 30 September, Claude: first-submission notebook
+## Tools
+
+| Tool | Who | For what |
+|---|---|---|
+| Claude (Anthropic), in claude.ai and Claude Code | Adam, Charles, Erdem | code, experiments, GPU runs, repository, paper drafting |
+| OpenAI ChatGPT and Codex | Adam, Lina | baseline notebook, DINOv2, fusion and decision-model experiments, Lina's two methods |
+| Jev (TypeSafe), Julia-1 | Adam | tested as decision models inside the experiments, not as assistants |
+
+## What each of us did with AI
+
+### Adam (me)
+
+| Date | Tool | What it did |
+|---|---|---|
+| 30 Sept | Claude | Drafted my first-submission Keras notebook (`members/adam-zeraiki/first-submission-keras-cnn/`). |
+| 30 Sept | OpenAI Codex | Generated and debugged the baseline PyTorch CNN notebook (`members/adam-zeraiki/baseline-cnn/`). |
+| 17 Oct | Claude | Wrote the codebase (`src/emoji_provider`, scripts, notebook, tests) and ran the data audit, the metadata diagnostic and the EmojiCNNv2 experiments. |
+| 17 to 18 Oct | Claude, in my browser | Ran the two ConvNeXt-Tiny GPU runs on the RunPod pod I created and paid for, built the checkpoint average and uploaded the run B file to Kaggle when I asked. |
+| 17 to 18 Oct | OpenAI Codex | Implemented and ran my DINOv2 fine-tuning idea (the DINOv2 entry was submitted by Lina), the style features, the TRIBE v2-style fusion transformer and MLP, and the Julia-1 and Jev decision models (`members/adam-zeraiki/`, `members/lina-oumhand/dinov2-partial-finetune/`). |
+| 18 Oct | Claude | Drafted the first report from the codebase's results. |
+| 27 to 28 Oct | Claude | Wrote the LaTeX paper and its figures from our saved outputs, set up the GitHub repository, and built the file-byte model (`members/adam-zeraiki/file-forensics-shortcut-model/`). |
+| 28 Oct | Claude, in my browser and on my Mac | Ran my three-expert fusion (DINOv2 + ConvNeXt + file-byte model), the combination rules including the poisoned-cup codes, and prepared the Jev experiment, which I ran from my own computer with my own key (`members/adam-zeraiki/three-expert-fusion-dinov2-convnext-filebytes/`). Ran the double-descent replication on my RunPod account, $2.42 in total (`members/adam-zeraiki/double-descent-2000-epochs/`). Reviewed and merged my teammates' pull requests with me. |
+
+### Erdem
+
+| Date | Tool | What it did |
+|---|---|---|
+| 13 to 28 Oct | Claude Code | Experiment series E1a to E16 (`members/erdem-sanver/experiment-series-E1-E16/`). Erdem set the goals and constraints, chose to keep the model pixel-only rather than use the file-format shortcut, approved the plan, reviewed the results at each stage and decided which files to submit. Claude implemented, debugged and ran the code (preprocessing, baselines, CNN and ConvNeXt training, ensembles, pseudo-labelling), drafted the write-ups and, on 28 Oct, added the records to the repository and the paper. |
+
+### Charles
+
+| Date | Tool | What it did |
+|---|---|---|
+| ~15 Oct | Claude | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
+| 28 Oct | Claude, in VS Code | Reviewed his notebook, wrote `members/charles-montluc-giannopoulou/README.md` and corrected the description of his model in the paper. |
+
+### Lina
+
+| Date | Tool | What it did |
+|---|---|---|
+| ~17 Oct | OpenAI Codex | Wrote and ran the Extra Trees baseline, the hand-crafted style features, the frozen ResNet18 feature extraction and the SVM selection (`members/lina-oumhand/extra-trees-and-resnet18-svm/`); Lina reviewed the results and submitted the files. |
+| 28 Oct | OpenAI Codex | Added her files, the ablation and her original prompts to the repository. |
+
+## Prompts
+
+Quoted as written, apart from punctuation. I kept the prompts that shaped the work and left out short confirmations ("go", "ok do it") and messages about files or permissions. Where a prompt included the course brief or other pasted material, it is shown as "…".
+
+### Adam
+
+**30 September, first submission (Claude and Codex)**
 
 > look at this and make a suggestion for a first submissions off of an ipynb that I could run on colab or vs code locally
 
-(with the project instructions e-mail and the example notebook attached)
+**17 October, codebase and experiments (Claude)**
 
-### 30 September, OpenAI Codex: baseline notebook
-
-> look at this and make a suggestion for a first submissions off of an ipynb that I could run on colab or vs code locally :
-
-(followed by the teacher's project e-mail)
-
-> ok cool take control of my chrome and make it happen here is the data
-
-### 13 to 28 October, Claude Code: Erdem's experiment series
-
-Erdem's requests, summarised by him afterwards (not the verbatim prompts):
-
-> Build the experiment series from scratch within the competition constraints: improve the model one change at a time, validate locally before spending a shared submission, log every run in the course spreadsheet so the report can show what each change did, and keep the model pixel-only. Then push the score as far as it goes, write up every experiment in detail, and add the work to the team repository through a pull request.
-
-The experiment plan was set in discussion between Erdem and Claude Code, starting from Erdem's constraints, and approved by Erdem before any code was written. It covered: a metadata-only diagnostic, colour histogram + HOG with an SVM, a small CNN from scratch with and without alpha compositing, ImageNet ResNet18 frozen and fully fine-tuned, EfficientNet-B0 and ConvNeXt-Tiny, an augmentation study, higher input resolution, soft-vote ensembles and retraining on all data. In a later stage, which Erdem delegated, a controlled bicubic versus nearest-neighbour resize test, a three-model ensemble and pseudo-labelling of confident test images were added.
-
-### 17 October, Claude: codebase and experiments
-
-> can you look at the folder there is information in it pertaining to the assignment for computer vision as well as all the course information. Here is the explanation of the work, please help me do something that's absolutely phenomenal : [the teacher's project e-mail] and here is how the paper should be written : Sections for the project for comp vision: 1. Intro/Front page 2. Summary (abstract), table of contents + model chosen (is it a CNN, is it a VLM, etc…) 3. Preprocessing (data augmentation?) 4. Architecture of the model 5. (optional : Metrics Chosen) 6. Performance 7. AI and Code 8. (optional : Conclusion)
-
-(with a photo of the whiteboard listing the same sections)
-
-> I have access to the databricks metalab gpu
-
-> which submission.csv file should I upload?
-
-> [screenshot of the Kaggle submissions page] here are the scores. feel free to take control of my chrome to check and use databricks
-
-> Okay, can you cancel that one and just use run pod instead?
+> can you look at the folder there is information in it pertaining to the assignment for computer vision as well as all the course information. Here is the explanation of the work, please help me do something that's absolutely phenomenal : … and here is how the paper should be written : Sections for the project for comp vision: 1. Intro/Front page 2. Summary (abstract), table of contents + model chosen (is it a CNN, is it a VLM, etc…) 3. Preprocessing (data augmentation?) 4. Architecture of the model 5. (optional : Metrics Chosen) 6. Performance 7. AI and Code 8. (optional : Conclusion)
 
 > It's open now. Have a look. But before you launch one, please just check the price and give me an estimate of the price before, okay? Thanks.
 
-> go
-
 > don't forget to cut the runpod once you finished and extracted all the relevant information including the loss graphs, validation, etc... to put into the paper at the end
 
-### 17 to 18 October, OpenAI Codex: DINOv2, fusion and decision models
+**17 to 18 October, DINOv2, fusion and decision models (Codex)**
 
 > Okay cool. Can you try fine-tuning a meta model? For example, the Dino V3, and fine-tuning it on this, and making the entire process, and then giving me just the CSV I can upload. It would be really cool things.
 
-> Okay, cool. I can't upload it unfortunately because I only have five uploads a day and we've already done five. I think the team has also uploaded until we hit the limit. However, feel free to carry on and do a bunch of other things as well and see if potentially we'll have a better score or better model or etc., etc.
-
-> Would it be interesting to introduce a similar architecture to TriV2, where you have three input models, one transformer in the middle, and then that gives—that's your source of truth that makes, like, the final decision? So we have, like, for example, like Dino V2, ConvNext, and, like, another model, and then in the middle there's a transformer that takes the output of the first three models, and then from that makes its final decision. Would that be more interesting, and would that potentially give a better answer?
-
-> I meant tribe v2
+> Would it be interesting to introduce a similar architecture to TriV2, where you have three input models, one transformer in the middle, and then that gives, that's your source of truth that makes, like, the final decision? So we have, like, for example, like Dino V2, ConvNext, and, like, another model, and then in the middle there's a transformer that takes the output of the first three models, and then from that makes its final decision. Would that be more interesting, and would that potentially give a better answer?
 
 > ok perfect, then do it. Also test it with a jev like model and we'll see if it gives interesting results
 
-> no i meant jev as in the new decision models
-
 > ok let's try it and then also try the jev as the transformer at the end that makrs the decision
 
-### 18 October, Claude: final Kaggle entries and first report
-
-> also can you do it all quickly we need to submit in an hour
-
-> let's do one last one come on
-
-> ok do it
-
-> ok let's prep the research paper to write
-
-> write it
+**18 October, final entries and first report (Claude)**
 
 > Okay, cool. Can you please write the entire report and I will review?
 
-### 27 to 28 October, Claude: LaTeX paper and repository
+**27 to 28 October, paper and repository (Claude)**
 
 > Can you now write it as a proper research paper using latex? Also if you want you can check the github that was used for the preprint for the Inria teaching spectra paper. Add also pictures to help explain and graphs and stuff. Make it phenomenal
 
@@ -110,50 +102,65 @@ The experiment plan was set in discussion between Erdem and Claude Code, startin
 
 > Also, in the research paper, did you specify whether we believe we overfitted or underfitted and explaining why we did or didn't?
 
-> Here is all the work I did with ChatGPT: [link to the Google Drive folder of the experiment records]
+> I want you to create a model with Jev that uses the 3.2 what the files reveal before any pixel is read and I want it to get at least 99% just to show if we wanted to we could've just done that if we just wanted to get a high score but decided not to. … Finally review the github and everything and get an AI_Usage.md ready and make sure everything is ready for a final submission. Also, see if there are any improvements you want to make, show it to me and I will let you know whether to add them in or not.
 
-> Also what's the max amount of epochs we did
-
-> I want you to create a model with Jev that uses the 3.2 what the files reveal before any pixel is read and I want it to get at least 99% just to show if we wanted to we could've just done that if we just wanted to get a high score but decided not to. Also, lina sent me this, modify her section please. [Lina's description of her two submissions] Finally review the github and everything and get an AI_Usage.md ready and make sure everything is ready for a final submission. Also, see if there are any improvements you want to make, show it to me and I will let you know whether to add them in or not.
-
-### 28 October, Claude: three-expert fusion and 2,000-epoch run
+**28 October, three experts, combination rules and double descent (Claude)**
 
 > No, like, feel free to do a model that takes into consideration the full file byte model and also, like, the visual aspects, a combination. Kind of like, you know my multimodal idea where I take several different models and different things and potentially have, like, Jev do the final decision, potentially do the same thing with that, you know? And instead have also a mod, like, have a dyno, have conv next, and then third model being the full file byte model, and then Jev either decides on like one hot encodings or maybe on the agreements. Try them all and see what happens and see which one would be better.
 
 > Also, feel free to do like a lot more epochs. Like, for example, in Double Descent, like with the thing that they did, they went like, there's 2,000 epochs and things like that, you know? So if you want to reach more, you can go for it. And if you want to use the run pod or whatever, you can go for it.
 
-> Okay, do all that yourself.
+> is it better to do different thing that just the average of each one or put a rule that makes it like the similar than the minimum amount of taste testers for a poisoned cup problem. also you sure there's nothing we can do or more epochs we can try. Also this is the double descent paper : …
 
-> is it better to do different thing that just the average of each one or put a rule that makes it like the similar than the minimum amount of taste testers for a poisoned cup problem. also you sure there's nothing we can do or more epochs we can try. Also this is the double descent paper : [title and abstract of Nakkiran et al., Deep Double Descent]
+> sure then would it be nice to say that I came across the poisoned cup idea from my revision for interviews and double descent from the paper I read out of curiosity and cite the paper to see if it would apply in this case?
 
-> Also, can you check Charles's PR and see whether to accept it or not? And did you add the information for Lina that she sent me or not?
+### Erdem
 
-> And if Charles's PR is good, you move it, and yeah, and make it happen. If like it's all good, there's no reason to not, you know. And check if there's anything else that we need to, that needs to be added to.
+Erdem's requests, summarised by him (not the verbatim prompts):
 
-(Claude squash-merged Charles's pull request #1 after reviewing it, and updated the abstract and conclusion with the 28 October results.)
+> Build the experiment series from scratch within the competition constraints: improve the model one change at a time, validate locally before spending a shared submission, log every run in the course spreadsheet so the report can show what each change did, and keep the model pixel-only. Then push the score as far as it goes, write up every experiment in detail, and add the work to the team repository through a pull request.
 
-(Adam then pasted his TypeSafe API key in the chat. Claude did not use it: it prepared a launcher script and opened it on Adam's Mac at his request, "take control of my screen we'll do it", and Adam pasted the key into his own Terminal, which sent the 615 Jev requests.)
+The experiment plan was set in discussion between Erdem and Claude Code, starting from Erdem's constraints, and approved by Erdem before any code was written. It covered a metadata-only diagnostic, colour histogram + HOG with an SVM, a small CNN from scratch with and without alpha compositing, ImageNet ResNet18 frozen and fully fine-tuned, EfficientNet-B0 and ConvNeXt-Tiny, an augmentation study, higher input resolution, soft-vote ensembles and retraining on all data. In a later stage, which Erdem delegated, a controlled bicubic versus nearest-neighbour resize test, a three-model ensemble and pseudo-labelling of confident test images were added.
 
-> Yes it's okay for the logs
+### Charles
 
-(approving the download of the training logs from the RunPod pod to his Mac)
-
-### 28 October, Claude: Charles's notes and paper corrections
-
-Charles's request, summarised by him afterwards (not the verbatim prompt):
+Charles's request, summarised by him (not the verbatim prompt):
 
 > Please include the modifications inside the report, modify the AI Usage to include this Prompt, and add my modifications in the readme
 
-The content came from a review of his notebook, run with Claude in VS Code.
-
-### ~17 October, OpenAI Codex: Lina's Extra Trees and frozen ResNet18 + SVM
+### Lina
 
 > With these informations can you complete all the tabs so that I can make a submission in the kaggle competition and have a good rate
 
 > The kaggle score for this submission is [0.81838](https://www.kaggle.com/competitions/2-computer-vision-2026-b-sc-aidams-final-proj/submissions#). Improve it please
 
-The first prompt followed the teacher's project instructions. Codex wrote and ran the Extra Trees baseline, the hand-crafted style descriptors, the frozen ImageNet ResNet18 channel-statistics extraction and the RBF SVM selection. Lina reviewed the results and submitted the CSVs. Code and measured outputs are saved in `members/lina-oumhand/extra-trees-and-resnet18-svm/`, with the original local disclosure in `codex-AI_USAGE.md`. ResNet18 remained frozen; the SVM was fitted to convergence, validated on 80/20, then refitted on all labelled images.
+Her original disclosure is kept in `members/lina-oumhand/extra-trees-and-resnet18-svm/codex-AI_USAGE.md`.
 
-## 3. What was not done by AI
+## What we did ourselves
 
-Downloading the data from Kaggle, the Kaggle accounts and uploads (except the run B upload, made by Claude at Adam's request from his browser), creating, paying for and stopping the RunPod pod, choosing to keep the final model pixel-only, choosing which experiments to run, and the team's discussions are the team's own work.
+**The ideas and the direction.**
+- I proposed fine-tuning a self-supervised model (DINO) for the task, the TRIBE v2-style fusion of several models with a transformer in the middle, trying decision models such as Jev as the final arbiter, and, when those did not beat a plain average, replacing the third expert with a model that never looks at the pixels.
+- I brought the poisoned-cup puzzle from my interview preparation and the double-descent paper from my own reading, and asked for both to be tested on our data; I also pushed for training far longer (2,000 and then 4,000 epochs) to see whether a second descent would appear.
+- I asked whether we were overfitting or underfitting, and asked to check how far the file-format shortcut alone could go.
+- I asked for the paper to tell the story as "we tried this, it did not work, so we changed it", for the model families to be explained from the ground up, and for a public repository with one folder per member so everyone could contribute.
+- Erdem set the constraints of his series (one change at a time, validate locally before using a shared submission, log every run, stay pixel-only), approved its plan and chose what to submit.
+- Charles chose to explore transfer learning at a higher input resolution.
+- Lina chose to start from a simple Extra Trees baseline, then set the goal of improving on its 0.81838 score.
+
+**The decisions.**
+- Which experiments to run, which results to trust and which to drop, and which model to submit as final.
+- Keeping the final model pixel-only, even though the file-format shortcut was there to use.
+- Which two entries to select for the private leaderboard, and how to share the five daily submissions between the four of us.
+- What goes into the paper and what stays in the appendix, and accepting or rejecting each pull request.
+
+**The resources and the running.**
+- Downloading the competition data, our Kaggle accounts and every upload except the run B file, which Claude uploaded from my browser when I asked.
+- Creating, paying for and stopping the RunPod GPU pod, with the price checked before every launch.
+- Sending the 615 Jev requests from my own computer with my own API key.
+
+**The checking.**
+- Reviewing every number in the paper against the saved outputs, reading the drafts and asking for corrections.
+- Reviewing each other's work through pull requests before merging.
+
+**The teamwork.**
+- Our meetings and discussions, the split of work between the four of us, and the deadlines we kept.
