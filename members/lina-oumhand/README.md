@@ -30,3 +30,66 @@ The combined model also reaches **97.42%** on the seed-123 stratified split with
 
 There are **no epochs** for these submissions: Extra Trees fits 400 trees; ResNet18 stays frozen; the SVM is fitted to convergence. Each classifier is validated on 80/20 and then refitted on **100% of the labelled images** for its submission. The 78 MB fitted `artifacts/improved_model.joblib` and all feature/pretrained-weight caches are intentionally omitted; `improve.py` recreates them from separately supplied competition data.
 
+## DINOv2 partial fine-tuning
+
+I explored whether a pretrained Vision Transformer could recognise the drawing style of the seven emoji providers. The experiment used Meta’s *DINOv2 ViT-S/14*, loaded through ⁠ timm ⁠ as ⁠ vit_small_patch14_dinov2.lvd142m ⁠. DINOv3 was initially considered, but access approval for its official weights was unavailable, so the experiment used the public DINOv2 checkpoint.
+
+### Data and preprocessing
+
+The dataset contained 9,879 labelled training images and 9,879 unlabelled test images. The recorded split used *7,903 training images and 1,976 validation images*, with exact duplicate groups kept on the same side. The pipeline also checked that identical inputs at the actual training resolution did not cross the split.
+
+Each image was decoded as RGBA and composited onto white to remove the colour hidden under transparent pixels. It was resized with Lanczos while preserving its aspect ratio, centred on a white *224 × 224* canvas and normalised with the ImageNet channel means and standard deviations.
+
+No training augmentation was used.
+
+### What was trained
+
+DINOv2 ViT-S/14 has 12 transformer blocks. The first ten blocks and the input embeddings stayed frozen. Their outputs were cached so that training did not repeatedly recompute the same frozen features, making the experiment practical on CPU.
+
+The trainable part consisted of:
+
+•⁠  ⁠The final two pretrained transformer blocks.
+•⁠  ⁠The final LayerNorm.
+•⁠  ⁠A new seven-class linear classifier.
+
+The classifier received a *768-dimensional vector* formed by concatenating the final CLS token, which summarises the image, with the mean of its patch tokens.
+
+The trainable pretrained layers contained *3,551,232 parameters, and the classifier added **5,383*. Saved gradient and weight-change measurements confirm that the pretrained layers actually changed, so this was partial backbone fine-tuning rather than training only a new classifier.
+
+### Training and checkpoint selection
+
+| Setting | Value |
+|---|---|
+| Optimiser | AdamW |
+| Backbone learning rate | ⁠ 3e-5 ⁠ |
+| Classifier learning rate | ⁠ 1e-3 ⁠ |
+| Weight decay | ⁠ 0.01 ⁠ |
+| Batch size | ⁠ 16 ⁠ |
+| Loss | Unweighted cross-entropy, no label smoothing |
+| Learning-rate schedule | Epoch-wise cosine decay |
+| Gradient clipping | Maximum norm ⁠ 1.0 ⁠ |
+| Seed | ⁠ 42 ⁠ |
+| Maximum training budget | 15 epochs |
+| Early-stopping patience | Four epochs without improvement |
+| Computation | CPU, bfloat16 |
+
+Checkpoint selection used the highest validation accuracy, with lower validation cross-entropy breaking ties. *Epoch 3 was selected.* Four later epochs did not improve the selection score, so training stopped after epoch 7.
+
+After epoch 3, training accuracy continued rising while validation accuracy declined and validation loss increased. Keeping the earlier checkpoint avoided using the later, more overfit model.
+
+### Results and submission
+
+| Measurement | Result |
+|---|---:|
+| Selected epoch | 3 |
+| Validation correct / total | 1,895 / 1,976 |
+| Validation accuracy | *95.9008%* |
+| Validation macro F1 | *0.9587* |
+| Kaggle public accuracy | *0.95586* |
+| Kaggle private accuracy | *0.95607* |
+
+The validation set was used to select the checkpoint, so its score is a development result.
+
+The selected epoch-3 checkpoint generated ⁠ submission_dinov2_finetuned.csv ⁠, containing one ⁠ Id,Label ⁠ prediction for each of the 9,879 test images. *No refit on all labelled images was performed.* The submitted model also used no flip averaging or train/test duplicate-label lookup.
+
+The saved checks verify the CSV schema, unique test IDs, valid provider labels and agreement between exported labels and probability argmax predictions. The two committed copies of the submission are byte-identical and match the recorded submission hash.
