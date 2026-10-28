@@ -1,0 +1,327 @@
+{
+ "A": {
+  "desc": "DINOv2 + branch ConvNeXt + file-byte model (the three experts of the DINOv2 branch, file-byte replaces style features)",
+  "rows": [
+   {
+    "name": "DINOv2 + ConvNeXt (branch) equal average (reference)",
+    "kind": "rule",
+    "correct": 1919,
+    "acc": 97.11538461538461,
+    "sd": 0.0,
+    "fixed": 0,
+    "broke": 0
+   },
+   {
+    "name": "All three, equal average",
+    "kind": "rule",
+    "correct": 1928,
+    "acc": 97.57085020242914,
+    "sd": 0.0,
+    "fixed": 18,
+    "broke": 9
+   },
+   {
+    "name": "All three, geometric mean",
+    "kind": "rule",
+    "correct": 1936,
+    "acc": 97.97570850202429,
+    "sd": 0.0,
+    "fixed": 21,
+    "broke": 4
+   },
+   {
+    "name": "All three, majority vote on one-hot labels (tie: average)",
+    "kind": "rule",
+    "correct": 1926,
+    "acc": 97.46963562753037,
+    "sd": 0.0,
+    "fixed": 17,
+    "broke": 10
+   },
+   {
+    "name": "Agreement router: keep if DINOv2 = ConvNeXt (branch), else file-byte model picks between their two answers",
+    "kind": "rule",
+    "correct": 1923,
+    "acc": 97.31781376518218,
+    "sd": 0.0,
+    "fixed": 15,
+    "broke": 11
+   },
+   {
+    "name": "Agreement router: keep if DINOv2 = ConvNeXt (branch), else three-way average",
+    "kind": "rule",
+    "correct": 1927,
+    "acc": 97.52024291497976,
+    "sd": 0.0,
+    "fixed": 17,
+    "broke": 9
+   },
+   {
+    "name": "Oracle: always right when DINOv2 or ConvNeXt (branch) is right (upper bound, not a model)",
+    "kind": "bound",
+    "correct": 1942,
+    "acc": 98.27935222672065,
+    "sd": 0.0,
+    "fixed": 23,
+    "broke": 0
+   },
+   {
+    "name": "DINOv2 alone",
+    "kind": "expert",
+    "correct": 1895,
+    "acc": 95.90080971659918,
+    "sd": 0.0,
+    "fixed": 14,
+    "broke": 38
+   },
+   {
+    "name": "ConvNeXt (branch) alone",
+    "kind": "expert",
+    "correct": 1888,
+    "acc": 95.54655870445345,
+    "sd": 0.0,
+    "fixed": 9,
+    "broke": 40
+   },
+   {
+    "name": "File-byte alone",
+    "kind": "expert",
+    "correct": 1851,
+    "acc": 93.67408906882592,
+    "sd": 0.0,
+    "fixed": 28,
+    "broke": 96
+   },
+   {
+    "name": "Weighted average, weights learned on the training folds",
+    "kind": "learned (CV)",
+    "correct": 1926,
+    "acc": 97.45951417004048,
+    "sd": 0.059017731729203715,
+    "fixed": 18,
+    "broke": 10
+   },
+   {
+    "name": "Logistic regression on the 21 log-probabilities (stacking)",
+    "kind": "learned (CV)",
+    "correct": 1939,
+    "acc": 98.1174089068826,
+    "sd": 0.08097165991902633,
+    "fixed": 23,
+    "broke": 3
+   },
+   {
+    "name": "Logistic regression on one-hot labels only (21 binary inputs)",
+    "kind": "learned (CV)",
+    "correct": 1922,
+    "acc": 97.24696356275304,
+    "sd": 0.08823682071944677,
+    "fixed": 19,
+    "broke": 15
+   },
+   {
+    "name": "Logistic regression on one-hot labels + agreement features",
+    "kind": "learned (CV)",
+    "correct": 1917,
+    "acc": 97.0242914979757,
+    "sd": 0.1675399327656553,
+    "fixed": 15,
+    "broke": 19
+   },
+   {
+    "name": "Logistic regression on log-probabilities + agreement features",
+    "kind": "learned (CV)",
+    "correct": 1934,
+    "acc": 97.86437246963564,
+    "sd": 0.13351119390964597,
+    "fixed": 18,
+    "broke": 3
+   },
+   {
+    "name": "Gradient boosting on log-probabilities + agreement features",
+    "kind": "learned (CV)",
+    "correct": 1930,
+    "acc": 97.65182186234817,
+    "sd": 0.15215887022644628,
+    "fixed": 21,
+    "broke": 13
+   },
+   {
+    "name": "Jev final decision on the 112 disagreements (cached, 18 Oct)",
+    "kind": "Jev (cached)",
+    "correct": 1890,
+    "acc": 95.64777327935222,
+    "sd": 0.0,
+    "fixed": 8,
+    "broke": 37
+   },
+   {
+    "name": "Majority vote of DINOv2, ConvNeXt, file-byte and Jev-image on the 112 disagreements",
+    "kind": "Jev (cached)",
+    "correct": 1925,
+    "acc": 97.41902834008097,
+    "sd": 0.0,
+    "fixed": 15,
+    "broke": 9
+   },
+   {
+    "name": "File-byte model breaks the tie; Jev decides when it sides with neither",
+    "kind": "Jev (cached)",
+    "correct": 1924,
+    "acc": 97.36842105263158,
+    "sd": 0.0,
+    "fixed": 15,
+    "broke": 10
+   }
+  ]
+ },
+ "B": {
+  "desc": "DINOv2 + final ConvNeXt run B (OOF) + file-byte model",
+  "rows": [
+   {
+    "name": "DINOv2 + ConvNeXt run B equal average (reference)",
+    "kind": "rule",
+    "correct": 1938,
+    "acc": 98.07692307692307,
+    "sd": 0.0,
+    "fixed": 0,
+    "broke": 0
+   },
+   {
+    "name": "All three, equal average",
+    "kind": "rule",
+    "correct": 1939,
+    "acc": 98.12753036437248,
+    "sd": 0.0,
+    "fixed": 10,
+    "broke": 9
+   },
+   {
+    "name": "All three, geometric mean",
+    "kind": "rule",
+    "correct": 1940,
+    "acc": 98.17813765182186,
+    "sd": 0.0,
+    "fixed": 11,
+    "broke": 9
+   },
+   {
+    "name": "All three, majority vote on one-hot labels (tie: average)",
+    "kind": "rule",
+    "correct": 1939,
+    "acc": 98.12753036437248,
+    "sd": 0.0,
+    "fixed": 11,
+    "broke": 10
+   },
+   {
+    "name": "Agreement router: keep if DINOv2 = ConvNeXt run B, else file-byte model picks between their two answers",
+    "kind": "rule",
+    "correct": 1937,
+    "acc": 98.02631578947368,
+    "sd": 0.0,
+    "fixed": 10,
+    "broke": 11
+   },
+   {
+    "name": "Agreement router: keep if DINOv2 = ConvNeXt run B, else three-way average",
+    "kind": "rule",
+    "correct": 1939,
+    "acc": 98.12753036437248,
+    "sd": 0.0,
+    "fixed": 10,
+    "broke": 9
+   },
+   {
+    "name": "Oracle: always right when DINOv2 or ConvNeXt run B is right (upper bound, not a model)",
+    "kind": "bound",
+    "correct": 1952,
+    "acc": 98.78542510121457,
+    "sd": 0.0,
+    "fixed": 14,
+    "broke": 0
+   },
+   {
+    "name": "DINOv2 alone",
+    "kind": "expert",
+    "correct": 1895,
+    "acc": 95.90080971659918,
+    "sd": 0.0,
+    "fixed": 6,
+    "broke": 49
+   },
+   {
+    "name": "ConvNeXt run B alone",
+    "kind": "expert",
+    "correct": 1934,
+    "acc": 97.8744939271255,
+    "sd": 0.0,
+    "fixed": 8,
+    "broke": 12
+   },
+   {
+    "name": "File-byte alone",
+    "kind": "expert",
+    "correct": 1851,
+    "acc": 93.67408906882592,
+    "sd": 0.0,
+    "fixed": 15,
+    "broke": 102
+   },
+   {
+    "name": "Weighted average, weights learned on the training folds",
+    "kind": "learned (CV)",
+    "correct": 1938,
+    "acc": 98.08704453441295,
+    "sd": 0.0870680695044822,
+    "fixed": 11,
+    "broke": 11
+   },
+   {
+    "name": "Logistic regression on the 21 log-probabilities (stacking)",
+    "kind": "learned (CV)",
+    "correct": 1941,
+    "acc": 98.21862348178139,
+    "sd": 0.037871026181923284,
+    "fixed": 8,
+    "broke": 6
+   },
+   {
+    "name": "Logistic regression on one-hot labels only (21 binary inputs)",
+    "kind": "learned (CV)",
+    "correct": 1926,
+    "acc": 97.47975708502024,
+    "sd": 0.10806759364404186,
+    "fixed": 8,
+    "broke": 20
+   },
+   {
+    "name": "Logistic regression on one-hot labels + agreement features",
+    "kind": "learned (CV)",
+    "correct": 1920,
+    "acc": 97.16599190283401,
+    "sd": 0.12396203151736644,
+    "fixed": 5,
+    "broke": 23
+   },
+   {
+    "name": "Logistic regression on log-probabilities + agreement features",
+    "kind": "learned (CV)",
+    "correct": 1937,
+    "acc": 98.02631578947368,
+    "sd": 0.055437505820360965,
+    "fixed": 7,
+    "broke": 8
+   },
+   {
+    "name": "Gradient boosting on log-probabilities + agreement features",
+    "kind": "learned (CV)",
+    "correct": 1937,
+    "acc": 98.02631578947368,
+    "sd": 0.12396203151736644,
+    "fixed": 10,
+    "broke": 11
+   }
+  ]
+ }
+}

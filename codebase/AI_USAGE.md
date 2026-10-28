@@ -18,6 +18,7 @@ The course allows AI for the code and for understanding the models, provided its
 | 17 to 18 Oct | OpenAI Codex | Adam | Wrote and ran the DINOv2 partial fine-tuning, style features, partially tuned ConvNeXt, learned fusion (transformer and MLP), Julia-1 and Jev decision-model experiments (`members/adam-zeraiki/` and `members/lina-oumhand/dinov2-partial-finetune/`). |
 | 18 Oct | Claude (Anthropic) | Adam | Drafted the first report from the codebase's results. |
 | 27 to 28 Oct | Claude (Anthropic) | Adam | Wrote the LaTeX paper and its figures from the saved outputs; verified Kaggle scores on the competition pages; recovered the experiment records; built the GitHub repository; built the file-forensics model (`members/adam-zeraiki/file-forensics-shortcut-model/`); wrote this file. |
+| 28 Oct | Claude (Anthropic), driving Adam's browser | Adam | Ran the three-expert fusion (DINOv2 + ConvNeXt + file-byte model) and prepared the three-expert Jev experiment (`members/adam-zeraiki/three-expert-fusion-dinov2-convnext-filebytes/`); restarted Adam's RunPod pod from his signed-in browser at his request and ran the 2,000-epoch double-descent experiment (`members/adam-zeraiki/double-descent-2000-epochs/`). |
 
 The team chose the experiments and the final model, reviewed every number against the saved outputs and is responsible for the content.
 
@@ -104,6 +105,14 @@ The team chose the experiments and the final model, reviewed every number agains
 > Also what's the max amount of epochs we did
 
 > I want you to create a model with Jev that uses the 3.2 what the files reveal before any pixel is read and I want it to get at least 99% just to show if we wanted to we could've just done that if we just wanted to get a high score but decided not to. Also, lina sent me this, modify her section please. [Lina's description of her two submissions] Finally review the github and everything and get an AI_Usage.md ready and make sure everything is ready for a final submission. Also, see if there are any improvements you want to make, show it to me and I will let you know whether to add them in or not.
+
+### 28 October, Claude: three-expert fusion and 2,000-epoch run
+
+> No, like, feel free to do a model that takes into consideration the full file byte model and also, like, the visual aspects, a combination. Kind of like, you know my multimodal idea where I take several different models and different things and potentially have, like, Jev do the final decision, potentially do the same thing with that, you know? And instead have also a mod, like, have a dyno, have conv next, and then third model being the full file byte model, and then Jev either decides on like one hot encodings or maybe on the agreements. Try them all and see what happens and see which one would be better.
+
+> Also, feel free to do like a lot more epochs. Like, for example, in Double Descent, like with the thing that they did, they went like, there's 2,000 epochs and things like that, you know? So if you want to reach more, you can go for it. And if you want to use the run pod or whatever, you can go for it.
+
+> Okay, do all that yourself.
 
 ## 3. What was not done by AI
 
