@@ -47,7 +47,7 @@ The research paper and code of team The Winners for the IDSI51006 Computer Visio
 
 - [x] Fusion experiment and DINOv2 settings: in `members/adam-zeraiki/` and `members/lina-oumhand/dinov2-partial-finetune/`, and in paper sections 4.4 and 4.5.
 - [x] **ResNet18 at 160 px** (Charles): in `members/charles-montluc-giannopoulou/README.md` and the paper (PR #1, merged 28 October).
-- [ ] **AI-use record** (everyone): `codebase/AI_USAGE.md` lists every AI use and prompt. Lina: confirm your line (marked **to confirm**) and send Adam any prompts you used (Charles's and Erdem's lines are done).
+- [x] **AI-use record** (everyone): `codebase/AI_USAGE.md` lists every AI use and prompt. All four members' lines are now filled in; Lina's Codex use and original prompts are recorded alongside Adam's, Charles's and Erdem's entries.
 - [x] **Erdem's E12b, E13**: what they were (they are members of the E13v ensemble). Done: `members/erdem-sanver/README.md` and the appendix log.
 
 ## Git workflow
