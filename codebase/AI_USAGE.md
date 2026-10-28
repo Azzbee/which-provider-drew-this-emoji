@@ -2,61 +2,28 @@
 
 Team The Winners: Adam Zeraiki, Lina Oumhand, Charles Montluc-Giannopoulou, Erdem Sanver.
 
-## How we worked with AI
+We used Claude, ChatGPT and Codex to discuss approaches, understand methods, generate and debug code, run experiments and prepare documentation. The team made the experimental decisions, reviewed the outputs and checked the reported results against saved records.
 
-We used AI assistants (Claude from Anthropic, OpenAI ChatGPT and Codex) in three ways: as a sparring partner to test and sharpen our ideas, as help to write and execute code faster, and, for members newer to deep-learning code, as a way to understand larger blocks of code before using them. The ideas, the experimental choices and the decisions were ours. Code produced with AI help was read, checked and re-run by us before any result was used, and every number in the paper was checked against the output files that produced it. Our conversations with these tools are available on request.
+## Adam Zeraiki
 
-## Who did what
+**Contribution:** Coordinated the project and proposed research directions including self-supervised fine-tuning, model fusion and decision models. Developed the shared CNN and ConvNeXt experiments, metadata diagnostics, fusion experiments, file-byte model and double-descent analyses. Selected the final model and integrated the repository and paper.
 
-### Adam Zeraiki
+**AI assistance:** Claude helped implement and execute experiments and draft the paper, figures and tables. ChatGPT and Codex assisted with the baseline notebook, DINOv2 implementation, learned fusion and decision-model experiments.
 
-**His work**
-- Led the project: split the work, set the deadlines, coordinated the four of us and managed the shared Kaggle budget of five uploads a day.
-- Proposed the main research directions: fine-tuning a self-supervised model (DINO), fusing several models with a transformer in the middle (inspired by TRIBE v2), testing decision models such as Jev as a final arbiter, and, when those did not beat a plain average, adding an expert that reads only the PNG file bytes so that the experts would make different kinds of mistakes.
-- Brought in two outside ideas and had them tested on our data: the poisoned-cup puzzle from his interview preparation, which led to the error-correcting output codes of section 4.5, and the deep double descent paper (Nakkiran et al.), which he had read out of curiosity, tested up to 4,000 epochs and 11 network sizes.
-- Asked the questions that shaped the analysis: whether we overfit or underfit, and how far the file-format shortcut alone could go.
-- Reviewed every part of the code written with AI help, re-read and re-checked it, and ran experiments himself; created, paid for and managed the RunPod GPU pod, checking the price before each launch; sent the Jev requests from his own computer with his own key.
-- Chose the final model and kept it pixel-only, chose the two entries selected for the private leaderboard, and decided what goes into the paper and how its story is told ("we tried this, it did not work, so we changed it").
-- Set up the shared repository with one folder per member, reviewed and merged his teammates' pull requests, and checked the final paper.
+## Erdem Sanver
 
-**How AI helped**
-- Claude: discussing ideas and their weaknesses; helping write and execute the codebase, the GPU runs, the file-byte model, the three-expert fusion, the combination rules and the double-descent replication; drafting the paper, its figures and tables from our saved outputs, which Adam reviewed and corrected.
-- OpenAI ChatGPT and Codex: the September baseline notebook, and implementing the DINOv2 fine-tuning, the fusion transformer and the decision-model experiments.
+**Contribution:** Designed and evaluated the E1a to E16 experiment series, comparing architectures, resolutions, preprocessing and ensembles. Produced the team's best Kaggle entry, E15, and documented its constituent models and results.
 
-### Erdem Sanver
+**AI assistance:** Claude Code helped implement and debug the experiments and draft documentation under Erdem's direction and review.
 
-**His work**
-- Designed the E1a to E16 experiment series and its rules: one change at a time, validate locally before spending a shared upload, log every run, keep the model pixel-only.
-- Reviewed the results at each step, chose what to submit, and produced the team's best entry, E15 (0.98238 on the private leaderboard), a soft vote of three ConvNeXt-Tiny models at different resolutions and resize filters.
-- Documented every recipe, command and result of the series, including the bicubic versus nearest-neighbour test behind E15's resize choice, in `members/erdem-sanver/`.
+## Charles Montluc-Giannopoulou
 
-**How AI helped**
-- Claude Code as a coding assistant: implementing and debugging the plan he set and approved, and drafting the write-ups, which he reviewed.
+**Contribution:** Explored an ImageNet-pretrained ResNet18 at 160 px with file-format features. Reviewed the notebook and corrected the paper's description to make those extra inputs explicit.
 
-### Charles Montluc-Giannopoulou
+**AI assistance:** Claude helped build and review the notebook, write the method notes and check the files before adding them to the repository. The original notebook prompts were not retained.
 
-**His work**
-- Explored transfer learning at a higher input resolution with an ImageNet-pretrained ResNet18 at 160 px (0.96396 on the private leaderboard).
-- Reviewed his own notebook afterwards and corrected how the paper described his model, pointing out that it also used the file format and so is not a pixels-only result.
+## Lina Oumhand
 
-**How AI helped**
-- Claude: building and later reviewing the notebook, and writing up his notes.
+**Contribution:** Explored Extra Trees and a frozen ResNet18 combined with hand-crafted features and an RBF SVM. Compared the contributions of the two feature families. Explored partial fine-tuning of DINOv2 and submitted the resulting DINOv2 prediction file.
 
-### Lina Oumhand
-
-| Date | Tool | What it did |
-|---|---|---|
-| ~15 Oct | Claude | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
-| 28 Oct | Claude, in VS Code | Reviewed his notebook, wrote `members/charles-montluc-giannopoulou/README.md` and corrected the description of his model in the paper. |
-| 28 Oct | Claude | Checked the notebook for keys and data, then added it unchanged with its `submission.csv` to `members/charles-montluc-giannopoulou/resnet18-160px-format-features/`. |
-
-**How AI helped**
-- OpenAI Codex helped Lina with explaining the notebook and methods covered in class. It also helped her research and compare different approaches for the emoji classification task. Codex assisted in building and structuring the Jupyter notebooks, especially for the Extra Trees and ResNet18 + SVM models. It helped implement the methods, write and improve the code, fix errors, debug issues, and run the experiments. It also helped Lina explore DINOv2 as another approach for the emoji classification task. It explained how the pretrained Vision Transformer works and how partial fine-tuning could be used to adapt it to the dataset. Codex assisted with setting up the model, adapting the image preprocessing, implementing the training and validation code, and understanding which layers should be frozen or fine-tuned. It also helped troubleshoot errors, debug the code, run experiments, and interpret the results to identify possible improvements. Overall, Codex was used as both a learning and coding assistant throughout the project.
-
-## What we did ourselves
-
-- **Ideas and direction:** every research question and every idea tested in the paper, as listed above for each member.
-- **Decisions:** which experiments to run, which results to trust, the pixel-only rule for the final model, the final model itself, the two entries selected on Kaggle, and what the paper says.
-- **Review:** reading and checking the code before using it, re-running experiments, checking every number in the paper against its source, and reviewing each other's work through pull requests.
-- **Execution and resources:** downloading the data, our Kaggle accounts and uploads, sharing the daily upload budget, creating and paying for the GPU pod, and running our own notebooks and experiments.
-- **Teamwork:** our meetings and discussions, the split of work and the deadlines we kept.
+**AI assistance:** Codex explained the methods and helped research approaches, structure notebooks, implement and debug code, run experiments and interpret results. For DINOv2, Codex assisted Lina with model setup, preprocessing, training and validation code, debugging and prediction export.
