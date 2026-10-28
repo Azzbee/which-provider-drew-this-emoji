@@ -24,4 +24,6 @@ How the project actually unfolded, reconstructed from dated records: Kaggle's su
 | 18 Oct | Adam | First report draft (HTML/PDF) and shared report document | | `codebase/report/` |
 | 27 Oct | Adam | LaTeX paper (background, journey, double descent, DINOv2, fusion), this repository | | `paper/` |
 | 28 Oct | Adam | File-forensics shortcut model: 93.48% file-only, 97.95% stacked with ConvNeXt (not submitted) | | `members/adam-zeraiki/file-forensics-shortcut-model/` |
+| 28 Oct | Adam (with Claude) | Three-expert fusion: DINOv2 + ConvNeXt + file-byte model; geometric mean 97.98%, stacking 98.12% on the 1,976 dev images (reference 97.12%) | | `members/adam-zeraiki/three-expert-fusion-dinov2-convnext-filebytes/` |
+| 28 Oct | Adam (with Claude, RunPod RTX 4090) | Double descent: ResNet18 widths 4 to 64, 0/10/20% label noise, 2,000 epochs | | `members/adam-zeraiki/double-descent-2000-epochs/` |
 | 28 Oct, 20:00 | everyone | Moodle hand-in: paper PDF + codebase zip | | |
