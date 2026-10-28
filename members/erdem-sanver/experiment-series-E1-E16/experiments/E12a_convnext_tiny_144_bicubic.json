@@ -1,0 +1,164 @@
+{
+  "exp_id": "E12a_convnext_tiny_144_bicubic",
+  "model": "convnext_tiny (ImageNet pretrained)",
+  "method": "ConvNeXt-Tiny fine-tune as E6b at 144 px (= 2 x 72) - control run for E12b",
+  "epochs": 10,
+  "train_acc": 1.0,
+  "train_prec": 1.0,
+  "val_acc": 0.9630566801619433,
+  "val_prec": 0.9666018604473704,
+  "explanation": "Val accuracy 0.963 (control). By source size: 72px files 0.967, larger files 0.957. Consistent with the E6b(128)->E8(224) resolution trend.",
+  "preprocessing": "Alpha-composite on white background, then resize to 144 x 144 (bicubic), ImageNet normalisation",
+  "preprocessing_why": "Control: identical to E12b except the resampling filter. 144 = exact 2x of the 72 px files that cause 32 of the 41 E9 validation errors.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": null,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E12a_convnext_tiny_144_bicubic",
+      "model": "convnext_tiny",
+      "mode": "white",
+      "size": 144,
+      "resample": "bicubic",
+      "seed": 42,
+      "epochs": 10,
+      "bs": 32,
+      "lr": 0.0002,
+      "wd": 0.0001,
+      "label_smoothing": 0.0,
+      "pretrained": true,
+      "freeze": false,
+      "aug": "none",
+      "tta": false,
+      "full": false,
+      "method": "ConvNeXt-Tiny fine-tune as E6b at 144 px (= 2 x 72) - control run for E12b",
+      "preproc": "Alpha-composite on white background, then resize to 144 x 144 (bicubic), ImageNet normalisation",
+      "why": "Control: identical to E12b except the resampling filter. 144 = exact 2x of the 72 px files that cause 32 of the 41 E9 validation errors."
+    },
+    "params_total": 27825511,
+    "params_trainable": 27825511,
+    "device": "mps",
+    "runtime_s": 1614.9,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 0.6573,
+        "val_acc": 0.8386
+      },
+      {
+        "epoch": 2,
+        "loss": 0.257,
+        "val_acc": 0.9307
+      },
+      {
+        "epoch": 3,
+        "loss": 0.1303,
+        "val_acc": 0.9388
+      },
+      {
+        "epoch": 4,
+        "loss": 0.0791,
+        "val_acc": 0.9428
+      },
+      {
+        "epoch": 5,
+        "loss": 0.0535,
+        "val_acc": 0.9448
+      },
+      {
+        "epoch": 6,
+        "loss": 0.0199,
+        "val_acc": 0.9575
+      },
+      {
+        "epoch": 7,
+        "loss": 0.0062,
+        "val_acc": 0.962
+      },
+      {
+        "epoch": 8,
+        "loss": 0.0006,
+        "val_acc": 0.9631
+      },
+      {
+        "epoch": 9,
+        "loss": 0.0002,
+        "val_acc": 0.9631
+      },
+      {
+        "epoch": 10,
+        "loss": 0.0002,
+        "val_acc": 0.9631
+      }
+    ],
+    "val_confusion": [
+      [
+        372,
+        7,
+        3,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        371,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        307,
+        10,
+        3,
+        0,
+        1
+      ],
+      [
+        7,
+        1,
+        12,
+        311,
+        0,
+        0,
+        2
+      ],
+      [
+        4,
+        1,
+        0,
+        0,
+        353,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        75,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        114
+      ]
+    ],
+    "submission": "E12a_convnext_tiny_144_bicubic.csv"
+  }
+}

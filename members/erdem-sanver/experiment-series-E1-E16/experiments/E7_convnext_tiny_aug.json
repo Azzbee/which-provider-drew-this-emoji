@@ -1,0 +1,187 @@
+{
+  "exp_id": "E7_convnext_tiny_aug",
+  "model": "convnext_tiny (ImageNet pretrained)",
+  "method": "ConvNeXt-Tiny fine-tune (as E6b) + geometric augmentation (h-flip, +-10 deg rotation, 5% shift, 0.9-1.1 scale) + label smoothing 0.1, 15 epochs",
+  "epochs": 15,
+  "train_acc": 0.9994938630899658,
+  "train_prec": 0.9995942582952099,
+  "val_acc": 0.9438259109311741,
+  "val_prec": 0.9463621549510189,
+  "explanation": "NEGATIVE result: val accuracy 0.944, i.e. -1.5 pts vs E6b (0.959). Augmentation + label smoothing reduced memorisation (train 0.9995, loss plateaus ~0.45 because of smoothing) but hurt generalisation. Errors concentrate on facebook->whatsapp (32 vs fewer in E6b) and mozilla (0.95 -> 0.87). Likely cause: rotation/scale resampling blurs the anti-aliased outlines and gradients that ARE the vendor signature, so the 'invariance' we injected removes discriminative information. Caveat: 3 things changed at once (aug, smoothing, 15 epochs) - effect not attributable to one of them; kept E6b setting (no aug) going forward.",
+  "preprocessing": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation; train-time random flip/affine (no colour jitter)",
+  "preprocessing_why": "E6b overfits (train 1.000 vs val 0.959). Geometric augmentation creates plausible variants without touching colour, which is itself a vendor signal; label smoothing discourages over-confident memorisation.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": null,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E7_convnext_tiny_aug",
+      "model": "convnext_tiny",
+      "mode": "white",
+      "size": 128,
+      "epochs": 15,
+      "bs": 32,
+      "lr": 0.0002,
+      "wd": 0.0001,
+      "label_smoothing": 0.1,
+      "pretrained": true,
+      "freeze": false,
+      "aug": "geo",
+      "tta": false,
+      "full": false,
+      "method": "ConvNeXt-Tiny fine-tune (as E6b) + geometric augmentation (h-flip, +-10 deg rotation, 5% shift, 0.9-1.1 scale) + label smoothing 0.1, 15 epochs",
+      "preproc": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation; train-time random flip/affine (no colour jitter)",
+      "why": "E6b overfits (train 1.000 vs val 0.959). Geometric augmentation creates plausible variants without touching colour, which is itself a vendor signal; label smoothing discourages over-confident memorisation."
+    },
+    "params_total": 27825511,
+    "params_trainable": 27825511,
+    "device": "mps",
+    "runtime_s": 1705.0,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.0548,
+        "val_acc": 0.8866
+      },
+      {
+        "epoch": 2,
+        "loss": 0.6944,
+        "val_acc": 0.8856
+      },
+      {
+        "epoch": 3,
+        "loss": 0.6277,
+        "val_acc": 0.9064
+      },
+      {
+        "epoch": 4,
+        "loss": 0.5735,
+        "val_acc": 0.9322
+      },
+      {
+        "epoch": 5,
+        "loss": 0.5426,
+        "val_acc": 0.9211
+      },
+      {
+        "epoch": 6,
+        "loss": 0.5208,
+        "val_acc": 0.9276
+      },
+      {
+        "epoch": 7,
+        "loss": 0.4985,
+        "val_acc": 0.9322
+      },
+      {
+        "epoch": 8,
+        "loss": 0.4761,
+        "val_acc": 0.9347
+      },
+      {
+        "epoch": 9,
+        "loss": 0.4664,
+        "val_acc": 0.9378
+      },
+      {
+        "epoch": 10,
+        "loss": 0.4556,
+        "val_acc": 0.9403
+      },
+      {
+        "epoch": 11,
+        "loss": 0.4541,
+        "val_acc": 0.9428
+      },
+      {
+        "epoch": 12,
+        "loss": 0.4485,
+        "val_acc": 0.9438
+      },
+      {
+        "epoch": 13,
+        "loss": 0.4486,
+        "val_acc": 0.9408
+      },
+      {
+        "epoch": 14,
+        "loss": 0.4472,
+        "val_acc": 0.9433
+      },
+      {
+        "epoch": 15,
+        "loss": 0.4473,
+        "val_acc": 0.9438
+      }
+    ],
+    "val_confusion": [
+      [
+        369,
+        10,
+        3,
+        1,
+        0,
+        2,
+        0
+      ],
+      [
+        4,
+        369,
+        1,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        5,
+        3,
+        303,
+        14,
+        2,
+        0,
+        2
+      ],
+      [
+        6,
+        1,
+        32,
+        293,
+        1,
+        0,
+        0
+      ],
+      [
+        5,
+        2,
+        1,
+        0,
+        350,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        0,
+        69,
+        5
+      ],
+      [
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        112
+      ]
+    ],
+    "submission": "E7_convnext_tiny_aug.csv"
+  }
+}

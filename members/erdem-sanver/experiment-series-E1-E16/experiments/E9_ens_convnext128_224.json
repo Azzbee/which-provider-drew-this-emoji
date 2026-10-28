@@ -1,0 +1,25 @@
+{
+  "exp_id": "E9_ens_convnext128_224",
+  "model": "Ensemble: E6b_convnext_tiny_finetune + E8_convnext_tiny_224",
+  "method": "Soft voting: average of the members' softmax probabilities (equal weights)",
+  "epochs": null,
+  "train_acc": null,
+  "train_prec": null,
+  "val_acc": 0.979251012145749,
+  "val_prec": 0.9820948882947681,
+  "explanation": "Val accuracy 0.979 (+0.4 pts vs E8 alone, ~7 more correct images out of 1976 - within noise, ~1.2 standard errors). Adding weaker models (ResNet18, simple CNN) to the vote LOWERED accuracy (0.973-0.974): averaging only helps when members are comparably strong.",
+  "preprocessing": "As in each member experiment",
+  "preprocessing_why": "Members see the image at different resolutions, so their errors are partly independent.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": 0.97671,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "members": [
+      "E6b_convnext_tiny_finetune",
+      "E8_convnext_tiny_224"
+    ],
+    "submission": "E9_ens_convnext128_224.csv"
+  }
+}

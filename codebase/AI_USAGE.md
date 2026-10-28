@@ -10,7 +10,7 @@ The course allows AI for the code and for understanding the models, provided its
 |---|---|---|---|
 | 30 Sept | Claude (Anthropic) | Adam | Drafted the first-submission Keras notebook (`members/adam-zeraiki/first-submission-keras-cnn/`). |
 | 30 Sept | OpenAI Codex | Adam | Generated and debugged the baseline PyTorch notebook (`members/adam-zeraiki/baseline-cnn/`). |
-| 13 to 14 Oct | not recorded | Erdem | Experiments E1a to E15. **Erdem to confirm** whether an AI tool was used. |
+| 13 to 28 Oct | Claude Code (Anthropic) | Erdem | Experiment series E1a to E16 (`members/erdem-sanver/experiment-series-E1-E16/`), run with Claude Code as a coding assistant. Erdem set the goals and constraints, chose to keep the model pixel-only rather than use the file-format shortcut, approved the plan, reviewed the results at each stage and decided which files to submit with the team's shared daily submissions. Claude implemented, debugged and ran the code (preprocessing, baselines, CNN/ConvNeXt training, ensembles, pseudo-labelling), which Erdem reviewed, drafted the write-ups and, on 28 Oct, added the records to the repository and the paper. |
 | ~15 Oct | Claude (Anthropic) | Charles | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
 | 28 Oct | Claude (Anthropic) | Charles | Modified the GitHub repository: added notes about Charles's own work (`members/charles-montluc-giannopoulou/README.md`) and corrected the description of his model in the paper (who-tried-what row, journey table step 6, Kaggle table) after a review of his notebook. |
 | ~17 Oct | not recorded | Lina | Extra-trees and frozen ResNet18 + SVM entries. **Lina to confirm** whether an AI tool was used. |
@@ -38,6 +38,14 @@ The team chose the experiments and the final model, reviewed every number agains
 (followed by the teacher's project e-mail)
 
 > ok cool take control of my chrome and make it happen here is the data
+
+### 13 to 28 October, Claude Code: Erdem's experiment series
+
+Erdem's requests, summarised by him afterwards (not the verbatim prompts):
+
+> Build the experiment series from scratch within the competition constraints: improve the model one change at a time, validate locally before spending a shared submission, log every run in the course spreadsheet so the report can show what each change did, and keep the model pixel-only. Then push the score as far as it goes, write up every experiment in detail, and add the work to the team repository through a pull request.
+
+The experiment plan was set in discussion between Erdem and Claude Code, starting from Erdem's constraints, and approved by Erdem before any code was written. It covered: a metadata-only diagnostic, colour histogram + HOG with an SVM, a small CNN from scratch with and without alpha compositing, ImageNet ResNet18 frozen and fully fine-tuned, EfficientNet-B0 and ConvNeXt-Tiny, an augmentation study, higher input resolution, soft-vote ensembles and retraining on all data. In a later stage, which Erdem delegated, a controlled bicubic versus nearest-neighbour resize test, a three-model ensemble and pseudo-labelling of confident test images were added.
 
 ### 17 October, Claude: codebase and experiments
 

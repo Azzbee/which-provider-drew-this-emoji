@@ -1,0 +1,12 @@
+[E16_convnext_tiny_144_nearest_pseudo] pseudo-labels from E13v_ens_val_3models: 9046 test images (conf >= 0.99)
+[E16_convnext_tiny_144_nearest_pseudo] ep  1/10 loss 0.4332 val_acc 0.8978  (256s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  2/10 loss 0.1423 val_acc 0.9464  (535s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  3/10 loss 0.0742 val_acc 0.9706  (815s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  4/10 loss 0.0456 val_acc 0.9297  (1103s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  5/10 loss 0.0294 val_acc 0.9651  (1382s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  6/10 loss 0.0152 val_acc 0.9717  (1670s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  7/10 loss 0.0041 val_acc 0.9727  (2002s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  8/10 loss 0.0014 val_acc 0.9777  (2301s)
+[E16_convnext_tiny_144_nearest_pseudo] ep  9/10 loss 0.0004 val_acc 0.9777  (2621s)
+[E16_convnext_tiny_144_nearest_pseudo] ep 10/10 loss 0.0001 val_acc 0.9772  (2925s)
+{"exp": "E16_convnext_tiny_144_nearest_pseudo", "train_acc": 1.0, "val_acc": 0.9772267206477733, "val_prec": 0.9777803734423208, "runtime_s": 3029.6}

@@ -1,0 +1,11 @@
+[E10a_convnext_tiny_128_full] ep  1/10 loss 0.5988 val_acc n/a (full)  (95s)
+[E10a_convnext_tiny_128_full] ep  2/10 loss 0.2502 val_acc n/a (full)  (189s)
+[E10a_convnext_tiny_128_full] ep  3/10 loss 0.1321 val_acc n/a (full)  (283s)
+[E10a_convnext_tiny_128_full] ep  4/10 loss 0.0699 val_acc n/a (full)  (382s)
+[E10a_convnext_tiny_128_full] ep  5/10 loss 0.0440 val_acc n/a (full)  (485s)
+[E10a_convnext_tiny_128_full] ep  6/10 loss 0.0214 val_acc n/a (full)  (590s)
+[E10a_convnext_tiny_128_full] ep  7/10 loss 0.0040 val_acc n/a (full)  (698s)
+[E10a_convnext_tiny_128_full] ep  8/10 loss 0.0008 val_acc n/a (full)  (806s)
+[E10a_convnext_tiny_128_full] ep  9/10 loss 0.0003 val_acc n/a (full)  (919s)
+[E10a_convnext_tiny_128_full] ep 10/10 loss 0.0002 val_acc n/a (full)  (1030s)
+{"exp": "E10a_convnext_tiny_128_full", "train_acc": 1.0, "val_acc": null, "val_prec": null, "runtime_s": 1094.0}

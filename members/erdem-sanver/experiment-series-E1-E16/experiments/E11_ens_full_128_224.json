@@ -1,0 +1,25 @@
+{
+  "exp_id": "E11_ens_full_128_224",
+  "model": "Ensemble: E10a_convnext_tiny_128_full + E10b_convnext_tiny_224_full",
+  "method": "Soft voting: average of the members' softmax probabilities (equal weights)",
+  "epochs": null,
+  "train_acc": null,
+  "train_prec": null,
+  "val_acc": null,
+  "val_prec": null,
+  "explanation": "Full-data version of E9 (soft vote of E10a + E10b). Kaggle public 0.97914 vs 0.97671 for E9: +0.24 pts from 25% more data; best public score of the project. Agrees with E9 on 98.7% of test images. Note: public LB = ~50% of test (~4940 images), 1 SE ~ 0.2 pts, so single-model vs ensemble differences at this level are within noise.",
+  "preprocessing": "As in each member experiment",
+  "preprocessing_why": "Members see the image at different resolutions, so their errors are partly independent.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": 0.97914,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "members": [
+      "E10a_convnext_tiny_128_full",
+      "E10b_convnext_tiny_224_full"
+    ],
+    "submission": "E11_ens_full_128_224.csv"
+  }
+}

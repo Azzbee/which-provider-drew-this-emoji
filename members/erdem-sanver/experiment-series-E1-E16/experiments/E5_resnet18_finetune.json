@@ -1,0 +1,162 @@
+{
+  "exp_id": "E5_resnet18_finetune",
+  "model": "resnet18 (ImageNet pretrained)",
+  "method": "Transfer learning, full fine-tuning: all ResNet18 layers updated (AdamW lr 5e-4, OneCycle)",
+  "epochs": 10,
+  "train_acc": 1.0,
+  "train_prec": 1.0,
+  "val_acc": 0.937246963562753,
+  "val_prec": 0.9376815315898502,
+  "explanation": "Val accuracy 0.937 (+16.2 pts vs frozen E4, +0.1 vs from-scratch E3). Unfreezing the backbone lets ImageNet filters adapt to rendering style. Train accuracy 1.000 vs val 0.937: strong overfitting (11M params, 7.9k images, no augmentation). Weakest classes: mozilla 0.85, whatsapp 0.89 recall.",
+  "preprocessing": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+  "preprocessing_why": "Same preprocessing as E4 so that only frozen-vs-fine-tuned changes.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": null,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E5_resnet18_finetune",
+      "model": "resnet18",
+      "mode": "white",
+      "size": 128,
+      "epochs": 10,
+      "bs": 64,
+      "lr": 0.0005,
+      "wd": 0.0001,
+      "label_smoothing": 0.0,
+      "pretrained": true,
+      "freeze": false,
+      "aug": "none",
+      "tta": false,
+      "full": false,
+      "method": "Transfer learning, full fine-tuning: all ResNet18 layers updated (AdamW lr 5e-4, OneCycle)",
+      "preproc": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+      "why": "Same preprocessing as E4 so that only frozen-vs-fine-tuned changes."
+    },
+    "params_total": 11180103,
+    "params_trainable": 11180103,
+    "device": "mps",
+    "runtime_s": 304.8,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.6438,
+        "val_acc": 0.6969
+      },
+      {
+        "epoch": 2,
+        "loss": 0.5225,
+        "val_acc": 0.8406
+      },
+      {
+        "epoch": 3,
+        "loss": 0.2177,
+        "val_acc": 0.913
+      },
+      {
+        "epoch": 4,
+        "loss": 0.1062,
+        "val_acc": 0.9271
+      },
+      {
+        "epoch": 5,
+        "loss": 0.0497,
+        "val_acc": 0.9332
+      },
+      {
+        "epoch": 6,
+        "loss": 0.0279,
+        "val_acc": 0.9332
+      },
+      {
+        "epoch": 7,
+        "loss": 0.0153,
+        "val_acc": 0.9352
+      },
+      {
+        "epoch": 8,
+        "loss": 0.0112,
+        "val_acc": 0.9362
+      },
+      {
+        "epoch": 9,
+        "loss": 0.0083,
+        "val_acc": 0.9393
+      },
+      {
+        "epoch": 10,
+        "loss": 0.0081,
+        "val_acc": 0.9372
+      }
+    ],
+    "val_confusion": [
+      [
+        365,
+        6,
+        4,
+        4,
+        5,
+        1,
+        0
+      ],
+      [
+        8,
+        363,
+        3,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        7,
+        1,
+        293,
+        24,
+        4,
+        0,
+        0
+      ],
+      [
+        7,
+        1,
+        16,
+        306,
+        0,
+        0,
+        3
+      ],
+      [
+        5,
+        1,
+        1,
+        2,
+        349,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        1,
+        0,
+        67,
+        8
+      ],
+      [
+        0,
+        0,
+        2,
+        4,
+        0,
+        1,
+        109
+      ]
+    ],
+    "submission": "E5_resnet18_finetune.csv"
+  }
+}

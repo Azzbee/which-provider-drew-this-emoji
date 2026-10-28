@@ -1,0 +1,162 @@
+{
+  "exp_id": "E8_convnext_tiny_224",
+  "model": "convnext_tiny (ImageNet pretrained)",
+  "method": "ConvNeXt-Tiny fine-tune exactly as E6b; only input resolution changes 128 -> 224",
+  "epochs": 10,
+  "train_acc": 1.0,
+  "train_prec": 1.0,
+  "val_acc": 0.9757085020242915,
+  "val_prec": 0.9791867485574032,
+  "explanation": "Val accuracy 0.976 / macro precision 0.979: +1.7 pts over E6b with ONLY resolution changed (128 -> 224). Biggest gains on the classes whose files are natively 240 px: facebook 0.91 -> 0.97, whatsapp 0.94 -> 0.97 - downsampling to 128 was destroying discriminative detail. Cost: ~3x compute per epoch (2h10 on Apple M4 MPS vs 18 min).",
+  "preprocessing": "Alpha-composite on white background, then resize to 224 x 224 (bicubic), ImageNet normalisation",
+  "preprocessing_why": "224 px is ConvNeXt's pre-training resolution and close to the native 240 px of Facebook/Messenger/Mozilla files, so fine stroke and shading details are preserved instead of being downsampled.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": 0.97408,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E8_convnext_tiny_224",
+      "model": "convnext_tiny",
+      "mode": "white",
+      "size": 224,
+      "epochs": 10,
+      "bs": 32,
+      "lr": 0.0002,
+      "wd": 0.0001,
+      "label_smoothing": 0.0,
+      "pretrained": true,
+      "freeze": false,
+      "aug": "none",
+      "tta": false,
+      "full": false,
+      "method": "ConvNeXt-Tiny fine-tune exactly as E6b; only input resolution changes 128 -> 224",
+      "preproc": "Alpha-composite on white background, then resize to 224 x 224 (bicubic), ImageNet normalisation",
+      "why": "224 px is ConvNeXt's pre-training resolution and close to the native 240 px of Facebook/Messenger/Mozilla files, so fine stroke and shading details are preserved instead of being downsampled."
+    },
+    "params_total": 27825511,
+    "params_trainable": 27825511,
+    "device": "mps",
+    "runtime_s": 7815.4,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 0.5415,
+        "val_acc": 0.9185
+      },
+      {
+        "epoch": 2,
+        "loss": 0.2285,
+        "val_acc": 0.9539
+      },
+      {
+        "epoch": 3,
+        "loss": 0.1084,
+        "val_acc": 0.9302
+      },
+      {
+        "epoch": 4,
+        "loss": 0.0703,
+        "val_acc": 0.9656
+      },
+      {
+        "epoch": 5,
+        "loss": 0.0307,
+        "val_acc": 0.9671
+      },
+      {
+        "epoch": 6,
+        "loss": 0.0269,
+        "val_acc": 0.9706
+      },
+      {
+        "epoch": 7,
+        "loss": 0.0025,
+        "val_acc": 0.9747
+      },
+      {
+        "epoch": 8,
+        "loss": 0.0006,
+        "val_acc": 0.9762
+      },
+      {
+        "epoch": 9,
+        "loss": 0.0002,
+        "val_acc": 0.9757
+      },
+      {
+        "epoch": 10,
+        "loss": 0.0002,
+        "val_acc": 0.9757
+      }
+    ],
+    "val_confusion": [
+      [
+        377,
+        5,
+        2,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        4,
+        368,
+        1,
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        9,
+        1,
+        318,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        5,
+        1,
+        1,
+        324,
+        0,
+        0,
+        2
+      ],
+      [
+        3,
+        2,
+        1,
+        0,
+        352,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        0,
+        0,
+        75,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        114
+      ]
+    ],
+    "submission": "E8_convnext_tiny_224.csv"
+  }
+}

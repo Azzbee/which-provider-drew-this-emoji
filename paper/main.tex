@@ -119,7 +119,7 @@ We classify emoji images by the vendor that drew them (Apple, Facebook, Google, 
 \textbf{Why not hand-crafted features or frozen features.} Colour histograms with HOG and an SVM reached \pct{81.3}\rep, below every CNN; ResNet18 used as a frozen feature extractor with a linear head reached \pct{77.5}\rep{} and \pct{93.7}\rep{} once fine-tuned. Frozen features became competitive only with hand-crafted style descriptors and an RBF-kernel SVM on top (\pct{96.8}\rep). Style lives below the object-level features that ImageNet training rewards; the backbone must be adapted.
 \end{keybox}
 
-{\small\color{ink2}\textbf{Notation.} Numbers marked \ver{} or untagged were produced by the submitted codebase and can be recomputed from its saved outputs; numbers marked \rep{} come from the team's 13 October experiment log or from Kaggle entries that the codebase does not reproduce.\par}
+{\small\color{ink2}\textbf{Notation.} Numbers marked \ver{} or untagged were produced by the submitted codebase and can be recomputed from its saved outputs; numbers marked \rep{} come from Erdem's experiment log (13 to 14 October, \cref{app:log}) or from Kaggle entries that the codebase does not reproduce.\par}
 
 \clearpage
 {\small\renewcommand{\contentsname}{\large Contents}\begin{multicols}{2}\tableofcontents\end{multicols}}
@@ -637,7 +637,7 @@ Recognising who drew an emoji is a style problem, and the project taught us as m
 
 \paragraph{Limitations} The reported rows of \cref{tab:ladder} come from single runs on a different split and carry no error bars. Our architecture comparison rests on those runs. We did not train at the native 240\,px, did not retrain the final recipe on all training data, and could not verify the labels of the most confident errors.
 
-\paragraph{Future work} Train at native resolution with integer (nearest-neighbour) upscaling of the 72\,px files, which Erdem's best entry suggests is promising; try a two-stage classifier that predicts the export family and then the vendor within it, an explicit version of what the network does implicitly; run a seed study to put error bars on the architecture comparison; and fine-tune DINOv2 (or DINOv3, once its weights are available) end to end, to separate the effect of the architecture from that of the partial fine-tuning. Combining backbones is worth it only with an expert whose mistakes differ from theirs: with hand-crafted style features, the fusion transformer and two decision models all fell short of a plain average, while with the file-byte model a parameter-free geometric mean or a most-confident-expert rule gained up to 0.9 points (\cref{sec:fusion}); the decision model Jev never beat the simple rules. Training much longer is not: on clean labels the curves have no second descent to wait for (\cref{sec:descent}).
+\paragraph{Future work} Train at native resolution with integer (nearest-neighbour) upscaling of the 72\,px files: in Erdem's controlled test the resize filter mattered at 144\,px (+0.9 points) but not at 216\,px, and the 72\,px files stayed the main source of error, so a model built around their native grid is the open question; try a two-stage classifier that predicts the export family and then the vendor within it, an explicit version of what the network does implicitly; run a seed study to put error bars on the architecture comparison; and fine-tune DINOv2 (or DINOv3, once its weights are available) end to end, to separate the effect of the architecture from that of the partial fine-tuning. Combining backbones is worth it only with an expert whose mistakes differ from theirs: with hand-crafted style features, the fusion transformer and two decision models all fell short of a plain average, while with the file-byte model a parameter-free geometric mean or a most-confident-expert rule gained up to 0.9 points (\cref{sec:fusion}); the decision model Jev never beat the simple rules. Training much longer is not: on clean labels the curves have no second descent to wait for (\cref{sec:descent}).
 
 % ================================================================== REFERENCES
 \FloatBarrier
@@ -648,12 +648,12 @@ Recognising who drew an emoji is a style problem, and the project taught us as m
 
 % ================================================================== APPENDIX
 \appendix
-\section{The team's 13 October experiment log}
+\section{Erdem's experiment log (13 to 14 October)}
 \label{app:log}
 \label{app:log}
 \begin{table}[H]
 \centering\small
-\caption{Erdem's experiment series on an 80/20 split\rep. Public scores where the experiment was submitted.}
+\caption{Erdem's experiment series on a stratified 80/20 split (seed 42)\rep. Public scores where the experiment was submitted. Code, commands, per-run records and saved probabilities: \texttt{members/erdem-sanver/}.}
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xrr@{}}
 \toprule
 Id & Model and method & Val.\ acc. & Public\\
@@ -669,6 +669,15 @@ E6b & ConvNeXt-Tiny, fine-tuned, 128\,px & 95.90\% & \\
 E7 & as E6b + rotation/scale augmentation + label smoothing & 94.38\% & \\
 E8 & ConvNeXt-Tiny, fine-tuned, 224\,px & 97.57\% & 0.97408\\
 E9 & soft vote E6b + E8 & 97.93\% & 0.97671\\
+E10a, E10b & E6b, E8 retrained on all data (no validation score); E10b submitted & & 0.97833\\
+E11 & soft vote E10a + E10b & & 0.97914\\
+E12a & ConvNeXt-Tiny, 144\,px, bicubic resize (control for E12b) & 96.31\% & \\
+E12b & ConvNeXt-Tiny, 144\,px, nearest-neighbour resize & 97.22\% & \\
+E13 & ConvNeXt-Tiny, 216\,px, nearest-neighbour resize & 97.47\% & \\
+E13v & soft vote E8 + E12b + E13 & 98.13\% & 0.97772\\
+E14a, E14b & E12b, E13 retrained on all data (no validation score) & & \\
+E15 & soft vote E10b + E14a + E14b & & 0.98117\\
+E16 & E12b + \num{9046} pseudo-labelled test images (E13v confidence $\geq 0.99$) & 97.72\% & \\
 \bottomrule
 \end{tabularx}
 \end{table}

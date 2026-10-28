@@ -1,0 +1,11 @@
+[E12a_convnext_tiny_144_bicubic] ep  1/10 loss 0.6573 val_acc 0.8386  (111s)
+[E12a_convnext_tiny_144_bicubic] ep  2/10 loss 0.2570 val_acc 0.9307  (235s)
+[E12a_convnext_tiny_144_bicubic] ep  3/10 loss 0.1303 val_acc 0.9388  (368s)
+[E12a_convnext_tiny_144_bicubic] ep  4/10 loss 0.0791 val_acc 0.9428  (505s)
+[E12a_convnext_tiny_144_bicubic] ep  5/10 loss 0.0535 val_acc 0.9448  (647s)
+[E12a_convnext_tiny_144_bicubic] ep  6/10 loss 0.0199 val_acc 0.9575  (911s)
+[E12a_convnext_tiny_144_bicubic] ep  7/10 loss 0.0062 val_acc 0.9620  (1035s)
+[E12a_convnext_tiny_144_bicubic] ep  8/10 loss 0.0006 val_acc 0.9631  (1195s)
+[E12a_convnext_tiny_144_bicubic] ep  9/10 loss 0.0002 val_acc 0.9631  (1349s)
+[E12a_convnext_tiny_144_bicubic] ep 10/10 loss 0.0002 val_acc 0.9631  (1510s)
+{"exp": "E12a_convnext_tiny_144_bicubic", "train_acc": 1.0, "val_acc": 0.9630566801619433, "val_prec": 0.9666018604473704, "runtime_s": 1614.9}

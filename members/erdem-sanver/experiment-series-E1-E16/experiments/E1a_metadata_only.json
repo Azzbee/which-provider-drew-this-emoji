@@ -1,0 +1,23 @@
+{
+  "exp_id": "E1a_metadata_only",
+  "model": "Random Forest (300 trees)",
+  "method": "Classifier on file metadata only, no pixel content",
+  "epochs": null,
+  "train_acc": 0.674933569530558,
+  "train_prec": 0.8000338258306574,
+  "val_acc": 0.6584008097165992,
+  "val_prec": 0.6305090753597234,
+  "explanation": "Val accuracy 0.658 using NO pixel content (chance = 0.14, majority class = 0.195). The way files were exported (size: Apple/Samsung 72px, WhatsApp 160px, Facebook/Messenger/Mozilla 240px; Samsung mostly palette 'P' mode; distinct junk colours under transparent pixels) leaks the vendor. A model can therefore score well without learning visual style; our preprocessing must neutralise these shortcuts so the comparison between methods is about vision.",
+  "preprocessing": "Features: image width/height, PIL colour mode (RGBA/P/LA/RGB/L), RGB value stored under fully transparent pixels",
+  "preprocessing_why": "Diagnostic: EDA showed size, colour mode and the hidden colour under transparent pixels differ strongly by vendor (export artefacts, not visual style). This measures how much accuracy is reachable WITHOUT looking at the emoji.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": null,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "n_features": 10,
+    "runtime_s": 4.4
+  }
+}

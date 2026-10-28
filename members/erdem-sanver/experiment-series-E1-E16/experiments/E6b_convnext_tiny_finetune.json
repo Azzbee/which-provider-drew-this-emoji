@@ -1,0 +1,162 @@
+{
+  "exp_id": "E6b_convnext_tiny_finetune",
+  "model": "convnext_tiny (ImageNet pretrained)",
+  "method": "Full fine-tuning of ImageNet ConvNeXt-Tiny (AdamW lr 2e-4, OneCycle, batch 32)",
+  "epochs": 10,
+  "train_acc": 1.0,
+  "train_prec": 1.0,
+  "val_acc": 0.9590080971659919,
+  "val_prec": 0.9613671157707225,
+  "explanation": "Val accuracy 0.959 / macro precision 0.961 - best so far (+2.2 pts over ResNet18). Largest gain on the minority class mozilla (recall 0.85 -> 0.95) and whatsapp (0.89 -> 0.94). ConvNeXt's large 7x7 kernels and LayerNorm capture fine stroke/shading style better. Still train 1.000 vs val 0.959 -> next: regularisation (augmentation, label smoothing) and higher resolution.",
+  "preprocessing": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+  "preprocessing_why": "Same preprocessing as E5; only the architecture changes.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": null,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E6b_convnext_tiny_finetune",
+      "model": "convnext_tiny",
+      "mode": "white",
+      "size": 128,
+      "epochs": 10,
+      "bs": 32,
+      "lr": 0.0002,
+      "wd": 0.0001,
+      "label_smoothing": 0.0,
+      "pretrained": true,
+      "freeze": false,
+      "aug": "none",
+      "tta": false,
+      "full": false,
+      "method": "Full fine-tuning of ImageNet ConvNeXt-Tiny (AdamW lr 2e-4, OneCycle, batch 32)",
+      "preproc": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+      "why": "Same preprocessing as E5; only the architecture changes."
+    },
+    "params_total": 27825511,
+    "params_trainable": 27825511,
+    "device": "mps",
+    "runtime_s": 1113.7,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 0.6787,
+        "val_acc": 0.8745
+      },
+      {
+        "epoch": 2,
+        "loss": 0.2624,
+        "val_acc": 0.919
+      },
+      {
+        "epoch": 3,
+        "loss": 0.1472,
+        "val_acc": 0.9474
+      },
+      {
+        "epoch": 4,
+        "loss": 0.078,
+        "val_acc": 0.9342
+      },
+      {
+        "epoch": 5,
+        "loss": 0.0465,
+        "val_acc": 0.9534
+      },
+      {
+        "epoch": 6,
+        "loss": 0.0158,
+        "val_acc": 0.9585
+      },
+      {
+        "epoch": 7,
+        "loss": 0.004,
+        "val_acc": 0.9585
+      },
+      {
+        "epoch": 8,
+        "loss": 0.0005,
+        "val_acc": 0.958
+      },
+      {
+        "epoch": 9,
+        "loss": 0.0002,
+        "val_acc": 0.9595
+      },
+      {
+        "epoch": 10,
+        "loss": 0.0002,
+        "val_acc": 0.959
+      }
+    ],
+    "val_confusion": [
+      [
+        377,
+        4,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        5,
+        370,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        2,
+        308,
+        9,
+        2,
+        1,
+        0
+      ],
+      [
+        6,
+        0,
+        23,
+        303,
+        0,
+        0,
+        1
+      ],
+      [
+        4,
+        3,
+        1,
+        0,
+        350,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        75,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        112
+      ]
+    ],
+    "submission": "E6b_convnext_tiny_finetune.csv"
+  }
+}

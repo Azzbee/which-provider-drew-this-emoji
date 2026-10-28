@@ -1,0 +1,11 @@
+[E13_convnext_tiny_216_nearest] ep  1/10 loss 0.5927 val_acc 0.8922  (442s)
+[E13_convnext_tiny_216_nearest] ep  2/10 loss 0.2516 val_acc 0.9464  (892s)
+[E13_convnext_tiny_216_nearest] ep  3/10 loss 0.1815 val_acc 0.9423  (1339s)
+[E13_convnext_tiny_216_nearest] ep  4/10 loss 0.0972 val_acc 0.9550  (1793s)
+[E13_convnext_tiny_216_nearest] ep  5/10 loss 0.0367 val_acc 0.9499  (2452s)
+[E13_convnext_tiny_216_nearest] ep  6/10 loss 0.0281 val_acc 0.9671  (3225s)
+[E13_convnext_tiny_216_nearest] ep  7/10 loss 0.0080 val_acc 0.9737  (4012s)
+[E13_convnext_tiny_216_nearest] ep  8/10 loss 0.0019 val_acc 0.9717  (9727s)
+[E13_convnext_tiny_216_nearest] ep  9/10 loss 0.0004 val_acc 0.9747  (10368s)
+[E13_convnext_tiny_216_nearest] ep 10/10 loss 0.0002 val_acc 0.9747  (11002s)
+{"exp": "E13_convnext_tiny_216_nearest", "train_acc": 1.0, "val_acc": 0.9746963562753036, "val_prec": 0.9783672313975492, "runtime_s": 11998.9}

@@ -1,0 +1,162 @@
+{
+  "exp_id": "E6_effnetb0_finetune",
+  "model": "efficientnet_b0 (ImageNet pretrained)",
+  "method": "Full fine-tuning of ImageNet EfficientNet-B0 (AdamW lr 1e-3, OneCycle)",
+  "epochs": 10,
+  "train_acc": 1.0,
+  "train_prec": 1.0,
+  "val_acc": 0.9311740890688259,
+  "val_prec": 0.9286215988449403,
+  "explanation": "Val accuracy 0.931 - slightly below ResNet18 (E5) despite a more modern architecture; at 128px EfficientNet's compound scaling (designed for 224px) gives no advantage and it overfits just as much (train 1.000). Twice slower than E5 on Apple MPS (depthwise convs).",
+  "preprocessing": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+  "preprocessing_why": "Same preprocessing as E5; only the architecture changes.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": null,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E6_effnetb0_finetune",
+      "model": "efficientnet_b0",
+      "mode": "white",
+      "size": 128,
+      "epochs": 10,
+      "bs": 64,
+      "lr": 0.001,
+      "wd": 0.0001,
+      "label_smoothing": 0.0,
+      "pretrained": true,
+      "freeze": false,
+      "aug": "none",
+      "tta": false,
+      "full": false,
+      "method": "Full fine-tuning of ImageNet EfficientNet-B0 (AdamW lr 1e-3, OneCycle)",
+      "preproc": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+      "why": "Same preprocessing as E5; only the architecture changes."
+    },
+    "params_total": 4016515,
+    "params_trainable": 4016515,
+    "device": "mps",
+    "runtime_s": 612.4,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.7912,
+        "val_acc": 0.8239
+      },
+      {
+        "epoch": 2,
+        "loss": 0.3699,
+        "val_acc": 0.8841
+      },
+      {
+        "epoch": 3,
+        "loss": 0.1718,
+        "val_acc": 0.9033
+      },
+      {
+        "epoch": 4,
+        "loss": 0.0717,
+        "val_acc": 0.9145
+      },
+      {
+        "epoch": 5,
+        "loss": 0.0319,
+        "val_acc": 0.9251
+      },
+      {
+        "epoch": 6,
+        "loss": 0.0119,
+        "val_acc": 0.9286
+      },
+      {
+        "epoch": 7,
+        "loss": 0.0114,
+        "val_acc": 0.9266
+      },
+      {
+        "epoch": 8,
+        "loss": 0.0041,
+        "val_acc": 0.9307
+      },
+      {
+        "epoch": 9,
+        "loss": 0.0025,
+        "val_acc": 0.9337
+      },
+      {
+        "epoch": 10,
+        "loss": 0.0017,
+        "val_acc": 0.9312
+      }
+    ],
+    "val_confusion": [
+      [
+        367,
+        5,
+        5,
+        2,
+        5,
+        0,
+        1
+      ],
+      [
+        10,
+        364,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        7,
+        2,
+        293,
+        21,
+        4,
+        1,
+        1
+      ],
+      [
+        7,
+        1,
+        28,
+        295,
+        1,
+        0,
+        1
+      ],
+      [
+        5,
+        2,
+        2,
+        2,
+        347,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        1,
+        0,
+        66,
+        9
+      ],
+      [
+        0,
+        1,
+        0,
+        4,
+        0,
+        3,
+        108
+      ]
+    ],
+    "submission": "E6_effnetb0_finetune.csv"
+  }
+}
