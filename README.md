@@ -27,6 +27,7 @@ paper/                  the LaTeX paper (main.tex + parts/*.tex), bibliography, 
 codebase/               the submitted code: src/emoji_provider, scripts, notebook, tests, saved outputs
   outputs/                probabilities, histories, metrics and submissions of every verified run
   README.md               how to rerun everything (laptop, Colab, Databricks, RunPod)
+  AI_USAGE.md             every AI tool used and the prompts (required by the course)
 members/                one folder per person: what they tried, scores, code or notes
   <name>/<method>/        one subfolder per method, named after what was tried
   kaggle_submissions_ledger_2026-10-18.csv   every team submission with its uploader and score

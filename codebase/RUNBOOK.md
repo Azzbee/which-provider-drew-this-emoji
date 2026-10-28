@@ -27,22 +27,17 @@ Deadlines (from the evidence guide): **Kaggle closes Sunday 18 October, 22:00 Pa
 1. Done. Public scores on 18 October: **0.98319** for `submission_convnext224_last.csv` (final model, submitted 21:51)
    and 0.98279 for `submission_convnext224_AB_10models.csv` (ten-checkpoint average, submitted about 11:30); the other
    18 October entries scored 0.96881 (DINOv2 + ConvNeXt ensemble) and 0.95586 (fine-tuned DINOv2), neither produced by
-   this codebase. Both ConvNeXt files were ticked as the two **selected** entries at 21:53 (Kaggle keeps the best private
-   score of the two). Scores are in `report/public_leaderboard.json` and section 5.4 of the report.
-2. After the deadline, read the private scores from the leaderboard and add them to section 5.4 of the final report.
+   this codebase. The two **selected** entries at the close were the final model and Erdem's E15 (Kaggle keeps the best
+   private score of the two).
+2. Done. Private scores (read 27 October): final model 0.98218, ten-checkpoint average 0.98198, E15 0.98238 (team
+   result, 5th of 18). All entries with both scores are in Table 9 of the paper.
 
-## C. Finishing the report (before 28 October)
+## C. Final hand-in (Moodle, 28 October, 20:00)
 
-1. `report/Report_The_Winners.pdf` is the draft built from `report/numbers.json`: every table and figure comes from
-   `outputs/`; nothing is typed by hand. Tags: **verified** = produced by this codebase in this delivery; **reported** =
-   the team's earlier experiments (spreadsheet / Kaggle), kept as context; nothing is left **pending** except the public
-   score of the final file.
-2. Rewrite the prose in your own words (the teacher expects the students' writing); keep the numbers, figures and the
-   verified / reported tags. Each teammate completes their lines in `AI_USAGE.md` (marked TO CONFIRM).
-3. Fill the two bracketed items in Section 5.4 (public score of the final file, and whether a second entry was selected).
-4. Export the final PDF, zip the codebase (`emoji_provider_codebase.zip` already excludes the checkpoints; keep the
-   probabilities, logs and `submission*.csv`), and upload both on Moodle. Email the course teacher with the team in
-   copy.
+1. The report is the LaTeX paper `paper/Paper_The_Winners.pdf` (source in `paper/`, built with `make`). It replaces the
+   18 October draft. Every verified number comes from `outputs/`; reported numbers come from the team's log and Kaggle.
+2. `AI_USAGE.md` lists every AI tool used and the prompts; each teammate confirms their line.
+3. Upload the paper PDF and the codebase zip on Moodle.
 
 ## D. If something fails when re-running
 

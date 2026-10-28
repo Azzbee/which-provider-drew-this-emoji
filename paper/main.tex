@@ -116,7 +116,7 @@ We classify emoji images by the vendor that drew them (Apple, Facebook, Google, 
 
 \textbf{Why not a vision-language model.} All seven classes contain the same objects; the signal is how they are drawn (outlines, shading, anti-aliasing), which early convolutional filters capture \cite{gatys2016style} and which a model trained to describe image \emph{content} is not built for. A CNN also trains in minutes, can be inspected (Grad-CAM, confusion structure) and reproduced exactly.
 
-\textbf{Why not hand-crafted features or frozen features.} Colour histograms with HOG and an SVM reached \pct{81.3}\rep, below every CNN; ResNet18 used as a frozen feature extractor reached \pct{77.5}\rep{} and \pct{93.7}\rep{} once fine-tuned. Style lives below the object-level features that ImageNet training rewards; the backbone must be adapted.
+\textbf{Why not hand-crafted features or frozen features.} Colour histograms with HOG and an SVM reached \pct{81.3}\rep, below every CNN; ResNet18 used as a frozen feature extractor with a linear head reached \pct{77.5}\rep{} and \pct{93.7}\rep{} once fine-tuned. Frozen features became competitive only with hand-crafted style descriptors and an RBF-kernel SVM on top (\pct{96.8}\rep). Style lives below the object-level features that ImageNet training rewards; the backbone must be adapted.
 \end{keybox}
 
 {\small\color{ink2}\textbf{Notation.} Numbers marked \ver{} or untagged were produced by the submitted codebase and can be recomputed from its saved outputs; numbers marked \rep{} come from the team's 13 October experiment log or from Kaggle entries that the codebase does not reproduce.\par}
@@ -318,7 +318,7 @@ with $W_1$ expanding to four times the width, $W_2$ projecting back, a learned l
   \label{fig:arch}
 \end{figure}
 
-The team's experiment series explains the choice of this architecture at this resolution. Generic ImageNet features are not enough when frozen (ResNet18 \cite{he2016resnet} as a fixed extractor: \pct{77.48}\rep). Fine-tuning the whole backbone adapts the filters to rendering style (the same ResNet18 fine-tuned: \pct{93.72}\rep). ConvNeXt-Tiny beat ResNet18 and EfficientNet-B0 \cite{tan2019efficientnet} at the same 128\,px input (\pct{95.90} against \pct{93.72} and \pct{93.12}\rep), which we attribute to its large depthwise kernels and LayerNorm capturing stroke and shading over a wider context. Input resolution then gave the largest single gain (\pct{97.57} at 224\,px\rep): 224\,px is the pre-training resolution and is close to the 240\,px native size of the Facebook, Messenger and Mozilla files, which are therefore barely resampled.
+The team's experiment series explains the choice of this architecture at this resolution. Generic ImageNet features are not enough when frozen and read by a linear head (ResNet18 \cite{he2016resnet} as a fixed extractor: \pct{77.48}\rep). They are not useless, though: Lina concatenated frozen ResNet18 features with hand-crafted colour, transparency, edge and texture descriptors, standardised them and trained an RBF-kernel SVM ($C=10$, $\gamma$ set to \texttt{scale}), reaching \pct{96.76} on an 80/20 split (\pct{97.42} on a second split) and 0.96983 on the private leaderboard\rep, the best result obtained without fine-tuning any network. The hand-crafted descriptors and the non-linear classifier supply what the frozen object features miss. Fine-tuning the whole backbone adapts the filters to rendering style (the same ResNet18 fine-tuned: \pct{93.72}\rep). ConvNeXt-Tiny beat ResNet18 and EfficientNet-B0 \cite{tan2019efficientnet} at the same 128\,px input (\pct{95.90} against \pct{93.72} and \pct{93.12}\rep), which we attribute to its large depthwise kernels and LayerNorm capturing stroke and shading over a wider context. Input resolution then gave the largest single gain (\pct{97.57} at 224\,px\rep): 224\,px is the pre-training resolution and is close to the 240\,px native size of the Facebook, Messenger and Mozilla files, which are therefore barely resampled.
 
 \subsection{Training recipe, ensemble and test-time augmentation}
 \Cref{tab:recipe} gives both recipes. The final model is trained with AdamW (learning rate $2\times10^{-4}$, weight decay 0.05) under a OneCycle schedule over 10 epochs with batches of 32, stochastic depth 0.1, plain cross-entropy and mixed precision \cite{micikevicius2018mixed}. Seeds are 42 plus the fold index with deterministic cuDNN kernels. One model is trained per fold and validated on the fold it never saw; the weights kept are those of the last epoch (\cref{sec:epoch} shows why). Predictions are averaged in probability space (soft voting) \cite{lakshminarayanan2017ensembles}, so that one confident fold cannot be outvoted by three unsure ones.
@@ -388,13 +388,15 @@ Majority class (always Apple) & none & 19.61\% & & \ver\\
 File format only: size, mode, alpha flag (random forest) & no pixels & 66.40\% & & \ver\\
 File metadata incl.\ hidden colour (random forest) & no drawing & 87.37\% & 0.867 & \ver\\
 Colour histogram + HOG, RBF SVM (E1b) & 64\,px & 81.28\% & 0.848$^\ast$ & \rep\\
+Extra-trees on pixels, colour histograms, transparency (Lina) & resized & 82.14\% & & \rep\\
 \midrule
 Baseline CNN, 30 September (3 blocks, no BN, Adam) & 96\,px & 76.71\% & 0.738 & \ver\\
 Simple CNN, white compositing (E3) & 96\,px & 93.62\% & 0.933$^\ast$ & \rep\\
 EmojiCNNv2, pixels only & 96\,px & 90.96\% & 0.907 & \ver\\
 EmojiCNNv2 + 8 file-format features (late fusion, ablation) & 96\,px & 93.38\% & 0.926 & \ver\\
 \midrule
-ResNet18, frozen features (E4) & 128\,px & 77.48\% & & \rep\\
+ResNet18, frozen features, linear head (E4) & 128\,px & 77.48\% & & \rep\\
+ResNet18 frozen + hand-crafted features, RBF SVM (Lina) & & 96.76\% & & \rep\\
 ResNet18, fine-tuned (E5) & 128\,px & 93.72\% & & \rep\\
 EfficientNet-B0, fine-tuned (E6) & 128\,px & 93.12\% & & \rep\\
 ConvNeXt-Tiny, fine-tuned (E6b) & 128\,px & 95.90\% & & \rep\\
@@ -415,7 +417,7 @@ Both checkpoints of every fold averaged (10 checkpoints, ablation) & 224\,px & 9
 \begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{figs/fig5_ladder.pdf}
-  \caption{\textbf{The experiment ladder.} Validation accuracy of every model in the project, sorted. Blue bars were produced by the submitted codebase (stored split or out-of-fold), grey bars come from the team's log on a different 80/20 split. The dashed line is the accuracy a random forest reaches from file metadata alone: the September CNN, the HOG + colour SVM and frozen ResNet18 features sit below it; every BatchNorm or fine-tuned CNN is above.}
+  \caption{\textbf{The experiment ladder.} Validation accuracy of every model in the project, sorted. Blue bars were produced by the submitted codebase (stored split or out-of-fold), grey bars come from the team's log on a different 80/20 split. The dashed line is the accuracy a random forest reaches from file metadata alone: the September CNN, the hand-crafted classifiers and frozen ResNet18 with a linear head sit below it; every BatchNorm or fine-tuned CNN, and frozen ResNet18 with hand-crafted features and an SVM, sit above.}
   \label{fig:ladder}
 \end{figure}
 
@@ -546,7 +548,7 @@ The leaderboard splits the test set into a public half, shown during the competi
 
 \begin{table}[t]
 \centering\small
-\caption{\textbf{Kaggle scores} (accuracy) of the team's entries, read on 27 October 2026 after the competition closed. Kaggle ranks a team by the better private score of its two selected entries ($\checkmark$). Two early test entries (private 0.83259 and 0.77874) and a duplicate upload are omitted. $^\S$On the DINOv2 branch's own 1{,}976-image development split, which was reused for earlier choices.}
+\caption{\textbf{Kaggle scores} (accuracy) of the team's entries, read on 27 October 2026 after the competition closed. Kaggle ranks a team by the better private score of its two selected entries ($\checkmark$). One early test entry (private 0.77874) and a duplicate upload are omitted. $^\S$On the DINOv2 branch's own 1{,}976-image development split, which was reused for earlier choices.}
 \label{tab:kaggle}
 \footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}llrrrc@{}}
@@ -565,8 +567,9 @@ $\checkmark$ \code{E15\_ens\_full\_3models} & 3 ConvNeXt (224 bicubic, 144/216 n
 \code{E10b\_convnext\_tiny\_224\_full} & E8 retrained on all data & & 0.97833 & 0.97773 & \rep\\
 \code{E11\_ens\_full\_128\_224} & E9 retrained on all data & & 0.97914 & 0.97793 & \rep\\
 \code{E8\_convnext\_tiny\_224} & ConvNeXt-Tiny 224\,px & 97.57\% & 0.97408 & 0.97631 & \rep\\
-\code{submission2} (Lina) & (no description recorded) & & 0.96719 & 0.96983 & \rep\\
-\code{dinov2\_convnext\_ensemble} & DINOv2 + ConvNeXt, partial fine-tuning, 50:50 & 97.12\%$^\S$ & 0.96881 & 0.96477 & \rep\\
+\code{submission2} (Lina) & frozen ResNet18 + hand-crafted, RBF SVM & 96.76\% & 0.96719 & 0.96983 & \rep\\
+\code{submission} (Lina) & extra-trees, pixels + colour + alpha & 82.14\% & 0.81838 & 0.83259 & \rep\\
+\code{dinov2\_convnext\_ensemble} & DINOv2 + ConvNeXt, partly tuned, 50:50 & 97.12\%$^\S$ & 0.96881 & 0.96477 & \rep\\
 \code{submission} (Charles) & ResNet18 fine-tuned, 160\,px & & 0.95889 & 0.96396 & \rep\\
 \code{dinov2\_finetuned} & DINOv2 ViT-S/14, last 2 blocks tuned & 95.90\%$^\S$ & 0.95586 & 0.95607 & \rep\\
 \code{E3\_simple\_cnn\_white} & simple CNN, white compositing & 93.62\% & 0.93642 & 0.94331 & \rep\\
@@ -586,7 +589,7 @@ The team's two selected entries at the close were our final model and Erdem's E1
 \subsection{What did not work}
 \label{sec:nowork}
 \begin{itemize}[leftmargin=1.2em]
-  \item \textbf{Frozen ImageNet features}: \pct{77.48}\rep, below a 0.4\,M-parameter CNN trained from scratch.
+  \item \textbf{Frozen ImageNet features with a linear head}: \pct{77.48}\rep, below a 0.4\,M-parameter CNN trained from scratch. With hand-crafted style descriptors and an RBF SVM on top, the same frozen features reached \pct{96.76}\rep.
   \item \textbf{Resampling augmentation and label smoothing}: minus 1.5 points on ConvNeXt-Tiny at 128\,px\rep. Three things changed at once (rotation and scaling, label smoothing, 15 instead of 10 epochs), so the run does not say which one hurt, but it agrees with the exact-pixel argument of \cref{sec:recipe}.
   \item \textbf{Voting with weaker members}: adding ResNet18 or the small CNN to the ConvNeXt ensemble lowered accuracy to 97.3 to \pct{97.4}\rep; a DINOv2 + ConvNeXt ensemble scored 0.96477 private against 0.98218 for our ConvNeXt alone (\cref{sec:dino}); learned fusion of three experts and two decision models never beat their plain average (\cref{sec:fusion}); and averaging in our own earlier snapshots did not help (\cref{sec:epoch}). Averaging helps between comparably strong models.
   \item \textbf{The September training budget}: constant Adam $10^{-3}$ for 20 epochs left the first CNN underfitting at \pct{75} training accuracy\ver; BatchNorm and OneCycle, not more parameters, closed most of the gap.
@@ -621,7 +624,7 @@ As the course allows, AI assistants were used for code and experiments, and, as 
 % ================================================================== 7 CONCLUSION
 \section{Conclusion}
 \label{sec:conclusion}
-Recognising who drew an emoji is a style problem, and the project taught us as much about the data as about models. Looking at the files before the pixels exposed a shortcut worth \pct{87} accuracy without any drawn pixel; removing it made every later comparison about what the network sees. On the modelling side the lessons were plain. A small CNN trained properly beats hand-crafted features by ten points. Pretrained features help only once the whole backbone is fine-tuned. Input resolution mattered more than the architecture. Augmentations that resample the image erase the detail that identifies the vendor. And at \pct{97} accuracy the rule for choosing a checkpoint is worth 0.4 points: the last epoch of a OneCycle schedule is both the simplest and the best choice we found, because validation loss rewards hedging while accuracy rewards decisions. The final ConvNeXt-Tiny ensemble reaches \pct{97.69} out-of-fold and 0.98218 on the private leaderboard, separates the three export families from pixels alone, and fails on documented look-alikes, the behaviour of a model that learned style rather than file format.
+Recognising who drew an emoji is a style problem, and the project taught us as much about the data as about models. Looking at the files before the pixels exposed a shortcut worth \pct{87} accuracy without any drawn pixel; removing it made every later comparison about what the network sees. On the modelling side the lessons were plain. A small CNN trained properly beats hand-crafted features by ten points. Pretrained features help most once the whole backbone is fine-tuned; frozen, they need hand-crafted style descriptors and a non-linear classifier to compete. Input resolution mattered more than the architecture. Augmentations that resample the image erase the detail that identifies the vendor. And at \pct{97} accuracy the rule for choosing a checkpoint is worth 0.4 points: the last epoch of a OneCycle schedule is both the simplest and the best choice we found, because validation loss rewards hedging while accuracy rewards decisions. The final ConvNeXt-Tiny ensemble reaches \pct{97.69} out-of-fold and 0.98218 on the private leaderboard, separates the three export families from pixels alone, and fails on documented look-alikes, the behaviour of a model that learned style rather than file format.
 
 \paragraph{Limitations} The reported rows of \cref{tab:ladder} come from single runs on a different split and carry no error bars. Our architecture comparison rests on those runs. We did not train at the native 240\,px, did not retrain the final recipe on all training data, and could not verify the labels of the most confident errors.
 

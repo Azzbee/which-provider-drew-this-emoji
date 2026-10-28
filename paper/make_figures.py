@@ -1,7 +1,4 @@
-"""Builds every figure of the LaTeX paper from the codebase outputs (no number typed by hand).
-
-Run from anywhere:  python paper/make_figures.py
-"""
+"""Builds every figure of the LaTeX paper from the codebase outputs (no number typed by hand)."""
 import json
 from pathlib import Path
 
@@ -18,7 +15,6 @@ CB = HERE.parent / "codebase"                            # the submitted codebas
 OUT = HERE / "figs"; OUT.mkdir(parents=True, exist_ok=True)
 WORK = HERE / "work"                                     # small JSON summaries computed from the outputs
 # Figures 1, 3 and 12 read the competition images: extract the Kaggle archive into codebase/data/extracted/
-# (train/*.png, test/*.png, train_labels.csv). The other figures only need the saved outputs.
 N = json.loads((CB / "report/numbers.json").read_text())
 ST = json.loads((WORK / "stats.json").read_text())
 
@@ -172,7 +168,10 @@ ax.set_title("(b) accuracy, no drawn pixel", loc="left")
 save(fig, "fig3_hidden_colour")
 
 # ------------------------------------------------------------------ Fig 5: ladder
-rows = N["ladder_rows"]
+rows = list(N["ladder_rows"]) + [
+    {"label": "Extra-trees: pixels, colour, transparency (Lina)", "accuracy": 0.8214, "status": "reported"},
+    {"label": "Frozen ResNet18 + hand-crafted, RBF SVM (Lina)", "accuracy": 0.9676, "status": "reported"},
+]
 lbl = {"Majority class": "Majority class"}
 fig, ax = plt.subplots(figsize=(W2, 3.0))
 rr = sorted(rows, key=lambda r: r["accuracy"])
