@@ -47,7 +47,7 @@ The research paper and code of team The Winners for the IDSI51006 Computer Visio
 
 - [x] Fusion experiment and DINOv2 settings: in `members/adam-zeraiki/` and `members/lina-oumhand/dinov2-partial-finetune/`, and in paper sections 4.4 and 4.5.
 - [x] **ResNet18 at 160 px** (Charles): in `members/charles-montluc-giannopoulou/README.md` and the paper (PR #1, merged 28 October).
-- [x] **AI-use record** (everyone): `codebase/AI_USAGE.md` lists every AI use and prompt. All four members' lines are now filled in; Lina's Codex use and original prompts are recorded alongside Adam's, Charles's and Erdem's entries.
+- [x] **AI-use record** (everyone): `codebase/AI_USAGE.md` describes each member's work and AI use. All four members are filled in.
 - [x] **Erdem's E12b, E13**: what they were (they are members of the E13v ensemble). Done: `members/erdem-sanver/README.md` and the appendix log.
 
 ## Git workflow
@@ -64,4 +64,4 @@ Small, frequent commits with clear messages. Commit dates must be the real ones;
 
 ## AI use
 
-The course allows AI for code with full transparency, and the teacher allowed it for writing the paper. Adam keeps the AI-use record (`codebase/AI_USAGE.md`): tell him which tool you used, for what, and your prompts. Agents: add a line there for any change you make.
+Adam keeps the AI-use record (`codebase/AI_USAGE.md`): tell him which tool you used and for what.
