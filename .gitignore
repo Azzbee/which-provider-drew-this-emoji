@@ -12,6 +12,7 @@ paper/work/*.npy
 # LaTeX build files
 paper/*.aux
 paper/*.log
+paper/*.bbl
 paper/*.out
 paper/*.toc
 paper/*.blg
