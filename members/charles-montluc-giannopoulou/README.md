@@ -11,6 +11,8 @@ Explored transfer learning with a pretrained ResNet18 at a higher input resoluti
 
 ## ResNet18 at 160 px with file-format features
 
+Code: [`resnet18-160px-format-features/resnet18_160px_format_features.ipynb`](resnet18-160px-format-features/resnet18_160px_format_features.ipynb), the notebook as it was run on 15 October (outputs kept), and the `submission.csv` it produced. Its data paths point to the Kaggle archive on my laptop; change them to your own copy to rerun it.
+
 - **Model**: ResNet18 pretrained on ImageNet, fully fine-tuned. Each file's original format (colour mode and size, for example `RGBA(240,240)`) is turned into extra features and joined to the CNN output before the last layer.
 - **Preprocessing**: transparent pixels composited on a white background, converted to RGB, resized to 160 x 160. The original format is recorded before resizing.
 - **Training**: AdamW with a OneCycle learning-rate schedule, 20 epochs, batches of 64, class weights and label smoothing (0.1) in the loss. Augmentation: random flips, small zooms and shifts. Prediction averages each image and its mirror copy.

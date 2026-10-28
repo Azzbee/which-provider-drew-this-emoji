@@ -44,10 +44,11 @@ We used AI assistants (Claude from Anthropic, OpenAI ChatGPT and Codex) in three
 
 ### Lina Oumhand
 
-**Her work**
-- Started from a simple Extra Trees baseline (82.14% validation, 0.81838 on the public leaderboard), set the goal of improving it, and moved to hand-crafted style features with frozen ResNet18 features and an RBF SVM (96.76% validation, 0.96983 private), the best result obtained without fine-tuning any network.
-- Measured which part of that model matters: the hand-crafted features alone reach 96.05%, the frozen ResNet18 features alone 91.65%.
-- Explored DINOv2 with partial fine-tuning and submitted the team's DINOv2 entry.
+| Date | Tool | What it did |
+|---|---|---|
+| ~15 Oct | Claude | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
+| 28 Oct | Claude, in VS Code | Reviewed his notebook, wrote `members/charles-montluc-giannopoulou/README.md` and corrected the description of his model in the paper. |
+| 28 Oct | Claude | Checked the notebook for keys and data, then added it unchanged with its `submission.csv` to `members/charles-montluc-giannopoulou/resnet18-160px-format-features/`. |
 
 **How AI helped**
 - OpenAI Codex helped Lina with explaining the notebook and methods covered in class. It also helped her research and compare different approaches for the emoji classification task. Codex assisted in building and structuring the Jupyter notebooks, especially for the Extra Trees and ResNet18 + SVM models. It helped implement the methods, write and improve the code, fix errors, debug issues, and run the experiments. It also helped Lina explore DINOv2 as another approach for the emoji classification task. It explained how the pretrained Vision Transformer works and how partial fine-tuning could be used to adapt it to the dataset. Codex assisted with setting up the model, adapting the image preprocessing, implementing the training and validation code, and understanding which layers should be frozen or fine-tuned. It also helped troubleshoot errors, debug the code, run experiments, and interpret the results to identify possible improvements. Overall, Codex was used as both a learning and coding assistant throughout the project.
