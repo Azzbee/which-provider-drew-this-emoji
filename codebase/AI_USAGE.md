@@ -108,9 +108,11 @@ The team chose the experiments and the final model, reviewed every number agains
 
 ### 28 October, Claude: Charles's notes and paper corrections
 
-> can you do 2  3 and 4 (before explain me exactly what you'll put
+Charles's request, summarised by him afterwards (not the verbatim prompt):
 
-(2: fill in Charles's member README; 3: correct the description of his model in the paper; 4: update this file. The content came from a review of his notebook, run with Claude in VS Code.)
+> Please include the modifications inside the report, modify the AI Usage to include this Prompt, and add my modifications in the readme
+
+The content came from a review of his notebook, run with Claude in VS Code.
 
 ## 3. What was not done by AI
 
