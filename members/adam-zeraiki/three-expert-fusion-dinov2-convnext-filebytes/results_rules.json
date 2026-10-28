@@ -1,0 +1,132 @@
+{
+ "A: DINOv2 + branch ConvNeXt + file-byte": [
+  {
+   "name": "Reference: two image models, equal average",
+   "acc": 97.12,
+   "sd": 0.0,
+   "fixed": 0,
+   "broke": 0
+  },
+  {
+   "name": "Geometric mean of the three (no training)",
+   "acc": 97.98,
+   "sd": 0.0,
+   "fixed": 21,
+   "broke": 4
+  },
+  {
+   "name": "Confusion-matrix Bayes on the three answers",
+   "acc": 97.27,
+   "sd": 0.03,
+   "fixed": 15,
+   "broke": 13
+  },
+  {
+   "name": "Most confident calibrated expert wins",
+   "acc": 97.93,
+   "sd": 0.03,
+   "fixed": 20,
+   "broke": 4
+  },
+  {
+   "name": "Per-class trust weights (21 weights)",
+   "acc": 97.95,
+   "sd": 0.13,
+   "fixed": 21,
+   "broke": 2
+  },
+  {
+   "name": "ECOC, 3 bits (minimum, like the poisoned cups; min distance 1)",
+   "acc": 96.98,
+   "sd": 0.04,
+   "fixed": 18,
+   "broke": 21
+  },
+  {
+   "name": "ECOC, 7 random bits (min distance 2)",
+   "acc": 97.88,
+   "sd": 0.06,
+   "fixed": 22,
+   "broke": 8
+  },
+  {
+   "name": "ECOC, 15 random bits (min distance 6)",
+   "acc": 98.05,
+   "sd": 0.02,
+   "fixed": 22,
+   "broke": 4
+  },
+  {
+   "name": "ECOC, exhaustive 63 bits (min distance 32)",
+   "acc": 98.09,
+   "sd": 0.05,
+   "fixed": 22,
+   "broke": 2
+  }
+ ],
+ "B: DINOv2 + ConvNeXt run B + file-byte": [
+  {
+   "name": "Reference: two image models, equal average",
+   "acc": 98.08,
+   "sd": 0.0,
+   "fixed": 0,
+   "broke": 0
+  },
+  {
+   "name": "Geometric mean of the three (no training)",
+   "acc": 98.18,
+   "sd": 0.0,
+   "fixed": 11,
+   "broke": 9
+  },
+  {
+   "name": "Confusion-matrix Bayes on the three answers",
+   "acc": 97.95,
+   "sd": 0.02,
+   "fixed": 9,
+   "broke": 11
+  },
+  {
+   "name": "Most confident calibrated expert wins",
+   "acc": 98.49,
+   "sd": 0.02,
+   "fixed": 11,
+   "broke": 3
+  },
+  {
+   "name": "Per-class trust weights (21 weights)",
+   "acc": 98.07,
+   "sd": 0.08,
+   "fixed": 5,
+   "broke": 4
+  },
+  {
+   "name": "ECOC, 3 bits (minimum, like the poisoned cups; min distance 1)",
+   "acc": 97.8,
+   "sd": 0.04,
+   "fixed": 10,
+   "broke": 15
+  },
+  {
+   "name": "ECOC, 7 random bits (min distance 2)",
+   "acc": 98.12,
+   "sd": 0.04,
+   "fixed": 9,
+   "broke": 7
+  },
+  {
+   "name": "ECOC, 15 random bits (min distance 6)",
+   "acc": 98.33,
+   "sd": 0.03,
+   "fixed": 10,
+   "broke": 5
+  },
+  {
+   "name": "ECOC, exhaustive 63 bits (min distance 32)",
+   "acc": 98.24,
+   "sd": 0.04,
+   "fixed": 10,
+   "broke": 6
+  }
+ ]
+}
