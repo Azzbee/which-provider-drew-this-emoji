@@ -130,11 +130,7 @@ Charles's request, summarised by him (not the verbatim prompt):
 
 ### Lina
 
-> With these informations can you complete all the tabs so that I can make a submission in the kaggle competition and have a good rate
 
-> The kaggle score for this submission is [0.81838](https://www.kaggle.com/competitions/2-computer-vision-2026-b-sc-aidams-final-proj/submissions#). Improve it please
-
-Her original disclosure is kept in `members/lina-oumhand/extra-trees-and-resnet18-svm/codex-AI_USAGE.md`.
 
 ## What we did ourselves
 
