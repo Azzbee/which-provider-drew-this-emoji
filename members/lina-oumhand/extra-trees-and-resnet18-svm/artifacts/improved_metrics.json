@@ -1,0 +1,87 @@
+{
+  "validation_accuracy": 0.9676113360323887,
+  "validation_seed": 42,
+  "validation_fraction": 0.2,
+  "features": "combined",
+  "C": 10.0,
+  "gamma": "scale",
+  "descriptor_count": 3527,
+  "classes": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "python": "3.14.4",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "pillow": "12.3.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "torch": "2.14.1",
+    "torchvision": "0.29.1"
+  },
+  "labels_sha256": "37385b8fa192a03230d170654d255351a1cc3f42dfcd94b55f98f03abcfd55fb",
+  "report": {
+    "apple": {
+      "precision": 0.9195121951219513,
+      "recall": 0.9792207792207792,
+      "f1-score": 0.9484276729559749,
+      "support": 385.0
+    },
+    "facebook": {
+      "precision": 0.9907120743034056,
+      "recall": 0.960960960960961,
+      "f1-score": 0.975609756097561,
+      "support": 333.0
+    },
+    "google": {
+      "precision": 0.9681697612732095,
+      "recall": 0.9707446808510638,
+      "f1-score": 0.9694555112881806,
+      "support": 376.0
+    },
+    "messenger": {
+      "precision": 0.991304347826087,
+      "recall": 0.9827586206896551,
+      "f1-score": 0.987012987012987,
+      "support": 116.0
+    },
+    "mozilla": {
+      "precision": 0.9868421052631579,
+      "recall": 0.9493670886075949,
+      "f1-score": 0.967741935483871,
+      "support": 79.0
+    },
+    "samsung": {
+      "precision": 0.9668508287292817,
+      "recall": 0.9776536312849162,
+      "f1-score": 0.9722222222222222,
+      "support": 358.0
+    },
+    "whatsapp": {
+      "precision": 0.9936102236421726,
+      "recall": 0.9452887537993921,
+      "f1-score": 0.9688473520249221,
+      "support": 329.0
+    },
+    "accuracy": 0.9676113360323887,
+    "macro avg": {
+      "precision": 0.9738573623084665,
+      "recall": 0.9665706450591947,
+      "f1-score": 0.9699024910122456,
+      "support": 1976.0
+    },
+    "weighted avg": {
+      "precision": 0.9685897454608732,
+      "recall": 0.9676113360323887,
+      "f1-score": 0.9677578081383507,
+      "support": 1976.0
+    }
+  },
+  "pretrained_weights": "torchvision ResNet18 IMAGENET1K_V1 (frozen)"
+}

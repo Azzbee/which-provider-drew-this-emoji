@@ -1,0 +1,15 @@
+{
+  "rows": 9879,
+  "changed_predictions": 1810,
+  "columns": [
+    "Id",
+    "Label"
+  ],
+  "all_ids_match_test": true,
+  "all_labels_valid": true,
+  "saved_model_reload_predictions_match": true,
+  "original_submission_preserved": true,
+  "validation_seed42": 0.9676113360323887,
+  "validation_seed123": 0.9741902834008097,
+  "new_kaggle_score": null
+}

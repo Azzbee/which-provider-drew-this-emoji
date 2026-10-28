@@ -1,0 +1,17 @@
+[
+  {
+    "features": "learned",
+    "C": 1,
+    "accuracy": 0.9068825910931174
+  },
+  {
+    "features": "learned",
+    "C": 10,
+    "accuracy": 0.916497975708502
+  },
+  {
+    "features": "learned",
+    "C": 100,
+    "accuracy": 0.916497975708502
+  }
+]
