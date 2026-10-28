@@ -92,6 +92,7 @@ mkdir -p data && cp -R <kaggle archive>/{train,test,train_labels.csv} data/   # 
 ./run_experiments.sh                    # list the experiment ids
 ./run_experiments.sh E12a E12b          # writes experiments/, submissions/, logs/
 .venv/bin/python -m src.results         # rebuild the spreadsheet from the JSON records
+.venv/bin/python -m src.analysis        # every analysis number in this README (errors, size split, ensembles, leaks, pseudo-labels, figures)
 .venv/bin/python -m pytest tests -q     # 15 unit tests
 ```
 
