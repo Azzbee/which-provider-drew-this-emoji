@@ -128,10 +128,6 @@ Charles's request, summarised by him (not the verbatim prompt):
 
 > Please include the modifications inside the report, modify the AI Usage to include this Prompt, and add my modifications in the readme
 
-### Lina
-
-
-
 ## What we did ourselves
 
 **The ideas and the direction.**
