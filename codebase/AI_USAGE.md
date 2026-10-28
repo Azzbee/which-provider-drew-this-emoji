@@ -119,6 +119,10 @@ The team chose the experiments and the final model, reviewed every number agains
 
 > Also, can you check Charles's PR and see whether to accept it or not? And did you add the information for Lina that she sent me or not?
 
+> And if Charles's PR is good, you move it, and yeah, and make it happen. If like it's all good, there's no reason to not, you know. And check if there's anything else that we need to, that needs to be added to.
+
+(Claude squash-merged Charles's pull request #1 after reviewing it, and updated the abstract and conclusion with the 28 October results.)
+
 (Adam then pasted his TypeSafe API key in the chat. Claude did not use it: it prepared a launcher script and opened it on Adam's Mac at his request, "take control of my screen we'll do it", and Adam pasted the key into his own Terminal, which sent the 615 Jev requests.)
 
 > Yes it's okay for the logs
