@@ -1,0 +1,1866 @@
+{
+"00005": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.6,
+"probabilities": {
+"google": 0.8,
+"mozilla": 0.2
+}
+},
+"00006": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.58,
+"probabilities": {
+"facebook": 0.21,
+"messenger": 0.79
+}
+},
+"00082": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.76,
+"probabilities": {
+"apple": 0.88,
+"google": 0.12
+}
+},
+"00139": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.84,
+"probabilities": {
+"apple": 0.92,
+"google": 0.08
+}
+},
+"00160": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.28,
+"probabilities": {
+"apple": 0.64,
+"google": 0.36
+}
+},
+"00163": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.14,
+"probabilities": {
+"apple": 0.43,
+"google": 0.57
+}
+},
+"00176": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.46,
+"probabilities": {
+"google": 0.73,
+"mozilla": 0.27
+}
+},
+"00240": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.78,
+"probabilities": {
+"apple": 0.89,
+"google": 0.11
+}
+},
+"00253": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.45,
+"probabilities": {
+"apple": 0.63,
+"google": 0.23,
+"whatsapp": 0.14
+}
+},
+"00262": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.56,
+"probabilities": {
+"apple": 0.78,
+"google": 0.22
+}
+},
+"00294": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.5,
+"probabilities": {
+"apple": 0.25,
+"google": 0.75
+}
+},
+"00344": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.6,
+"probabilities": {
+"apple": 0.2,
+"samsung": 0.8
+}
+},
+"00394": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.8,
+"probabilities": {
+"apple": 0.9,
+"google": 0.1
+}
+},
+"00416": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.48,
+"probabilities": {
+"google": 0.74,
+"samsung": 0.26
+}
+},
+"00461": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.1,
+"probabilities": {
+"apple": 0.55,
+"google": 0.45
+}
+},
+"00521": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.38,
+"probabilities": {
+"apple": 0.69,
+"whatsapp": 0.31
+}
+},
+"00573": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.36,
+"probabilities": {
+"apple": 0.32,
+"google": 0.68
+}
+},
+"00632": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.45,
+"probabilities": {
+"facebook": 0.63,
+"messenger": 0.28,
+"mozilla": 0.09
+}
+},
+"00642": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.04,
+"probabilities": {
+"apple": 0.48,
+"google": 0.52
+}
+},
+"00654": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.19,
+"probabilities": {
+"apple": 0.46,
+"google": 0.31,
+"samsung": 0.23
+}
+},
+"00692": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.38,
+"probabilities": {
+"apple": 0.31,
+"google": 0.69
+}
+},
+"00709": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.74,
+"probabilities": {
+"messenger": 0.87,
+"mozilla": 0.13
+}
+},
+"00731": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.58,
+"probabilities": {
+"apple": 0.21,
+"google": 0.79
+}
+},
+"00733": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.62,
+"probabilities": {
+"apple": 0.81,
+"google": 0.19
+}
+},
+"00756": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.8,
+"probabilities": {
+"apple": 0.9,
+"google": 0.1
+}
+},
+"00789": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.54,
+"probabilities": {
+"apple": 0.23,
+"samsung": 0.77
+}
+},
+"00831": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.46,
+"probabilities": {
+"facebook": 0.73,
+"whatsapp": 0.27
+}
+},
+"00853": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.48,
+"probabilities": {
+"apple": 0.26,
+"google": 0.74
+}
+},
+"00979": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.1,
+"probabilities": {
+"apple": 0.4,
+"facebook": 0.35,
+"google": 0.25
+}
+},
+"01075": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.32,
+"probabilities": {
+"facebook": 0.34,
+"whatsapp": 0.66
+}
+},
+"01100": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.64,
+"probabilities": {
+"apple": 0.82,
+"samsung": 0.18
+}
+},
+"01178": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.32,
+"probabilities": {
+"apple": 0.34,
+"google": 0.66
+}
+},
+"01186": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.82,
+"probabilities": {
+"apple": 0.91,
+"google": 0.09
+}
+},
+"01187": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.8,
+"probabilities": {
+"apple": 0.9,
+"google": 0.1
+}
+},
+"01368": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.87,
+"google": 0.13
+}
+},
+"01395": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.58,
+"probabilities": {
+"apple": 0.21,
+"google": 0.79
+}
+},
+"01411": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.6,
+"probabilities": {
+"apple": 0.8,
+"facebook": 0.2
+}
+},
+"01412": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.5,
+"probabilities": {
+"apple": 0.25,
+"google": 0.75
+}
+},
+"01419": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.32,
+"probabilities": {
+"apple": 0.34,
+"google": 0.66
+}
+},
+"01448": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.46,
+"probabilities": {
+"apple": 0.73,
+"whatsapp": 0.27
+}
+},
+"01459": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.1,
+"probabilities": {
+"apple": 0.45,
+"google": 0.55
+}
+},
+"01534": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.7,
+"probabilities": {
+"apple": 0.85,
+"samsung": 0.15
+}
+},
+"01594": {
+"type": "choice",
+"choice": "mozilla",
+"confidence": 0.7,
+"probabilities": {
+"facebook": 0.15,
+"mozilla": 0.85
+}
+},
+"01814": {
+"type": "choice",
+"choice": "mozilla",
+"confidence": 0.5,
+"probabilities": {
+"google": 0.25,
+"mozilla": 0.75
+}
+},
+"01861": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.54,
+"probabilities": {
+"facebook": 0.23,
+"google": 0.77
+}
+},
+"01884": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.2,
+"probabilities": {
+"apple": 0.6,
+"google": 0.4
+}
+},
+"01905": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.48,
+"probabilities": {
+"apple": 0.74,
+"whatsapp": 0.26
+}
+},
+"01943": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.24,
+"probabilities": {
+"apple": 0.38,
+"whatsapp": 0.62
+}
+},
+"01984": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.24,
+"probabilities": {
+"facebook": 0.38,
+"google": 0.62
+}
+},
+"02085": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.68,
+"probabilities": {
+"apple": 0.84,
+"google": 0.16
+}
+},
+"02118": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.26,
+"probabilities": {
+"apple": 0.37,
+"google": 0.63
+}
+},
+"02158": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.5,
+"probabilities": {
+"apple": 0.25,
+"samsung": 0.75
+}
+},
+"02245": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.44,
+"probabilities": {
+"facebook": 0.28,
+"whatsapp": 0.72
+}
+},
+"02246": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.1,
+"google": 0.07,
+"whatsapp": 0.83
+}
+},
+"02279": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.38,
+"probabilities": {
+"facebook": 0.31,
+"whatsapp": 0.69
+}
+},
+"02286": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.4,
+"probabilities": {
+"google": 0.7,
+"samsung": 0.3
+}
+},
+"02336": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.04,
+"probabilities": {
+"apple": 0.52,
+"facebook": 0.48
+}
+},
+"02400": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.58,
+"probabilities": {
+"facebook": 0.79,
+"whatsapp": 0.21
+}
+},
+"02421": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.87,
+"samsung": 0.13
+}
+},
+"02431": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.76,
+"probabilities": {
+"apple": 0.88,
+"google": 0.12
+}
+},
+"02486": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.28,
+"probabilities": {
+"apple": 0.36,
+"google": 0.64
+}
+},
+"02747": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.28,
+"probabilities": {
+"facebook": 0.36,
+"whatsapp": 0.64
+}
+},
+"02765": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.16,
+"probabilities": {
+"google": 0.44,
+"mozilla": 0.25,
+"whatsapp": 0.31
+}
+},
+"02833": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.07,
+"probabilities": {
+"apple": 0.38,
+"google": 0.36,
+"whatsapp": 0.26
+}
+},
+"02834": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.24,
+"probabilities": {
+"apple": 0.62,
+"google": 0.38
+}
+},
+"02929": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.62,
+"probabilities": {
+"facebook": 0.81,
+"mozilla": 0.19
+}
+},
+"02934": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.54,
+"probabilities": {
+"apple": 0.23,
+"google": 0.77
+}
+},
+"02968": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.26,
+"probabilities": {
+"facebook": 0.37,
+"whatsapp": 0.63
+}
+},
+"02969": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.38,
+"probabilities": {
+"apple": 0.31,
+"samsung": 0.69
+}
+},
+"02993": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.8,
+"probabilities": {
+"apple": 0.9,
+"samsung": 0.1
+}
+},
+"03065": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.2,
+"probabilities": {
+"messenger": 0.6,
+"mozilla": 0.4
+}
+},
+"03074": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.68,
+"probabilities": {
+"apple": 0.84,
+"facebook": 0.16
+}
+},
+"03076": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.46,
+"probabilities": {
+"apple": 0.27,
+"whatsapp": 0.73
+}
+},
+"03184": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.5,
+"probabilities": {
+"facebook": 0.25,
+"whatsapp": 0.75
+}
+},
+"03192": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.46,
+"probabilities": {
+"apple": 0.73,
+"samsung": 0.27
+}
+},
+"03199": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.24,
+"probabilities": {
+"apple": 0.38,
+"samsung": 0.62
+}
+},
+"03202": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.56,
+"probabilities": {
+"apple": 0.78,
+"google": 0.22
+}
+},
+"03275": {
+"type": "choice",
+"choice": "mozilla",
+"confidence": 0.5,
+"probabilities": {
+"google": 0.25,
+"mozilla": 0.75
+}
+},
+"03297": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.24,
+"probabilities": {
+"apple": 0.38,
+"google": 0.62
+}
+},
+"03345": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.68,
+"probabilities": {
+"apple": 0.84,
+"samsung": 0.16
+}
+},
+"03496": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.52,
+"probabilities": {
+"google": 0.24,
+"messenger": 0.76
+}
+},
+"03506": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.78,
+"probabilities": {
+"apple": 0.89,
+"google": 0.11
+}
+},
+"03537": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.16,
+"probabilities": {
+"apple": 0.42,
+"whatsapp": 0.58
+}
+},
+"03652": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.36,
+"probabilities": {
+"messenger": 0.32,
+"whatsapp": 0.68
+}
+},
+"03797": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.86,
+"probabilities": {
+"apple": 0.93,
+"samsung": 0.07
+}
+},
+"03804": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.68,
+"probabilities": {
+"apple": 0.84,
+"whatsapp": 0.16
+}
+},
+"03887": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.9,
+"probabilities": {
+"apple": 0.95,
+"samsung": 0.05
+}
+},
+"03889": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.68,
+"probabilities": {
+"apple": 0.84,
+"google": 0.16
+}
+},
+"04241": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.58,
+"probabilities": {
+"google": 0.21,
+"samsung": 0.79
+}
+},
+"04358": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.46,
+"probabilities": {
+"facebook": 0.73,
+"messenger": 0.27
+}
+},
+"04650": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.42,
+"probabilities": {
+"apple": 0.29,
+"google": 0.71
+}
+},
+"04681": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.48,
+"probabilities": {
+"apple": 0.26,
+"google": 0.74
+}
+},
+"04727": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.4,
+"probabilities": {
+"apple": 0.3,
+"google": 0.7
+}
+},
+"04766": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.7,
+"probabilities": {
+"apple": 0.15,
+"samsung": 0.85
+}
+},
+"04795": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.58,
+"probabilities": {
+"apple": 0.21,
+"samsung": 0.79
+}
+},
+"04820": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.66,
+"probabilities": {
+"apple": 0.83,
+"google": 0.17
+}
+},
+"04822": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.87,
+"google": 0.13
+}
+},
+"04914": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.87,
+"samsung": 0.13
+}
+},
+"04938": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.52,
+"probabilities": {
+"facebook": 0.24,
+"messenger": 0.76
+}
+},
+"05007": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.22,
+"probabilities": {
+"apple": 0.41,
+"messenger": 0.48,
+"whatsapp": 0.11
+}
+},
+"05014": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.56,
+"probabilities": {
+"facebook": 0.78,
+"whatsapp": 0.22
+}
+},
+"05025": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.44,
+"probabilities": {
+"apple": 0.28,
+"google": 0.72
+}
+},
+"05041": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.54,
+"probabilities": {
+"apple": 0.23,
+"google": 0.77
+}
+},
+"05076": {
+"type": "choice",
+"choice": "mozilla",
+"confidence": 0.4,
+"probabilities": {
+"messenger": 0.3,
+"mozilla": 0.7
+}
+},
+"05112": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.6,
+"probabilities": {
+"apple": 0.2,
+"samsung": 0.8
+}
+},
+"05118": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.52,
+"probabilities": {
+"facebook": 0.76,
+"mozilla": 0.24
+}
+},
+"05125": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.28,
+"probabilities": {
+"apple": 0.36,
+"samsung": 0.64
+}
+},
+"05201": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.24,
+"probabilities": {
+"apple": 0.38,
+"google": 0.62
+}
+},
+"05247": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.16,
+"probabilities": {
+"apple": 0.44,
+"google": 0.22,
+"mozilla": 0.34
+}
+},
+"05281": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.87,
+"samsung": 0.13
+}
+},
+"05334": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.42,
+"probabilities": {
+"google": 0.29,
+"samsung": 0.71
+}
+},
+"05483": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.62,
+"probabilities": {
+"apple": 0.81,
+"samsung": 0.19
+}
+},
+"05569": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.74,
+"probabilities": {
+"google": 0.87,
+"samsung": 0.13
+}
+},
+"05572": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.72,
+"probabilities": {
+"facebook": 0.14,
+"whatsapp": 0.86
+}
+},
+"05588": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.42,
+"probabilities": {
+"apple": 0.29,
+"google": 0.71
+}
+},
+"05625": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.46,
+"probabilities": {
+"apple": 0.27,
+"google": 0.73
+}
+},
+"05642": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.32,
+"probabilities": {
+"apple": 0.34,
+"google": 0.66
+}
+},
+"05802": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.44,
+"probabilities": {
+"facebook": 0.28,
+"google": 0.72
+}
+},
+"05890": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.3,
+"probabilities": {
+"apple": 0.53,
+"facebook": 0.23,
+"mozilla": 0.24
+}
+},
+"05999": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.27,
+"probabilities": {
+"apple": 0.29,
+"google": 0.51,
+"samsung": 0.2
+}
+},
+"06050": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.54,
+"probabilities": {
+"apple": 0.23,
+"google": 0.77
+}
+},
+"06132": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.46,
+"probabilities": {
+"facebook": 0.73,
+"whatsapp": 0.27
+}
+},
+"06149": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.52,
+"probabilities": {
+"apple": 0.76,
+"facebook": 0.24
+}
+},
+"06268": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.34,
+"probabilities": {
+"google": 0.67,
+"whatsapp": 0.33
+}
+},
+"06321": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.54,
+"probabilities": {
+"apple": 0.23,
+"google": 0.77
+}
+},
+"06345": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.56,
+"probabilities": {
+"apple": 0.22,
+"samsung": 0.78
+}
+},
+"06368": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.52,
+"probabilities": {
+"facebook": 0.24,
+"google": 0.76
+}
+},
+"06396": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.6,
+"probabilities": {
+"facebook": 0.8,
+"messenger": 0.2
+}
+},
+"06406": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.7,
+"probabilities": {
+"facebook": 0.85,
+"messenger": 0.15
+}
+},
+"06412": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.56,
+"probabilities": {
+"facebook": 0.22,
+"messenger": 0.78
+}
+},
+"06493": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.5,
+"probabilities": {
+"apple": 0.25,
+"whatsapp": 0.75
+}
+},
+"06521": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.42,
+"probabilities": {
+"apple": 0.29,
+"google": 0.71
+}
+},
+"06523": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.38,
+"probabilities": {
+"apple": 0.31,
+"samsung": 0.69
+}
+},
+"06539": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.72,
+"probabilities": {
+"apple": 0.86,
+"google": 0.14
+}
+},
+"06545": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.82,
+"probabilities": {
+"apple": 0.91,
+"google": 0.09
+}
+},
+"06557": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.22,
+"probabilities": {
+"apple": 0.39,
+"google": 0.61
+}
+},
+"06571": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.82,
+"probabilities": {
+"apple": 0.91,
+"google": 0.09
+}
+},
+"06625": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.4,
+"probabilities": {
+"apple": 0.7,
+"google": 0.3
+}
+},
+"06716": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.56,
+"probabilities": {
+"apple": 0.78,
+"facebook": 0.22
+}
+},
+"06801": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.52,
+"probabilities": {
+"facebook": 0.24,
+"whatsapp": 0.76
+}
+},
+"06858": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.19,
+"probabilities": {
+"facebook": 0.46,
+"mozilla": 0.19,
+"whatsapp": 0.35
+}
+},
+"06927": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.48,
+"probabilities": {
+"samsung": 0.74,
+"whatsapp": 0.26
+}
+},
+"06968": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.2,
+"probabilities": {
+"facebook": 0.4,
+"whatsapp": 0.6
+}
+},
+"07016": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.24,
+"probabilities": {
+"apple": 0.38,
+"whatsapp": 0.62
+}
+},
+"07028": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.34,
+"probabilities": {
+"apple": 0.33,
+"google": 0.67
+}
+},
+"07130": {
+"type": "choice",
+"choice": "mozilla",
+"confidence": 0.1,
+"probabilities": {
+"google": 0.45,
+"mozilla": 0.55
+}
+},
+"07198": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.28,
+"probabilities": {
+"apple": 0.64,
+"samsung": 0.36
+}
+},
+"07204": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.64,
+"probabilities": {
+"mozilla": 0.18,
+"whatsapp": 0.82
+}
+},
+"07216": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.36,
+"probabilities": {
+"apple": 0.32,
+"google": 0.68
+}
+},
+"07261": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.06,
+"probabilities": {
+"apple": 0.47,
+"facebook": 0.53
+}
+},
+"07289": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.58,
+"probabilities": {
+"apple": 0.21,
+"google": 0.79
+}
+},
+"07356": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.48,
+"probabilities": {
+"apple": 0.26,
+"google": 0.74
+}
+},
+"07366": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.87,
+"google": 0.13
+}
+},
+"07388": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.07,
+"probabilities": {
+"apple": 0.36,
+"google": 0.38,
+"whatsapp": 0.26
+}
+},
+"07424": {
+"type": "choice",
+"choice": "mozilla",
+"confidence": 0.44,
+"probabilities": {
+"messenger": 0.28,
+"mozilla": 0.72
+}
+},
+"07453": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.64,
+"probabilities": {
+"apple": 0.82,
+"google": 0.18
+}
+},
+"07536": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.42,
+"probabilities": {
+"apple": 0.29,
+"google": 0.71
+}
+},
+"07591": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.66,
+"probabilities": {
+"apple": 0.83,
+"samsung": 0.17
+}
+},
+"07694": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.78,
+"probabilities": {
+"apple": 0.89,
+"samsung": 0.11
+}
+},
+"07715": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.82,
+"probabilities": {
+"apple": 0.91,
+"google": 0.09
+}
+},
+"07836": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.72,
+"probabilities": {
+"apple": 0.86,
+"samsung": 0.14
+}
+},
+"07840": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.13,
+"samsung": 0.87
+}
+},
+"07860": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.5,
+"probabilities": {
+"apple": 0.25,
+"samsung": 0.75
+}
+},
+"07864": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.09,
+"probabilities": {
+"apple": 0.39,
+"facebook": 0.37,
+"samsung": 0.24
+}
+},
+"07921": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.13,
+"probabilities": {
+"apple": 0.38,
+"google": 0.42,
+"samsung": 0.2
+}
+},
+"07977": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.1,
+"probabilities": {
+"apple": 0.45,
+"whatsapp": 0.55
+}
+},
+"08025": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.25,
+"probabilities": {
+"google": 0.5,
+"samsung": 0.34,
+"whatsapp": 0.16
+}
+},
+"08105": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.28,
+"probabilities": {
+"apple": 0.64,
+"facebook": 0.36
+}
+},
+"08137": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.46,
+"probabilities": {
+"apple": 0.27,
+"google": 0.73
+}
+},
+"08183": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.84,
+"probabilities": {
+"apple": 0.92,
+"google": 0.08
+}
+},
+"08194": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.78,
+"probabilities": {
+"apple": 0.89,
+"google": 0.11
+}
+},
+"08200": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.7,
+"probabilities": {
+"facebook": 0.15,
+"whatsapp": 0.85
+}
+},
+"08256": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.8,
+"probabilities": {
+"apple": 0.9,
+"google": 0.1
+}
+},
+"08313": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.42,
+"probabilities": {
+"apple": 0.29,
+"samsung": 0.71
+}
+},
+"08378": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.27,
+"probabilities": {
+"apple": 0.51,
+"samsung": 0.18,
+"whatsapp": 0.31
+}
+},
+"08455": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.46,
+"probabilities": {
+"apple": 0.73,
+"facebook": 0.27
+}
+},
+"08469": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.58,
+"probabilities": {
+"apple": 0.21,
+"samsung": 0.79
+}
+},
+"08485": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.22,
+"probabilities": {
+"apple": 0.39,
+"google": 0.61
+}
+},
+"08665": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.34,
+"probabilities": {
+"apple": 0.33,
+"whatsapp": 0.67
+}
+},
+"08680": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.04,
+"probabilities": {
+"facebook": 0.52,
+"whatsapp": 0.48
+}
+},
+"08699": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.54,
+"probabilities": {
+"google": 0.23,
+"samsung": 0.77
+}
+},
+"08706": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.18,
+"probabilities": {
+"apple": 0.45,
+"google": 0.32,
+"samsung": 0.23
+}
+},
+"08760": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.2,
+"probabilities": {
+"messenger": 0.4,
+"whatsapp": 0.6
+}
+},
+"08763": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.58,
+"probabilities": {
+"apple": 0.21,
+"google": 0.79
+}
+},
+"08828": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.68,
+"probabilities": {
+"apple": 0.16,
+"google": 0.84
+}
+},
+"08847": {
+"type": "choice",
+"choice": "whatsapp",
+"confidence": 0.06,
+"probabilities": {
+"apple": 0.47,
+"whatsapp": 0.53
+}
+},
+"08856": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.44,
+"probabilities": {
+"apple": 0.72,
+"facebook": 0.28
+}
+},
+"08876": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.44,
+"probabilities": {
+"facebook": 0.72,
+"whatsapp": 0.28
+}
+},
+"08892": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.54,
+"probabilities": {
+"apple": 0.23,
+"google": 0.77
+}
+},
+"08899": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.84,
+"probabilities": {
+"apple": 0.92,
+"google": 0.08
+}
+},
+"08927": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.1,
+"probabilities": {
+"facebook": 0.45,
+"google": 0.55
+}
+},
+"09140": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.1,
+"probabilities": {
+"apple": 0.45,
+"samsung": 0.55
+}
+},
+"09178": {
+"type": "choice",
+"choice": "samsung",
+"confidence": 0.74,
+"probabilities": {
+"apple": 0.13,
+"samsung": 0.87
+}
+},
+"09182": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.78,
+"probabilities": {
+"google": 0.11,
+"messenger": 0.89
+}
+},
+"09184": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.32,
+"probabilities": {
+"apple": 0.66,
+"samsung": 0.34
+}
+},
+"09253": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.3,
+"probabilities": {
+"facebook": 0.65,
+"mozilla": 0.35
+}
+},
+"09315": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.11,
+"probabilities": {
+"facebook": 0.41,
+"google": 0.3,
+"whatsapp": 0.29
+}
+},
+"09372": {
+"type": "choice",
+"choice": "messenger",
+"confidence": 0.38,
+"probabilities": {
+"facebook": 0.31,
+"messenger": 0.69
+}
+},
+"09376": {
+"type": "choice",
+"choice": "facebook",
+"confidence": 0.44,
+"probabilities": {
+"facebook": 0.72,
+"messenger": 0.28
+}
+},
+"09419": {
+"type": "choice",
+"choice": "mozilla",
+"confidence": 0.48,
+"probabilities": {
+"google": 0.26,
+"mozilla": 0.74
+}
+},
+"09552": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.6,
+"probabilities": {
+"apple": 0.8,
+"whatsapp": 0.2
+}
+},
+"09667": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.7,
+"probabilities": {
+"apple": 0.85,
+"google": 0.15
+}
+},
+"09668": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.04,
+"probabilities": {
+"apple": 0.52,
+"google": 0.48
+}
+},
+"09671": {
+"type": "choice",
+"choice": "google",
+"confidence": 0.44,
+"probabilities": {
+"apple": 0.28,
+"google": 0.72
+}
+},
+"09762": {
+"type": "choice",
+"choice": "apple",
+"confidence": 0.14,
+"probabilities": {
+"apple": 0.57,
+"whatsapp": 0.43
+}
+}
+}

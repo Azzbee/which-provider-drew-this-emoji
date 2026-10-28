@@ -1,0 +1,44 @@
+[
+ {
+  "name": "DINOv2 + ConvNeXt equal average (reference)",
+  "correct": 1919,
+  "accuracy": 97.12,
+  "fixed_vs_reference": 0,
+  "new_errors_vs_reference": 0
+ },
+ {
+  "name": "Three experts, geometric mean (no Jev)",
+  "correct": 1936,
+  "accuracy": 97.98,
+  "fixed_vs_reference": 21,
+  "new_errors_vs_reference": 4
+ },
+ {
+  "name": "Jev decides the 205 non-unanimous images (onehot)",
+  "correct": 1917,
+  "accuracy": 97.01,
+  "fixed_vs_reference": 18,
+  "new_errors_vs_reference": 20
+ },
+ {
+  "name": "Jev decides the 205 non-unanimous images (agreement)",
+  "correct": 1915,
+  "accuracy": 96.91,
+  "fixed_vs_reference": 13,
+  "new_errors_vs_reference": 17
+ },
+ {
+  "name": "Jev decides the 205 non-unanimous images (probs), 1 flagged",
+  "correct": 1912,
+  "accuracy": 96.76,
+  "fixed_vs_reference": 15,
+  "new_errors_vs_reference": 22
+ },
+ {
+  "name": "Oracle: right whenever any expert is right (upper bound)",
+  "correct": 1958,
+  "accuracy": 99.09,
+  "fixed_vs_reference": 39,
+  "new_errors_vs_reference": 0
+ }
+]
