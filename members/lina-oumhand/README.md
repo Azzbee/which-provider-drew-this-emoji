@@ -14,7 +14,7 @@ No epochs for the first two: the extra-trees are 400 trees fitted once, ResNet18
 
 ## Extra Trees and frozen ResNet18 + SVM records
 
-Code, both notebooks, requirements, the four original submission CSVs and measured outputs are in [`extra-trees-and-resnet18-svm/`](extra-trees-and-resnet18-svm/). Setup and reproduction instructions are in [`method-README.md`](extra-trees-and-resnet18-svm/method-README.md); the original Codex prompts are in [`codex-AI_USAGE.md`](extra-trees-and-resnet18-svm/codex-AI_USAGE.md).
+Code, both notebooks, requirements, the four original submission CSVs and measured outputs are in [`extra-trees-and-resnet18-svm/`](extra-trees-and-resnet18-svm/). Setup and reproduction instructions are in [`method-README.md`](extra-trees-and-resnet18-svm/method-README.md); the shared AI-use record is maintained in [codebase/AI_USAGE.md](../../codebase/AI_USAGE.md).
 
 The Extra Trees baseline uses 400 randomised trees, 24 x 24 RGB thumbnails, colour histograms and opacity. Its seed-42 stratified 80/20 validation accuracy is **82.14%** ([saved metrics](extra-trees-and-resnet18-svm/artifacts/baseline_metrics.json)); Kaggle public/private scores are **0.81838 / 0.83259**.
 
