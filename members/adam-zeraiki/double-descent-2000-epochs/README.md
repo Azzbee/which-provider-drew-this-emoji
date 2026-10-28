@@ -35,4 +35,4 @@ Model-wise, at 20% noise, error at the end of training falls monotonically with 
 
 These networks start from random weights at 32 x 32 pixels, so their accuracy is far below the final model's; the experiment is about the shape of the curves. Only the epoch-wise effect of the paper is reproduced, and only with wrong labels. Figure: `paper/figs/fig_dd2000.pdf`, built by `paper/make_dd_figure.py` from these logs. The model checkpoints were not kept (they were on the pod's temporary disk).
 
-Written and run by Claude (Anthropic) at Adam's request, 28 October 2026; see `codebase/AI_USAGE.md`.
+Adam's experiment, 28 October 2026, with code written with Claude's help and reviewed by Adam; see `codebase/AI_USAGE.md`.

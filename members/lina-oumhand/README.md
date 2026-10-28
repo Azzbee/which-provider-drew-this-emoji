@@ -30,7 +30,3 @@ The combined model also reaches **97.42%** on the seed-123 stratified split with
 
 There are **no epochs** for these submissions: Extra Trees fits 400 trees; ResNet18 stays frozen; the SVM is fitted to convergence. Each classifier is validated on 80/20 and then refitted on **100% of the labelled images** for its submission. The 78 MB fitted `artifacts/improved_model.joblib` and all feature/pretrained-weight caches are intentionally omitted; `improve.py` recreates them from separately supplied competition data.
 
-## Completion record
-
-- [x] What `submission.csv` and `submission2.csv` were (submission2 is your best entry): documented above and in the method folder.
-- [x] Add any other notebooks here, and send Adam the AI tools and prompts you used (he keeps the AI-use record): both notebooks and the Codex prompts are included in this pull request and `codebase/AI_USAGE.md`.

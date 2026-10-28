@@ -96,4 +96,4 @@ DINOv2's test probabilities were not saved, only its labels, so the test file us
 
 `build_experts.py` collects the experts' development probabilities into `experts_dev.npz`; `combine.py` runs every combiner and writes `results.json`; `jev_three_experts.py` and `jev_client.py` (unchanged copy of the 18 October budgeted client) run the Jev part; `make_test_submission.py` writes the test file.
 
-Written and run by Claude (Anthropic) at Adam's request, 28 October 2026; see `codebase/AI_USAGE.md`.
+Adam's experiment, 28 October 2026, with code written with Claude's help and reviewed by Adam; see `codebase/AI_USAGE.md`.
