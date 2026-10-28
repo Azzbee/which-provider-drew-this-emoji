@@ -50,6 +50,7 @@ A few examples of how an idea of ours was refined, not replaced:
 |---|---|---|
 | ~15 Oct | Claude | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
 | 28 Oct | Claude, in VS Code | Reviewed his notebook, wrote `members/charles-montluc-giannopoulou/README.md` and corrected the description of his model in the paper. |
+| 28 Oct | Claude | Checked the notebook for keys and data, then added it unchanged with its `submission.csv` to `members/charles-montluc-giannopoulou/resnet18-160px-format-features/`. |
 
 ### Lina
 
