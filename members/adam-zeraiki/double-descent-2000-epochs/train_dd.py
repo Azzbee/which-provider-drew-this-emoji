@@ -17,6 +17,7 @@ ap.add_argument('--width', type=int, default=64)
 ap.add_argument('--noise', type=float, default=0.0)
 ap.add_argument('--epochs', type=int, default=2000)
 ap.add_argument('--seed', type=int, default=0)
+ap.add_argument('--frac', type=float, default=1.0, help='fraction of the training split to use (fixed subset)')
 ap.add_argument('--data', default='emoji32.npz')
 ap.add_argument('--out', default='logs')
 a = ap.parse_args()
@@ -29,7 +30,10 @@ X = torch.tensor(d['X']).permute(0, 3, 1, 2).float().div(255)
 mean, std = X.mean((0, 2, 3), keepdim=True), X.std((0, 2, 3), keepdim=True)
 X = ((X - mean) / std).to(dev)
 y = torch.tensor(d['y']).to(dev)
-tr, dv = torch.tensor(d['train_idx']).to(dev), torch.tensor(d['dev_idx']).to(dev)
+tr_np = d['train_idx']
+if a.frac < 1.0:
+    tr_np = np.sort(np.random.default_rng(99).choice(tr_np, int(round(a.frac * len(tr_np))), replace=False))
+tr, dv = torch.tensor(tr_np).to(dev), torch.tensor(d['dev_idx']).to(dev)
 ytr_clean = y[tr].clone(); ytr = ytr_clean.clone()
 rng = np.random.default_rng(1234)                      # same corrupted set for every width
 n_bad = int(round(a.noise * len(tr)))
@@ -90,7 +94,7 @@ def evaluate(Xe, ye):
     return L / len(Xe), torch.cat(P)
 
 
-name = f'w{a.width}_n{int(a.noise * 100)}_s{a.seed}'
+name = f'w{a.width}_n{int(a.noise * 100)}_s{a.seed}' + (f'_f{int(a.frac * 100)}' if a.frac < 1 else '') + (f'_e{a.epochs}' if a.epochs != 2000 else '')
 import os; os.makedirs(a.out, exist_ok=True)
 log = open(f'{a.out}/{name}.jsonl', 'w')
 log.write(json.dumps({'config': vars(a), 'params': params, 'n_corrupted': n_bad}) + '\n')
