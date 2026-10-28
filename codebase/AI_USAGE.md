@@ -55,9 +55,7 @@ A few examples of how an idea of ours was refined, not replaced:
 
 | Date | Tool | What it did |
 |---|---|---|
-| ~17 Oct | OpenAI Codex | Wrote and ran the Extra Trees baseline, the hand-crafted style features, the frozen ResNet18 feature extraction and the SVM selection (`members/lina-oumhand/extra-trees-and-resnet18-svm/`); Lina reviewed the results and submitted the files. |
-| 28 Oct | OpenAI Codex | Added her files, the ablation and her original prompts to the repository. |
-| 28 Oct | OpenAI Codex | Removed the duplicate method-folder AI-use file at Lina's request and redirected documentation links to this shared record. |
+| ~15 to 28 Oct | OpenAI Codex | Helped Lina with explaining the notebook and methods covered in class. It also helped her research and compare different approaches for the emoji classification task. Codex assisted in building and structuring the Jupyter notebooks, especially for the Extra Trees and ResNet18 + SVM models. It helped implement the methods, write and improve the code, fix errors, debug issues, and run the experiments. It also helped Lina understand and interpret the results and explore possible improvements. Overall, Codex was used as both a learning and coding assistant throughout the project. |
 
 ## Prompts
 
