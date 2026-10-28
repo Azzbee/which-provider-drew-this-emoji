@@ -52,7 +52,7 @@ one (E1a to E16, regenerated from the JSON records) is
 Validation accuracies are single runs on the 80/20 split above (about 0.4 points standard error).
 Public scores are from `members/kaggle_submissions_ledger_2026-10-18.csv`, private scores from the
 paper's Kaggle table. E15 Kaggle file: `E15_ens_full_3models.csv`; E13v: `E13v_ens_val_3models.csv`
-(both in `experiment-series-E1-E16/submissions/`).
+(all seven submitted files, E3, E8, E9, E10b, E11, E13v and E15, are in `experiment-series-E1-E16/submissions/`; the written plan approved before any code is `experiment-series-E1-E16/FEATURE_PLAN.md`).
 
 ## What E12a, E12b and E13 showed (nearest-neighbour resizing)
 
