@@ -13,7 +13,8 @@ The course allows AI for the code and for understanding the models, provided its
 | 13 to 28 Oct | Claude Code (Anthropic) | Erdem | Experiment series E1a to E16 (`members/erdem-sanver/experiment-series-E1-E16/`), run with Claude Code as a coding assistant. Erdem set the goals and constraints, chose to keep the model pixel-only rather than use the file-format shortcut, approved the plan, reviewed the results at each stage and decided which files to submit with the team's shared daily submissions. Claude implemented, debugged and ran the code (preprocessing, baselines, CNN/ConvNeXt training, ensembles, pseudo-labelling), which Erdem reviewed, drafted the write-ups and, on 28 Oct, added the records to the repository and the paper. |
 | ~15 Oct | Claude (Anthropic) | Charles | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
 | 28 Oct | Claude (Anthropic) | Charles | Modified the GitHub repository: added notes about Charles's own work (`members/charles-montluc-giannopoulou/README.md`) and corrected the description of his model in the paper (who-tried-what row, journey table step 6, Kaggle table) after a review of his notebook. |
-| ~17 Oct | not recorded | Lina | Extra-trees and frozen ResNet18 + SVM entries. **Lina to confirm** whether an AI tool was used. |
+| ~17 Oct | OpenAI Codex | Lina | Wrote and ran the Extra Trees baseline, the hand-crafted style features, the frozen ResNet18 feature extraction and the SVM selection (members/lina-oumhand/extra-trees-and-resnet18-svm/); Lina reviewed the results and submitted the files. |
+| 28 Oct | OpenAI Codex | Lina | Imported Lina's Extra Trees and frozen ResNet18 + SVM files, added the measured ablation and original prompts, updated the AI-use completion record, and prepared and checked this pull request. |
 | 17 Oct | Claude (Anthropic) | Adam | Wrote this codebase (`src/emoji_provider`, scripts, notebook, tests); ran the EDA, the metadata diagnostic, the baseline re-score and the EmojiCNNv2 experiments; produced the figures and number tables. |
 | 17 to 18 Oct | Claude (Anthropic), driving Adam's browser | Adam | Ran both ConvNeXt-Tiny GPU runs on a RunPod pod that Adam created and paid for; added the last-epoch option; built the 10-checkpoint average; submitted the run B file on Kaggle and selected the entries, at Adam's request. |
 | 17 to 18 Oct | OpenAI Codex | Adam | Wrote and ran the DINOv2 partial fine-tuning, style features, partially tuned ConvNeXt, learned fusion (transformer and MLP), Julia-1 and Jev decision-model experiments (`members/adam-zeraiki/` and `members/lina-oumhand/dinov2-partial-finetune/`). |
@@ -144,6 +145,14 @@ Charles's request, summarised by him afterwards (not the verbatim prompt):
 > Please include the modifications inside the report, modify the AI Usage to include this Prompt, and add my modifications in the readme
 
 The content came from a review of his notebook, run with Claude in VS Code.
+
+### ~17 October, OpenAI Codex: Lina's Extra Trees and frozen ResNet18 + SVM
+
+> With these informations can you complete all the tabs so that I can make a submission in the kaggle competition and have a good rate
+
+> The kaggle score for this submission is [0.81838](https://www.kaggle.com/competitions/2-computer-vision-2026-b-sc-aidams-final-proj/submissions#). Improve it please
+
+The first prompt followed the teacher's project instructions. Codex wrote and ran the Extra Trees baseline, the hand-crafted style descriptors, the frozen ImageNet ResNet18 channel-statistics extraction and the RBF SVM selection. Lina reviewed the results and submitted the CSVs. Code and measured outputs are saved in `members/lina-oumhand/extra-trees-and-resnet18-svm/`, with the original local disclosure in `codex-AI_USAGE.md`. ResNet18 remained frozen; the SVM was fitted to convergence, validated on 80/20, then refitted on all labelled images.
 
 ## 3. What was not done by AI
 

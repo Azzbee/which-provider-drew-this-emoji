@@ -1,0 +1,8 @@
+# Full notebook: Python 3.11 or 3.12; GPU recommended.
+torch==2.6.0
+torchvision==0.21.0
+scikit-learn==1.9.1
+pandas==2.3.3
+numpy==2.2.6
+pillow==11.3.0
+matplotlib==3.10.7

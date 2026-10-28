@@ -1,0 +1,87 @@
+{
+  "validation_accuracy": 0.9741902834008097,
+  "validation_seed": 123,
+  "validation_fraction": 0.2,
+  "features": "combined",
+  "C": 10.0,
+  "gamma": "scale",
+  "descriptor_count": 3527,
+  "classes": [
+    "apple",
+    "facebook",
+    "google",
+    "messenger",
+    "mozilla",
+    "samsung",
+    "whatsapp"
+  ],
+  "python": "3.14.4",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "pillow": "12.3.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "torch": "2.14.1",
+    "torchvision": "0.29.1"
+  },
+  "labels_sha256": "37385b8fa192a03230d170654d255351a1cc3f42dfcd94b55f98f03abcfd55fb",
+  "report": {
+    "apple": {
+      "precision": 0.9448621553884712,
+      "recall": 0.9792207792207792,
+      "f1-score": 0.9617346938775511,
+      "support": 385.0
+    },
+    "facebook": {
+      "precision": 0.9937304075235109,
+      "recall": 0.9519519519519519,
+      "f1-score": 0.9723926380368099,
+      "support": 333.0
+    },
+    "google": {
+      "precision": 0.9683377308707124,
+      "recall": 0.976063829787234,
+      "f1-score": 0.9721854304635762,
+      "support": 376.0
+    },
+    "messenger": {
+      "precision": 0.9914529914529915,
+      "recall": 1.0,
+      "f1-score": 0.9957081545064378,
+      "support": 116.0
+    },
+    "mozilla": {
+      "precision": 0.987012987012987,
+      "recall": 0.9620253164556962,
+      "f1-score": 0.9743589743589743,
+      "support": 79.0
+    },
+    "samsung": {
+      "precision": 0.9805013927576601,
+      "recall": 0.9832402234636871,
+      "f1-score": 0.9818688981868898,
+      "support": 358.0
+    },
+    "whatsapp": {
+      "precision": 0.9815950920245399,
+      "recall": 0.9726443768996961,
+      "f1-score": 0.9770992366412213,
+      "support": 329.0
+    },
+    "accuracy": 0.9741902834008097,
+    "macro avg": {
+      "precision": 0.9782132510044105,
+      "recall": 0.9750209253970065,
+      "f1-score": 0.97647828943878,
+      "support": 1976.0
+    },
+    "weighted avg": {
+      "precision": 0.9745576919044371,
+      "recall": 0.9741902834008097,
+      "f1-score": 0.9742244669870413,
+      "support": 1976.0
+    }
+  },
+  "pretrained_weights": "torchvision ResNet18 IMAGENET1K_V1 (frozen)"
+}

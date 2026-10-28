@@ -1,0 +1,12 @@
+[
+  {
+    "features": "combined",
+    "C": 10,
+    "accuracy": 0.9676113360323887
+  },
+  {
+    "features": "combined",
+    "C": 100,
+    "accuracy": 0.9676113360323887
+  }
+]
