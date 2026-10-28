@@ -70,6 +70,24 @@ Run `python jev_three_experts.py prepare` first: it rebuilds `images/` (the quer
 
 Fixed and new errors are relative to the DINOv2 + ConvNeXt average (97.12%). Jev always picked one of the experts' labels and followed a two-to-one majority on 171 to 179 of the 186 such images; on the 7 to 15 per variant where it overruled the majority it was right at most once (`jev_analysis.json`). One answer (image 01814, probabilities variant) named Mozilla while giving Google the higher probability (0.39 vs 0.38); the strict client rejects such answers, so the script keeps Jev's stated choice and flags it. Answers are in `answers/`; `jev_results.json` is the evaluation. The request cache is not committed because it embeds the competition images.
 
+## Other combination rules (`combine_rules.py`, `results_rules.json`)
+
+Same protocol (grouped 5-fold CV inside the 1,976 development images, 5 seeds).
+
+| Rule | Set A (branch ConvNeXt) | Set B (ConvNeXt run B) |
+|---|---|---|
+| Reference: two image models, equal average | 97.12% | 98.08% |
+| Geometric mean of the three | 97.98% | 98.18% |
+| Bayes on the experts' confusion matrices (answers only) | 97.27% | 97.95% |
+| Most confident expert wins, after per-expert temperature calibration | 97.93% | **98.49%** |
+| Per-class trust weights | 97.95% | 98.07% |
+| Output codes, 3 yes/no classifiers (minimum, "poisoned cups") | 96.98% | 97.80% |
+| Output codes, 7 random bits | 97.88% | 98.12% |
+| Output codes, 15 random bits | 98.05% | 98.33% |
+| Output codes, all 63 bits | 98.09% | 98.24% |
+
+The minimum code (3 classifiers for 7 providers, like finding a poisoned cup with the fewest tasters) is the worst rule: with no spare bits, one wrong classifier gives a wrong provider. Spare bits correct such mistakes. In set B the most-confident rule reaches 98.49% (1,946 of 1,976): 16 of run B's errors fixed, 4 new (exact McNemar p = 0.012).
+
 ## Test-set file
 
 DINOv2's test probabilities were not saved, only its labels, so the test file uses DINOv2 as a smoothed one-hot vector (0.9 on its label), the final ConvNeXt run B probabilities and the file-byte model refitted on all 9,879 images, combined by geometric mean. The same recipe scores 98.08% on the development images (run B alone 97.87%). `submission_dinov2_convnext_filebytes_geomean.csv` changes 152 of 9,879 test labels relative to the final model. It was not submitted to Kaggle.
