@@ -52,22 +52,6 @@ We used AI assistants (Claude from Anthropic, OpenAI ChatGPT and Codex) in three
 **How AI helped**
 - OpenAI Codex helped Lina with explaining the notebook and methods covered in class. It also helped her research and compare different approaches for the emoji classification task. Codex assisted in building and structuring the Jupyter notebooks, especially for the Extra Trees and ResNet18 + SVM models. It helped implement the methods, write and improve the code, fix errors, debug issues, and run the experiments. It also helped Lina explore DINOv2 as another approach for the emoji classification task. It explained how the pretrained Vision Transformer works and how partial fine-tuning could be used to adapt it to the dataset. Codex assisted with setting up the model, adapting the image preprocessing, implementing the training and validation code, and understanding which layers should be frozen or fine-tuned. It also helped troubleshoot errors, debug the code, run experiments, and interpret the results to identify possible improvements. Overall, Codex was used as both a learning and coding assistant throughout the project.
 
-## Three prompts, and what we did with the answers
-
-These show how we used the answers: not as final, but as something to question and push further.
-
-> Also, in the research paper, did you specify whether we believe we overfitted or underfitted and explaining why we did or didn't?
-
-Adam asked this after reading a draft that reported accuracy but not whether the models generalise. The answer became section 6.6, which uses our saved training curves to show that the first CNN underfit and that the final model fits its training set without overfitting its decisions.
-
-> No, like, feel free to do a model that takes into consideration the full file byte model and also, like, the visual aspects, a combination. … have a dyno, have conv next, and then third model being the full file byte model, and then Jev either decides on like one hot encodings or maybe on the agreements. Try them all and see what happens and see which one would be better.
-
-The first fusion attempt had not beaten a plain average. Instead of dropping the idea, Adam changed the third expert to one whose mistakes differ from the image models'. That version worked (97.98% against 97.12% on the same images), and the comparison showed that the decision model Jev never beat simple rules.
-
-> is it better to do different thing that just the average of each one or put a rule that makes it like the similar than the minimum amount of taste testers for a poisoned cup problem. also you sure there's nothing we can do or more epochs we can try.
-
-Adam did not accept "averaging is enough" or "we trained long enough" without a test. The poisoned-cup idea became error-correcting output codes, where the minimum number of "tasters" turned out to be the worst rule and redundancy fixed it; the extra epochs became the 4,000-epoch double-descent test of section 6.5.
-
 ## What we did ourselves
 
 - **Ideas and direction:** every research question and every idea tested in the paper, as listed above for each member.
