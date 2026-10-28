@@ -1,0 +1,11 @@
+[E6_effnetb0_finetune] ep  1/10 loss 1.7912 val_acc 0.8239  (61s)
+[E6_effnetb0_finetune] ep  2/10 loss 0.3699 val_acc 0.8841  (121s)
+[E6_effnetb0_finetune] ep  3/10 loss 0.1718 val_acc 0.9033  (177s)
+[E6_effnetb0_finetune] ep  4/10 loss 0.0717 val_acc 0.9145  (233s)
+[E6_effnetb0_finetune] ep  5/10 loss 0.0319 val_acc 0.9251  (291s)
+[E6_effnetb0_finetune] ep  6/10 loss 0.0119 val_acc 0.9286  (348s)
+[E6_effnetb0_finetune] ep  7/10 loss 0.0114 val_acc 0.9266  (404s)
+[E6_effnetb0_finetune] ep  8/10 loss 0.0041 val_acc 0.9307  (460s)
+[E6_effnetb0_finetune] ep  9/10 loss 0.0025 val_acc 0.9337  (517s)
+[E6_effnetb0_finetune] ep 10/10 loss 0.0017 val_acc 0.9312  (573s)
+{"exp": "E6_effnetb0_finetune", "train_acc": 1.0, "val_acc": 0.9312, "val_prec": 0.9286, "runtime_s": 612.4}

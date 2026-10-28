@@ -1,0 +1,162 @@
+{
+  "exp_id": "E4_resnet18_frozen",
+  "model": "resnet18 (ImageNet pretrained, frozen backbone)",
+  "method": "Transfer learning, feature extraction: ImageNet ResNet18 backbone frozen, only the linear head is trained (AdamW lr 3e-3, OneCycle)",
+  "epochs": 10,
+  "train_acc": 0.8308237378210807,
+  "train_prec": 0.8277428904879077,
+  "val_acc": 0.7747975708502024,
+  "val_prec": 0.7691038956025008,
+  "explanation": "Val accuracy 0.775 - WORSE than the small CNN trained from scratch (E3 0.936) and the SVM (E1b 0.813). With the backbone frozen only 3.6k parameters are learned; ImageNet features describe natural-photo objects ('what is it'), while this task is about rendering style of the SAME object across vendors (outline thickness, shading, gradients). Generic features are not discriminative enough -> the backbone must be adapted (E5).",
+  "preprocessing": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+  "preprocessing_why": "Default RGB conversion drops alpha and exposes vendor-specific junk colours under transparent pixels; compositing on white shows the emoji as a human sees it and removes that artefact. 128 px: closer to the resolution ImageNet features were learned at, still cheap.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": null,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E4_resnet18_frozen",
+      "model": "resnet18",
+      "mode": "white",
+      "size": 128,
+      "epochs": 10,
+      "bs": 64,
+      "lr": 0.003,
+      "wd": 0.0001,
+      "label_smoothing": 0.0,
+      "pretrained": true,
+      "freeze": true,
+      "aug": "none",
+      "tta": false,
+      "full": false,
+      "method": "Transfer learning, feature extraction: ImageNet ResNet18 backbone frozen, only the linear head is trained (AdamW lr 3e-3, OneCycle)",
+      "preproc": "Alpha-composite on white background, then resize to 128 x 128 (bicubic), ImageNet normalisation",
+      "why": "Default RGB conversion drops alpha and exposes vendor-specific junk colours under transparent pixels; compositing on white shows the emoji as a human sees it and removes that artefact. 128 px: closer to the resolution ImageNet features were learned at, still cheap."
+    },
+    "params_total": 11180103,
+    "params_trainable": 3591,
+    "device": "mps",
+    "runtime_s": 124.4,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.6025,
+        "val_acc": 0.6149
+      },
+      {
+        "epoch": 2,
+        "loss": 0.9729,
+        "val_acc": 0.7034
+      },
+      {
+        "epoch": 3,
+        "loss": 0.7632,
+        "val_acc": 0.7424
+      },
+      {
+        "epoch": 4,
+        "loss": 0.6834,
+        "val_acc": 0.7561
+      },
+      {
+        "epoch": 5,
+        "loss": 0.6278,
+        "val_acc": 0.7657
+      },
+      {
+        "epoch": 6,
+        "loss": 0.5937,
+        "val_acc": 0.7707
+      },
+      {
+        "epoch": 7,
+        "loss": 0.569,
+        "val_acc": 0.7707
+      },
+      {
+        "epoch": 8,
+        "loss": 0.5541,
+        "val_acc": 0.7778
+      },
+      {
+        "epoch": 9,
+        "loss": 0.5451,
+        "val_acc": 0.7763
+      },
+      {
+        "epoch": 10,
+        "loss": 0.5413,
+        "val_acc": 0.7748
+      }
+    ],
+    "val_confusion": [
+      [
+        319,
+        28,
+        9,
+        4,
+        24,
+        1,
+        0
+      ],
+      [
+        31,
+        330,
+        1,
+        2,
+        12,
+        0,
+        0
+      ],
+      [
+        19,
+        8,
+        223,
+        61,
+        10,
+        3,
+        5
+      ],
+      [
+        17,
+        4,
+        50,
+        247,
+        3,
+        0,
+        12
+      ],
+      [
+        31,
+        33,
+        2,
+        2,
+        290,
+        0,
+        0
+      ],
+      [
+        0,
+        10,
+        1,
+        4,
+        1,
+        45,
+        18
+      ],
+      [
+        1,
+        1,
+        11,
+        19,
+        0,
+        7,
+        77
+      ]
+    ],
+    "submission": "E4_resnet18_frozen.csv"
+  }
+}

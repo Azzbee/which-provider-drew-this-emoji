@@ -1,0 +1,11 @@
+[E6b_convnext_tiny_finetune] ep  1/10 loss 0.6787 val_acc 0.8745  (107s)
+[E6b_convnext_tiny_finetune] ep  2/10 loss 0.2624 val_acc 0.9190  (216s)
+[E6b_convnext_tiny_finetune] ep  3/10 loss 0.1472 val_acc 0.9474  (323s)
+[E6b_convnext_tiny_finetune] ep  4/10 loss 0.0780 val_acc 0.9342  (428s)
+[E6b_convnext_tiny_finetune] ep  5/10 loss 0.0465 val_acc 0.9534  (541s)
+[E6b_convnext_tiny_finetune] ep  6/10 loss 0.0158 val_acc 0.9585  (644s)
+[E6b_convnext_tiny_finetune] ep  7/10 loss 0.0040 val_acc 0.9585  (745s)
+[E6b_convnext_tiny_finetune] ep  8/10 loss 0.0005 val_acc 0.9580  (845s)
+[E6b_convnext_tiny_finetune] ep  9/10 loss 0.0002 val_acc 0.9595  (945s)
+[E6b_convnext_tiny_finetune] ep 10/10 loss 0.0002 val_acc 0.9590  (1046s)
+{"exp": "E6b_convnext_tiny_finetune", "train_acc": 1.0, "val_acc": 0.959, "val_prec": 0.9614, "runtime_s": 1113.7}

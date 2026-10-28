@@ -1,0 +1,11 @@
+[E5_resnet18_finetune] ep  1/10 loss 1.6438 val_acc 0.6969  (33s)
+[E5_resnet18_finetune] ep  2/10 loss 0.5225 val_acc 0.8406  (61s)
+[E5_resnet18_finetune] ep  3/10 loss 0.2177 val_acc 0.9130  (90s)
+[E5_resnet18_finetune] ep  4/10 loss 0.1062 val_acc 0.9271  (119s)
+[E5_resnet18_finetune] ep  5/10 loss 0.0497 val_acc 0.9332  (148s)
+[E5_resnet18_finetune] ep  6/10 loss 0.0279 val_acc 0.9332  (176s)
+[E5_resnet18_finetune] ep  7/10 loss 0.0153 val_acc 0.9352  (204s)
+[E5_resnet18_finetune] ep  8/10 loss 0.0112 val_acc 0.9362  (231s)
+[E5_resnet18_finetune] ep  9/10 loss 0.0083 val_acc 0.9393  (258s)
+[E5_resnet18_finetune] ep 10/10 loss 0.0081 val_acc 0.9372  (285s)
+{"exp": "E5_resnet18_finetune", "train_acc": 1.0, "val_acc": 0.9372, "val_prec": 0.9377, "runtime_s": 304.8}

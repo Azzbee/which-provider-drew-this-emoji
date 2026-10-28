@@ -1,0 +1,26 @@
+{
+  "exp_id": "E13v_ens_val_3models",
+  "model": "Ensemble: E8_convnext_tiny_224 + E12b_convnext_tiny_144_nearest + E13_convnext_tiny_216_nearest",
+  "method": "Soft voting: average of the members' softmax probabilities (equal weights)",
+  "epochs": null,
+  "train_acc": null,
+  "train_prec": null,
+  "val_acc": 0.9812753036437247,
+  "val_prec": 0.9860649744484294,
+  "explanation": "",
+  "preprocessing": "As in each member experiment",
+  "preprocessing_why": "Members see the image at different resolutions, so their errors are partly independent.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": 0.97772,
+  "name": "Erdem SANVER",
+  "date": "2026-10-14",
+  "extra": {
+    "members": [
+      "E8_convnext_tiny_224",
+      "E12b_convnext_tiny_144_nearest",
+      "E13_convnext_tiny_216_nearest"
+    ],
+    "submission": "E13v_ens_val_3models.csv"
+  }
+}

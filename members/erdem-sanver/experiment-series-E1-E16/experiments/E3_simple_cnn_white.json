@@ -1,0 +1,187 @@
+{
+  "exp_id": "E3_simple_cnn_white",
+  "model": "simple_cnn (from scratch)",
+  "method": "Same CNN and hyper-parameters as E2 (only preprocessing changes)",
+  "epochs": 15,
+  "train_acc": 0.9850689611539921,
+  "train_prec": 0.9838018930974506,
+  "val_acc": 0.9362348178137652,
+  "val_prec": 0.9284411532301207,
+  "explanation": "Val accuracy 0.936 (+1.5 pts vs E2) / macro precision 0.928 (+2.2 pts) with ONLY the preprocessing changed. Proper alpha handling helps even though it removes a shortcut feature: the network sees clean emoji shapes on a uniform canvas, and the minority classes (macro precision) benefit most. Single seed; val set = 1976 images so 1.5 pts is ~2.6 standard errors.",
+  "preprocessing": "Alpha-composite on white background, then resize to 96 x 96 (bicubic), ImageNet normalisation",
+  "preprocessing_why": "Default RGB conversion drops alpha and exposes vendor-specific junk colours under transparent pixels; compositing on white shows the emoji as a human sees it and removes that artefact.",
+  "ratio_train": 0.8,
+  "ratio_test": 0.2,
+  "kaggle_public": 0.93642,
+  "name": "Erdem SANVER",
+  "date": "2026-10-13",
+  "extra": {
+    "seed": 42,
+    "args": {
+      "exp": "E3_simple_cnn_white",
+      "model": "simple_cnn",
+      "mode": "white",
+      "size": 96,
+      "epochs": 15,
+      "bs": 64,
+      "lr": 0.001,
+      "wd": 0.0001,
+      "label_smoothing": 0.0,
+      "pretrained": false,
+      "freeze": false,
+      "aug": "none",
+      "tta": false,
+      "full": false,
+      "method": "Same CNN and hyper-parameters as E2 (only preprocessing changes)",
+      "preproc": "Alpha-composite on white background, then resize to 96 x 96 (bicubic), ImageNet normalisation",
+      "why": "Default RGB conversion drops alpha and exposes vendor-specific junk colours under transparent pixels; compositing on white shows the emoji as a human sees it and removes that artefact."
+    },
+    "params_total": 288359,
+    "params_trainable": 288359,
+    "device": "mps",
+    "runtime_s": 290.4,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.744,
+        "val_acc": 0.4028
+      },
+      {
+        "epoch": 2,
+        "loss": 1.068,
+        "val_acc": 0.3173
+      },
+      {
+        "epoch": 3,
+        "loss": 0.7179,
+        "val_acc": 0.7252
+      },
+      {
+        "epoch": 4,
+        "loss": 0.5689,
+        "val_acc": 0.7632
+      },
+      {
+        "epoch": 5,
+        "loss": 0.4696,
+        "val_acc": 0.5936
+      },
+      {
+        "epoch": 6,
+        "loss": 0.4116,
+        "val_acc": 0.8117
+      },
+      {
+        "epoch": 7,
+        "loss": 0.351,
+        "val_acc": 0.622
+      },
+      {
+        "epoch": 8,
+        "loss": 0.2886,
+        "val_acc": 0.7161
+      },
+      {
+        "epoch": 9,
+        "loss": 0.2495,
+        "val_acc": 0.8411
+      },
+      {
+        "epoch": 10,
+        "loss": 0.2042,
+        "val_acc": 0.8856
+      },
+      {
+        "epoch": 11,
+        "loss": 0.1723,
+        "val_acc": 0.8988
+      },
+      {
+        "epoch": 12,
+        "loss": 0.1451,
+        "val_acc": 0.9322
+      },
+      {
+        "epoch": 13,
+        "loss": 0.1144,
+        "val_acc": 0.9297
+      },
+      {
+        "epoch": 14,
+        "loss": 0.1088,
+        "val_acc": 0.9393
+      },
+      {
+        "epoch": 15,
+        "loss": 0.1017,
+        "val_acc": 0.9362
+      }
+    ],
+    "val_confusion": [
+      [
+        367,
+        10,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        8,
+        367,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        9,
+        1,
+        296,
+        14,
+        2,
+        3,
+        4
+      ],
+      [
+        8,
+        3,
+        9,
+        308,
+        0,
+        1,
+        4
+      ],
+      [
+        10,
+        3,
+        1,
+        0,
+        344,
+        0,
+        0
+      ],
+      [
+        3,
+        2,
+        2,
+        3,
+        0,
+        66,
+        3
+      ],
+      [
+        0,
+        0,
+        4,
+        8,
+        0,
+        2,
+        102
+      ]
+    ],
+    "submission": "E3_simple_cnn_white.csv"
+  }
+}

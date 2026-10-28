@@ -1,0 +1,11 @@
+[E4_resnet18_frozen] ep  1/10 loss 1.6025 val_acc 0.6149  (10s)
+[E4_resnet18_frozen] ep  2/10 loss 0.9729 val_acc 0.7034  (20s)
+[E4_resnet18_frozen] ep  3/10 loss 0.7632 val_acc 0.7424  (30s)
+[E4_resnet18_frozen] ep  4/10 loss 0.6834 val_acc 0.7561  (40s)
+[E4_resnet18_frozen] ep  5/10 loss 0.6278 val_acc 0.7657  (51s)
+[E4_resnet18_frozen] ep  6/10 loss 0.5937 val_acc 0.7707  (60s)
+[E4_resnet18_frozen] ep  7/10 loss 0.5690 val_acc 0.7707  (70s)
+[E4_resnet18_frozen] ep  8/10 loss 0.5541 val_acc 0.7778  (80s)
+[E4_resnet18_frozen] ep  9/10 loss 0.5451 val_acc 0.7763  (92s)
+[E4_resnet18_frozen] ep 10/10 loss 0.5413 val_acc 0.7748  (103s)
+{"exp": "E4_resnet18_frozen", "train_acc": 0.8308, "val_acc": 0.7748, "val_prec": 0.7691, "runtime_s": 124.4}
