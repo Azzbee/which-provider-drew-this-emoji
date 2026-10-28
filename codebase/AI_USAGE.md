@@ -11,7 +11,8 @@ The course allows AI for the code and for understanding the models, provided its
 | 30 Sept | Claude (Anthropic) | Adam | Drafted the first-submission Keras notebook (`members/adam-zeraiki/first-submission-keras-cnn/`). |
 | 30 Sept | OpenAI Codex | Adam | Generated and debugged the baseline PyTorch notebook (`members/adam-zeraiki/baseline-cnn/`). |
 | 13 to 14 Oct | not recorded | Erdem | Experiments E1a to E15. **Erdem to confirm** whether an AI tool was used. |
-| ~15 Oct | not recorded | Charles | ResNet18 fine-tuned at 160 px. **Charles to confirm** whether an AI tool was used. |
+| ~15 Oct | Claude (Anthropic) | Charles | Built the ResNet18 notebook (160 px, file-format features, format correction). Prompts not kept. |
+| 28 Oct | Claude (Anthropic) | Charles | Modified the GitHub repository: added notes about Charles's own work (`members/charles-montluc-giannopoulou/README.md`) and corrected the description of his model in the paper (who-tried-what row, journey table step 6, Kaggle table) after a review of his notebook. |
 | ~17 Oct | not recorded | Lina | Extra-trees and frozen ResNet18 + SVM entries. **Lina to confirm** whether an AI tool was used. |
 | 17 Oct | Claude (Anthropic) | Adam | Wrote this codebase (`src/emoji_provider`, scripts, notebook, tests); ran the EDA, the metadata diagnostic, the baseline re-score and the EmojiCNNv2 experiments; produced the figures and number tables. |
 | 17 to 18 Oct | Claude (Anthropic), driving Adam's browser | Adam | Ran both ConvNeXt-Tiny GPU runs on a RunPod pod that Adam created and paid for; added the last-epoch option; built the 10-checkpoint average; submitted the run B file on Kaggle and selected the entries, at Adam's request. |
@@ -104,6 +105,12 @@ The team chose the experiments and the final model, reviewed every number agains
 > Also what's the max amount of epochs we did
 
 > I want you to create a model with Jev that uses the 3.2 what the files reveal before any pixel is read and I want it to get at least 99% just to show if we wanted to we could've just done that if we just wanted to get a high score but decided not to. Also, lina sent me this, modify her section please. [Lina's description of her two submissions] Finally review the github and everything and get an AI_Usage.md ready and make sure everything is ready for a final submission. Also, see if there are any improvements you want to make, show it to me and I will let you know whether to add them in or not.
+
+### 28 October, Claude: Charles's notes and paper corrections
+
+> can you do 2  3 and 4 (before explain me exactly what you'll put
+
+(2: fill in Charles's member README; 3: correct the description of his model in the paper; 4: update this file. The content came from a review of his notebook, run with Claude in VS Code.)
 
 ## 3. What was not done by AI
 
