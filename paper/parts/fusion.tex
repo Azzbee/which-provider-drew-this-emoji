@@ -22,7 +22,7 @@ Our final model combines members of the same architecture by soft voting (\cref{
   \node[fz] (avg) at (9.6,0) {$\tfrac12(p_1+p_2)$};
   \foreach \u/\v in {x1/b1,x1/b2,b1/p1,b2/p2,p1/avg,p2/avg} \draw[arr] (\u) -- (\v);
   \begin{scope}[yshift=-3.3cm]
-  \node[font=\sffamily\scriptsize\bfseries, anchor=west] at (0,2.15) {(b) learned fusion: a small transformer over three frozen experts (best: 97.01\%)};
+  \node[font=\sffamily\scriptsize\bfseries, anchor=west] at (0,2.15) {(b) learned fusion: a small transformer over three frozen experts (96.36\%; MLP head 97.01\%)};
   \node[fz] (y) at (0.7,0) {image};
   \node[bb] (c1) at (3.8,1.0) {ConvNeXt-Tiny, 768-d};
   \node[bb] (c2) at (3.8,0) {DINOv2 ViT-S/14, 768-d};
@@ -41,7 +41,7 @@ Our final model combines members of the same architecture by soft voting (\cref{
 \label{fig:fusion}
 \end{figure}
 
-\paragraph{Decision models} The last idea was to hand the final decision to a model built for decisions. Julia-1 \cite{julia2026} is an open 144-million-parameter model that picks one answer from a list given a state and a question. It received the 21 class probabilities of the three experts, without pixels or labels, and no fine-tuning. Jev (version 1.14.0) \cite{jev2026} is TypeSafe's hosted decision model, which returns typed answers to a question about a given state. It received the query image, one labelled reference image per vendor and, in its final stage, the three experts' probability distributions. Jev was queried only on the 112 development images where DINOv2 and ConvNeXt disagreed (324 requests, \$0.035 of metered usage). Elsewhere the reference prediction was kept.
+\paragraph{Decision models} The last idea was to hand the final decision to a model built for decisions. Julia-1 \cite{julia2026} is an open 144-million-parameter model that picks one answer from a list given a state and a question. It received the 21 class probabilities of the three experts, without pixels or labels, and no fine-tuning. Jev (version 1.14.0) \cite{jev2026} is TypeSafe's hosted decision model, which returns typed answers to a question about a given state. It received the query image and one labelled reference image per vendor; in a second stage it also received the probability distributions of DINOv2, ConvNeXt and its own first answer. Jev was queried only on the 112 development images where DINOv2 and ConvNeXt disagreed, after a 50-image technical pilot (324 requests in all, \$0.035 of metered usage). Elsewhere the reference prediction was kept.
 
 \begin{table}[t]
 \centering\small
@@ -69,7 +69,7 @@ Julia-1 decides every image & 131 & 6.63\% & 4 & \num{1792}\\
 
 \begin{table}[t]
 \centering\small
-\caption{\textbf{DINOv2, ConvNeXt and the file-byte model} on the same 1{,}976 development images\rep. Learned rows: grouped 5-fold cross-validation inside the development images, mean of 5 seeds. ``Fixed'' and ``new'' as in \cref{tab:fusion}.}
+\caption{\textbf{DINOv2, ConvNeXt and the file-byte model} on the same 1{,}976 development images\rep. Learned rows: grouped 5-fold cross-validation inside the development images, mean of 5 seeds. ``Fixed'' and ``new'' as in \cref{tab:fusion}; for learned rows they are from the first seed.}
 \label{tab:fusion3}
 \begin{tabular}{@{}lrrr@{}}
 \toprule

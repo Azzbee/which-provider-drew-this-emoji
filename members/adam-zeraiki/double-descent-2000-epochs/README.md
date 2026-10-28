@@ -29,7 +29,7 @@ With 20% wrong labels the curve has the epoch-wise double-descent shape: error r
 
 Model-wise, at 20% noise, error at the end of training falls monotonically with width: 47.3, 44.5, 40.9, 38.3 and 37.5% for k = 4, 8, 16, 32, 64; width 4 does not fit its training labels (79% train accuracy), every width from 8 up fits at least 97%. With the second batch (11 widths from 3 to 64), the end-of-training error still falls monotonically, from 48.4% (k = 3) to 37.5% (k = 64), while the network crosses the interpolation threshold between k = 6 and k = 10 (train accuracy 93.6% to 98.2%): no model-wise peak. The gap between the best epoch and the end of training is about 6 points for k = 7 to 12.
 
-**4,000 epochs** (width 64, 20% noise): same shape (minimum 34.8% at epoch 26, peak 39.1% at epoch 214), and the second descent stops at about 37.3% by epoch 1,500; from 1,500 to 4,000 the smoothed error stays between 36.3% and 38.7%, ending at 37.3%.
+**4,000 epochs** (width 64, 20% noise): same shape (minimum 34.8% at epoch 26, peak 40.1% at epoch 346), and the second descent stops at about 37.3% by epoch 1,500; from 1,500 to 4,000 the smoothed error stays between 36.3% and 38.7%, ending at 37.3%.
 
 **Half the data** (sample-wise test of "more data can hurt"): k = 6 goes from 45.6% (full) to 52.4% (half), k = 8 from 44.5% to 50.3%. More data helped.
 

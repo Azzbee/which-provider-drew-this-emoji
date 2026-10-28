@@ -119,5 +119,6 @@
   "selected_entries": [
     "submission_convnext224_last.csv",
     "submission_convnext224_AB_10models.csv"
-  ]
+  ],
+  "selection_note": "The selection shown here was read on 18 Oct 2026 at 21:52. Before the close it was changed: the two selected entries were submission_convnext224_last.csv (final model) and Erdem's E15_ens_full_3models.csv (Kaggle submissions page, read 27 Oct 2026)."
 }

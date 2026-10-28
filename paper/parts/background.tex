@@ -11,7 +11,7 @@ The project moved through most of the families of models used in computer vision
 \toprule
 Family & What it sees & Built-in assumption & Params & Best here\\
 \midrule
-Random forest, SVM & hand-made features (file statistics, colour histogram, HOG) & the features are the right ones & n/a & 87.37\%\\
+Random forest, SVM & hand-made features (file statistics, colour histogram, HOG, style descriptors) & the features are the right ones & n/a & 96.05\%\\
 CNN from scratch & pixels, through small local filters & locality, translation equivariance & 0.39\,M & 90.96\%\\
 Pretrained CNN (ResNet18, EfficientNet-B0, ConvNeXt-Tiny) & pixels, filters initialised on ImageNet & as above, plus ImageNet features transfer & 4.0--27.8\,M & 97.69\%\\
 Vision transformer (DINOv2) & $14\times14$ patches as tokens, global attention & almost none; learned from 142\,M images & 22.1\,M (S/14) & 0.95607$^\dagger$\\
@@ -21,7 +21,7 @@ Ensembles and fusion & the outputs of several models & errors of the members are
 \end{table}
 
 \subsection{Classical machine learning on hand-crafted features}
-Before deep learning, an image classifier had two separate parts: a human-designed feature extractor and a generic classifier. Histograms of oriented gradients (HOG) \cite{dalal2005hog} describe local shape by the distribution of edge directions in small cells; colour histograms describe the palette. A support vector machine \cite{cortes1995svm} then finds the maximum-margin boundary between classes, possibly in a higher-dimensional space reached through a kernel, and a random forest \cite{breiman2001rf} averages many decision trees, each trained on a bootstrap sample with random feature subsets. Both are fast and interpretable, but they can only use the information the features expose. We used them three times: as a diagnostic of the file-format shortcut (a random forest on file metadata, \cref{sec:fingerprints}) as hand-crafted baselines on pixels (HOG and colour histogram with an SVM, \pct{81.28}; extra-trees on pixels, colour and transparency, \pct{82.14}), and on top of frozen ResNet18 features, where an RBF-kernel SVM reached \pct{96.76} (\cref{sec:arch}).
+Before deep learning, an image classifier had two separate parts: a human-designed feature extractor and a generic classifier. Histograms of oriented gradients (HOG) \cite{dalal2005hog} describe local shape by the distribution of edge directions in small cells; colour histograms describe the palette. A support vector machine \cite{cortes1995svm} then finds the maximum-margin boundary between classes, possibly in a higher-dimensional space reached through a kernel, and a random forest \cite{breiman2001rf} averages many decision trees, each trained on a bootstrap sample with random feature subsets. Both are fast and interpretable, but they can only use the information the features expose. We used them three times: as a diagnostic of the file-format shortcut (a random forest on file metadata, \cref{sec:fingerprints}), as hand-crafted baselines on pixels (HOG and colour histogram with an SVM, \pct{81.28}; extra-trees on pixels, colour and transparency, \pct{82.14}), and on top of frozen ResNet18 features, where an RBF-kernel SVM reached \pct{96.76} (\cref{sec:arch}).
 
 \subsection{Convolutional neural networks}
 A convolutional neural network (CNN) \cite{lecun1998gradient,krizhevsky2012alexnet} learns the features instead. A convolutional layer slides a small filter $w$ of size $k\times k$ over the input and computes, at every position and for every output channel $c'$,

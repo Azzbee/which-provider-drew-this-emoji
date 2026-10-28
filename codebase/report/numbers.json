@@ -1183,7 +1183,7 @@
       {
         "id": "E7_convnext_tiny_aug",
         "model": "convnext_tiny (ImageNet pretrained)",
-        "method": "As E6b + geometric augmentation (h-flip, \u00b110\u00b0 rotation, 5% shift, 0.9-1.1 scale) + label smoothing 0.1",
+        "method": "As E6b + geometric augmentation (h-flip, ±10° rotation, 5% shift, 0.9-1.1 scale) + label smoothing 0.1",
         "epochs": 15,
         "val_accuracy": 0.9438,
         "val_macro_precision": 0.9464,
@@ -1876,5 +1876,6 @@
         "4": 8
       }
     }
-  }
+  },
+  "selection_note": "The selection shown here was read on 18 Oct 2026 at 21:52. Before the close it was changed: the two selected entries were submission_convnext224_last.csv (final model) and Erdem's E15_ens_full_3models.csv (Kaggle submissions page, read 27 Oct 2026)."
 }
