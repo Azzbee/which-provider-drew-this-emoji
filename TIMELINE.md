@@ -25,5 +25,5 @@ How the project actually unfolded, reconstructed from dated records: Kaggle's su
 | 27 Oct | Adam | LaTeX paper (background, journey, double descent, DINOv2, fusion), this repository | | `paper/` |
 | 28 Oct | Adam | File-forensics shortcut model: 93.48% file-only, 97.95% stacked with ConvNeXt (not submitted) | | `members/adam-zeraiki/file-forensics-shortcut-model/` |
 | 28 Oct | Adam (with Claude) | Three-expert fusion: DINOv2 + ConvNeXt + file-byte model; geometric mean 97.98%, stacking 98.12% on the 1,976 dev images (reference 97.12%); Jev as final decider on the 205 non-unanimous images: 96.76 to 97.01% (615 requests, $0.064) | | `members/adam-zeraiki/three-expert-fusion-dinov2-convnext-filebytes/` |
-| 28 Oct | Adam (with Claude, RunPod RTX 4090) | Double descent: ResNet18 widths 4 to 64, 0/10/20% label noise, 2,000 epochs; epoch-wise second descent only with noisy labels | | `members/adam-zeraiki/double-descent-2000-epochs/` |
+| 28 Oct | Adam (with Claude, RunPod RTX 4090) | Double descent: ResNet18 widths 3 to 64, 0/10/20% label noise, 2,000 and 4,000 epochs, half-data runs; epoch-wise second descent only with noisy labels, no model-wise peak, more data helped | | `members/adam-zeraiki/double-descent-2000-epochs/` |
 | 28 Oct, 20:00 | everyone | Moodle hand-in: paper PDF + codebase zip | | |
