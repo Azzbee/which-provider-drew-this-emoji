@@ -68,10 +68,10 @@ The implementation uses the frozen-backbone transfer-learning pattern described 
 
 ## Hand-in and AI disclosure
 
-Write the report independently. Include actual validation/Kaggle results, explain features, scaling, the RBF SVM, model selection and limitations, and disclose prompts/AI assistance using `codex-AI_USAGE.md`. No report prose is supplied. Have another teammate reproduce the CSV from a fresh environment using these instructions before hand-in.
+Write the report independently. Include actual validation/Kaggle results, explain features, scaling, the RBF SVM, model selection and limitations, and disclose prompts/AI assistance using [codebase/AI_USAGE.md](../../../codebase/AI_USAGE.md). No report prose is supplied. Have another teammate reproduce the CSV from a fresh environment using these instructions before hand-in.
 
 ## Repository packaging
 
 The 78 MB fitted `artifacts/improved_model.joblib` is deliberately excluded from this repository. Running `python improve.py --data-dir /path/to/data` recreates the fitted scaler/SVM model and submission files. The model file was not committed. Competition images, `train_labels.csv`, pretrained weights, `torch_cache/`, and feature caches are also excluded. Download the competition data separately; the scripts recreate descriptors and download official pretrained weights as needed.
 
-This README is named `method-README.md` in the team repository, and the original local AI disclosure is named `codex-AI_USAGE.md`. No DINOv2 files are part of this import.
+This README is named `method-README.md` in the team repository, and the shared AI disclosure is maintained in [codebase/AI_USAGE.md](../../../codebase/AI_USAGE.md). No DINOv2 files are part of this import.

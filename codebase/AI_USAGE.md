@@ -57,6 +57,7 @@ A few examples of how an idea of ours was refined, not replaced:
 |---|---|---|
 | ~17 Oct | OpenAI Codex | Wrote and ran the Extra Trees baseline, the hand-crafted style features, the frozen ResNet18 feature extraction and the SVM selection (`members/lina-oumhand/extra-trees-and-resnet18-svm/`); Lina reviewed the results and submitted the files. |
 | 28 Oct | OpenAI Codex | Added her files, the ablation and her original prompts to the repository. |
+| 28 Oct | OpenAI Codex | Removed the duplicate method-folder AI-use file at Lina's request and redirected documentation links to this shared record. |
 
 ## Prompts
 
