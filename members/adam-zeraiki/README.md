@@ -13,6 +13,7 @@ Team leader. Built the shared codebase (`codebase/`) and the paper. One folder p
 | `learned-fusion-transformer-and-mlp/` | Transformer and MLP fusion of DINOv2, ConvNeXt and style features | best 97.01%* | not submitted |
 | `julia1-decision-model/` | Julia-1 decision model on the expert outputs | 93.98%* | not submitted |
 | `jev-decision-model/` | Jev (jev-1.14.0) decision model, live trial | 95.65%* | not submitted |
+| `file-forensics-shortcut-model/` | What the PNG files alone reveal (57 byte-level features), and stacked with ConvNeXt | 93.48% OOF; 97.95% stacked | not submitted |
 
 \* On the DINOv2 branch's own 1,976-image development split, which was reused for earlier choices; not directly comparable to the codebase's 1,979-image stored split or 5-fold OOF.
 
